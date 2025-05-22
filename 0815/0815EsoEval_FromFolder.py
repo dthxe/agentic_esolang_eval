@@ -1,0 +1,587 @@
+# -*- coding: utf-8 -*-
+"""
+Modified version of 0815EsoEval.py that evaluates 0815 code from a folder
+instead of generating it with an LLM.
+"""
+
+import os
+import re
+import subprocess
+import sys
+import tempfile
+
+# Define the path to the folder containing the 0815 code to evaluate
+CODE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+                          "code_to_evaluate", "0815")
+
+# In a non-Jupyter environment, we would download the interpreter like this:
+# interpreter_url = "https://gist.githubusercontent.com/perey/015aeea5c3af016531e9/raw/71b4cbfd16577e349d58a11eefd1cde12d40a2ae/esolang0815_interpreter.py"
+# subprocess.run(["wget", "-O", "esolang0815_interpreter.py", interpreter_url], check=True)
+
+documentation = """
+¤0815
+
+0815 - Language details
+
+0815 is based around a queue and 3 registers. It understands hexadecimals only, so every numeric input and output are in hexadecimals. It also ignores everything that is not one of its instructions, for that matter: everything that is not an instruction is a comment.
+Registers
+
+0815 has 3 signed integers 64 bit wide registers: X, Y, and Z. All three are initialized with 0. X is a write only register and Z is a read only register. Y is a helper register and cannot be accessed by the programmer.
+Parameters
+
+Some of 0815 instructions need parameters. All parameters must be surrounded by colons, e.g. :3c:
+Labels are also considered parameters; therefore they also need the surrounding colons.
+If a parameter is needed but any is found the instruction will simply be ignored, no error message will be displayed.
+Jumps
+
+In 0815 you find 2 kinds of jumps: if Zero( # ) or if not Zero( ^ ). Jumps' labels can contain any character, except the language reserved symbols, e.g. :_loop: or :34:
+If the label that the jump is pointed to is not found, the program terminates.
+New lines
+
+Either ASCII 10 or 13 will be interpreted as a new line.
+Instructions
+
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |<:2: will move '2' to register X                                           |
+|   move    |    <    |(parameter is mandatory)                                                   |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |swaps register X and Y                                                     |
+|   swap    |    x    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |}:_loop: this creates a label called '_loop'                               |
+|   label   |    }    |(parameter is mandatory)                                                   |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   input   |         |inputs a signed 64 bit integer and stores it into X                        |
+|   number  |    |    |(hexadecimal base)                                                         |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   input   |         |inputs an ASCII char and stores it into X                                  |
+|   ASCII   |    !    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   print   |         |prints a signed 64 bit integer stored in Z                                 |
+|   number  |    %    |(hexadecimal base)                                                         |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   print   |         |prints an ASCII char stored in Z                                           |
+|   ASCII   |    $    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   roll    |         |rolls all registers to the left: X <- Y <- Z                               |
+| registers |    ~    |after roll: X = Y, Y = Z and Z = X                                         |
+|   left    |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   roll    |         |rolls all registers to the right: X -> Y -> Z                              |
+| registers |    =    |after roll: X = Z, Y = X and Z = Y                                         |
+|  right    |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   jump    |         |^:_loop: jumps to label _loop if Z is not 0                                |
+|   if not  |    ^    |(parameter is mandatory)                                                   |
+|   zero    |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   jump    |         |#:_loop: jumps to label _loop if Z is 0                                    |
+|   if      |    #    |(parameter is mandatory)                                                   |
+|   zero    |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+Queue instructions
+
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |clears the queue                                                           |
+|  clear    |    ?    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |enqueue the number stored in Z                                             |
+|  enqueue  |    >    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |dequeue a number and stores it into X                                      |
+|  dequeue  |    {    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|   roll    |         |rolls the queue to the left: the first value becomes the last, the second  |
+|   queue   |    @    |will be first and so on. If no parameter is found, it will roll the queue  |
+|   left    |         |once, otherwise rolls it parameter times. e.g. @:a: rolls the queue ten    |
+|           |         |times to the left.                                                         |
++-----------+---------+---------------------------------------------------------------------------+
+|  roll     |         |the same as '@' just that the roll will go to the right:                   |
+|  queue    |    &    |the last will be the first, the first will be the second and so on.        |
+|  right    |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+Arithmetic instructions
+
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |Z = X + Y                                                                  |
+|   add     |    +    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |Z = X - Y                                                                  |
+|   sub     |    -    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |Z = X * Y                                                                  |
+| multipl.  |    *    |                                                                           |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+|           |         |Z = X / Y                                                                  |
+| division  |    /    |Y = rest                                                                   |
+|           |         |                                                                           |
++-----------+---------+---------------------------------------------------------------------------+
+Interpreter
+
+I re-wrote my Brainfuck interpreter to run 0815 programs. This version just runs (interprets) 0815 programs.
+Probably, I'll write another version that can interpret both languages, but for now, this will do.
+There is another issue that I should mention: In this version, the Queue will only show its first 2070 items.
+0815 Interpreter
+
+0815 Programming examples
+
+Hello World!
+Cat
+Odd or Even
+Binary representation of an integer
+Factorial sequence (0 - 14h)
+Arithmetic mean(averages)
+Fibonacci sequence (0 - a94fad42221f2702h)
+99 bottles of beer (63h bottles of beer)
+Prime numbers
+Hailstone sequence
+Simple randomizer
+Sum of squares
+Truth machine - numeric
+Truth machine - ASCII
+
+Home | Esolang
+
+"""
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Commented out IPython magic to ensure Python compatibility.
+# Program definitions
+hello_world_program = """
+<:48:x<:65:=<:6C:$=$=$$~<:03:+$~<:ffffffffffffffbd:+$<:ffffffffffffffb1:
++$<:57:~$~<:18:x+$~<:03:+$~<:06:x-$x<:0e:x-$=x<:43:x-$
+"""
+
+cat_program = """
+}:_t:!~$^:_t:
+"""
+
+odd_even_program = """
+}:s:|=<:2:x~#:e:=/~%~<:20:~$=<:73:x<:69:~$~$~<:20:~$=^:o:<:65:
+x<:76:=$=$~$<:6E:~$<:a:~$^:s:}:o:<:6F:x<:64:x~$~$$<:a:~$^:s:
+"""
+
+binary_program = """
+|~}:z:=x<:2:x/=>&~^:z:
+<:ffffffffffffffff:~>}:s:{x
+<:ffffffffffffffff:
+-#:out:=%~^:s:
+"""
+
+factorial_program = """
+<:1:~%<:d:~$~>~}:s:><:1:x{+>~{*%
+<:21C3677C82B40000:=-#:end:~<:d:~$=^:s:
+"""
+
+arithmetic_program = """
+<:01:~><:02:~><:03:~><:04:~><:05:~><:06:~><:07:~><:08:~><:09:~>
+<:0a:~><:0b:~><:0c:~><:0d:~><:0e:~><:0f:~><:10:~><:11:~><:12:~>
+<:13:~><:14:~><:15:~><:16:~><:17:~><:18:~><:19:~><:ffffffffffffffff:~>
+{x{+>}:8f:{&={+>{~>&=x<:ffffffffffffffff:/#:8f:{{=<:19:x/%
+"""
+
+fibonacci_program = """
+# %<:0D:>~$<:01:~%>=<:a94fad42221f2702:>~>}:_s:{x{={~$x+%{=>~>x~-x<:0D:~>~>~^:_s:?
+"""
+
+prime_program = """
+<:2:~}:strt:>~}:net:<:1:x-~<:1:x-#:ok:x{=>=>=/=#:nP:{x
+^:net:}:ok:{~%<:d:~$<:1:+^:strt:}:nP:{{x<:1:+^:strt:
+"""
+
+hailstone_program = """
+|~}:s:%~<:1:-#:end:
+<:d:~$~>{>x<:2:x/=
+#:evn:{x<:3:*~<:1:+
+^:s:}:evn:~{^:s:
+"""
+
+sum_of_squares_program = """
+{x{*%<:d:~$<:1:~>><:2:~>><:3:~>><:4:~>><:5:~>><:6:~>><:7:
+~>><:8:~>><:9:~>><:a:~>><:b:~>><:c:~>><:ffffffffffffffff:
+~>{x{*>}:8f:{x{*&{=+>{~>&=x<:ffffffffffffffff:/#:8f:{{~%
+"""
+
+# Read the 99bb.0815 file content
+file_path = '/content/drive/MyDrive/99bb.0815'
+with open(file_path, 'r') as file:
+    program99 = file.read()
+
+# Combine all programs into documentation
+documentation += f"""
+--- Hello World Program ---
+{hello_world_program}
+
+--- Cat Program ---
+{cat_program}
+
+--- Odd Even Program ---
+{odd_even_program}
+
+--- Binary Program ---
+{binary_program}
+
+--- Factorial Program ---
+{factorial_program}
+
+--- Arithmetic Program ---
+{arithmetic_program}
+
+--- Fibonacci Program ---
+{fibonacci_program}
+
+--- Prime Program ---
+{prime_program}
+
+--- Hailstone Program ---
+{hailstone_program}
+
+--- Sum of Squares Program ---
+{sum_of_squares_program}
+
+--- 99bb Program ---
+{program99}
+"""
+
+
+# Save in text documentation to a file
+with open('/content/drive/MyDrive/0815examples.txt', 'w') as doc_file:
+    doc_file.write(documentation)
+
+with open("/content/hello_world.0815", "w") as file:
+    file.write(hello_world_program)
+
+
+with open("/content/catprogram.0815", "w") as file:
+    file.write(cat_program)
+
+
+with open("/content/oddeven.0815", "w") as file:
+    file.write(odd_even_program)
+
+# Example commands for running 0815 code (converted from Jupyter notebook commands):
+# subprocess.run(["python3", "esolang0815_interpreter.py", "hello_world.0815"])
+# echo_process = subprocess.Popen(["echo", "10"], stdout=subprocess.PIPE)
+# subprocess.run(["python3", "esolang0815_interpreter.py", "oddeven.0815"], stdin=echo_process.stdout)
+
+# Initialize results
+results = []
+
+def mod_prompt(prompt):
+   modified_prompt = (
+        f"Write a function in 0815, an esoteric programming language. "
+        f"The function should perform the following: {prompt}"
+        f"The documentation for 0815 is provided here: '{documentation}'. "
+
+    )
+   return modified_prompt
+
+problems = [
+    {
+        'task_id': "1",
+        'prompt': mod_prompt('print hello world'),
+        "tests": [None, 'Hello, World!']
+    },
+    {
+        'task_id': "2",
+        'prompt': mod_prompt('given a number n input, return the nth factorial number'),
+        "tests": ["5", "120"]
+    },
+    {
+        'task_id': "3",
+        'prompt': mod_prompt('given a number n, return "Even" if n is even, else "Odd"'),
+        "tests": ["4", "Even"]
+    },
+    {
+        'task_id': "4",
+        'prompt': mod_prompt('given two numbers a and b, return their sum'),
+        "tests": ["2 \n 3", "5"]
+    },
+    {
+        'task_id': "5",
+        'prompt': mod_prompt('given a number n, return True if it is prime, else False'),
+        "tests": ["11", "True"]
+    },
+    {
+        'task_id': "6",
+        'prompt': mod_prompt('given a string s, return the reversed string'),
+        "tests": ["hello", "olleh"]
+    },
+     {
+        'task_id': "7",
+        'prompt': mod_prompt('print "Hello, Pyth!"'),
+        "tests": ["", "Hello, Pyth!"]
+    },
+    {
+        'task_id': "8",
+        'prompt': mod_prompt('given two numbers a and b, return their product'),
+        "tests": ["2 \n 3", "6"]
+    },
+    {
+        'task_id': "9",
+        'prompt': mod_prompt('given a number n, return True if it is positive, else False'),
+        "tests": ["10", "True"]
+    },
+    {
+        'task_id': "10",
+        'prompt': mod_prompt('given two strings s1 and s2, return their concatenation'),
+        "tests": ['"foo", "bar"', "foobar"]
+    },
+    {
+        'task_id': "11",
+        'prompt': mod_prompt('given a number n, return its square'),
+        "tests": ["4", "16"]
+    },
+    {
+        'task_id': "12",
+        'prompt': mod_prompt('given a string s, return the number of characters in the string'),
+        "tests": ['"hello"', "5"]
+    },
+    {
+        'task_id': "13",
+        'prompt': mod_prompt('given two numbers a and b, return the smaller number'),
+        "tests": ["3 \n 7", "3"]
+    },
+    {
+        'task_id': "14",
+        'prompt': mod_prompt('given a string s, return True if all characters in the string are vowels, else False'),
+        "tests": ['"aeiou"', "True"]
+    },
+    {
+        'task_id': "15",
+        'prompt': mod_prompt('given two numbers a and b, return the absolute difference between them'),
+        "tests": ["7 \n 3", "4"]
+    },
+    {
+        'task_id': "16",
+        'prompt': mod_prompt('given a string s and a number n, return the string repeated n times'),
+        "tests": ['"abc", 3', "abcabcabc"]
+    }
+    ,{
+      'task_id': "17",
+      'prompt': mod_prompt('given a number n, return the Fibonacci sequence up to the nth term'),
+      "tests": ["5", "[0, 1, 1, 2, 3]"]
+  },
+  {
+      'task_id': "18",
+      'prompt': mod_prompt('given a list of numbers, return the maximum number'),
+      "tests": ["[3, 1, 4, 1, 5, 9]", "9"]
+  },
+  {
+      'task_id': "19",
+      'prompt': mod_prompt('given a string s, return True if it is a palindrome, else False'),
+      "tests": ['"racecar"', "True"]
+  },
+  {
+      'task_id': "20",
+      'prompt': mod_prompt('given two numbers a and b, return their greatest common divisor'),
+      "tests": ["8 \n 12", "4"]
+  },
+  {
+      'task_id': "21",
+      'prompt': mod_prompt('given a list of numbers, return the list sorted in ascending order'),
+      "tests": ["[4, 2, 5, 1]", "[1, 2, 4, 5]"]
+  },
+  {
+      'task_id': "22",
+      'prompt': mod_prompt('given a number n, return True if it is a perfect square, else False'),
+      "tests": ["16", "True"]
+  },
+  {
+      'task_id': "23",
+      'prompt': mod_prompt('given a string s, return the number of vowels in the string'),
+      "tests": ['"hello"', "2"]
+  },
+  {
+      'task_id': "24",
+      'prompt': mod_prompt('given a list of numbers, return the sum of all numbers in the list'),
+      "tests": ["[1, 2, 3, 4]", "10"]
+  },
+  {
+      'task_id': "25",
+      'prompt': mod_prompt('given a number n, return its binary representation as a string'),
+      "tests": ["10", '"1010"']
+  },
+  {
+      'task_id': "26",
+      'prompt': mod_prompt('given two strings s1 and s2, return True if s1 is an anagram of s2, else False'),
+      "tests": ['"listen", "silent"', "True"]
+  },
+  {
+      'task_id': "27",
+      'prompt': mod_prompt('given a number n, return the sum of digits in n'),
+      "tests": ["1234", "10"]
+  },
+  {
+      'task_id': "28",
+      'prompt': mod_prompt('given a list of numbers, return True if all numbers are even, else False'),
+      "tests": ["[2, 4, 6, 8]", "True"]
+  },
+  {
+      'task_id': "29",
+      'prompt': mod_prompt('given a string s, return the string in title case'),
+      "tests": ['"hello world"', '"Hello World"']
+  },
+  {
+      'task_id': "30",
+      'prompt': mod_prompt('given two numbers a and b, return True if a is divisible by b, else False'),
+      "tests": ["10 \n 2", "True"]
+  }
+
+]
+
+def execute_0815_code(code: str, input_data: str = "") -> str:
+    """
+    Executes Pyth code and returns the output.
+    """
+    try:
+        # Define paths
+        temp_0815_path = "temp.0815"
+        eso_interpreter = "/content/esolang0815_interpreter.py"
+
+        if not os.path.isfile(eso_interpreter):
+            return f"Error: 0815 interpreter not found at {eso_interpreter}."
+
+        # Write the Pyth code to a temporary file
+        with open(temp_0815_path, "w") as f:
+            f.write(code)
+
+        # Execute the Pyth code using the Pyth interpreter
+        result = subprocess.run(
+            ['python3', eso_interpreter, temp_0815_path],
+            input=input_data,
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+
+        if result.returncode != 0:
+            return f"Error: {result.stderr.strip()}"
+
+        return result.stdout.strip()
+
+    except subprocess.TimeoutExpired:
+        return "Error: Execution timed out."
+    except Exception as e:
+        return f"Error during execution: {str(e)}"
+import re
+
+
+def extract_0815_code(generated_content: str) -> str:
+    """
+    Extracts the first 0815 code block from the generated content.
+    Handles code blocks enclosed with ``` or ''' and marked as plaintext or 0815.
+    If the closing delimiter is missing, captures until the end of the string.
+
+    Args:
+        generated_content (str): The content containing code blocks.
+
+    Returns:
+        str: The extracted 0815 code if found, else an empty string.
+    """
+    # Define a regex pattern that matches both ``` and ''' as delimiters
+    # and captures code blocks marked as plaintext or 0815
+    pattern = r"""
+        (?P<delimiter>```|''')                  # Match the opening delimiter
+        (?P<lang>plaintext|0815)?\s*\n?        # Optionally match the language specifier
+        (?P<code>[\s\S]*?)(?:(?P=delimiter)|$) # Capture the code block content until closing delimiter or end of string
+    """
+
+    regex = re.compile(pattern, re.VERBOSE | re.IGNORECASE)
+
+    # Find all matches in the generated content
+    matches = regex.finditer(generated_content)
+
+    # Iterate through the matches to find the first relevant code block
+    for match in matches:
+        lang = match.group('lang')
+        code = match.group('code')
+        if lang and lang.lower() in ['plaintext', '0815']:
+            return code.strip()
+
+    # If no matching code block is found, return an empty string
+    return ""
+
+
+
+# Test example
+generated_content_closed = """
+Generated 0815 Code:
+Here is a function written in 0815 that checks if a given string is a palindrome. The function reads characters from the input string, stores them in a queue, and then compares the characters from the front and back of the queue to determine if the string is a palindrome.
+
+```plaintext
+}:_start:!~$>~}:_loop:~{~$^:_loop:<:0D:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20:~$<:20
+"""
+
+print(extract_0815_code(generated_content_closed))
+
+import os
+import subprocess
+import re
+
+passed = 0
+results = []
+for idx, problem in enumerate(problems):
+    print(f"Evaluating Problem {idx+1}/{len(problems)}: {problem['task_id']}")
+
+    try:
+        # Construct the file path for this problem
+        file_path = os.path.join(CODE_FOLDER, f"{problem['task_id']}.0815")
+        
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            print(f"No code file found for problem {problem['task_id']}")
+            results.append({
+                'problem': problem['task_id'],
+                'pass': False,
+                'code': '',
+                'output': 'No code file found'
+            })
+            continue
+            
+        # Read the code from the file
+        with open(file_path, 'r') as f:
+            eso_code = f.read().strip()
+            
+        print(f"Reading 0815 code from file: {file_path}")
+        print(f"Code: {eso_code}")
+
+        # Execute the 0815 code
+        output = execute_0815_code(eso_code, problem['tests'][0])
+        print(f"0815 Output: {output}\n")
+        print("Pass", problem['tests'][1].upper() in output.upper(), "type", type(output))
+        # Record the result
+        results.append({'problem': problem['task_id'],'pass': problem['tests'][1] in output, 'code': eso_code, 'output': output})
+
+    except Exception as e:
+        print(f"Error during file processing: {e}")
+        results.append({
+            'problem': problem['task_id'],
+            'pass': False,
+            'code': '',
+            'output': f"Error: {str(e)}"
+        })
+
+print("\nSummary of Results:")
+totalpassed = 0
+for result in results:
+    if result['pass']:
+         totalpassed += 1
+print("percentage passed: " + str(100*totalpassed/ len(results)) + "%")
+
+print(f"\nCode files were read from: {CODE_FOLDER}")
