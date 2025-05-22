@@ -8,14 +8,35 @@ import os
 import re
 import ast
 import subprocess
+import fitz
+
 from typing import List
 
 # Define the path to the folder containing the Pyth code to evaluate
 CODE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
                           "code_to_evaluate", "Pyth")
 
-# Uncomment the line below and replace 'your-api-key' with your actual API key
-os.environ["OPENAI_API_KEY"] = 'your-api-key'
+
+pdf_path = ['/content/drive/MyDrive/10. The Language Specification - Comparisons — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/11. The Language Specification - Sequences — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/2. More Details About Pyth — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/3. Some Simple Programs — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/4. Some Simple Programs - Part II — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/5. Learning More - Documentation and Errors — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/6. Adding to Pyth — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/7. The Language Specification - Variables — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/8. The Language Specification - Control Flow — Pyth 1.0 documentation.pdf',
+            '/content/drive/MyDrive/9. The Language Specification - Arithmetic — Pyth 1.0 documentation.pdf']
+
+
+
+text_content = ""
+
+for path in pdf_path:
+  with fitz.open(path) as pdf:
+      for page_num in range(len(pdf)):
+          page = pdf[page_num]
+          text_content += page.get_text()
 
 
 def parse_test_cases(test_str: str):
@@ -151,7 +172,7 @@ problems = [
     {
         'task_id': "1",
         'prompt': mod_prompt('print hello world'),
-        "tests": ["", 'Hello world']
+        "tests": [None, 'Hello, World!']
     },
     {
         'task_id': "2",
@@ -161,7 +182,7 @@ problems = [
     {
         'task_id': "3",
         'prompt': mod_prompt('given a number n, return "Even" if n is even, else "Odd"'),
-        "tests": ["4", '"Even"']
+        "tests": ["4", "Even"]
     },
     {
         'task_id': "4",
@@ -176,12 +197,12 @@ problems = [
     {
         'task_id': "6",
         'prompt': mod_prompt('given a string s, return the reversed string'),
-        "tests": ["hello", '"olleh"']
+        "tests": ["hello", "olleh"]
     },
      {
         'task_id': "7",
         'prompt': mod_prompt('print "Hello, Pyth!"'),
-        "tests": ["", '"Hello, Pyth!"']
+        "tests": ["", "Hello, Pyth!"]
     },
     {
         'task_id': "8",
@@ -196,7 +217,7 @@ problems = [
     {
         'task_id': "10",
         'prompt': mod_prompt('given two strings s1 and s2, return their concatenation'),
-        "tests": ['"foo", "bar"', '"foobar"']
+        "tests": ['"foo", "bar"', "foobar"]
     },
     {
         'task_id': "11",
@@ -226,13 +247,79 @@ problems = [
     {
         'task_id': "16",
         'prompt': mod_prompt('given a string s and a number n, return the string repeated n times'),
-        "tests": ['"abc", 3', '"abcabcabc"']
+        "tests": ['"abc", 3', "abcabcabc"]
     }
+    ,{
+      'task_id': "17",
+      'prompt': mod_prompt('given a number n, return the Fibonacci sequence up to the nth term'),
+      "tests": ["5", "[0, 1, 1, 2, 3]"]
+   },
+   {
+      'task_id': "18",
+      'prompt': mod_prompt('given a list of numbers, return the maximum number'),
+      "tests": ["[3, 1, 4, 1, 5, 9]", "9"]
+   },
+   {
+      'task_id': "19",
+      'prompt': mod_prompt('given a string s, return True if it is a palindrome, else False'),
+      "tests": ['"racecar"', "True"]
+   },
+   {
+      'task_id': "20",
+      'prompt': mod_prompt('given two numbers a and b, return their greatest common divisor'),
+      "tests": ["8 \n 12", "4"]
+   },
+   {
+      'task_id': "21",
+      'prompt': mod_prompt('given a list of numbers, return the list sorted in ascending order'),
+      "tests": ["[4, 2, 5, 1]", "[1, 2, 4, 5]"]
+   },
+   {
+      'task_id': "22",
+      'prompt': mod_prompt('given a number n, return True if it is a perfect square, else False'),
+      "tests": ["16", "True"]
+   },
+   {
+      'task_id': "23",
+      'prompt': mod_prompt('given a string s, return the number of vowels in the string'),
+      "tests": ['"hello"', "2"]
+   },
+   {
+      'task_id': "24",
+      'prompt': mod_prompt('given a list of numbers, return the sum of all numbers in the list'),
+      "tests": ["[1, 2, 3, 4]", "10"]
+   },
+   {
+      'task_id': "25",
+      'prompt': mod_prompt('given a number n, return its binary representation as a string'),
+      "tests": ["10", '"1010"']
+   },
+   {
+      'task_id': "26",
+      'prompt': mod_prompt('given two strings s1 and s2, return True if s1 is an anagram of s2, else False'),
+      "tests": ['"listen", "silent"', "True"]
+   },
+   {
+      'task_id': "27",
+      'prompt': mod_prompt('given a number n, return the sum of digits in n'),
+      "tests": ["1234", "10"]
+   },
+   {
+      'task_id': "28",
+      'prompt': mod_prompt('given a list of numbers, return True if all numbers are even, else False'),
+      "tests": ["[2, 4, 6, 8]", "True"]
+   },
+   {
+      'task_id': "29",
+      'prompt': mod_prompt('given a string s, return the string in title case'),
+      "tests": ['"hello world"', '"Hello World"']
+   },
+   {
+      'task_id': "30",
+      'prompt': mod_prompt('given two numbers a and b, return True if a is divisible by b, else False'),
+      "tests": ["10 \n 2", "True"]
+   }
 ]
-
-import os
-import subprocess
-import re
 
 passed = 0
 results = []
