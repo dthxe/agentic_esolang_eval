@@ -8,6 +8,20 @@ This repository contains scripts for evaluating code in esoteric programming lan
 
 This project provides a framework for evaluating the performance of esoteric programming languages on standard programming benchmarks. Instead of generating code with language models, this repository focuses on evaluating pre-written code files, making it suitable for comparing different code generation approaches or manual implementations.
 
+The repository includes:
+- Evaluation scripts for multiple esoteric languages (0815, Minipy, Pyth)
+- Code samples generated with and without context by agentic AI systems
+- Standardized evaluation methodology using the HumanEval benchmark
+
+## Code Generation Methodology
+
+The code samples in this repository were generated using Windsurf, an agentic AI system, in March/April 2025. Two sets of code were generated:
+
+1. **Context Code**: Generated with full contextual information about the esoteric language
+2. **No Context Code**: Generated with minimal information about the language
+
+This allows for comparative analysis of how contextual information affects code generation quality in esoteric languages.
+
 ## Requirements and Dependencies
 
 ### Software Requirements
@@ -51,7 +65,11 @@ This project provides a framework for evaluating the performance of esoteric pro
 - `0815/`: Contains evaluation scripts for 0815
 - `Minipy/`: Contains evaluation scripts for Minipy
 - `Pyth/`: Contains evaluation scripts for Pyth
-- `code_to_evaluate/`: Directory where code files should be placed
+- `context_code/`: Code generated with full context about the language
+  - Organized by language and model
+- `no_context_code/`: Code generated with minimal context about the language
+  - Organized by language and model
+- `code_to_evaluate/`: Directory where code files should be placed for evaluation
   - `0815/HumanEval/`: Place 0815 code files here
   - `Minipy/HumanEval/`: Place Minipy code files here
   - `Pyth/HumanEval/`: Place Pyth code files here
@@ -109,4 +127,32 @@ To ensure reproducibility of results, follow these steps:
 4. Place your code files in the appropriate directories following the naming conventions
 5. Run the evaluation scripts as described in the "How to Use" section
 
-All evaluation results are deterministic given the same code files and interpreters.
+All evaluation results are deterministic given the same code files and interpreters. The evaluation scripts have been designed to be self-contained and executable with minimal setup.
+
+## Data Preservation and Access
+
+The HumanEval dataset used in this project is publicly available under the MIT license. The generated code samples in this repository are also available under the MIT license, allowing for free use, modification, and distribution with proper attribution.
+
+For long-term preservation, this repository will be archived on Zenodo with a DOI upon publication, ensuring persistent access to both the code and the generated samples.
+
+## Limitations
+
+The current implementation has the following limitations:
+
+- The evaluation is limited to the HumanEval benchmark
+- Some esoteric languages may require specialized hardware or software configurations
+- The evaluation methodology focuses on functional correctness rather than efficiency
+
+## Citation
+
+If you use this code or the generated samples in your research, please cite:
+
+```
+@misc{agentic_esolang_eval,
+  author = {Your Name},
+  title = {Agentic Esolang Evaluation},
+  year = {2025},
+  publisher = {GitHub},
+  url = {https://github.com/yourusername/agentic_esolang_eval}
+}
+```
