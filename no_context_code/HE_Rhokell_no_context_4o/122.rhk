@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/122
+# Task: Sum elements with at most two digits
+
+# Define a function to add elements
+func add_elements(arr, k) {
+    total = 0
+    
+    # Sum elements with at most two digits
+    for i in range(k) {
+        if abs(arr[i]) < 100 {
+            total += arr[i]
+        }
+    }
+    return total
+}

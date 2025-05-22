@@ -1,0 +1,9 @@
+def move_one_ball(arr):
+    if not arr:
+        return True
+    s = srt(arr)
+    c = 0
+    for i in r(l(arr)):
+        if arr[i] != s[i]:
+            c += 1
+    return c <= 2

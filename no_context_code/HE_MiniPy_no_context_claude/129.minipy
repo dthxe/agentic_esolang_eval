@@ -1,0 +1,27 @@
+def minPath(grid, k):
+    n = len(grid)
+    
+    # Find all possible paths of length k
+    def find_paths(row, col, length, current_path):
+        if length == k:
+            return [current_path]
+        
+        paths = []
+        # Try all four directions
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        
+        for dr, dc in directions:
+            new_row, new_col = row + dr, col + dc
+            if 0 <= new_row < n and 0 <= new_col < n:
+                paths.extend(find_paths(new_row, new_col, length + 1, current_path + [grid[new_row][new_col]]))
+        
+        return paths
+    
+    # Generate all possible paths starting from each cell
+    all_paths = []
+    for i in range(n):
+        for j in range(n):
+            all_paths.extend(find_paths(i, j, 1, [grid[i][j]]))
+    
+    # Find the lexicographically smallest path
+    return min(all_paths)

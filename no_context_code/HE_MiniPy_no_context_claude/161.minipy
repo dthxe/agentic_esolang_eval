@@ -1,0 +1,29 @@
+def solve_equation(equation):
+    # Split the equation by '='
+    left_side, right_side = equation.split('=')
+    
+    # Initialize variables
+    x_coefficient = 0
+    constant = 0
+    
+    # Process left side
+    terms = left_side.replace('-', '+-').split('+')
+    for term in terms:
+        if term == '':
+            continue
+        if 'x' in term:
+            if term.strip() == 'x':
+                x_coefficient += 1
+            elif term.strip() == '-x':
+                x_coefficient -= 1
+            else:
+                x_coefficient += int(term.replace('x', ''))
+        else:
+            constant += int(term)
+    
+    # Process right side (move to left with opposite sign)
+    right_value = int(right_side.strip())
+    constant -= right_value
+    
+    # Solve for x: ax + b = 0 => x = -b/a
+    return str(int(-constant / x_coefficient))

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/40
+# Return True if there are three distinct elements in the list that sum to zero.
+
+def triples_sum_to_zero(l):
+    return any(l[i] + l[j] + l[k] == 0 for i in r(l(l)) for j in r(i+1, l(l)) for k in r(j+1, l(l)))

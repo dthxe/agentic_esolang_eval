@@ -1,0 +1,5 @@
+# Rhokell implementation for string_xor
+# Perform binary XOR on two strings of 1s and 0s.
+
+(string_xor (s1) (s2)) = 
+    (map (\(x y) -> (if (= x y) '0' '1')) s1 s2)

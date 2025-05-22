@@ -1,0 +1,21 @@
+/* HumanEval/65 */
+
+FUNC circular_shift(x, shift) {
+    DECL digits = TO_STRING(x)
+    DECL n = LEN(digits)
+    
+    /* If shift is greater than number of digits, reverse the digits */
+    IF shift > n {
+        DECL result = ""
+        LOOP i FROM n - 1 TO 0 {
+            result = result + digits[i]
+        }
+        RETURN result
+    }
+    
+    /* Perform the circular shift */
+    DECL actual_shift = shift % n
+    DECL result = SUBSTRING(digits, n - actual_shift, n) + SUBSTRING(digits, 0, n - actual_shift)
+    
+    RETURN result
+}

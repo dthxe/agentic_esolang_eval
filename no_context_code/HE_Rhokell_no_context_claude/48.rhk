@@ -1,0 +1,14 @@
+/* HumanEval/48 */
+
+FUNC is_palindrome(text) {
+    DECL length = LEN(text)
+    DECL half_length = length / 2
+    
+    LOOP i FROM 0 TO half_length - 1 {
+        IF text[i] != text[length - 1 - i] {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN TRUE
+}

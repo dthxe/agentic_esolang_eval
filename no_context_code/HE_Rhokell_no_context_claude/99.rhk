@@ -1,0 +1,26 @@
+/* HumanEval/99 */
+
+FUNC closest_integer(value) {
+    /* Convert string to float */
+    DECL num = TO_FLOAT(value)
+    
+    /* Get the fractional part */
+    DECL integer_part = FLOOR(num)
+    DECL fractional_part = num - integer_part
+    
+    /* Round away from zero for exactly 0.5 */
+    IF fractional_part == 0.5 {
+        IF num > 0 {
+            RETURN TO_INT(integer_part + 1)
+        } ELSE {
+            RETURN TO_INT(integer_part - 1)
+        }
+    }
+    
+    /* Otherwise, round to nearest integer */
+    IF fractional_part < 0.5 {
+        RETURN TO_INT(integer_part)
+    } ELSE {
+        RETURN TO_INT(integer_part + 1)
+    }
+}

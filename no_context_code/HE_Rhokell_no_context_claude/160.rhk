@@ -1,0 +1,24 @@
+/* HumanEval/160 */
+
+FUNC do_algebra(operator, operand) {
+    DECL result = operand[0]
+    
+    LOOP i FROM 0 TO LEN(operator) - 1 {
+        DECL op = operator[i]
+        DECL val = operand[i + 1]
+        
+        IF op == "+" {
+            result = result + val
+        } ELIF op == "-" {
+            result = result - val
+        } ELIF op == "*" {
+            result = result * val
+        } ELIF op == "//" {
+            result = result / val  /* Integer division */
+        } ELIF op == "**" {
+            result = POW(result, val)
+        }
+    }
+    
+    RETURN result
+}

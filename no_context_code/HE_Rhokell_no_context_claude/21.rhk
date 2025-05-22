@@ -1,0 +1,24 @@
+
+FUNC rescale_to_unit(numbers) {
+    DECL min_val = MIN(numbers)
+    DECL max_val = MAX(numbers)
+    DECL range = max_val - min_val
+    
+    /* Handle edge case where all values are the same */
+    IF range == 0 {
+        DECL result = []
+        LOOP i FROM 0 TO LEN(numbers) - 1 {
+            APPEND(result, 0)
+        }
+        RETURN result
+    }
+    
+    /* Apply linear transform to each value */
+    DECL result = []
+    LOOP i FROM 0 TO LEN(numbers) - 1 {
+        DECL scaled_val = (numbers[i] - min_val) / range
+        APPEND(result, scaled_val)
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,17 @@
+/* HumanEval/40 */
+
+FUNC triples_sum_to_zero(l) {
+    DECL n = LEN(l)
+    
+    LOOP i FROM 0 TO n - 3 {
+        LOOP j FROM i + 1 TO n - 2 {
+            LOOP k FROM j + 1 TO n - 1 {
+                IF l[i] + l[j] + l[k] == 0 {
+                    RETURN TRUE
+                }
+            }
+        }
+    }
+    
+    RETURN FALSE
+}

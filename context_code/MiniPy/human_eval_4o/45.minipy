@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/45
+# Given length of a side and height, return area for a triangle.
+
+def triangle_area(a, h):
+    return 0.5 * a * h

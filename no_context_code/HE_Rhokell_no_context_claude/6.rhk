@@ -1,0 +1,27 @@
+/* HumanEval/6: Find the deepest level of nesting in parentheses */
+
+FUNC parse_nested_parens(paren_string) {
+    DECL groups = SPLIT(paren_string, " ")
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(groups) - 1 {
+        DECL group = groups[i]
+        DECL max_depth = 0
+        DECL current_depth = 0
+        
+        LOOP j FROM 0 TO LEN(group) - 1 {
+            IF group[j] == "(" {
+                current_depth = current_depth + 1
+                IF current_depth > max_depth {
+                    max_depth = current_depth
+                }
+            } ELIF group[j] == ")" {
+                current_depth = current_depth - 1
+            }
+        }
+        
+        APPEND(result, max_depth)
+    }
+    
+    RETURN result
+}

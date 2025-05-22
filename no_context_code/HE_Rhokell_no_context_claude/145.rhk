@@ -1,0 +1,58 @@
+/* HumanEval/145 */
+
+FUNC order_by_points(nums) {
+    /* Create pairs of [number, digit_sum] */
+    DECL pairs = []
+    
+    LOOP i FROM 0 TO LEN(nums) - 1 {
+        DECL num = nums[i]
+        DECL digit_sum = sum_of_digits(num)
+        APPEND(pairs, [num, digit_sum, i])  /* Include original index for stable sort */
+    }
+    
+    /* Sort by digit sum, then by original index */
+    DECL sorted_pairs = sort_by_points(pairs)
+    
+    /* Extract the sorted numbers */
+    DECL result = []
+    LOOP i FROM 0 TO LEN(sorted_pairs) - 1 {
+        APPEND(result, sorted_pairs[i][0])
+    }
+    
+    RETURN result
+}
+
+FUNC sum_of_digits(n) {
+    DECL sum = 0
+    DECL num = ABS(n)
+    
+    WHILE num > 0 {
+        sum = sum + (num % 10)
+        num = num / 10
+    }
+    
+    RETURN sum
+}
+
+FUNC sort_by_points(pairs) {
+    DECL n = LEN(pairs)
+    
+    LOOP i FROM 0 TO n - 2 {
+        LOOP j FROM 0 TO n - i - 2 {
+            /* Compare by digit sum first */
+            IF pairs[j][1] > pairs[j+1][1] {
+                DECL temp = pairs[j]
+                pairs[j] = pairs[j+1]
+                pairs[j+1] = temp
+            } 
+            /* If digit sums are equal, compare by original index */
+            ELIF pairs[j][1] == pairs[j+1][1] && pairs[j][2] > pairs[j+1][2] {
+                DECL temp = pairs[j]
+                pairs[j] = pairs[j+1]
+                pairs[j+1] = temp
+            }
+        }
+    }
+    
+    RETURN pairs
+}

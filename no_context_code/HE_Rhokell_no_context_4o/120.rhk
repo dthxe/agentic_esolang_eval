@@ -1,0 +1,8 @@
+# Rhokell code for HumanEval/120
+# Task: Return sorted list of maximum k numbers
+
+# Define a function to find maximum k numbers
+func maximum(arr, k) {
+    sorted_arr = sort(arr, reverse=true)
+    return sort(sorted_arr[:k])
+}

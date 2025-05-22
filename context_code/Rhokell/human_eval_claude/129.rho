@@ -1,0 +1,21 @@
+# HumanEval/129: Find minimum value in array
+(minPath lst) = 
+  (if (eq lst (nil))
+      (z)
+      (min_list lst));
+
+(min_list (cons x (nil))) = x;
+(min_list (cons x xs)) = 
+  (min x (min_list xs));
+
+(min x y) = 
+  (if (lt x y)
+      x
+      y);
+
+# Test case: [1, 2, 3] -> 1
+(main) = (minPath 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

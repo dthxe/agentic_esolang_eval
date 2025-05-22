@@ -1,0 +1,36 @@
+# HumanEval/103: Calculate rounded average of list
+(rounded_avg lst) = 
+  (if (eq lst (nil))
+      (z)
+      (round_num (div (sum lst) (length lst))));
+
+(round_num n) = 
+  (let [remainder (mod n (s (s (z))))]
+    (if (ge remainder (s (z)))
+        (add (sub n remainder) (s (s (z))))
+        (sub n remainder)));
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = (add x (sum xs));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(ge x y) = (not (lt x y));
+
+# Test case: [1, 5, 7] -> 4 (average is 4.33, rounded to 4)
+(main) = (rounded_avg 
+          (cons (s (z))  # 1
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (s (z))))))))  # 7
+          (nil)))));

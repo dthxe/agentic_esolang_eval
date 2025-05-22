@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/111
+# Task: Find the most frequent letters
+
+# Define a function to create histogram
+func histogram(test) {
+    frequency = {}
+    
+    # Calculate frequency
+    for ch in test.split() {
+        frequency[ch] = frequency.get(ch, 0) + 1
+    }
+    
+    # Find max frequency
+    max_freq = max(frequency.values())
+    result = {k: v for k, v in frequency.items() if v == max_freq}
+    return result
+}

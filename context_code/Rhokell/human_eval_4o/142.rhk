@@ -1,0 +1,5 @@
+# Rhokell implementation for map_split
+# Split each string in a list by a delimiter.
+
+(map_split (lst) (delimiter)) = 
+    (map (\s -> (split delimiter s)) lst)

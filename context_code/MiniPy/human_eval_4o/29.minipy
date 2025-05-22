@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/29
+# Filter strings that start with a given prefix.
+
+def filter_by_prefix(strings, prefix):
+    return f(strings, lambda s: s.startswith(prefix))

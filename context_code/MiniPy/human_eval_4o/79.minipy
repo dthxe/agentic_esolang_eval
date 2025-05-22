@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/79
+# Convert a decimal number to binary format with 'db' prefix and suffix.
+
+def decimal_to_binary(decimal):
+    return 'db' + srt(bin(decimal))[2:] + 'db'

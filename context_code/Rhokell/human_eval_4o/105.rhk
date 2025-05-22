@@ -1,0 +1,5 @@
+# Rhokell implementation for map_acosh
+# Apply inverse hyperbolic cosine function to each element in a list.
+
+(map_acosh (lst)) = 
+    (map (\x -> (acosh x)) lst)

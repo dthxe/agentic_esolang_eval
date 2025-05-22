@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/112
+# Task: Delete characters and check palindrome
+
+# Define a function to reverse delete
+func reverse_delete(s, c) {
+    filtered = ''.join([ch for ch in s if ch not in c])
+    is_palindrome = (filtered == reverse(filtered))
+    return (filtered, is_palindrome)
+}

@@ -1,0 +1,21 @@
+# Rhokell code for HumanEval/132
+# Task: Check if there is a nested bracket
+
+# Define a function to check nesting
+func is_nested(string) {
+    depth = 0
+    max_depth = 0
+    
+    # Check for nesting
+    for ch in string {
+        if ch == '[' {
+            depth += 1
+            if depth > max_depth {
+                max_depth = depth
+            }
+        } else if ch == ']' {
+            depth -= 1
+        }
+    }
+    return max_depth > 1
+}

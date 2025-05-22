@@ -1,0 +1,20 @@
+def is_nested(string):
+    # Check for nested brackets
+    stack = []
+    has_nested = False
+    
+    i = 0
+    while i < len(string):
+        if string[i] == '[':
+            stack.append('[')
+            if len(stack) >= 2:  # If we have at least 2 open brackets, we have nesting
+                has_nested = True
+        elif string[i] == ']':
+            if stack:  # If there's an open bracket to match
+                stack.pop()
+            else:  # Unmatched closing bracket
+                return False
+        i = i + 1
+    
+    # Check if all brackets were matched
+    return has_nested and not stack

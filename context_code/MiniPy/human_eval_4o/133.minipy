@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/133
+# Return the sum of squared numbers in the given list, rounding each element to the upper int first.
+
+def sum_squares(lst):
+    return sm((int(x + 0.5) ** 2 for x in lst))

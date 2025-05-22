@@ -1,0 +1,45 @@
+# Count vowels in a string
+# Read string input
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Null terminator
+(read_char x) = (cons x (read_string));
+
+# Count vowels
+(count_vowels (nil)) = (z);
+(count_vowels (cons x xs)) = (add (is_vowel x) (count_vowels xs));
+
+(is_vowel (byte (6) (1))) = (s (z));  # 'a'
+(is_vowel (byte (6) (5))) = (s (z));  # 'e'
+(is_vowel (byte (6) (9))) = (s (z));  # 'i'
+(is_vowel (byte (6) (F))) = (s (z));  # 'o'
+(is_vowel (byte (7) (5))) = (s (z));  # 'u'
+(is_vowel x) = (z);
+
+# Main function
+(main) = (print 
+          (append 
+            (church_to_digit (count_vowels (read_string)))
+            (cons (byte (0) (A)) (nil))  # Add newline
+          ));
+
+# Convert Church numeral to decimal string
+(church_to_digit (z)) = (cons (byte (3) (0)) (nil));  # ASCII '0' = 0x30
+(church_to_digit (s x)) = (add_digit (church_to_digit x));
+(add_digit (cons (byte x y) z)) = (cons (byte (inc_digit x y)) z);
+
+(inc_digit (3) (0)) = (cons (byte (3) (1)) (nil));
+(inc_digit (3) (1)) = (cons (byte (3) (2)) (nil));
+(inc_digit (3) (2)) = (cons (byte (3) (3)) (nil));
+(inc_digit (3) (3)) = (cons (byte (3) (4)) (nil));
+(inc_digit (3) (4)) = (cons (byte (3) (5)) (nil));
+(inc_digit (3) (5)) = (cons (byte (3) (6)) (nil));
+(inc_digit (3) (6)) = (cons (byte (3) (7)) (nil));
+(inc_digit (3) (7)) = (cons (byte (3) (8)) (nil));
+(inc_digit (3) (8)) = (cons (byte (3) (9)) (nil));
+(inc_digit (3) (9)) = (cons (byte (3) (1)) (cons (byte (3) (0)) (nil)));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/102
+# Task: Find the biggest even integer in a range
+
+# Define a function to choose number
+func choose_num(x, y) {
+    if x > y {
+        return -1
+    }
+    
+    # Find the biggest even number
+    for num in range(y, x-1, -1) {
+        if num % 2 == 0 {
+            return num
+        }
+    }
+    return -1
+}

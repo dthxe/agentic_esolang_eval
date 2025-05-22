@@ -1,0 +1,22 @@
+# HumanEval/5: Insert delimiter between elements
+(def intersperse [numbers delimiter]
+  (if (empty? numbers)
+    []
+    (if (empty? (rest numbers))
+      numbers
+      (cons (first numbers)
+            (cons delimiter
+                  (intersperse (rest numbers) delimiter))))))
+
+(intersperse (nil) _) = (nil);
+(intersperse (cons x (nil)) _) = (cons x (nil));
+(intersperse (cons x xs) d) = 
+  (cons x (cons d (intersperse xs d)));
+
+# Test case: [1, 2, 3], 4
+(main) = (intersperse 
+          (cons (s (z))
+          (cons (s (s (z)))
+          (cons (s (s (s (z))))
+          (nil))))
+          (s (s (s (s (z))))));

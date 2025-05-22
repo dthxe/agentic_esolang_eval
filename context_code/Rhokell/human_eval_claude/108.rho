@@ -1,0 +1,44 @@
+# HumanEval/108: Count elements that appear more than once
+(count_nums lst) = 
+  (length (filter (lambda (x) (gt (count (lambda (y) (eq x y)) lst)
+                                 (s (z))))
+                 (unique lst)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(count _ (nil)) = (z);
+(count f (cons x xs)) = 
+  (if (f x)
+      (s (count f xs))
+      (count f xs));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (eq x y)
+      (t)
+      (member x ys));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 1, 2, 3, 2, 4] -> 2 (1 and 2 appear more than once)
+(main) = (count_nums 
+          (cons (s (z))  # 1
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (s (z)))))  # 4
+          (nil))))))));

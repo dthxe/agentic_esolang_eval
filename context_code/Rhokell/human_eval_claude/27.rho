@@ -1,0 +1,35 @@
+# HumanEval/27: Flip case of each character
+(flip_case (nil)) = (nil);
+(flip_case (cons x xs)) = 
+  (cons (if (is_upper x)
+            (add x (byte (2) (0)))  # Add 32 to convert to lowercase
+            (if (is_lower x)
+                (sub x (byte (2) (0)))  # Subtract 32 to convert to uppercase
+                x))
+        (flip_case xs));
+
+(is_upper x) = 
+  (and (ge x (byte (4) (1)))  # 'A'
+       (le x (byte (5) (A)))); # 'Z'
+
+(is_lower x) = 
+  (and (ge x (byte (6) (1)))  # 'a'
+       (le x (byte (7) (A)))); # 'z'
+
+(ge x y) = (not (lt x y));
+(le x y) = (lt y x);
+
+# Test case: 'Hello World' -> 'hELLO wORLD'
+(main) = (flip_case 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil))))))))))));

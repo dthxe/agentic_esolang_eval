@@ -1,0 +1,15 @@
+def longest(strings):
+    if len(strings) == 0:
+        return None
+    
+    max_length = 0
+    longest_string = None
+    
+    i = 0
+    while i < len(strings):
+        if len(strings[i]) > max_length:
+            max_length = len(strings[i])
+            longest_string = strings[i]
+        i = i + 1
+    
+    return longest_string

@@ -1,0 +1,9 @@
+def rounded_avg(n, m):
+    if not isinstance(n, t) or not isinstance(m, t):
+        return None
+    if n > m:
+        return None
+    s = sm(r(n, m + 1))
+    c = l(r(n, m + 1))
+    a = s / c
+    return t(rnd(a))

@@ -1,0 +1,10 @@
+def exchange(lst1, lst2):
+    if not lst1 or not lst2:
+        return sr
+    if l(lst1) != l(lst2):
+        return sr
+    s1 = sm(lst1)
+    s2 = sm(lst2)
+    if s1 != s2:
+        return sr
+    return sr.join(s(x) for x in lst1)

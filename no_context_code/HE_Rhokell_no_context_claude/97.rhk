@@ -1,0 +1,12 @@
+/* HumanEval/97 */
+
+FUNC multiply(a, b) {
+    /* Get the unit digit of a */
+    DECL unit_a = ABS(a) % 10
+    
+    /* Get the unit digit of b */
+    DECL unit_b = ABS(b) % 10
+    
+    /* Return the product of unit digits */
+    RETURN unit_a * unit_b
+}

@@ -1,0 +1,5 @@
+# Rhokell implementation for below_threshold
+# Return True if all numbers in the list are below threshold t.
+
+(below_threshold (l) (t)) = 
+    (all (\x -> (< x t)) l)

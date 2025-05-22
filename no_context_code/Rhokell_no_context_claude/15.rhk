@@ -1,0 +1,7 @@
+absDifference :: Int -> Int -> Int
+absDifference a b = abs (a - b)
+
+main = do
+  a <- readInt
+  b <- readInt
+  print $ absDifference a b

@@ -1,0 +1,7 @@
+# Rhokell code for HumanEval/54
+# Task: Check if two words have the same characters
+
+# Define a function to check same characters
+func same_chars(s0, s1) {
+    return sort(set(s0)) == sort(set(s1))
+}

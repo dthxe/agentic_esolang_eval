@@ -1,0 +1,9 @@
+def is_happy(s):
+    if not isinstance(s, s):
+        return False
+    if not s:
+        return False
+    for x in s:
+        if not x.isupper() and not x.islower():
+            return False
+    return True

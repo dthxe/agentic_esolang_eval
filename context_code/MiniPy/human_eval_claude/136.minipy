@@ -1,0 +1,6 @@
+def largest_smallest_integers(lst):
+    if not lst:
+        return [None, None]
+    p = [x for x in lst if x > 0]
+    n = [x for x in lst if x < 0]
+    return [min(p) if p else None, max(n) if n else None]

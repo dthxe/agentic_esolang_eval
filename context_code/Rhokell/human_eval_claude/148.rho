@@ -1,0 +1,91 @@
+# HumanEval/148: Find planet's order from sun
+(planet_order planet) = 
+  (planet_order_helper planet (z));
+
+(planet_order_helper planet curr) = 
+  (if (eq curr (s (s (s (s (s (s (s (s (z))))))))))  # 8 planets
+      (sub (z) (s (z)))  # -1 if not found
+      (if (eq_strings planet (get_planet curr))
+          curr
+          (planet_order_helper planet (s curr))));
+
+(get_planet n) = 
+  (if (eq n (z))
+      (cons (byte (4) (D))  # 'M'
+      (cons (byte (6) (5))  # 'e'
+      (cons (byte (7) (2))  # 'r'
+      (cons (byte (6) (3))  # 'c'
+      (cons (byte (7) (5))  # 'u'
+      (cons (byte (7) (2))  # 'r'
+      (cons (byte (7) (9))  # 'y'
+      (nil))))))))
+      (if (eq n (s (z)))
+          (cons (byte (5) (6))  # 'V'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (E))  # 'n'
+          (cons (byte (7) (5))  # 'u'
+          (cons (byte (7) (3))  # 's'
+          (nil))))))
+          (if (eq n (s (s (z))))
+              (cons (byte (4) (5))  # 'E'
+              (cons (byte (6) (1))  # 'a'
+              (cons (byte (7) (2))  # 'r'
+              (cons (byte (7) (4))  # 't'
+              (cons (byte (6) (8))  # 'h'
+              (nil))))))
+              (if (eq n (s (s (s (z)))))
+                  (cons (byte (4) (D))  # 'M'
+                  (cons (byte (6) (1))  # 'a'
+                  (cons (byte (7) (2))  # 'r'
+                  (cons (byte (7) (3))  # 's'
+                  (nil)))))
+                  (if (eq n (s (s (s (s (z))))))
+                      (cons (byte (4) (A))  # 'J'
+                      (cons (byte (7) (5))  # 'u'
+                      (cons (byte (7) (0))  # 'p'
+                      (cons (byte (6) (9))  # 'i'
+                      (cons (byte (7) (4))  # 't'
+                      (cons (byte (6) (5))  # 'e'
+                      (cons (byte (7) (2))  # 'r'
+                      (nil))))))))
+                      (if (eq n (s (s (s (s (s (z)))))))
+                          (cons (byte (5) (3))  # 'S'
+                          (cons (byte (6) (1))  # 'a'
+                          (cons (byte (7) (4))  # 't'
+                          (cons (byte (7) (5))  # 'u'
+                          (cons (byte (7) (2))  # 'r'
+                          (cons (byte (6) (E))  # 'n'
+                          (nil)))))))
+                          (if (eq n (s (s (s (s (s (s (z))))))))
+                              (cons (byte (5) (5))  # 'U'
+                              (cons (byte (7) (2))  # 'r'
+                              (cons (byte (6) (1))  # 'a'
+                              (cons (byte (6) (E))  # 'n'
+                              (cons (byte (7) (5))  # 'u'
+                              (cons (byte (7) (3))  # 's'
+                              (nil)))))))
+                              (cons (byte (4) (E))  # 'N'
+                              (cons (byte (6) (5))  # 'e'
+                              (cons (byte (7) (0))  # 'p'
+                              (cons (byte (7) (4))  # 't'
+                              (cons (byte (7) (5))  # 'u'
+                              (cons (byte (6) (E))  # 'n'
+                              (cons (byte (6) (5))  # 'e'
+                              (nil)))))))))))));
+
+(eq_strings (nil) (nil)) = (t);
+(eq_strings (nil) _) = (f);
+(eq_strings _ (nil)) = (f);
+(eq_strings (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_strings xs ys)
+      (f));
+
+# Test case: 'Earth' -> 2 (Earth is the third planet)
+(main) = (planet_order 
+          (cons (byte (4) (5))  # 'E'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (7) (4))  # 't'
+          (cons (byte (6) (8))  # 'h'
+          (nil)))))));

@@ -1,0 +1,1 @@
+def longest(strings): return max(strings, key=len) if strings else None

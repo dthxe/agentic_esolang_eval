@@ -1,0 +1,11 @@
+def solution(lst):
+    if not lst:
+        return ls()
+    r = ls()
+    for i in r(l(lst)):
+        if i % 2 == 0:
+            r.append(lst[i])
+    for i in r(l(lst)):
+        if i % 2 == 1:
+            r.append(lst[i])
+    return r

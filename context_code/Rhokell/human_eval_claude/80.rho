@@ -1,0 +1,43 @@
+# HumanEval/80: Check if string is happy (all chars appear same number of times)
+(is_happy str) = 
+  (all_equal (count_occurrences str));
+
+(count_occurrences str) = 
+  (map (lambda (c) (count (lambda (x) (byte_eq x c)) str))
+       (unique str));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(count _ (nil)) = (z);
+(count f (cons x xs)) = 
+  (if (f x)
+      (s (count f xs))
+      (count f xs));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (byte_eq x y)
+      (t)
+      (member x ys));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(all_equal (nil)) = (t);
+(all_equal (cons x (nil))) = (t);
+(all_equal (cons x (cons y ys))) = 
+  (and (eq x y)
+       (all_equal (cons y ys)));
+
+# Test case: 'aabb' -> true
+(main) = (is_happy 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (2))  # 'b'
+          (nil))))));

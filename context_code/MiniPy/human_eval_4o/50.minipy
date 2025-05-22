@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/50
+# Encode and decode strings by shifting characters by 5 in the alphabet.
+
+def encode_shift(s):
+    return ''.join([c((ord(ch) + 5 - ord('a')) % 26 + ord('a')) for ch in s])
+
+def decode_shift(s):
+    return ''.join([c((ord(ch) - 5 - ord('a')) % 26 + ord('a')) for ch in s])

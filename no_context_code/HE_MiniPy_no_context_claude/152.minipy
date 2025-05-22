@@ -1,0 +1,11 @@
+def compare(game, guess):
+    result = []
+    
+    i = 0
+    while i < len(game):
+        # Calculate the absolute difference between the actual score and the guess
+        diff = abs(game[i] - guess[i])
+        result.append(diff)
+        i = i + 1
+    
+    return result

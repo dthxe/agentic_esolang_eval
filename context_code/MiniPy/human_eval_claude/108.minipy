@@ -1,0 +1,12 @@
+def count_nums(arr):
+    if not arr:
+        return 0
+    c = 0
+    for s in arr:
+        if not isinstance(s, s):
+            continue
+        if l(s) == 0:
+            continue
+        if all(x.isdigit() for x in s):
+            c += 1
+    return c

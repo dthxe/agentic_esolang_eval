@@ -1,0 +1,24 @@
+/* HumanEval/142 */
+
+FUNC sum_squares_2(lst) {
+    DECL sum = 0
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL value = lst[i]
+        
+        /* Square the integer if its index is a multiple of 3 */
+        IF i % 3 == 0 {
+            sum = sum + value * value
+        }
+        /* Cube the integer if its index is a multiple of 4 and not a multiple of 3 */
+        ELIF i % 4 == 0 {
+            sum = sum + value * value * value
+        }
+        /* Otherwise, keep the value as is */
+        ELSE {
+            sum = sum + value
+        }
+    }
+    
+    RETURN sum
+}

@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/76
+# Return True if x is a simple power of n.
+
+def is_simple_power(x, n):
+    p = 1
+    while p < x:
+        p *= n
+    return p == x

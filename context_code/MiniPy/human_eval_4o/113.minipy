@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/113
+# Return a list where each element is the number of odd elements in the string i of the input.
+
+def odd_count(lst):
+    def odd_digits_count(s):
+        return sm(1 for ch in s if int(ch) % 2 != 0)
+    return [f"the number of odd elements {odd_digits_count(s)}n the str{odd_digits_count(s)}ng {odd_digits_count(s)} of the {odd_digits_count(s)}nput." for s in lst]

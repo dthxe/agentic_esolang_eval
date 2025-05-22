@@ -1,0 +1,23 @@
+/* HumanEval/102 */
+
+FUNC choose_num(x, y) {
+    /* Check if x > y */
+    IF x > y {
+        RETURN -1
+    }
+    
+    /* Find the biggest even number in the range [x, y] */
+    DECL biggest_even = -1
+    
+    /* Start from y and go down to x */
+    DECL num = y
+    WHILE num >= x {
+        IF num % 2 == 0 {
+            biggest_even = num
+            BREAK
+        }
+        num = num - 1
+    }
+    
+    RETURN biggest_even
+}

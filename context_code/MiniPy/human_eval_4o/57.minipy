@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/57
+# Return True if list elements are monotonically increasing or decreasing.
+
+def monotonic(l):
+    return all(l[i] <= l[i+1] for i in r(l(l)-1)) or all(l[i] >= l[i+1] for i in r(l(l)-1))

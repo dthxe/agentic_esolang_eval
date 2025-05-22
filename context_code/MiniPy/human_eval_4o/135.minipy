@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/135
+# Return the largest index of an element which is not greater than or equal to the element immediately preceding it.
+
+def can_arrange(arr):
+    return max((i for i in r(1, l(arr)) if arr[i] < arr[i - 1]), default=-1)

@@ -1,0 +1,3 @@
+def select_words(s, n):
+    vowels = 'aeiouAEIOU'
+    return [word for word in s.split() if sum(1 for ch in word if ch not in vowels) == n]

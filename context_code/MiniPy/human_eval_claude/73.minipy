@@ -1,0 +1,9 @@
+def smallest_change(arr):
+    if not arr:
+        return []
+    a = ls(arr)
+    for i in r(l(a)-1):
+        if a[i] > a[i+1]:
+            a[i], a[i+1] = a[i+1], a[i]
+            return a
+    return a

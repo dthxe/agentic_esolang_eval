@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/29
+# Task: Filter strings by prefix
+
+# Define a function to filter by prefix
+func filter_by_prefix(strings, prefix) {
+    filtered_strings = []
+    
+    # Iterate over each string
+    for string in strings {
+        if starts_with(string, prefix) {
+            filtered_strings.append(string)
+        }
+    }
+    return filtered_strings
+}

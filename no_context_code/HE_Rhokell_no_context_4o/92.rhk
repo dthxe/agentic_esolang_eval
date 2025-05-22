@@ -1,0 +1,10 @@
+# Rhokell code for HumanEval/92
+# Task: Check if one number is the sum of the other two
+
+# Define a function to check any integer
+func any_int(x, y, z) {
+    if not (is_integer(x) and is_integer(y) and is_integer(z)) {
+        return false
+    }
+    return (x == y + z) or (y == x + z) or (z == x + y)
+}

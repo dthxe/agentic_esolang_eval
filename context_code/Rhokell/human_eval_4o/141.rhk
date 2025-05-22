@@ -1,0 +1,5 @@
+# Rhokell implementation for map_replace
+# Replace occurrences of a substring in each string in a list.
+
+(map_replace (lst) (old) (new)) = 
+    (map (\s -> (replace old new s)) lst)

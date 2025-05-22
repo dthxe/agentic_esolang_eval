@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/74
+# Return the list with fewer total characters.
+
+def total_match(lst1, lst2):
+    return lst1 if sm(l(x) for x in lst1) <= sm(l(x) for x in lst2) else lst2

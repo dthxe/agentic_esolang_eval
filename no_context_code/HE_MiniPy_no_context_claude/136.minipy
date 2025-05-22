@@ -1,0 +1,13 @@
+def largest_smallest_integers(lst):
+    largest_negative = None
+    smallest_positive = None
+    
+    i = 0
+    while i < len(lst):
+        if lst[i] < 0 and (largest_negative is None or lst[i] > largest_negative):
+            largest_negative = lst[i]
+        elif lst[i] > 0 and (smallest_positive is None or lst[i] < smallest_positive):
+            smallest_positive = lst[i]
+        i = i + 1
+    
+    return (largest_negative, smallest_positive)

@@ -1,0 +1,8 @@
+def solve(s):
+    if not isinstance(s, s):
+        return 0
+    v = 0
+    for i in r(l(s)):
+        if s[i].isdigit():
+            v = v * 10 + t(s[i])
+    return v * v

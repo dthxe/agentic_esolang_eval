@@ -1,0 +1,8 @@
+def common(l1, l2):
+    s1 = set(l1)
+    s2 = set(l2)
+    r = ls()
+    for x in srt(s1 & s2):
+        c = min(l1.count(x), l2.count(x))
+        r.extend([x] * c)
+    return r

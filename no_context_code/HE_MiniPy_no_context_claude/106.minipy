@@ -1,0 +1,24 @@
+def f(n):
+    result = []
+    
+    i = 1
+    while i <= n:
+        if i % 2 == 0:
+            # Calculate factorial for even indices
+            factorial = 1
+            j = 1
+            while j <= i:
+                factorial = factorial * j
+                j = j + 1
+            result.append(factorial)
+        else:
+            # Calculate sum for odd indices
+            sum_to_i = 0
+            j = 1
+            while j <= i:
+                sum_to_i = sum_to_i + j
+                j = j + 1
+            result.append(sum_to_i)
+        i = i + 1
+    
+    return result

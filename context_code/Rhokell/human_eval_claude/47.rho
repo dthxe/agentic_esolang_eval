@@ -1,0 +1,38 @@
+# HumanEval/47: Find palindromes in list
+(palindromes lst) = 
+  (filter is_palindrome lst);
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(is_palindrome str) = 
+  (eq_lists str (reverse str));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+(reverse (nil)) = (nil);
+(reverse (cons x xs)) = 
+  (append (reverse xs) (cons x (nil)));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: ['', 'aba', 'abb'] -> ['', 'aba']
+(main) = (palindromes 
+          (cons (nil)  # ''
+          (cons (cons (byte (6) (1))  # 'aba'
+                (cons (byte (6) (2))
+                (cons (byte (6) (1)) (nil))))
+          (cons (cons (byte (6) (1))  # 'abb'
+                (cons (byte (6) (2))
+                (cons (byte (6) (2)) (nil))))
+          (nil)))));

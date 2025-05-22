@@ -1,0 +1,5 @@
+# Rhokell implementation for map_max
+# Find the maximum element of each sublist in a list of lists.
+
+(map_max (lst)) = 
+    (map (\sublist -> (max_list sublist)) lst)

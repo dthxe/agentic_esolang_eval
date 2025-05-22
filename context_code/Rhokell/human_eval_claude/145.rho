@@ -1,0 +1,55 @@
+# HumanEval/145: Sort numbers by number of divisors
+(order_by_points lst) = 
+  (sort_by_key lst count_divisors);
+
+(count_divisors n) = 
+  (count_if (lambda (x) (eq (mod n x) (z)))
+            (range (s (z)) n));
+
+(sort_by_key arr key_fn) = 
+  (map second 
+       (sort_by_first 
+        (map (lambda (x) (pair (key_fn x) x)) arr)));
+
+(sort_by_first (nil)) = (nil);
+(sort_by_first (cons x xs)) = 
+  (insert_by_first x (sort_by_first xs));
+
+(insert_by_first x (nil)) = (cons x (nil));
+(insert_by_first x (cons y ys)) = 
+  (if (lt (first x) (first y))
+      (cons x (cons y ys))
+      (cons y (insert_by_first x ys)));
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(range start end) = 
+  (if (gt start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(first (pair x _)) = x;
+(second (pair _ y)) = y;
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3, 4] -> [1, 2, 4, 3] (sorted by number of divisors)
+(main) = (order_by_points 
+          (cons (s (z))  # 1 (1 divisor)
+          (cons (s (s (z)))  # 2 (2 divisors)
+          (cons (s (s (s (z))))  # 3 (2 divisors)
+          (cons (s (s (s (s (z)))))  # 4 (3 divisors)
+          (nil))))));

@@ -1,0 +1,6 @@
+square :: Int -> Int
+square n = n * n
+
+main = do
+  n <- readInt
+  print $ square n

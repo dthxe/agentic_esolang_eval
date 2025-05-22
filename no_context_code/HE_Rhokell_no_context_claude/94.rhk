@@ -1,0 +1,47 @@
+/* HumanEval/94 */
+
+FUNC skjkasdkd(lst) {
+    DECL largest_prime = 0
+    
+    /* Find the largest prime in the list */
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL num = lst[i]
+        IF is_prime(num) && num > largest_prime {
+            largest_prime = num
+        }
+    }
+    
+    /* Calculate the sum of digits */
+    DECL sum = 0
+    DECL num_str = TO_STRING(largest_prime)
+    
+    LOOP i FROM 0 TO LEN(num_str) - 1 {
+        sum = sum + TO_INT(num_str[i])
+    }
+    
+    RETURN sum
+}
+
+FUNC is_prime(n) {
+    IF n <= 1 {
+        RETURN FALSE
+    }
+    
+    IF n <= 3 {
+        RETURN TRUE
+    }
+    
+    IF n % 2 == 0 || n % 3 == 0 {
+        RETURN FALSE
+    }
+    
+    DECL i = 5
+    WHILE i * i <= n {
+        IF n % i == 0 || n % (i + 2) == 0 {
+            RETURN FALSE
+        }
+        i = i + 6
+    }
+    
+    RETURN TRUE
+}

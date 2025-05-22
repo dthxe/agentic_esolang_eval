@@ -1,0 +1,7 @@
+# Rhokell implementation for largest_divisor
+# Find the largest divisor of n that is smaller than n.
+
+(largest_divisor (n)) = 
+    (letrec ((find_divisor (i))
+        (if (= (mod n i) 0) i (find_divisor (- i 1))))
+    (find_divisor (- n 1)))

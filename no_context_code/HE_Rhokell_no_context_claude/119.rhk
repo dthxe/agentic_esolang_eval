@@ -1,0 +1,30 @@
+/* HumanEval/119 */
+
+FUNC match_parens(lst) {
+    /* Try both possible concatenation orders */
+    IF is_balanced(lst[0] + lst[1]) || is_balanced(lst[1] + lst[0]) {
+        RETURN "Yes"
+    } ELSE {
+        RETURN "No"
+    }
+}
+
+FUNC is_balanced(s) {
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        IF s[i] == "(" {
+            count = count + 1
+        } ELIF s[i] == ")" {
+            count = count - 1
+        }
+        
+        /* If count becomes negative, the string is not balanced */
+        IF count < 0 {
+            RETURN FALSE
+        }
+    }
+    
+    /* String is balanced if count is 0 at the end */
+    RETURN count == 0
+}

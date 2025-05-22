@@ -1,0 +1,19 @@
+def pluck(arr):
+    if not arr:
+        return []
+    
+    min_even = None
+    min_index = -1
+    
+    i = 0
+    while i < len(arr):
+        if arr[i] % 2 == 0:  # Check if even
+            if min_even is None or arr[i] < min_even:
+                min_even = arr[i]
+                min_index = i
+        i = i + 1
+    
+    if min_even is None:
+        return []
+    else:
+        return [min_even, min_index]

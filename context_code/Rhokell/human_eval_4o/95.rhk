@@ -1,0 +1,5 @@
+# Rhokell implementation for map_exp
+# Apply exponential function to each element in a list.
+
+(map_exp (lst)) = 
+    (map (\x -> (exp x)) lst)

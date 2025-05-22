@@ -1,0 +1,34 @@
+# HumanEval/22: Filter integers from mixed values
+(filter_integers (nil)) = (nil);
+(filter_integers (cons x xs)) = 
+  (if (is_integer x)
+      (cons x (filter_integers xs))
+      (filter_integers xs));
+
+(is_integer x) = 
+  (and (not (is_string x))
+       (not (is_list x))
+       (not (is_float x)));
+
+(is_string (nil)) = (f);
+(is_string (cons x xs)) = 
+  (and (is_char x) (is_string xs));
+
+(is_char x) = 
+  (and (ge x (byte (2) (0)))  # >= space
+       (le x (byte (7) (F)))); # <= 'z'
+
+(is_list (nil)) = (t);
+(is_list (cons x xs)) = (is_list xs);
+
+(is_float x) = 
+  (and (not (is_integer x))
+       (not (is_string x))
+       (not (is_list x)));
+
+# Test case: ['a', 3.14, 5] -> [5]
+(main) = (filter_integers 
+          (cons (cons (byte (6) (1)) (nil))  # 'a'
+          (cons (s (s (s (z))))  # 3.14 (approximated as 3)
+          (cons (s (s (s (s (s (z))))))  # 5
+          (nil)))));

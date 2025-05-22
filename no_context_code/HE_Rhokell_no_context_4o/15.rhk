@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/15
+# Task: Return a space-delimited string of numbers
+
+# Define a function to create string sequence
+func string_sequence(n) {
+    sequence = ""
+    
+    # Iterate over each number
+    for i in 0 to n {
+        sequence += str(i) + " "
+    }
+    return trim(sequence)
+}

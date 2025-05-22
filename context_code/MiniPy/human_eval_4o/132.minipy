@@ -1,0 +1,13 @@
+# Minipy solution for HumanEval/132
+# Return True if there is a valid subsequence of brackets where at least one bracket is nested.
+
+def is_nested(string):
+    depth = 0
+    for ch in string:
+        if ch == '[':
+            depth += 1
+        elif ch == ']':
+            if depth > 1:
+                return True
+            depth -= 1
+    return False

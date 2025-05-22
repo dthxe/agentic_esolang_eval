@@ -1,0 +1,18 @@
+def fruit_distribution(s, n):
+    # Extract number of apples and oranges from the string
+    words = s.split()
+    apples = 0
+    oranges = 0
+    
+    i = 0
+    while i < len(words):
+        if words[i].isdigit():
+            if i + 1 < len(words) and "apple" in words[i + 1]:
+                apples = int(words[i])
+            elif i + 1 < len(words) and "orange" in words[i + 1]:
+                oranges = int(words[i])
+        i = i + 1
+    
+    # Calculate number of mangoes
+    mangoes = n - apples - oranges
+    return mangoes

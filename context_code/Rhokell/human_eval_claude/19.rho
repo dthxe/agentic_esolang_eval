@@ -1,0 +1,74 @@
+# HumanEval/19: Sort number words
+(sort_numbers str) = (join_words (sort (split_words str)));
+
+(split_words (nil)) = (nil);
+(split_words str) = 
+  (cons (take_word str) 
+        (split_words (drop_word (drop_spaces str))));
+
+(take_word (nil)) = (nil);
+(take_word (cons x xs)) = 
+  (if (byte_eq x (byte (2) (0)))  # space
+      (nil)
+      (cons x (take_word xs)));
+
+(drop_word (nil)) = (nil);
+(drop_word (cons x xs)) = 
+  (if (byte_eq x (byte (2) (0)))  # space
+      (cons x xs)
+      (drop_word xs));
+
+(drop_spaces (nil)) = (nil);
+(drop_spaces (cons x xs)) = 
+  (if (byte_eq x (byte (2) (0)))  # space
+      (drop_spaces xs)
+      (cons x xs));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = 
+  (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (word_lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(word_lt x y) = (lt (word_to_num x) (word_to_num y));
+
+(word_to_num word) = 
+  (if (eq_word word "zero") (z)
+  (if (eq_word word "one") (s (z))
+  (if (eq_word word "two") (s (s (z)))
+  (if (eq_word word "three") (s (s (s (z))))
+  (if (eq_word word "four") (s (s (s (s (z)))))
+  (if (eq_word word "five") (s (s (s (s (s (z))))))
+  (if (eq_word word "six") (s (s (s (s (s (s (z)))))))
+  (if (eq_word word "seven") (s (s (s (s (s (s (s (z))))))))
+  (if (eq_word word "eight") (s (s (s (s (s (s (s (s (z)))))))))
+  (s (s (s (s (s (s (s (s (s (z)))))))))))))))))));
+
+(join_words (nil)) = (nil);
+(join_words (cons x (nil))) = x;
+(join_words (cons x xs)) = 
+  (append x 
+          (cons (byte (2) (0))  # space
+          (join_words xs)));
+
+# Test case: 'three one five' -> 'one three five'
+(main) = (sort_numbers 
+          (cons (byte (7) (4))  # 't'
+          (cons (byte (6) (8))  # 'h'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (6) (E))  # 'n'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (6))  # 'f'
+          (cons (byte (6) (9))  # 'i'
+          (cons (byte (7) (6))  # 'v'
+          (cons (byte (6) (5))  # 'e'
+          (nil))))))))))))))));

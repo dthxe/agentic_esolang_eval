@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/42
+# Return list with elements incremented by 1.
+
+def incr_list(l):
+    return [x + 1 for x in l]

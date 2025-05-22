@@ -1,0 +1,28 @@
+def sort_array(array):
+    if len(array) <= 1:
+        return array.copy()
+    
+    # Create a copy of the array to avoid modifying the original
+    result = array.copy()
+    
+    # Sort the array
+    i = 0
+    while i < len(result):
+        j = 0
+        while j < len(result) - i - 1:
+            if result[j] > result[j + 1]:
+                result[j], result[j + 1] = result[j + 1], result[j]
+            j = j + 1
+        i = i + 1
+    
+    # Check if the sum of first and last index values is odd or even
+    if len(array) > 0:
+        sum_first_last = array[0] + array[-1]
+        if sum_first_last % 2 == 1:
+            # Odd sum, keep ascending order
+            return result
+        else:
+            # Even sum, reverse to descending order
+            return result[::-1]
+    else:
+        return result

@@ -1,0 +1,40 @@
+/* HumanEval/149 */
+
+FUNC sorted_list_sum(lst) {
+    /* Filter out strings with odd lengths */
+    DECL filtered = []
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        IF LEN(lst[i]) % 2 == 0 {
+            APPEND(filtered, lst[i])
+        }
+    }
+    
+    /* Sort by length, then alphabetically */
+    DECL sorted = sort_by_length_and_alpha(filtered)
+    
+    RETURN sorted
+}
+
+FUNC sort_by_length_and_alpha(strings) {
+    DECL n = LEN(strings)
+    
+    LOOP i FROM 0 TO n - 2 {
+        LOOP j FROM 0 TO n - i - 2 {
+            /* Compare by length first */
+            IF LEN(strings[j]) > LEN(strings[j+1]) {
+                DECL temp = strings[j]
+                strings[j] = strings[j+1]
+                strings[j+1] = temp
+            } 
+            /* If lengths are equal, compare alphabetically */
+            ELIF LEN(strings[j]) == LEN(strings[j+1]) && strings[j] > strings[j+1] {
+                DECL temp = strings[j]
+                strings[j] = strings[j+1]
+                strings[j+1] = temp
+            }
+        }
+    }
+    
+    RETURN strings
+}

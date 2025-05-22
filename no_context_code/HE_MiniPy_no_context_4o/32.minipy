@@ -1,0 +1,1 @@
+def poly(xs, x): return sum(coef * x ** i for i, coef in enumerate(xs))

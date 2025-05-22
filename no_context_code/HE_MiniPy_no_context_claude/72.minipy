@@ -1,0 +1,22 @@
+def will_it_fly(q, w):
+    # Check if the list is balanced (palindromic)
+    i = 0
+    j = len(q) - 1
+    is_balanced = True
+    
+    while i < j:
+        if q[i] != q[j]:
+            is_balanced = False
+            break
+        i = i + 1
+        j = j - 1
+    
+    # Calculate the sum of elements
+    total_weight = 0
+    i = 0
+    while i < len(q):
+        total_weight = total_weight + q[i]
+        i = i + 1
+    
+    # Check if it will fly
+    return is_balanced and total_weight <= w

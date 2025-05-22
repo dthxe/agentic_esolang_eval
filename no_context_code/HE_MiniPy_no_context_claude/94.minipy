@@ -1,0 +1,34 @@
+def skjkasdkd(lst):
+    def is_prime(n):
+        if n <= 1:
+            return False
+        if n <= 3:
+            return True
+        if n % 2 == 0 or n % 3 == 0:
+            return False
+        
+        i = 5
+        while i * i <= n:
+            if n % i == 0 or n % (i + 2) == 0:
+                return False
+            i = i + 6
+        
+        return True
+    
+    # Find the largest prime in the list
+    largest_prime = 0
+    i = 0
+    while i < len(lst):
+        if is_prime(lst[i]) and lst[i] > largest_prime:
+            largest_prime = lst[i]
+        i = i + 1
+    
+    # Calculate the sum of digits
+    digit_sum = 0
+    num_str = str(largest_prime)
+    i = 0
+    while i < len(num_str):
+        digit_sum = digit_sum + int(num_str[i])
+        i = i + 1
+    
+    return digit_sum

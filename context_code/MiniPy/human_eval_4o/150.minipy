@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/150
+# Return the value of x if n is a prime number, otherwise return the value of y.
+
+def x_or_y(n, x, y):
+    if n < 2: return y
+    for i in r(2, int(n**0.5) + 1):
+        if n % i == 0: return y
+    return x

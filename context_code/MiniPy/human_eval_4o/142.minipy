@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/142
+# Square the integer entry if its index is a multiple of 3, cube if multiple of 4 and not 3, sum all entries.
+
+def sum_squares_2(lst):
+    return sm((x**2 if i % 3 == 0 else x**3 if i % 4 == 0 else x) for i, x in enumerate(lst))

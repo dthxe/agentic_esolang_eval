@@ -1,0 +1,18 @@
+/* HumanEval/47 */
+
+FUNC median(l) {
+    DECL sorted = COPY(l)
+    SORT(sorted)
+    
+    DECL n = LEN(sorted)
+    
+    IF n % 2 == 1 {
+        /* Odd number of elements */
+        RETURN sorted[n / 2]
+    } ELSE {
+        /* Even number of elements */
+        DECL mid1 = sorted[(n / 2) - 1]
+        DECL mid2 = sorted[n / 2]
+        RETURN (mid1 + mid2) / 2
+    }
+}

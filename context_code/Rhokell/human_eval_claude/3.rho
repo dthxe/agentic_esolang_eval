@@ -1,0 +1,20 @@
+# HumanEval/3: Check if balance goes below zero
+(def below_zero [operations]
+  (let [balances (scan + 0 operations)]
+    (any? (map (fn [x] (< x 0)) balances))))
+
+(def scan
+  (fn [f init xs]
+    (if (empty? xs)
+      []
+      (cons (f init (first xs))
+            (scan f (f init (first xs)) (rest xs))))))
+
+(def balance
+  (fn [xs]
+    (if (empty? xs)
+      0
+      (+ (first xs) (balance (rest xs))))))
+
+(def main
+  (below_zero (cons 1 (cons 2 (cons -4 (cons 5 nil))))))

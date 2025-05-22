@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/96
+# Task: Return prime numbers less than n
+
+# Define a function to count primes up to n
+func count_up_to(n) {
+    primes = []
+    
+    # Find prime numbers less than n
+    for num in 2 to n {
+        if is_prime(num) {
+            primes.append(num)
+        }
+    }
+    return primes
+}

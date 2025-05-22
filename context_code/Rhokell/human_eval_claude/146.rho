@@ -1,0 +1,48 @@
+# HumanEval/146: Find numbers with special property
+(speciality lst) = 
+  (count_if is_special lst);
+
+(is_special n) = 
+  (eq (mod n (sum_digits n)) (z));
+
+(sum_digits n) = 
+  (sum (digits_of n));
+
+(digits_of n) = 
+  (if (eq n (z))
+      (cons (z) (nil))
+      (digits_of_helper n (nil)));
+
+(digits_of_helper n acc) = 
+  (if (eq n (z))
+      acc
+      (digits_of_helper 
+        (div n (s (s (s (s (s (s (s (s (s (s (z))))))))))))  # div by 10
+        (cons (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+              acc)));
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = (add x (sum xs));
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: [2, 3, 4] -> 1 (only 2 is divisible by sum of its digits)
+(main) = (speciality 
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil)))));

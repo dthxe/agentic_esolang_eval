@@ -1,0 +1,86 @@
+# HumanEval/136: Find largest number that can be formed using digits
+(largest_smallest_integers lst) = 
+  (if (eq lst (nil))
+      (nil)
+      (let [digits (sort (flatten (map digits_of lst)))]
+        (cons (digits_to_num (reverse digits))
+              (cons (digits_to_num digits)
+                    (nil)))));
+
+(digits_of n) = 
+  (if (eq n (z))
+      (cons (z) (nil))
+      (digits_of_helper n (nil)));
+
+(digits_of_helper n acc) = 
+  (if (eq n (z))
+      acc
+      (digits_of_helper 
+        (div n (s (s (s (s (s (s (s (s (s (s (z))))))))))))  # div by 10
+        (cons (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+              acc)));
+
+(digits_to_num lst) = 
+  (digits_to_num_helper lst (z));
+
+(digits_to_num_helper (nil) acc) = acc;
+(digits_to_num_helper (cons x xs) acc) = 
+  (digits_to_num_helper xs 
+    (add x (mul acc (s (s (s (s (s (s (s (s (s (s (z)))))))))))))))); # multiply by 10
+
+(flatten (nil)) = (nil);
+(flatten (cons x xs)) = 
+  (append (if (is_list x)
+              (flatten x)
+              (cons x (nil)))
+          (flatten xs));
+
+(is_list (nil)) = (t);
+(is_list (cons _ _)) = (t);
+(is_list _) = (f);
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: [1, 23, 4] -> [4321, 1234]
+(main) = (largest_smallest_integers 
+          (cons (s (z))  # 1
+          (cons (s (s (s (s (s (s (s (s (s (s  # 23
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (z)))))))))))))))))))))))
+          (cons (s (s (s (s (z)))))  # 4
+          (nil)))));

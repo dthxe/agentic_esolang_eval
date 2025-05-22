@@ -1,0 +1,5 @@
+# Rhokell implementation for cycpattern_check
+# Return True if the second word or any of its rotations is a substring in the first word.
+
+(cycpattern_check (a) (b)) = 
+    (or (contains a b) (any (\rot -> (contains a rot)) (rotations b)))

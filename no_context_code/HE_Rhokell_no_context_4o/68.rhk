@@ -1,0 +1,22 @@
+# Rhokell code for HumanEval/68
+# Task: Pluck the smallest even node
+
+# Define a function to pluck node
+func pluck(arr) {
+    smallest_even = inf
+    index = -1
+    
+    # Find the smallest even node
+    for i in 0 to len(arr) {
+        if arr[i] % 2 == 0 and arr[i] < smallest_even {
+            smallest_even = arr[i]
+            index = i
+        }
+    }
+    
+    # Return the plucked node
+    if index == -1 {
+        return []
+    }
+    return [smallest_even, index]
+}

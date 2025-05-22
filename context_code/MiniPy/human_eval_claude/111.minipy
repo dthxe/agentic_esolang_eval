@@ -1,0 +1,13 @@
+def histogram(test):
+    if not isinstance(test, s):
+        return sr
+    d = d()
+    for c in test:
+        if c in d:
+            d[c] += 1
+        else:
+            d[c] = 1
+    r = ls()
+    for c in srt(d.keys()):
+        r.extend([c] * d[c])
+    return sr.join(r)

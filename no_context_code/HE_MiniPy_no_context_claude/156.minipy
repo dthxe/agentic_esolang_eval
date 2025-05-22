@@ -1,0 +1,16 @@
+def int_to_mini_roman(number):
+    # Define the Roman numeral values
+    values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    numerals = ["m", "cm", "d", "cd", "c", "xc", "l", "xl", "x", "ix", "v", "iv", "i"]
+    
+    result = ""
+    i = 0
+    
+    while i < len(values):
+        # Repeat the current numeral as many times as possible
+        while number >= values[i]:
+            result = result + numerals[i]
+            number = number - values[i]
+        i = i + 1
+    
+    return result

@@ -1,0 +1,9 @@
+# Minipy solution for HumanEval/37
+# Sort values at even indices.
+
+def sort_even(l):
+    even_indices = [i for i in r(l(l)) if i % 2 == 0]
+    sorted_vals = srt([l[i] for i in even_indices])
+    for i, val in z(even_indices, sorted_vals):
+        l[i] = val
+    return l

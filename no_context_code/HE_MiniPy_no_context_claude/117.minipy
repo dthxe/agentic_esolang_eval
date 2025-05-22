@@ -1,0 +1,22 @@
+def select_words(s, n):
+    vowels = "aeiouAEIOU"
+    words = s.split()
+    result = []
+    
+    i = 0
+    while i < len(words):
+        word = words[i]
+        consonant_count = 0
+        
+        j = 0
+        while j < len(word):
+            if word[j].isalpha() and word[j] not in vowels:
+                consonant_count = consonant_count + 1
+            j = j + 1
+        
+        if consonant_count == n:
+            result.append(word)
+        
+        i = i + 1
+    
+    return result

@@ -1,0 +1,5 @@
+# Rhokell implementation for map_concat
+# Concatenate each sublist in a list of lists into a single string.
+
+(map_concat (lst)) = 
+    (map (\sublist -> (concatenate sublist)) lst)

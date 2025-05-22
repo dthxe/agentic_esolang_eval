@@ -1,0 +1,9 @@
+def prod_signs(arr):
+    if not arr:
+        return None
+    p = 1
+    for x in arr:
+        if x == 0:
+            return 0
+        p *= -1 if x < 0 else 1
+    return p

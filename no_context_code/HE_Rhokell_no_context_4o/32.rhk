@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/32
+# Task: Evaluate polynomial at a point
+
+# Define a function to evaluate polynomial
+func poly(xs, x) {
+    result = 0
+    power = 1
+    
+    # Iterate over each coefficient
+    for coeff in xs {
+        result += coeff * power
+        power *= x
+    }
+    return result
+}

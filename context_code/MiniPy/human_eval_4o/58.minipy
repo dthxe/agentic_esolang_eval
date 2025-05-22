@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/58
+# Return sorted unique common elements for two lists.
+
+def common(l1, l2):
+    return srt(set(l1) & set(l2))

@@ -1,0 +1,13 @@
+def int_to_mini_roman(n):
+    if not isinstance(n, t) or n < 1 or n > 1000:
+        return sr
+    v = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
+    s = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I']
+    r = sr
+    i = 0
+    while n:
+        while n >= v[i]:
+            r += s[i]
+            n -= v[i]
+        i += 1
+    return r

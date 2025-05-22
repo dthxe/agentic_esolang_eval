@@ -1,0 +1,1 @@
+def sum_product(numbers): return (sum(numbers), prod(numbers) if numbers else 1)

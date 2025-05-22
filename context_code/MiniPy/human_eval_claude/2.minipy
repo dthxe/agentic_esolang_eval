@@ -1,0 +1,2 @@
+def truncate_number(n):
+    return fl(n - t(n))

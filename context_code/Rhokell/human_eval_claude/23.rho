@@ -1,0 +1,10 @@
+# HumanEval/23: Get string length
+(strlen (nil)) = (z);
+(strlen (cons _ xs)) = (s (strlen xs));
+
+# Test case: 'abc' -> 3
+(main) = (strlen 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil)))));

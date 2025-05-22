@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/116
+# Sort an array of non-negative integers according to the number of ones in their binary representation.
+
+def sort_array(arr):
+    return srt(arr, key=lambda x: (bin(x).count('1'), x))

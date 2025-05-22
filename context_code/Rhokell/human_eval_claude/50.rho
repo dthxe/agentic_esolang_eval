@@ -1,0 +1,54 @@
+# HumanEval/50: Encode string by shifting characters
+(encode text) = 
+  (shift_chars text (s (s (s (z)))));  # Shift by 3
+
+(shift_chars (nil) _) = (nil);
+(shift_chars (cons x xs) n) = 
+  (cons (shift_char x n)
+        (shift_chars xs n));
+
+(shift_char x n) = 
+  (if (is_upper x)
+      (add (byte (4) (1))  # 'A'
+           (mod (add (sub x (byte (4) (1))) n)
+                (s (s (s (s (s (s (s (s (s (s  # 26
+                (s (s (s (s (s (s (s (s (s (s
+                (s (s (s (s (s (s (z))))))))))))))))))))))))))))))
+      (if (is_lower x)
+          (add (byte (6) (1))  # 'a'
+               (mod (add (sub x (byte (6) (1))) n)
+                    (s (s (s (s (s (s (s (s (s (s  # 26
+                    (s (s (s (s (s (s (s (s (s (s
+                    (s (s (s (s (s (s (z))))))))))))))))))))))))))))))
+          x));
+
+(is_upper x) = 
+  (and (ge x (byte (4) (1)))  # 'A'
+       (le x (byte (5) (A)))); # 'Z'
+
+(is_lower x) = 
+  (and (ge x (byte (6) (1)))  # 'a'
+       (le x (byte (7) (A)))); # 'z'
+
+(ge x y) = (not (lt x y));
+(le x y) = (lt y x);
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 'Hello World' -> 'Khoor Zruog'
+(main) = (encode 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil))))))))))));

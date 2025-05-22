@@ -1,0 +1,7 @@
+import hashlib
+
+def string_to_md5(text):
+    """Returns the md5 hash of text, or None if text is empty."""
+    if not text:
+        return None
+    return hashlib.md5(text.encode()).hexdigest()

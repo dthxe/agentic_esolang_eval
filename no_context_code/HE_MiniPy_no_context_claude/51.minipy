@@ -1,0 +1,11 @@
+def remove_vowels(text):
+    vowels = "aeiouAEIOU"
+    result = ""
+    
+    i = 0
+    while i < len(text):
+        if text[i] not in vowels:
+            result = result + text[i]
+        i = i + 1
+    
+    return result

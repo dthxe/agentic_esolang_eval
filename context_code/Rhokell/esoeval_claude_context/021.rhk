@@ -1,0 +1,74 @@
+# Sort list in ascending order
+# Helper functions for Church numerals and arithmetic
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Convert Church numeral to decimal string
+(church_to_digit (z)) = (cons (byte (3) (0)) (nil));  # ASCII '0' = 0x30;
+(church_to_digit (s x)) = (add_digit (church_to_digit x));
+(add_digit (cons (byte x y) z)) = (cons (byte (inc_digit x y)) z);
+(inc_digit (3) (0)) = (3) (1);
+(inc_digit (3) (1)) = (3) (2);
+(inc_digit (3) (2)) = (3) (3);
+(inc_digit (3) (3)) = (3) (4);
+(inc_digit (3) (4)) = (3) (5);
+(inc_digit (3) (5)) = (3) (6);
+(inc_digit (3) (6)) = (3) (7);
+(inc_digit (3) (7)) = (3) (8);
+(inc_digit (3) (8)) = (3) (9);
+(inc_digit (3) (9)) = (3) (1) (3) (0);  # Handle two digits;
+
+# Parse list input [x,y,z]
+(read_list) = (read_list_helper (input_byte));
+(read_list_helper (5) (B)) = (read_numbers);  # '[';
+(read_numbers) = (read_number (input_byte) (input_byte));
+(read_number x y) = (read_next (digit_to_church x y));
+(read_next n) = (read_separator n (input_byte));
+(read_separator n (2) (C)) = (cons n (read_numbers));  # ',';
+(read_separator n (5) (D)) = (cons n (nil));  # ']';
+
+# Insertion sort implementation
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = (insert_helper (sub x y) x y ys);
+(insert_helper (z) x y ys) = (cons y (insert x ys));  # x >= y;
+(insert_helper (s n) x y ys) = (cons x (cons y ys));  # x < y;
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+# Print sorted list
+(print_list xs) = (print_list_helper (cons (byte (5) (B)) # [;
+                                    (append (print_numbers xs)
+                                           (cons (byte (5) (D)) # ]
+                                           (cons (byte (0) (A)) # \n
+                                                 (nil))))) # newline
+
+(print_numbers (cons x (nil))) = (church_to_digit x);
+(print_numbers (cons x xs)) = (append (church_to_digit x)
+                                    (cons (byte (2) (C)) # comma
+                                    (cons (byte (2) (0)) # space
+                                          (print_numbers xs))));
+
+# Main function
+(main) = (print_list_helper (print_list (sort (read_list))));
+
+# Helper functions for printing and list manipulation
+(print_list_helper xs) = (print xs);
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

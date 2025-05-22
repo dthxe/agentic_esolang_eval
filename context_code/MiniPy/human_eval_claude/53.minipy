@@ -1,0 +1,6 @@
+def add(x):
+    def f(n):
+        if isinstance(n, ls):
+            return [x + i for i in n]
+        return x + n
+    return f

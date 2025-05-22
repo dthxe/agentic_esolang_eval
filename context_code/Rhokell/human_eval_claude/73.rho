@@ -1,0 +1,57 @@
+# HumanEval/73: Calculate minimum coins needed for change
+(smallest_change arr) = 
+  (if (eq (length arr) (z))
+      (z)
+      (min_coins (sort arr) (sum arr)));
+
+(min_coins coins target) = 
+  (min_coins_helper coins target (z));
+
+(min_coins_helper _ (z) count) = count;
+(min_coins_helper coins target count) = 
+  (min_coins_helper coins 
+                    (sub target (largest_coin_under coins target))
+                    (s count));
+
+(largest_coin_under coins target) = 
+  (largest_coin_under_helper (reverse coins) target);
+
+(largest_coin_under_helper (cons x xs) target) = 
+  (if (le x target)
+      x
+      (largest_coin_under_helper xs target));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = (add x (sum xs));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: [1, 5, 10, 25], 67 -> 7 (25+25+10+5+1+1)
+(main) = (smallest_change 
+          (cons (s (z))  # 1
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (s (s (s (s (z))))))))))))  # 10
+          (cons (s (s (s (s (s (s (s (s (s (s  # 25
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (z)))))))))))))))))))))))))
+          (nil))))));

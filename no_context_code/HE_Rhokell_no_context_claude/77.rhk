@@ -1,0 +1,17 @@
+/* HumanEval/77 */
+
+FUNC iscube(a) {
+    /* Handle special case for 0 */
+    IF a == 0 {
+        RETURN TRUE
+    }
+    
+    /* Handle negative numbers */
+    DECL abs_a = ABS(a)
+    
+    /* Find the cube root approximately */
+    DECL cube_root = ROUND(POW(abs_a, 1/3))
+    
+    /* Check if it's a perfect cube */
+    RETURN cube_root * cube_root * cube_root == abs_a
+}

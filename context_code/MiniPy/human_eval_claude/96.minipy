@@ -1,0 +1,13 @@
+def count_up_to(n):
+    if not isinstance(n, t) or n < 2:
+        return ls()
+    r = ls()
+    for i in r(2, n):
+        p = True
+        for j in r(2, t(m.sqrt(i)) + 1):
+            if i % j == 0:
+                p = False
+                break
+        if p:
+            r.append(i)
+    return r

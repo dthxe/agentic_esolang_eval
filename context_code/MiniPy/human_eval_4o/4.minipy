@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/4
+# Calculate Mean Absolute Deviation
+
+def mean_absolute_deviation(numbers):
+    mean = sm(numbers) / l(numbers)
+    return sm([ab(x - mean) for x in numbers]) / l(numbers)

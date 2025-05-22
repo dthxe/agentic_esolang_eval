@@ -1,0 +1,14 @@
+/* HumanEval/15: Return a string of space-delimited numbers from 0 to n */
+
+FUNC string_sequence(n) {
+    DECL result = ""
+    
+    LOOP i FROM 0 TO n {
+        IF i > 0 {
+            result = result + " "
+        }
+        result = result + TO_STRING(i)
+    }
+    
+    RETURN result
+}

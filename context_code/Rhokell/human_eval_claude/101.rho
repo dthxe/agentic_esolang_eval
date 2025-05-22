@@ -1,0 +1,59 @@
+# HumanEval/101: Find words containing all vowels
+(words_string str) = 
+  (filter has_all_vowels (split_words str));
+
+(has_all_vowels word) = 
+  (and (contains word (byte (6) (1)))  # 'a'
+  (and (contains word (byte (6) (5)))  # 'e'
+  (and (contains word (byte (6) (9)))  # 'i'
+  (and (contains word (byte (6) (F)))  # 'o'
+       (contains word (byte (7) (5)))))));  # 'u'
+
+(contains lst x) = 
+  (any (lambda (y) (byte_eq x y)) lst);
+
+(any _ (nil)) = (f);
+(any f (cons x xs)) = 
+  (if (f x)
+      (t)
+      (any f xs));
+
+(split_words str) = 
+  (split_by_space str (nil));
+
+(split_by_space (nil) curr) = 
+  (if (eq curr (nil))
+      (nil)
+      (cons (reverse curr) (nil)));
+(split_by_space (cons x xs) curr) = 
+  (if (byte_eq x (byte (2) (0)))  # space
+      (if (eq curr (nil))
+          (split_by_space xs (nil))
+          (cons (reverse curr) (split_by_space xs (nil))))
+      (split_by_space xs (cons x curr)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+# Test case: 'education' -> ['education'] (contains all vowels)
+(main) = (words_string 
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (7) (5))  # 'u'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (7) (4))  # 't'
+          (cons (byte (6) (9))  # 'i'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (6) (E))  # 'n'
+          (nil))))))))));

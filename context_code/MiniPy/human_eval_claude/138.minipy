@@ -1,0 +1,6 @@
+def is_equal_to_sum_even(n):
+    if not isinstance(n, t):
+        return False
+    s = s(n)
+    e = sm(t(x) for x in s if t(x) % 2 == 0)
+    return e == n

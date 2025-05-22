@@ -1,0 +1,19 @@
+def solve(N):
+    # Calculate sum of digits
+    digit_sum = 0
+    temp = N
+    
+    while temp > 0:
+        digit_sum = digit_sum + (temp % 10)
+        temp = temp // 10
+    
+    # Convert to binary
+    if digit_sum == 0:
+        return "0"
+    
+    binary = ""
+    while digit_sum > 0:
+        binary = str(digit_sum % 2) + binary
+        digit_sum = digit_sum // 2
+    
+    return binary

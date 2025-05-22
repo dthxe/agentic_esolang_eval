@@ -1,0 +1,46 @@
+/* HumanEval/39 */
+
+FUNC prime_fib(n) {
+    DECL count = 0
+    DECL a = 1
+    DECL b = 1
+    
+    WHILE count < n {
+        DECL next_fib = a + b
+        
+        /* Check if next_fib is prime */
+        IF is_prime(next_fib) {
+            count = count + 1
+            IF count == n {
+                RETURN next_fib
+            }
+        }
+        
+        a = b
+        b = next_fib
+    }
+}
+
+FUNC is_prime(n) {
+    IF n <= 1 {
+        RETURN FALSE
+    }
+    
+    IF n <= 3 {
+        RETURN TRUE
+    }
+    
+    IF n % 2 == 0 || n % 3 == 0 {
+        RETURN FALSE
+    }
+    
+    DECL i = 5
+    WHILE i * i <= n {
+        IF n % i == 0 || n % (i + 2) == 0 {
+            RETURN FALSE
+        }
+        i = i + 6
+    }
+    
+    RETURN TRUE
+}

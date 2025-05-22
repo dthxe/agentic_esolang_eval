@@ -1,0 +1,35 @@
+# HumanEval/142: Sum squares of numbers in list
+(sum_squares lst) = 
+  (sum (map square (filter positive lst)));
+
+(square n) = 
+  (mul n n);
+
+(positive n) = 
+  (gt n (z));
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = 
+  (add x (sum xs));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, -2, 3] -> 10 (1^2 + 3^2, skip -2)
+(main) = (sum_squares 
+          (cons (s (z))  # 1
+          (cons (sub (z) (s (s (z))))  # -2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

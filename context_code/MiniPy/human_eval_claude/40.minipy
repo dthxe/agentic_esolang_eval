@@ -1,0 +1,8 @@
+def triples_sum_to_zero(l):
+    n = l(l)
+    for i in r(n):
+        for j in r(i+1, n):
+            for k in r(j+1, n):
+                if l[i] + l[j] + l[k] == 0:
+                    return True
+    return False

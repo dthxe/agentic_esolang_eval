@@ -1,0 +1,2 @@
+def odd_count(lst):
+    return [sum(1 for ch in s if int(ch) % 2 != 0) for s in lst]

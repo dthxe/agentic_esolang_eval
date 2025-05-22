@@ -1,0 +1,31 @@
+/* HumanEval/105 */
+
+FUNC by_length(arr) {
+    /* Filter numbers between 1 and 9 */
+    DECL filtered = []
+    LOOP i FROM 0 TO LEN(arr) - 1 {
+        IF arr[i] >= 1 && arr[i] <= 9 {
+            APPEND(filtered, arr[i])
+        }
+    }
+    
+    /* Sort the filtered array */
+    SORT(filtered)
+    
+    /* Reverse the array */
+    DECL reversed = []
+    LOOP i FROM LEN(filtered) - 1 TO 0 {
+        APPEND(reversed, filtered[i])
+    }
+    
+    /* Replace digits with their names */
+    DECL names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(reversed) - 1 {
+        DECL digit = reversed[i]
+        APPEND(result, names[digit - 1])
+    }
+    
+    RETURN result
+}

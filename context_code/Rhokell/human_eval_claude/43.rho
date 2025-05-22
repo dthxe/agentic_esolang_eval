@@ -1,0 +1,24 @@
+# HumanEval/43: Find pairs that sum to target
+(pairs_sum_to_zero lst) = 
+  (find_pairs lst lst);
+
+(find_pairs (nil) _) = (f);
+(find_pairs _ (nil)) = (f);
+(find_pairs (cons x xs) ys) = 
+  (if (find_complement ys (sub (z) x))
+      (t)
+      (find_pairs xs ys));
+
+(find_complement (nil) _) = (f);
+(find_complement (cons y ys) target) = 
+  (if (eq y target)
+      (t)
+      (find_complement ys target));
+
+# Test case: [1, 3, 5, 0] -> false
+(main) = (pairs_sum_to_zero 
+          (cons (s (z))  # 1
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (z)  # 0
+          (nil))))));

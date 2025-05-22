@@ -1,0 +1,7 @@
+countVowels :: String -> Int
+countVowels s = length $ filter isVowel s
+  where isVowel c = c `elem` "aeiouAEIOU"
+
+main = do
+  s <- readLine
+  print $ countVowels s

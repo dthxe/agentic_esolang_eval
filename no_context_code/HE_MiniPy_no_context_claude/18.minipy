@@ -1,0 +1,8 @@
+def how_many_times(string, substring):
+    count = 0
+    i = 0
+    while i <= len(string) - len(substring):
+        if string[i:i+len(substring)] == substring:
+            count = count + 1
+        i = i + 1
+    return count

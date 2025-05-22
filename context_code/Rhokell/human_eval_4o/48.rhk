@@ -1,0 +1,11 @@
+# Rhokell implementation for smallest_change
+# Find the minimum number of elements that need to be changed to make the array palindromic.
+
+(smallest_change (arr)) = 
+    (letrec ((changes_needed (lst) (count))
+        (if (<= (length lst) 1)
+            count
+            (if (= (head lst) (last lst))
+                (changes_needed (init (tail lst)) count)
+                (changes_needed (init (tail lst)) (+ count 1)))))
+    (changes_needed arr 0))

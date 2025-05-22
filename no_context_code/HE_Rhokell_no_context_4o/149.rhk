@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/149
+# Task: Sort list of strings by length and alphabetically
+
+# Define a function to sort list
+func sorted_list_sum(lst) {
+    # Filter and sort list
+    filtered = [word for word in lst if len(word) % 2 == 0]
+    return sort(filtered, key=lambda x: (len(x), x))
+}

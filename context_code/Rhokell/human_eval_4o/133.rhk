@@ -1,0 +1,5 @@
+# Rhokell implementation for map_filter_even
+# Filter even numbers in each sublist in a list of lists.
+
+(map_filter_even (lst)) = 
+    (map (\sublist -> (filter_even sublist)) lst)

@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/97
+# Task: Multiply the unit digits of two integers
+
+# Define a function to multiply unit digits
+func multiply(a, b) {
+    unit_a = abs(a) % 10
+    unit_b = abs(b) % 10
+    return unit_a * unit_b
+}

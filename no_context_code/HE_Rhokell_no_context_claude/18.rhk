@@ -1,0 +1,18 @@
+/* HumanEval/18: Count how many times a substring appears in a string (including overlaps) */
+
+FUNC how_many_times(string, substring) {
+    DECL count = 0
+    DECL sub_len = LEN(substring)
+    
+    IF sub_len == 0 {
+        RETURN 0
+    }
+    
+    LOOP i FROM 0 TO LEN(string) - sub_len {
+        IF SUBSTRING(string, i, i + sub_len) == substring {
+            count = count + 1
+        }
+    }
+    
+    RETURN count
+}

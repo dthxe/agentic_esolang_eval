@@ -1,0 +1,28 @@
+def file_name_check(file_name):
+    # Check if there's exactly one dot
+    if file_name.count('.') != 1:
+        return 'No'
+    
+    # Split the name into prefix and extension
+    prefix, extension = file_name.split('.')
+    
+    # Check if prefix is not empty and starts with a letter
+    if not prefix or not prefix[0].isalpha():
+        return 'No'
+    
+    # Check if extension is one of the allowed types
+    if extension not in ['txt', 'exe', 'dll']:
+        return 'No'
+    
+    # Count digits in the file name
+    digit_count = 0
+    for char in file_name:
+        if char.isdigit():
+            digit_count += 1
+    
+    # Check if there are at most 3 digits
+    if digit_count > 3:
+        return 'No'
+    
+    # All conditions are met
+    return 'Yes'

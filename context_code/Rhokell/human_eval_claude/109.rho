@@ -1,0 +1,42 @@
+# HumanEval/109: Check if array can be made equal by moving one ball
+(move_one_ball lst) = 
+  (let [sorted_lst (sort lst)]
+    (le (count_differences lst sorted_lst) (s (s (z)))));
+
+(count_differences lst1 lst2) = 
+  (count_if (lambda (pair) (not (eq (first pair) (second pair))))
+            (zip lst1 lst2));
+
+(zip (nil) _) = (nil);
+(zip _ (nil)) = (nil);
+(zip (cons x xs) (cons y ys)) = 
+  (cons (pair x y) (zip xs ys));
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(first (pair x _)) = x;
+(second (pair _ y)) = y;
+
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3, 4] -> true (already sorted)
+(main) = (move_one_ball 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil))))));

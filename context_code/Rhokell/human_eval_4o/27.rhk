@@ -1,0 +1,5 @@
+# Rhokell implementation for flip_case
+# For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+
+(flip_case (string)) = 
+    (map (\c -> (if (is_lower c) (to_upper c) (to_lower c))) string)

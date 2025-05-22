@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/13
+# Return the greatest common divisor of two integers.
+
+def greatest_common_divisor(a, b):
+    while b:
+        a, b = b, a % b
+    return a

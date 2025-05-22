@@ -1,0 +1,16 @@
+# HumanEval/159: Calculate remaining carrots after eating
+(eat number need remaining) = 
+  (let [to_eat (min need remaining)]
+    (pair (add number to_eat)
+          (sub remaining to_eat)));
+
+(min a b) = 
+  (if (lt a b)
+      a
+      b);
+
+# Test case: 5, 6, 10 -> [11, 4]
+(main) = (eat 
+          (s (s (s (s (s (z))))))  # 5
+          (s (s (s (s (s (s (z)))))))  # 6
+          (s (s (s (s (s (s (s (s (s (s (z)))))))))));  # 10

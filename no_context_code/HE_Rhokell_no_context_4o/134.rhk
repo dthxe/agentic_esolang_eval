@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/134
+# Task: Check if last character is a standalone letter
+
+# Define a function to check last character
+func check_if_last_char_is_a_letter(txt) {
+    if len(txt) == 0 {
+        return false
+    }
+    
+    # Check last character
+    trimmed = trim(txt)
+    last_char = trimmed[-1]
+    
+    if is_alpha(last_char) {
+        return len(trimmed.split()) > 1 and trimmed.split()[-1] == last_char
+    }
+    return false
+}

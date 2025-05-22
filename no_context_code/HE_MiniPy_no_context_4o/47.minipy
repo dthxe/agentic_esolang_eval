@@ -1,0 +1,5 @@
+def median(l):
+    l = sorted(l)
+    n = len(l)
+    mid = n // 2
+    return (l[mid] + l[~mid]) / 2

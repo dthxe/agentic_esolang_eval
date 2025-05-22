@@ -1,0 +1,7 @@
+isPerfectSquare :: Int -> Bool
+isPerfectSquare n = sq * sq == n
+  where sq = floor $ sqrt $ fromIntegral n
+
+main = do
+  n <- readInt
+  print $ isPerfectSquare n

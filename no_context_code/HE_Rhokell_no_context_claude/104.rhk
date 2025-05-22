@@ -1,0 +1,30 @@
+/* HumanEval/104 */
+
+FUNC unique_digits(x) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(x) - 1 {
+        DECL num = x[i]
+        IF num > 0 && !has_even_digit(num) {
+            APPEND(result, num)
+        }
+    }
+    
+    /* Sort the result in increasing order */
+    SORT(result)
+    
+    RETURN result
+}
+
+FUNC has_even_digit(n) {
+    DECL num_str = TO_STRING(n)
+    
+    LOOP i FROM 0 TO LEN(num_str) - 1 {
+        DECL digit = TO_INT(num_str[i])
+        IF digit % 2 == 0 {
+            RETURN TRUE
+        }
+    }
+    
+    RETURN FALSE
+}

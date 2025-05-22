@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/93
+# Encode a message by swapping case and replacing vowels.
+
+def encode(message):
+    vowels = {'a': 'c', 'e': 'g', 'i': 'k', 'o': 'q', 'u': 'w',
+              'A': 'C', 'E': 'G', 'I': 'K', 'O': 'Q', 'U': 'W'}
+    return ''.join(vowels.get(ch, ch).swapcase() for ch in message)

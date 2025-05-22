@@ -1,0 +1,7 @@
+def poly(xs, x):
+    result = 0
+    i = 0
+    while i < len(xs):
+        result = result + xs[i] * (x ** i)
+        i = i + 1
+    return result

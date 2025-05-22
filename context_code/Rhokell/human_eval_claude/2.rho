@@ -1,0 +1,13 @@
+# HumanEval/2: Get decimal part of number
+(def truncate_number [x]
+  (- x (floor x)))
+
+(def floor [x]
+  (if (< x 0)
+    (- 0 (floor (- 0 x)))
+    (if (< (+ x 1) 1)
+      x
+      (+ 1 (floor (- x 1))))))
+
+(def main
+  (truncate_number (+ 1 (+ 1 (+ 1 0)))))

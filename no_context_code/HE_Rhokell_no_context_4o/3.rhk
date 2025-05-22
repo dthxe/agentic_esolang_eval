@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/3
+# Task: Detect if balance falls below zero
+
+# Define a function to check balance
+func below_zero(operations) {
+    balance = 0
+    
+    # Iterate over each operation
+    for operation in operations {
+        balance += operation
+        # Check if balance is below zero
+        if balance < 0 {
+            return true
+        }
+    }
+    return false
+}

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/20
+# Find two closest numbers in a list and return them in order.
+
+def find_closest_elements(numbers):
+    return min(z(numbers, numbers[1:]), key=lambda x: ab(x[0] - x[1]))

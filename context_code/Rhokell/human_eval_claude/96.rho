@@ -1,0 +1,30 @@
+# HumanEval/96: Count numbers up to n that meet criteria
+(count_up_to n) = 
+  (count_if (lambda (x) 
+              (and (eq (mod x (s (s (s (z))))) (z))  # divisible by 3
+                   (not (eq (mod x (s (s (s (s (s (z))))))) (z))))) # not divisible by 5
+            (range (s (z)) n));
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(range start end) = 
+  (if (gt start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(gt x y) = (lt y x);
+
+# Test case: 10 -> 2 (3, 6, 9 are divisible by 3; 5, 10 are divisible by 5; so only 3, 6 count)
+(main) = (count_up_to 
+          (s (s (s (s (s  # 10 in Church numerals
+          (s (s (s (s (s
+          (z))))))))))))));

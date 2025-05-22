@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/14
+# Task: Return all prefixes of a string
+
+# Define a function to get all prefixes
+func all_prefixes(string) {
+    prefixes = []
+    
+    # Iterate over each character
+    for i in 0 to len(string) {
+        prefixes.append(string[0:i])
+    }
+    return prefixes
+}

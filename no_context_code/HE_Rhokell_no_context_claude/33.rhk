@@ -1,0 +1,27 @@
+/* HumanEval/33 */
+
+FUNC sort_third(l) {
+    /* Extract elements at indices divisible by 3 */
+    DECL third_elements = []
+    LOOP i FROM 0 TO LEN(l) - 1 {
+        IF i % 3 == 0 {
+            APPEND(third_elements, l[i])
+        }
+    }
+    
+    /* Sort these elements */
+    SORT(third_elements)
+    
+    /* Create the result list */
+    DECL result = COPY(l)
+    DECL third_index = 0
+    
+    LOOP i FROM 0 TO LEN(result) - 1 {
+        IF i % 3 == 0 {
+            result[i] = third_elements[third_index]
+            third_index = third_index + 1
+        }
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/40
+# Task: Check if there are three distinct elements that sum to zero
+
+# Define a function to check triples sum to zero
+func triples_sum_to_zero(l) {
+    for i in 0 to len(l) - 2 {
+        for j in i + 1 to len(l) - 1 {
+            for k in j + 1 to len(l) {
+                if l[i] + l[j] + l[k] == 0 {
+                    return true
+                }
+            }
+        }
+    }
+    return false
+}

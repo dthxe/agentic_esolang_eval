@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/152
+# Task: Compare game scores and guesses
+
+# Define a function to compare scores
+func compare(game, guess) {
+    differences = []
+    
+    # Calculate differences
+    for i in range(len(game)) {
+        differences.append(abs(game[i] - guess[i]))
+    }
+    return differences
+}

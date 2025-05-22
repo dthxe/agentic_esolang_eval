@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/95
+# Return True if all keys are strings in lower or upper case.
+
+def check_dict_case(d):
+    if not d:
+        return False
+    keys = d.keys()
+    return all(k.islower() for k in keys) or all(k.isupper() for k in keys)

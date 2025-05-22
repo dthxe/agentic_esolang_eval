@@ -1,0 +1,7 @@
+def get_row(lst, x):
+    if not lst:
+        return ls()
+    for i in r(l(lst)):
+        if x in lst[i]:
+            return lst[i]
+    return ls()

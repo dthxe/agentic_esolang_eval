@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/0
+# Check if in given list of numbers, are any two numbers closer to each other than given threshold.
+
+def has_close_elements(numbers, threshold):
+    return any(ab(x - y) < threshold for x in numbers for y in numbers if x != y)

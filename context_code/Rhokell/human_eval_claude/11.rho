@@ -1,0 +1,21 @@
+# HumanEval/11: String XOR
+(string_xor (nil) _) = (nil);
+(string_xor _ (nil)) = (nil);
+(string_xor (cons x xs) (cons y ys)) = 
+  (cons (bit_xor x y) (string_xor xs ys));
+
+(bit_xor x y) = 
+  (if (byte_eq x y)
+      (byte (3) (0))  # '0'
+      (byte (3) (1))); # '1'
+
+# Test case: '010', '110' -> '100'
+(main) = (string_xor 
+          (cons (byte (3) (0))  # '0'
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (0))  # '0'
+          (nil))))
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (0))  # '0'
+          (nil)))));

@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/50
+# Task: Encode and decode string by shifting characters by 5
+
+# Define a function to encode shift
+func encode_shift(s) {
+    encoded = ""
+    for ch in s {
+        encoded += chr(((ord(ch) + 5 - ord("a")) % 26) + ord("a"))
+    }
+    return encoded
+}
+
+# Define a function to decode shift
+func decode_shift(s) {
+    decoded = ""
+    for ch in s {
+        decoded += chr(((ord(ch) - 5 - ord("a")) % 26) + ord("a"))
+    }
+    return decoded
+}

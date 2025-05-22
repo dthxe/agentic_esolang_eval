@@ -1,0 +1,36 @@
+# HumanEval/64: Count vowels in string
+(vowels_count text) = 
+  (count_if is_vowel text);
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(is_vowel x) = 
+  (or (byte_eq x (byte (6) (1)))  # 'a'
+  (or (byte_eq x (byte (6) (5)))  # 'e'
+  (or (byte_eq x (byte (6) (9)))  # 'i'
+  (or (byte_eq x (byte (6) (F)))  # 'o'
+  (or (byte_eq x (byte (7) (5)))  # 'u'
+  (or (byte_eq x (byte (4) (1)))  # 'A'
+  (or (byte_eq x (byte (4) (5)))  # 'E'
+  (or (byte_eq x (byte (4) (9)))  # 'I'
+  (or (byte_eq x (byte (4) (F)))  # 'O'
+      (byte_eq x (byte (5) (5))))))))))); # 'U'
+
+# Test case: 'Hello World' -> 3
+(main) = (vowels_count 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil))))))))))));

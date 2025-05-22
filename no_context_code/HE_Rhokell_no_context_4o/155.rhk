@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/155
+# Task: Count even and odd digits
+
+# Define a function to count even and odd digits
+func even_odd_count(num) {
+    evens = 0
+    odds = 0
+    
+    # Count digits
+    for digit in str(abs(num)) {
+        if int(digit) % 2 == 0 {
+            evens += 1
+        } else {
+            odds += 1
+        }
+    }
+    return (evens, odds)
+}

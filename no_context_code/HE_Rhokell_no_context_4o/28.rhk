@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/28
+# Task: Concatenate list of strings
+
+# Define a function to concatenate strings
+func concatenate(strings) {
+    result = ""
+    
+    # Iterate over each string
+    for string in strings {
+        result += string
+    }
+    return result
+}

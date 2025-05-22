@@ -1,0 +1,20 @@
+def compare_one(a, b):
+    # Helper function to convert to float
+    def to_float(val):
+        if isinstance(val, (int, float)):
+            return float(val)
+        elif isinstance(val, str):
+            # Handle comma as decimal separator
+            return float(val.replace(',', '.'))
+    
+    # Convert to float for comparison
+    a_float = to_float(a)
+    b_float = to_float(b)
+    
+    # Compare and return the larger value in its original type
+    if a_float == b_float:
+        return None
+    elif a_float > b_float:
+        return a
+    else:
+        return b

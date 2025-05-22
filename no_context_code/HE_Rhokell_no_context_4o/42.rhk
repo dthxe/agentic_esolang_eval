@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/42
+# Task: Increment each element in the list by 1
+
+# Define a function to increment list
+func incr_list(l) {
+    incremented_list = []
+    
+    # Iterate over each element
+    for element in l {
+        incremented_list.append(element + 1)
+    }
+    return incremented_list
+}

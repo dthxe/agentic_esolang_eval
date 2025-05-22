@@ -1,0 +1,15 @@
+/* HumanEval/11: Perform binary XOR on two strings of 1s and 0s */
+
+FUNC string_xor(a, b) {
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(a) - 1 {
+        IF a[i] == b[i] {
+            result = result + "0"
+        } ELSE {
+            result = result + "1"
+        }
+    }
+    
+    RETURN result
+}

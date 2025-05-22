@@ -1,0 +1,6 @@
+# Rhokell implementation for even_odd_count
+# Return a tuple with the count of even and odd digits.
+
+(even_odd_count (num)) = 
+    (let ((digits (map digit (abs num))))
+        (pair (count is_even digits) (count is_odd digits)))

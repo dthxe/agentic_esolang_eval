@@ -1,0 +1,38 @@
+/* HumanEval/154 */
+
+FUNC cycpattern_check(a, b) {
+    /* Create a cyclic pattern by concatenating a with itself */
+    DECL cyclic_a = a + a
+    
+    /* Check if b is a substring of cyclic_a */
+    RETURN is_substring(cyclic_a, b)
+}
+
+FUNC is_substring(s, sub) {
+    DECL s_len = LEN(s)
+    DECL sub_len = LEN(sub)
+    
+    /* If sub is longer than s, it can't be a substring */
+    IF sub_len > s_len {
+        RETURN FALSE
+    }
+    
+    /* Check all possible starting positions */
+    LOOP i FROM 0 TO s_len - sub_len {
+        DECL is_match = TRUE
+        
+        /* Check if the substring matches at this position */
+        LOOP j FROM 0 TO sub_len - 1 {
+            IF s[i + j] != sub[j] {
+                is_match = FALSE
+                BREAK
+            }
+        }
+        
+        IF is_match {
+            RETURN TRUE
+        }
+    }
+    
+    RETURN FALSE
+}

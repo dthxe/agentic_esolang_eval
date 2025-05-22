@@ -1,0 +1,7 @@
+# Rhokell implementation for choose_num
+# Return the biggest even integer number in the range [x, y] inclusive.
+
+(choose_num (x) (y)) = 
+    (let ((range_list (range x (+ y 1))))
+    (let ((even_numbers (filter even range_list)))
+    (if (null even_numbers) -1 (last even_numbers))))

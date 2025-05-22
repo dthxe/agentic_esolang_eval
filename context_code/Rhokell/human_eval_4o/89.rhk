@@ -1,0 +1,5 @@
+# Rhokell implementation for map_double
+# Double each element in a list.
+
+(map_double (lst)) = 
+    (map (\x -> (* x 2)) lst)

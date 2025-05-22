@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/69
+# Return the greatest integer that has a frequency greater than or equal to its value.
+
+def search(lst):
+    counts = d((x, lst.count(x)) for x in set(lst))
+    return max((x for x, count in counts.items() if count >= x), default=-1)

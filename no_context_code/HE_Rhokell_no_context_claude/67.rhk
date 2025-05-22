@@ -1,0 +1,30 @@
+/* HumanEval/67 */
+
+FUNC fruit_distribution(s, n) {
+    /* Extract the number of apples */
+    DECL apple_start = INDEX_OF(s, " apples")
+    DECL apple_str = ""
+    DECL i = apple_start - 1
+    WHILE i >= 0 && (IS_DIGIT(s[i]) || s[i] == " ") {
+        IF IS_DIGIT(s[i]) {
+            apple_str = s[i] + apple_str
+        }
+        i = i - 1
+    }
+    DECL apples = TO_INT(apple_str)
+    
+    /* Extract the number of oranges */
+    DECL orange_start = INDEX_OF(s, " oranges")
+    DECL orange_str = ""
+    DECL i = orange_start - 1
+    WHILE i >= 0 && (IS_DIGIT(s[i]) || s[i] == " ") {
+        IF IS_DIGIT(s[i]) {
+            orange_str = s[i] + orange_str
+        }
+        i = i - 1
+    }
+    DECL oranges = TO_INT(orange_str)
+    
+    /* Calculate the number of mangoes */
+    RETURN n - apples - oranges
+}

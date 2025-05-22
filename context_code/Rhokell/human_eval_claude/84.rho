@@ -1,0 +1,52 @@
+# HumanEval/84: Generate string sequence
+(string_sequence n) = 
+  (join_strings (map num_to_str (range (s (z)) (s n))));
+
+(range start end) = 
+  (if (gt start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(num_to_str n) = 
+  (if (eq n (z))
+      (cons (byte (3) (0)) (nil))  # '0'
+      (digits_to_str (num_to_digits n)));
+
+(num_to_digits n) = 
+  (if (eq n (z))
+      (nil)
+      (append (num_to_digits (div n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # div by 10
+             (cons (add (byte (3) (0)) (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+             (nil))));
+
+(join_strings (nil)) = (nil);
+(join_strings (cons x xs)) = 
+  (append x (join_strings xs));
+
+(digits_to_str (nil)) = (nil);
+(digits_to_str (cons x xs)) = 
+  (cons x (digits_to_str xs));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(gt x y) = (lt y x);
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 5 -> '12345'
+(main) = (string_sequence 
+          (s (s (s (s (s (z)))))));

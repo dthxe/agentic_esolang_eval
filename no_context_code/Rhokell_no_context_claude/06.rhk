@@ -1,0 +1,6 @@
+reverseString :: String -> String
+reverseString = reverse
+
+main = do
+  s <- readLine
+  print $ reverseString s

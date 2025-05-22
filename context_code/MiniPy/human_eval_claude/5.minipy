@@ -1,0 +1,7 @@
+def intersperse(n, d):
+    if not n:
+        return []
+    r = [n[0]]
+    for x in n[1:]:
+        r += [d, x]
+    return r

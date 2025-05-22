@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/11
+# Perform binary XOR on two binary strings.
+
+def string_xor(a, b):
+    return ''.join(str(int(x) ^ int(y)) for x, y in z(a, b))

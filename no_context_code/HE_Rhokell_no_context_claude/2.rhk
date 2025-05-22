@@ -1,0 +1,7 @@
+/* HumanEval/2: Return the decimal part of a number */
+
+FUNC truncate_number(number) {
+    DECL integer_part = FLOOR(number)
+    DECL decimal_part = number - integer_part
+    RETURN decimal_part
+}

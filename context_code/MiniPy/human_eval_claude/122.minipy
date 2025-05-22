@@ -1,0 +1,4 @@
+def add_elements(arr, k):
+    if l(arr) <= k:
+        return sm(arr)
+    return sm(arr[:k]) + arr[k]

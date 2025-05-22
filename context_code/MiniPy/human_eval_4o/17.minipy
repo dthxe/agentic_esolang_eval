@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/17
+# Parse a string representing musical notes into beats.
+
+def parse_music(music_string):
+    return [4 if note == 'o' else 2 if note == 'o|' else 1 for note in music_string.split()]

@@ -1,0 +1,18 @@
+/* HumanEval/36 */
+
+FUNC fizz_buzz(n) {
+    DECL count = 0
+    
+    LOOP i FROM 0 TO n - 1 {
+        IF i % 11 == 0 || i % 13 == 0 {
+            DECL num_str = TO_STRING(i)
+            LOOP j FROM 0 TO LEN(num_str) - 1 {
+                IF num_str[j] == "7" {
+                    count = count + 1
+                }
+            }
+        }
+    }
+    
+    RETURN count
+}

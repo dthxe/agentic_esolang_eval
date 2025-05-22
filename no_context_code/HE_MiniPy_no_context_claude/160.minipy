@@ -1,0 +1,18 @@
+def do_algebra(operator, operand):
+    result = operand[0]
+    
+    i = 0
+    while i < len(operator):
+        if operator[i] == '+':
+            result = result + operand[i+1]
+        elif operator[i] == '-':
+            result = result - operand[i+1]
+        elif operator[i] == '*':
+            result = result * operand[i+1]
+        elif operator[i] == '//':
+            result = result // operand[i+1]
+        elif operator[i] == '**':
+            result = result ** operand[i+1]
+        i = i + 1
+    
+    return result

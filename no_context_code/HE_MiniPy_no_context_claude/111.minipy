@@ -1,0 +1,28 @@
+def histogram(test):
+    if not test:
+        return {}
+    
+    # Count occurrences of each letter
+    counts = {}
+    words = test.split()
+    
+    for word in words:
+        for char in word:
+            if char in counts:
+                counts[char] = counts[char] + 1
+            else:
+                counts[char] = 1
+    
+    # Find the maximum count
+    max_count = 0
+    for char, count in counts.items():
+        if count > max_count:
+            max_count = count
+    
+    # Return dictionary of letters with the maximum count
+    result = {}
+    for char, count in counts.items():
+        if count == max_count:
+            result[char] = count
+    
+    return result

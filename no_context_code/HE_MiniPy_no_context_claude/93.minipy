@@ -1,0 +1,23 @@
+def encode(message):
+    vowels = "aeiouAEIOU"
+    result = ""
+    
+    i = 0
+    while i < len(message):
+        char = message[i]
+        
+        # Swap case
+        if char.islower():
+            new_char = char.upper()
+        else:
+            new_char = char.lower()
+        
+        # Replace vowels with letter 2 places ahead
+        if new_char.lower() in "aeiou":
+            base = 'a' if new_char.islower() else 'A'
+            new_char = chr(((ord(new_char.lower()) - ord('a') + 2) % 26) + ord(base))
+        
+        result = result + new_char
+        i = i + 1
+    
+    return result

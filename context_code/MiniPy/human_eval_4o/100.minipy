@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/100
+# Return the number of stones in each level of a pile.
+
+def make_a_pile(n):
+    return [n + 2 * i for i in r(n)]

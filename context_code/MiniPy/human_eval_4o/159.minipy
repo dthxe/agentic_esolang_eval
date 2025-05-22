@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/159
+# Return an array of [total number of eaten carrots after meals, number of carrots left].
+
+def eat(number, need, remaining):
+    total_eaten = min(need, remaining) + number
+    carrots_left = max(0, remaining - need)
+    return [total_eaten, carrots_left]

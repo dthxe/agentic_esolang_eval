@@ -1,0 +1,38 @@
+/* HumanEval/103 */
+
+FUNC rounded_avg(n, m) {
+    /* Check if n > m */
+    IF n > m {
+        RETURN -1
+    }
+    
+    /* Calculate the sum of integers from n to m */
+    DECL sum = 0
+    DECL count = 0
+    
+    LOOP i FROM n TO m {
+        sum = sum + i
+        count = count + 1
+    }
+    
+    /* Calculate the average and round to nearest integer */
+    DECL avg = sum / count
+    DECL rounded = ROUND(avg)
+    
+    /* Convert to binary */
+    DECL binary = "0b"
+    DECL num = rounded
+    
+    /* Handle special case for 0 */
+    IF num == 0 {
+        RETURN "0b0"
+    }
+    
+    DECL binary_digits = ""
+    WHILE num > 0 {
+        binary_digits = TO_STRING(num % 2) + binary_digits
+        num = num / 2
+    }
+    
+    RETURN binary + binary_digits
+}

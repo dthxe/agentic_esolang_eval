@@ -1,0 +1,20 @@
+/* HumanEval/34 */
+
+FUNC unique(l) {
+    /* Create a set of unique elements */
+    DECL unique_set = {}
+    LOOP i FROM 0 TO LEN(l) - 1 {
+        unique_set[l[i]] = TRUE
+    }
+    
+    /* Convert set to list */
+    DECL result = []
+    LOOP key IN unique_set {
+        APPEND(result, key)
+    }
+    
+    /* Sort the list */
+    SORT(result)
+    
+    RETURN result
+}

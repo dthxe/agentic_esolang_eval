@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/158
+# Return the word with maximum number of unique characters.
+
+def find_max(words):
+    return min(srt(words, key=lambda x: (-l(set(x)), x)))

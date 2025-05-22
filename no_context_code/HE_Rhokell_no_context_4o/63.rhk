@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/63
+# Task: Compute n-th element of the FibFib sequence
+
+# Define a function to calculate FibFib
+func fibfib(n) {
+    fibs = [0, 0, 1]
+    
+    # Calculate FibFib sequence
+    for i in 3 to n {
+        fibs.append(fibs[i-1] + fibs[i-2] + fibs[i-3])
+    }
+    return fibs[n]
+}

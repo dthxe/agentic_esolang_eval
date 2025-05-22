@@ -1,0 +1,22 @@
+/* HumanEval/25 */
+
+FUNC factorize(n) {
+    DECL factors = []
+    DECL d = 2
+    
+    WHILE n > 1 {
+        WHILE n % d == 0 {
+            APPEND(factors, d)
+            n = n / d
+        }
+        d = d + 1
+        
+        /* Optimization: if d*d > n then n is prime */
+        IF d * d > n && n > 1 {
+            APPEND(factors, n)
+            BREAK
+        }
+    }
+    
+    RETURN factors
+}

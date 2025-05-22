@@ -1,0 +1,52 @@
+# Convert string to title case
+# Helper functions for Church numerals and ASCII manipulation
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Read input string into a list
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Stop at null byte;
+(read_char x) = (cons x (read_string));
+
+# Check if character is lowercase letter
+(is_lower (6) x) = (s (z));  # ASCII 'a'-'z' first byte is 6;
+(is_lower (7) x) = (s (z));  # Some lowercase letters have first byte 7;
+(is_lower x y) = (z);
+
+# Check if character is space
+(is_space (2) (0)) = (s (z));  # ASCII space;
+(is_space x y) = (z);
+
+# Convert lowercase to uppercase
+(to_upper (byte (6) x)) = (byte (4) x);  # 'a'-'o';
+(to_upper (byte (7) x)) = (byte (5) x);  # 'p'-'z';
+(to_upper x) = x;
+
+# Convert string to title case
+(to_title (nil)) = (nil);
+(to_title (cons x xs)) = (cons (to_upper x) (title_rest xs));
+
+(title_rest (nil)) = (nil);
+(title_rest (cons (byte x y) xs)) = 
+    (cons (byte x y) (title_after_char (is_space x y) xs));
+
+(title_after_char (s n) (cons x xs)) = 
+    (cons (to_upper x) (title_rest xs))  # After space
+(title_after_char (z) (cons x xs)) = 
+    (title_rest (cons x xs))  # Not after space
+(title_after_char n (nil)) = (nil);
+
+# Main function
+(main) = (print;
+          (append 
+            (to_title (read_string))
+            (cons (byte (0) (A)) (nil))  # Add newline
+          )
+        );
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

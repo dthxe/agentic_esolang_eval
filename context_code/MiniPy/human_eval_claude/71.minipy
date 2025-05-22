@@ -1,0 +1,6 @@
+def triangle_area_2(a, h):
+    if not isinstance(a, (t, fl)) or not isinstance(h, (t, fl)):
+        return -1
+    if a <= 0 or h <= 0:
+        return -1
+    return fl(a * h / 2)

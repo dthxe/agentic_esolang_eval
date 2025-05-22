@@ -1,0 +1,10 @@
+def search(lst):
+    if not lst:
+        return None
+    m = lst[0]
+    i = 0
+    for j in r(l(lst)):
+        if lst[j] < m:
+            m = lst[j]
+            i = j
+    return i

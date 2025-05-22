@@ -1,0 +1,13 @@
+/* HumanEval/8: Return sum and product of a list of integers */
+
+FUNC sum_product(numbers) {
+    DECL sum = 0
+    DECL product = 1
+    
+    LOOP i FROM 0 TO LEN(numbers) - 1 {
+        sum = sum + numbers[i]
+        product = product * numbers[i]
+    }
+    
+    RETURN [sum, product]
+}

@@ -1,0 +1,13 @@
+def skjkasdkd(lst):
+    if not lst:
+        return ls()
+    if not all(isinstance(x, t) for x in lst):
+        return ls()
+    r = ls()
+    for i in r(l(lst)):
+        s = 0
+        for j in r(1, lst[i] + 1):
+            if lst[i] % j == 0:
+                s += j
+        r.append(s)
+    return r

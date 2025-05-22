@@ -1,0 +1,23 @@
+# HumanEval/119: Find number of matches in string
+(match_parens str) = 
+  (count_matches str (z));
+
+(count_matches (nil) count) = count;
+(count_matches (cons x xs) count) = 
+  (if (byte_eq x (byte (2) (8)))  # '('
+      (count_matches xs (s count))
+      (if (byte_eq x (byte (2) (9)))  # ')'
+          (if (eq count (z))
+              (z)
+              (count_matches xs (sub count (s (z)))))
+          (count_matches xs count)));
+
+# Test case: '((()))' -> 3 (three pairs of matching parentheses)
+(main) = (match_parens 
+          (cons (byte (2) (8))  # '('
+          (cons (byte (2) (8))  # '('
+          (cons (byte (2) (8))  # '('
+          (cons (byte (2) (9))  # ')'
+          (cons (byte (2) (9))  # ')'
+          (cons (byte (2) (9))  # ')'
+          (nil))))))));

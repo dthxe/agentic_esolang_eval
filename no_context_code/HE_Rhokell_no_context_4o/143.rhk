@@ -1,0 +1,29 @@
+# Rhokell code for HumanEval/143
+# Task: Extract words with prime length
+
+# Define a function to extract words
+func words_in_sentence(sentence) {
+    words = split(sentence, " ")
+    prime_words = []
+    
+    # Check if length is prime
+    for word in words {
+        if is_prime(len(word)) {
+            prime_words.append(word)
+        }
+    }
+    return join(prime_words, " ")
+}
+
+# Helper function to check if a number is prime
+func is_prime(num) {
+    if num < 2 {
+        return false
+    }
+    for i in range(2, sqrt(num) + 1) {
+        if num % i == 0 {
+            return false
+        }
+    }
+    return true
+}

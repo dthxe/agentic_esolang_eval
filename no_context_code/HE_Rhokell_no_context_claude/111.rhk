@@ -1,0 +1,35 @@
+/* HumanEval/111 */
+
+FUNC histogram(test) {
+    /* Count occurrences of each letter */
+    DECL letter_count = {}
+    
+    LOOP i FROM 0 TO LEN(test) - 1 {
+        DECL char = test[i]
+        IF char != " " {
+            IF CONTAINS(letter_count, char) {
+                letter_count[char] = letter_count[char] + 1
+            } ELSE {
+                letter_count[char] = 1
+            }
+        }
+    }
+    
+    /* Find the maximum count */
+    DECL max_count = 0
+    LOOP char IN letter_count {
+        IF letter_count[char] > max_count {
+            max_count = letter_count[char]
+        }
+    }
+    
+    /* Create the result dictionary with letters having the maximum count */
+    DECL result = {}
+    LOOP char IN letter_count {
+        IF letter_count[char] == max_count {
+            result[char] = max_count
+        }
+    }
+    
+    RETURN result
+}

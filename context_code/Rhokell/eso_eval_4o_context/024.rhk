@@ -1,0 +1,74 @@
+# Check if a number is a palindrome
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Check if n is a palindrome
+(is_palindrome (n)) = (if (equal (to_digits n) (reverse (to_digits n))) (print_true) (print_false));
+
+# Convert number to list of digits
+(to_digits (n)) = (digits_helper n (nil));
+(digits_helper (z) acc) = acc;
+(digits_helper n acc) = (digits_helper (div n (s (s (z)))) (cons (mod n (s (s (z)))) acc));
+
+# Reverse the list
+(reverse (nil)) = (nil);
+(reverse (cons x xs)) = (append (reverse xs) (cons x (nil)));
+
+# Check if two lists are equal
+(equal (nil) (nil)) = (s (z));
+(equal (cons x xs) (cons y ys)) = (if (eq x y) (equal xs ys) (z));
+(equal x y) = (z);
+
+(eq (z) (z)) = (s (z));
+(eq (s x) (s y)) = (eq x y);
+(eq x y) = (z);
+
+# Calculate division and remainder
+(div a b) = (div_helper a b (z));
+(div_helper a b acc) = (if (lt a b) acc (div_helper (sub a b) b (s acc)));
+
+(mod a b) = (mod_helper a b);
+(mod_helper a b) = (mod_next (sub a b) a b);
+(mod_next (z) a b) = (z);  # b divides a
+(mod_next (s x) a b) = (mod_step (sub a b) a b);
+(mod_step (z) a b) = (z);  # b divides a
+(mod_step (s x) a b) = (s (mod_helper (sub a b) b));
+
+(lt (z) (s x)) = (s (z));
+(lt (s x) (s y)) = (lt x y);
+(lt x y) = (z);
+
+# Main function
+(main) = (is_palindrome (digit_to_church (input_byte) (input_byte)));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # newline
+                           (nil))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # newline
+                            (nil))))));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

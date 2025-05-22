@@ -1,0 +1,28 @@
+# HumanEval/151: Double each element in a list
+(double_the_difference lst) = 
+  (map double (filter positive lst));
+
+(double n) = 
+  (add n n);
+
+(positive n) = 
+  (gt n (z));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, -2, 3] -> [2, 6] (double positive numbers)
+(main) = (double_the_difference 
+          (cons (s (z))  # 1
+          (cons (sub (z) (s (s (z))))  # -2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

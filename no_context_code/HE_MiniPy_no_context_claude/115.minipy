@@ -1,0 +1,21 @@
+def max_fill(grid, capacity):
+    total_buckets = 0
+    
+    # Process each well (row)
+    i = 0
+    while i < len(grid):
+        # Count water units in the well
+        water_units = 0
+        j = 0
+        while j < len(grid[i]):
+            water_units = water_units + grid[i][j]
+            j = j + 1
+        
+        # Calculate buckets needed for this well
+        if water_units > 0:
+            buckets = (water_units + capacity - 1) // capacity  # Ceiling division
+            total_buckets = total_buckets + buckets
+        
+        i = i + 1
+    
+    return total_buckets

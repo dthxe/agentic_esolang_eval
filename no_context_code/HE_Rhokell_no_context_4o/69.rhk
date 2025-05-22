@@ -1,0 +1,25 @@
+# Rhokell code for HumanEval/69
+# Task: Find integer with frequency greater than or equal to its value
+
+# Define a function to search integer
+func search(lst) {
+    frequency = {}
+    
+    # Calculate frequency of each integer
+    for num in lst {
+        if num in frequency {
+            frequency[num] += 1
+        } else {
+            frequency[num] = 1
+        }
+    }
+    
+    # Find the greatest integer with required frequency
+    max_int = -1
+    for num, freq in frequency.items() {
+        if freq >= num and num > max_int {
+            max_int = num
+        }
+    }
+    return max_int
+}

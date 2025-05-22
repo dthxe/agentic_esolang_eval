@@ -1,0 +1,12 @@
+def generate_integers(a, b):
+    # Ensure a <= b
+    if a > b:
+        a, b = b, a
+    
+    # Find all even digits between a and b inclusive
+    result = []
+    for digit in [0, 2, 4, 6, 8]:  # Even digits
+        if a <= digit <= b:
+            result.append(digit)
+    
+    return result

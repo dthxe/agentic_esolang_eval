@@ -1,0 +1,5 @@
+# Rhokell implementation for map_even
+# Check if each element in a list is even.
+
+(map_even (lst)) = 
+    (map (\x -> (is_even x)) lst)

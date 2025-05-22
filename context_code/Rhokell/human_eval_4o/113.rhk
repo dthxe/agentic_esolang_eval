@@ -1,0 +1,5 @@
+# Rhokell implementation for map_radians
+# Convert degrees to radians for each element in a list.
+
+(map_radians (lst)) = 
+    (map (\x -> (* x (/ pi 180))) lst)

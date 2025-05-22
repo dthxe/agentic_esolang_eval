@@ -1,0 +1,13 @@
+/* HumanEval/7: Filter strings containing a substring */
+
+FUNC filter_by_substring(strings, substring) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(strings) - 1 {
+        IF CONTAINS(strings[i], substring) {
+            APPEND(result, strings[i])
+        }
+    }
+    
+    RETURN result
+}

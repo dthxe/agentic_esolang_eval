@@ -1,0 +1,5 @@
+# Rhokell implementation for filter_by_prefix
+# Filter an input list of strings only for ones that start with a given prefix.
+
+(filter_by_prefix (strings) (prefix)) = 
+    (filter (\s -> (starts_with s prefix)) strings)

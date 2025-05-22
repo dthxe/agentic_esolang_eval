@@ -1,0 +1,10 @@
+# Minipy solution for HumanEval/31
+# Return true if a given number is prime, and false otherwise.
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in r(2, t(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True

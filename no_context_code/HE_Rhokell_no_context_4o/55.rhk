@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/55
+# Task: Return n-th Fibonacci number
+
+# Define a function to calculate Fibonacci
+func fib(n) {
+    if n <= 1 {
+        return n
+    }
+    a = 0
+    b = 1
+    for i in 2 to n {
+        c = a + b
+        a = b
+        b = c
+    }
+    return b
+}

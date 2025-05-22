@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/98
+# Count the number of uppercase vowels in even indices.
+
+def count_upper(s):
+    return sm(1 for i in r(0, l(s), 2) if s[i] in 'AEIOU')

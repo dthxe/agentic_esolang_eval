@@ -1,0 +1,8 @@
+# Rhokell implementation for circular_shift
+# Circular shift the digits of the integer x, shift the digits right by shift.
+
+(circular_shift (x) (shift)) = 
+    (let ((digits (digits_of x)))
+    (if (> shift (length digits))
+        (reverse digits)
+        (append (drop (- (length digits) shift) digits) (take (- (length digits) shift) digits))))

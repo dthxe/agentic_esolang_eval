@@ -1,0 +1,7 @@
+# Rhokell implementation for fruit_distribution
+# Calculate the number of mango fruits in the basket.
+
+(fruit_distribution (s) (n)) = 
+    (let ((apples (parse_number s "apples"))
+          (oranges (parse_number s "oranges")))
+    (- n apples oranges))

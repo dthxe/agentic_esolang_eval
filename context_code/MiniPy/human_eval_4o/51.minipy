@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/51
+# Remove vowels from a string.
+
+def remove_vowels(text):
+    return ''.join([ch for ch in text if ch.lower() not in 'aeiou'])

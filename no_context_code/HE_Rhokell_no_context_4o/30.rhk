@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/30
+# Task: Return only positive numbers in the list
+
+# Define a function to get positive numbers
+func get_positive(l) {
+    positives = []
+    
+    # Iterate over each number
+    for number in l {
+        if number > 0 {
+            positives.append(number)
+        }
+    }
+    return positives
+}

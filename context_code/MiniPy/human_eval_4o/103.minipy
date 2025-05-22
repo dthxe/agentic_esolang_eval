@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/103
+# Compute the average of the integers from n through m, round to the nearest integer, and convert to binary.
+
+def rounded_avg(n, m):
+    if n > m:
+        return -1
+    avg = rnd((n + m) * (m - n + 1) / 2 / (m - n + 1))
+    return bin(avg)

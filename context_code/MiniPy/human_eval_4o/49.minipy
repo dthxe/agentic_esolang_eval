@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/49
+# Return 2^n modulo p.
+
+def modp(n, p):
+    return (2 ** n) % p

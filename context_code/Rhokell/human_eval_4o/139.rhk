@@ -1,0 +1,5 @@
+# Rhokell implementation for map_title
+# Convert each string in a list to title case.
+
+(map_title (lst)) = 
+    (map (\s -> (to_title s)) lst)

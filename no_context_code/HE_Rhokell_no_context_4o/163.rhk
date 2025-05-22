@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/163
+# Task: Generate even integers between a and b
+
+# Define a function to generate even integers
+func generate_integers(a, b) {
+    evens = []
+    
+    # Ensure a is less than b
+    if a > b {
+        a, b = b, a
+    }
+    
+    # Generate even numbers
+    for i in range(a, b+1) {
+        if i % 2 == 0 {
+            evens.append(i)
+        }
+    }
+    return evens
+}

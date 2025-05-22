@@ -1,0 +1,38 @@
+# HumanEval/78: Convert hex key to base-16 number
+(hex_key num) = 
+  (if (eq num (z))
+      (z)
+      (add (mul (hex_digit_to_num (mod num (s (s (s (s (s (s (s (s (s (s  # 16
+      (s (s (s (s (s (s (z))))))))))))))))))
+               (power (s (s (s (s (s (s (s (s (s (s  # 16
+               (s (s (s (s (s (s (z))))))))))))))))))
+                     (div num (s (s (s (s (s (s (s (s (s (s  # 16
+                     (s (s (s (s (s (s (z))))))))))))))))))))));
+
+(hex_digit_to_num n) = 
+  (if (lt n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # n < 10
+      n
+      (add (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # add 10
+           (sub n (s (s (s (s (s (s (s (s (s (s  # subtract 10
+           (s (s (s (s (s (s (z)))))))))))))))))))));
+
+(power _ (z)) = (s (z));
+(power base exp) = (mul base (power base (sub exp (s (z)))));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: 1 -> 1, 10 -> 16, 16 -> 22
+(main) = (hex_key 
+          (s (s (s (s (s (s (s (s (s (s  # 16 in Church numerals
+          (s (s (s (s (s (s (z))))))))))))))))));

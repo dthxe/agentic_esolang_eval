@@ -1,0 +1,34 @@
+# HumanEval/124: Validate binary search tree property
+(valid_bst (nil)) = (t);
+(valid_bst (node val left right)) = 
+  (and (all (lambda (x) (lt x val)) (get_values left))
+  (and (all (lambda (x) (gt x val)) (get_values right))
+  (and (valid_bst left)
+       (valid_bst right))));
+
+(get_values (nil)) = (nil);
+(get_values (node val left right)) = 
+  (append (get_values left)
+          (cons val (get_values right)));
+
+(all _ (nil)) = (t);
+(all f (cons x xs)) = 
+  (if (f x)
+      (all f xs)
+      (f));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(gt x y) = (lt y x);
+
+# Test case: Node(2, Node(1, nil, nil), Node(3, nil, nil)) -> true
+(main) = (valid_bst 
+          (node (s (s (z)))  # 2
+                (node (s (z))  # 1
+                      (nil)
+                      (nil))
+                (node (s (s (s (z))))  # 3
+                      (nil)
+                      (nil))));

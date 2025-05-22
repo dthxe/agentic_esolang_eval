@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/47
+# Return median of elements in the list.
+
+def median(l):
+    l = srt(l)
+    mid = l(l) // 2
+    return (l[mid] + l[mid-1]) / 2 if l(l) % 2 == 0 else l[mid]

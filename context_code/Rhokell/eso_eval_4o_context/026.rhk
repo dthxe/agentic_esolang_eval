@@ -1,0 +1,53 @@
+# Calculate the power of a number
+# Helper functions for Church numerals and arithmetic
+(mul (z) y) = (z);
+(mul (s x) y) = (add y (mul x y));
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Calculate power
+(power a (z)) = (s (z));
+(power a (s n)) = (mul a (power a n));
+
+# Main function
+(main) = (print 
+          (append 
+            (church_to_digit (power (digit_to_church (input_byte) (input_byte)) 
+                                  (digit_to_church (input_byte) (input_byte))))
+            (cons (byte (0) (A)) (nil))  # Add newline
+          ));
+
+# Convert Church numeral to decimal string
+(church_to_digit (z)) = (cons (byte (3) (0)) (nil));  # ASCII '0' = 0x30
+(church_to_digit (s x)) = (add_digit (church_to_digit x));
+(add_digit (cons (byte x y) z)) = (cons (byte (inc_digit x y)) z);
+
+(inc_digit (3) (0)) = (cons (byte (3) (1)) (nil));
+(inc_digit (3) (1)) = (cons (byte (3) (2)) (nil));
+(inc_digit (3) (2)) = (cons (byte (3) (3)) (nil));
+(inc_digit (3) (3)) = (cons (byte (3) (4)) (nil));
+(inc_digit (3) (4)) = (cons (byte (3) (5)) (nil));
+(inc_digit (3) (5)) = (cons (byte (3) (6)) (nil));
+(inc_digit (3) (6)) = (cons (byte (3) (7)) (nil));
+(inc_digit (3) (7)) = (cons (byte (3) (8)) (nil));
+(inc_digit (3) (8)) = (cons (byte (3) (9)) (nil));
+(inc_digit (3) (9)) = (cons (byte (3) (1)) (cons (byte (3) (0)) (nil)));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

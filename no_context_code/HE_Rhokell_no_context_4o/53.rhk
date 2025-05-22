@@ -1,0 +1,7 @@
+# Rhokell code for HumanEval/53
+# Task: Add two numbers
+
+# Define a function to add numbers
+func add(x, y) {
+    return x + y
+}

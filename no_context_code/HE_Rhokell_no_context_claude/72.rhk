@@ -1,0 +1,23 @@
+/* HumanEval/72 */
+
+FUNC will_it_fly(q, w) {
+    /* Check if the list is balanced (palindromic) */
+    DECL n = LEN(q)
+    DECL is_balanced = TRUE
+    
+    LOOP i FROM 0 TO n / 2 - 1 {
+        IF q[i] != q[n - 1 - i] {
+            is_balanced = FALSE
+            BREAK
+        }
+    }
+    
+    /* Calculate the sum of elements */
+    DECL sum = 0
+    LOOP i FROM 0 TO n - 1 {
+        sum = sum + q[i]
+    }
+    
+    /* Check both conditions */
+    RETURN is_balanced && sum <= w
+}

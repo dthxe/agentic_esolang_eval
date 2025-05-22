@@ -1,0 +1,2 @@
+def find_closest_elements(numbers):
+    return min(((a, b) for i, a in enumerate(numbers) for b in numbers[i+1:]), key=lambda x: abs(x[0] - x[1]))

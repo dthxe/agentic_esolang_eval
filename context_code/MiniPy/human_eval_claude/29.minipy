@@ -1,0 +1,2 @@
+def filter_by_prefix(s, p):
+    return [x for x in s if x.startswith(p)]

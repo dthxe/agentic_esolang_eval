@@ -1,0 +1,17 @@
+def cycpattern_check(a, b):
+    # Generate all rotations of b
+    rotations = []
+    i = 0
+    while i < len(b):
+        rotation = b[i:] + b[:i]
+        rotations.append(rotation)
+        i = i + 1
+    
+    # Check if any rotation is a substring of a
+    i = 0
+    while i < len(rotations):
+        if rotations[i] in a:
+            return True
+        i = i + 1
+    
+    return False

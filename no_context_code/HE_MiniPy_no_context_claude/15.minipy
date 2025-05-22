@@ -1,0 +1,9 @@
+def string_sequence(n):
+    result = ""
+    i = 0
+    while i <= n:
+        if i > 0:
+            result = result + " "
+        result = result + str(i)
+        i = i + 1
+    return result

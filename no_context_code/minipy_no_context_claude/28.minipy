@@ -1,0 +1,6 @@
+nums = input()
+for n in nums:
+    if n % 2 != 0:
+        print False
+        exit()
+print True

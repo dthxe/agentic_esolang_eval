@@ -1,0 +1,24 @@
+# Reverse a string
+# Read input string into a list
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Stop at null byte;
+(read_char x) = (cons x (read_string));
+
+# Reverse a list
+(reverse xs) = (reverse_helper xs (nil));
+(reverse_helper (cons x xs) acc) = (reverse_helper xs (cons x acc));
+(reverse_helper (nil) acc) = acc;
+
+# Main function
+(main) = (print;
+          (append 
+            (reverse (read_string))
+            (cons (byte (0) (A)) (nil))  # Add newline
+          )
+        );
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

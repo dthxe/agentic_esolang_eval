@@ -1,0 +1,31 @@
+/* HumanEval/57 */
+
+FUNC monotonic(l) {
+    IF LEN(l) <= 1 {
+        RETURN TRUE
+    }
+    
+    /* Check if increasing */
+    DECL increasing = TRUE
+    LOOP i FROM 1 TO LEN(l) - 1 {
+        IF l[i] < l[i-1] {
+            increasing = FALSE
+            BREAK
+        }
+    }
+    
+    IF increasing {
+        RETURN TRUE
+    }
+    
+    /* Check if decreasing */
+    DECL decreasing = TRUE
+    LOOP i FROM 1 TO LEN(l) - 1 {
+        IF l[i] > l[i-1] {
+            decreasing = FALSE
+            BREAK
+        }
+    }
+    
+    RETURN decreasing
+}

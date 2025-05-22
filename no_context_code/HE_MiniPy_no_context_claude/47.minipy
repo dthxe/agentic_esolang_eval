@@ -1,0 +1,22 @@
+def median(l):
+    if not l:
+        return None
+    
+    # Sort the list
+    sorted_list = l.copy()
+    i = 0
+    while i < len(sorted_list):
+        j = 0
+        while j < len(sorted_list) - i - 1:
+            if sorted_list[j] > sorted_list[j + 1]:
+                sorted_list[j], sorted_list[j + 1] = sorted_list[j + 1], sorted_list[j]
+            j = j + 1
+        i = i + 1
+    
+    n = len(sorted_list)
+    if n % 2 == 1:
+        # Odd number of elements, return the middle one
+        return sorted_list[n // 2]
+    else:
+        # Even number of elements, return the average of the two middle ones
+        return (sorted_list[n // 2 - 1] + sorted_list[n // 2]) / 2

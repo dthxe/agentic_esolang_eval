@@ -1,0 +1,24 @@
+# Rhokell code for HumanEval/129
+# Task: Find minimum path of length k in grid
+
+# Define a function to find min path
+func minPath(grid, k) {
+    n = len(grid)
+    
+    # Initialize path
+    path = []
+    
+    # Find minimum path
+    for _ in range(k) {
+        min_value = inf
+        for row in grid {
+            for value in row {
+                if value < min_value {
+                    min_value = value
+                }
+            }
+        }
+        path.append(min_value)
+    }
+    return path
+}

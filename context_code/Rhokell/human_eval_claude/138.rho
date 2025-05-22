@@ -1,0 +1,22 @@
+# HumanEval/138: Check if one string equals another
+(is_equal str1 str2) = 
+  (eq_strings str1 str2);
+
+(eq_strings (nil) (nil)) = (t);
+(eq_strings (nil) _) = (f);
+(eq_strings _ (nil)) = (f);
+(eq_strings (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_strings xs ys)
+      (f));
+
+# Test case: 'abc', 'abc' -> true
+(main) = (is_equal 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil))))
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil)))));

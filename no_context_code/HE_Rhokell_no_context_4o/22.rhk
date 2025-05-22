@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/22
+# Task: Filter list for integers
+
+# Define a function to filter integers
+func filter_integers(values) {
+    integers = []
+    
+    # Iterate over each value
+    for value in values {
+        if type(value) == int {
+            integers.append(value)
+        }
+    }
+    return integers
+}

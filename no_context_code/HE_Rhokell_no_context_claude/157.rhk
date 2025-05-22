@@ -1,0 +1,10 @@
+/* HumanEval/157 */
+
+FUNC right_angle_triangle(a, b, c) {
+    /* Sort the sides */
+    DECL sides = [a, b, c]
+    SORT(sides)
+    
+    /* Check if the triangle is a right-angled triangle using the Pythagorean theorem */
+    RETURN sides[0] * sides[0] + sides[1] * sides[1] == sides[2] * sides[2]
+}

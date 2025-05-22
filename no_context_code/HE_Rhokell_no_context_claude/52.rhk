@@ -1,0 +1,11 @@
+/* HumanEval/52 */
+
+FUNC below_threshold(l, t) {
+    LOOP i FROM 0 TO LEN(l) - 1 {
+        IF l[i] >= t {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN TRUE
+}

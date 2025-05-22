@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/57
+# Task: Check if list is monotonically increasing or decreasing
+
+# Define a function to check monotonic
+func monotonic(l) {
+    increasing = true
+    decreasing = true
+    for i in 1 to len(l) - 1 {
+        if l[i] > l[i - 1] {
+            decreasing = false
+        } else if l[i] < l[i - 1] {
+            increasing = false
+        }
+    }
+    return increasing or decreasing
+}

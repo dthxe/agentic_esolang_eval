@@ -1,0 +1,23 @@
+# Rhokell code for HumanEval/146
+# Task: Count numbers with odd first and last digits
+
+# Define a function to filter special numbers
+func specialFilter(nums) {
+    count = 0
+    
+    # Count special numbers
+    for num in nums {
+        if num > 10 {
+            str_num = str(abs(num))
+            if is_odd(int(str_num[0])) and is_odd(int(str_num[-1])) {
+                count += 1
+            }
+        }
+    }
+    return count
+}
+
+# Helper function to check if a number is odd
+func is_odd(num) {
+    return num % 2 != 0
+}

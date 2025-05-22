@@ -1,0 +1,43 @@
+# HumanEval/120: Find maximum product of three numbers
+(maximum_product lst) = 
+  (let [sorted_lst (sort lst)]
+    (max (mul (last sorted_lst)
+              (mul (last (init sorted_lst))
+                   (last (init (init sorted_lst)))))
+         (mul (head sorted_lst)
+              (mul (head (tail sorted_lst))
+                   (last sorted_lst)))));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(last (cons x (nil))) = x;
+(last (cons _ xs)) = (last xs);
+
+(init (cons x (nil))) = (nil);
+(init (cons x xs)) = 
+  (cons x (init xs));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+(max x y) = (if (gt x y) x y);
+(gt x y) = (lt y x);
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: [1, -1, 2, -4, 3] -> 24 (3 * 2 * 4)
+(main) = (maximum_product 
+          (cons (s (z))  # 1
+          (cons (sub (z) (s (z)))  # -1
+          (cons (s (s (z)))  # 2
+          (cons (sub (z) (s (s (s (s (z))))))  # -4
+          (cons (s (s (s (z))))  # 3
+          (nil)))))));

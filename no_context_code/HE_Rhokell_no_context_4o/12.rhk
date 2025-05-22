@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/12
+# Task: Return the longest string from a list
+
+# Define a function to find the longest string
+func longest(strings) {
+    if len(strings) == 0 {
+        return None
+    }
+    longest_string = strings[0]
+    
+    # Iterate over each string
+    for string in strings {
+        if len(string) > len(longest_string) {
+            longest_string = string
+        }
+    }
+    return longest_string
+}

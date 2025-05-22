@@ -1,0 +1,34 @@
+# HumanEval/81: Find numerical digits in string
+(numerical_letter str) = 
+  (filter is_digit str);
+
+(is_digit x) = 
+  (and (ge x (byte (3) (0)))  # >= '0'
+       (le x (byte (3) (9)))); # <= '9'
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(ge x y) = (not (lt x y));
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: 'Hello123World' -> '123'
+(main) = (numerical_letter 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (2))  # '2'
+          (cons (byte (3) (3))  # '3'
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil)))))))))))))));

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/26
+# Remove all elements that occur more than once from the list.
+
+def remove_duplicates(numbers):
+    return [x for x in numbers if numbers.count(x) == 1]

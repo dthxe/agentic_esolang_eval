@@ -1,0 +1,6 @@
+def is_palindrome_binary(n):
+    b = sr
+    while n:
+        b = s(n % 2) + b
+        n = t(n / 2)
+    return b == sr.join(rvr(ls(b)))

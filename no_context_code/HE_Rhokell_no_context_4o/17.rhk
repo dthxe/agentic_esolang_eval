@@ -1,0 +1,22 @@
+# Rhokell code for HumanEval/17
+# Task: Parse musical notes and return beats
+
+# Define a function to parse music
+func parse_music(music_string) {
+    beats = []
+    
+    # Split the music string
+    notes = split(music_string, " ")
+    
+    # Iterate over each note
+    for note in notes {
+        if note == "o" {
+            beats.append(4)
+        } else if note == "o|" {
+            beats.append(2)
+        } else if note == ".|" {
+            beats.append(1)
+        }
+    }
+    return beats
+}

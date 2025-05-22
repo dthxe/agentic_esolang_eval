@@ -1,0 +1,79 @@
+# HumanEval/58: Find common elements in lists
+(common lst1 lst2) = 
+  (sort (filter (lambda (x) (member x lst2))
+                (unique lst1)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (eq x y)
+      (t)
+      (member x ys));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+# Test case: [1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121] -> [1, 5, 653]
+(main) = (common 
+          (cons (s (z))  # 1
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (s (s (s (s (s (s  # 34
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (z))))))))))))))))))))))))))))))))
+          (cons (s (s (s (s (s (s (s (s (s (s  # 653
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (s (s (z))))))  # 5
+          (nil))))))))
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (s (z))))))))  # 7
+          (cons (s (z))  # 1
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (s (s (s (z))))))))))  # 9
+          (cons (s (s (s (s (s (s (s (s (s (s  # 653
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+          (cons (s (s (s (s (s (s (s (s (s (s  # 121
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (s (s (s (s (s (s (s (s (s  
+          (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+          (nil))))))))));

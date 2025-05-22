@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/144
+# Task: Simplify the expression x * n
+
+# Define a function to simplify
+func simplify(x, n) {
+    # Parse fractions
+    x_parts = split(x, "/")
+    n_parts = split(n, "/")
+    
+    # Calculate product
+    numerator = int(x_parts[0]) * int(n_parts[0])
+    denominator = int(x_parts[1]) * int(n_parts[1])
+    
+    # Check if whole number
+    return numerator % denominator == 0
+}

@@ -1,0 +1,9 @@
+def total_match(s1, s2):
+    if not isinstance(s1, s) or not isinstance(s2, s):
+        return None
+    if l(s1) != l(s2):
+        return None
+    for i in r(l(s1)):
+        if s1[i].lower() != s2[i].lower():
+            return False
+    return True

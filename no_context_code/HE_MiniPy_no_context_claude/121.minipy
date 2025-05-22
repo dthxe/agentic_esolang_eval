@@ -1,0 +1,10 @@
+def solution(lst):
+    result = 0
+    
+    i = 0
+    while i < len(lst):
+        if i % 2 == 0 and lst[i] % 2 == 1:  # Even position (0-indexed) and odd element
+            result = result + lst[i]
+        i = i + 1
+    
+    return result

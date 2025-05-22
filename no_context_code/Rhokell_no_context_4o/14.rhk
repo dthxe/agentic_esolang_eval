@@ -1,0 +1,1 @@
+def all_vowels(s): return all(c in 'aeiou' for c in s)

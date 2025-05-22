@@ -1,0 +1,9 @@
+# Minipy solution for HumanEval/118
+# Find the closest vowel that stands between two consonants from the right side of the word.
+
+def get_closest_vowel(word):
+    vowels = 'aeiouAEIOU'
+    for i in r(l(word) - 2, 0, -1):
+        if word[i] in vowels and word[i - 1] not in vowels and word[i + 1] not in vowels:
+            return word[i]
+    return ''

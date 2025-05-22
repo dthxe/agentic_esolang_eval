@@ -1,0 +1,5 @@
+def car_race_collision(n):
+    # In this problem, each car moving left to right will collide with
+    # each car moving right to left exactly once.
+    # So with n cars in each direction, there will be n*n collisions.
+    return n * n

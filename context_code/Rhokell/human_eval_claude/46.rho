@@ -1,0 +1,46 @@
+# HumanEval/46: Find median of list
+(median lst) = 
+  (let [sorted (sort lst)
+        len (length lst)]
+    (if (eq (mod len (s (s (z)))) (z))  # Even length
+        (div (add (nth sorted (div len (s (s (z)))))
+                 (nth sorted (sub (div len (s (s (z)))) (s (z)))))
+             (s (s (z))))  # Divide by 2
+        (nth sorted (div len (s (s (z)))))));  # Middle element
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(nth lst n) = 
+  (if (eq n (z))
+      (head lst)
+      (nth (tail lst) (sub n (s (z)))));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: [3, 1, 2] -> 2
+(main) = (median 
+          (cons (s (s (s (z))))  # 3
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (nil)))));

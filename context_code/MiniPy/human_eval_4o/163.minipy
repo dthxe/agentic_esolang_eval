@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/163
+# Return the even digits between a and b, in ascending order.
+
+def generate_integers(a, b):
+    return [x for x in r(min(a, b), max(a, b) + 1) if x % 2 == 0]

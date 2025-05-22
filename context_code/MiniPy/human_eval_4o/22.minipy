@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/22
+# Filter given list of any Python values only for integers.
+
+def filter_integers(values):
+    return f(values, lambda x: isinstance(x, int))

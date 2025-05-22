@@ -1,0 +1,22 @@
+/* HumanEval/115 */
+
+FUNC max_fill(grid, capacity) {
+    DECL total_operations = 0
+    
+    /* Process each well (row) */
+    LOOP i FROM 0 TO LEN(grid) - 1 {
+        DECL well = grid[i]
+        DECL water_units = 0
+        
+        /* Count water units in the well */
+        LOOP j FROM 0 TO LEN(well) - 1 {
+            water_units = water_units + well[j]
+        }
+        
+        /* Calculate number of bucket operations needed */
+        DECL operations = CEIL(water_units / capacity)
+        total_operations = total_operations + operations
+    }
+    
+    RETURN total_operations
+}

@@ -1,0 +1,5 @@
+# Rhokell implementation for vowels_count
+# Count the number of vowels in a string.
+
+(vowels_count (s)) = 
+    (length (filter (\ch -> (elem ch (cons 'a' (cons 'e' (cons 'i' (cons 'o' (cons 'u' nil)))))) s))

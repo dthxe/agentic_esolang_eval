@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/151
+# Task: Sum of squares of odd numbers
+
+# Define a function to calculate sum of squares
+func double_the_difference(lst) {
+    total = 0
+    
+    # Calculate sum
+    for num in lst {
+        if num > 0 and num % 2 != 0 {
+            total += num ** 2
+        }
+    }
+    return total
+}

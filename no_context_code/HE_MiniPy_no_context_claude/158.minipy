@@ -1,0 +1,27 @@
+def find_max(words):
+    # Helper function to count unique characters in a word
+    def count_unique_chars(word):
+        unique_chars = []
+        i = 0
+        while i < len(word):
+            if word[i] not in unique_chars:
+                unique_chars.append(word[i])
+            i = i + 1
+        return len(unique_chars)
+    
+    max_unique = 0
+    max_word = ""
+    
+    i = 0
+    while i < len(words):
+        unique_count = count_unique_chars(words[i])
+        
+        # Update max_word if current word has more unique characters
+        # or if it has the same number but comes first lexicographically
+        if unique_count > max_unique or (unique_count == max_unique and words[i] < max_word):
+            max_unique = unique_count
+            max_word = words[i]
+        
+        i = i + 1
+    
+    return max_word

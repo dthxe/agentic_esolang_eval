@@ -1,0 +1,18 @@
+# Print "Hello, Pyth!"
+(main) = (print (cons (byte (4) (8)) # H
+               (cons (byte (6) (5)) # e
+               (cons (byte (6) (C)) # l
+               (cons (byte (6) (C)) # l
+               (cons (byte (6) (F)) # o
+               (cons (byte (2) (C)) # ,
+               (cons (byte (2) (0)) # space
+               (cons (byte (5) (0)) # P
+               (cons (byte (7) (9)) # y
+               (cons (byte (7) (4)) # t
+               (cons (byte (6) (8)) # h
+               (cons (byte (2) (1)) # !
+               (cons (byte (0) (A)) # newline
+                     (nil))))))))))))));
+
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

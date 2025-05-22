@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/85
+# Add the even elements that are at odd indices.
+
+def add(lst):
+    return sm(lst[i] for i in r(1, l(lst), 2) if lst[i] % 2 == 0)

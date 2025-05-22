@@ -1,0 +1,13 @@
+def encrypt(s):
+    result = ""
+    shift = 4  # Shift down by two multiplied to two places
+    
+    i = 0
+    while i < len(s):
+        char = s[i]
+        # Shift the character
+        shifted_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+        result = result + shifted_char
+        i = i + 1
+    
+    return result

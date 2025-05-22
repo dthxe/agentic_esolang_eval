@@ -1,0 +1,37 @@
+
+FUNC sort_numbers(numbers) {
+    /* Define mapping from word to numeric value */
+    DECL number_map = {
+        "zero": 0,
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9
+    }
+    
+    /* Split the input string into words */
+    DECL words = SPLIT(numbers, " ")
+    
+    /* Convert words to numeric values for sorting */
+    DECL word_values = []
+    LOOP i FROM 0 TO LEN(words) - 1 {
+        APPEND(word_values, [number_map[words[i]], words[i]])
+    }
+    
+    /* Sort by numeric value */
+    SORT(word_values, 0)
+    
+    /* Extract sorted words */
+    DECL sorted_words = []
+    LOOP i FROM 0 TO LEN(word_values) - 1 {
+        APPEND(sorted_words, word_values[i][1])
+    }
+    
+    /* Join words with spaces */
+    RETURN JOIN(sorted_words, " ")
+}

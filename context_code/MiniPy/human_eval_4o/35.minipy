@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/35
+# Return maximum element in the list.
+
+def max_element(l):
+    return max(l)

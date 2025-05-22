@@ -1,0 +1,61 @@
+# HumanEval/95: Check if string represents valid time
+(check_dict str) = 
+  (let [hour (parse_number (take (s (s (z))) str))
+        minute (parse_number (drop (s (s (s (z)))) str))]
+    (and (valid_hour hour)
+         (valid_minute minute)));
+
+(parse_number str) = 
+  (if (eq str (nil))
+      (z)
+      (add (mul (sub (head str) (byte (3) (0)))
+                (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # 10
+           (sub (head (tail str)) (byte (3) (0)))));
+
+(valid_hour n) = 
+  (and (ge n (z))
+       (lt n (s (s (s (s (s (s (s (s (s (s  # 24
+           (s (s (s (s (s (s (s (s (s (s
+           (s (s (s (s (z)))))))))))))))))))))))))))));
+
+(valid_minute n) = 
+  (and (ge n (z))
+       (lt n (s (s (s (s (s (s (s (s (s (s  # 60
+           (s (s (s (s (s (s (s (s (s (s
+           (s (s (s (s (s (s (s (s (s (s
+           (s (s (s (s (s (s (s (s (s (s
+           (s (s (s (s (s (s (s (s (s (s
+           (s (s (s (s (s (s (s (s (s (s
+           (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
+
+(take n lst) = 
+  (if (eq n (z))
+      (nil)
+      (if (eq lst (nil))
+          (nil)
+          (cons (head lst)
+                (take (sub n (s (z))) (tail lst)))));
+
+(drop n lst) = 
+  (if (eq n (z))
+      lst
+      (if (eq lst (nil))
+          (nil)
+          (drop (sub n (s (z))) (tail lst))));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+(ge x y) = (not (lt x y));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: '23:35' -> true
+(main) = (check_dict 
+          (cons (byte (3) (2))  # '2'
+          (cons (byte (3) (3))  # '3'
+          (cons (byte (3) (A))  # ':'
+          (cons (byte (3) (3))  # '3'
+          (cons (byte (3) (5))  # '5'
+          (nil)))))));

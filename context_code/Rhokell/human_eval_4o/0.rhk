@@ -1,0 +1,11 @@
+# Rhokell implementation for has_close_elements
+# Check if any two numbers in a list are closer than a given threshold.
+
+(has_close_elements (numbers) (threshold)) = 
+    (letrec ((check_close (lst))
+        (match lst
+            (nil) false
+            ((cons x xs))
+                (let ((is_close (exists (\y -> (< (abs (- x y)) threshold)) xs)))
+                    (if is_close true (check_close xs)))))
+    (check_close numbers))

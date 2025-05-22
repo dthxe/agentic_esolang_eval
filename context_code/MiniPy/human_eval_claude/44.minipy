@@ -1,0 +1,8 @@
+def change_base(x, b):
+    if x == 0:
+        return sr.join(['0'])
+    r = ls()
+    while x:
+        r.append(s(x % b))
+        x = t(x / b)
+    return sr.join(rvr(r))

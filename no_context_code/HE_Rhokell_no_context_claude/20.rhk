@@ -1,0 +1,22 @@
+
+FUNC find_closest_elements(numbers) {
+    IF LEN(numbers) < 2 {
+        RETURN NULL  /* Need at least two elements */
+    }
+    
+    DECL sorted_nums = COPY(numbers)
+    SORT(sorted_nums)
+    
+    DECL min_diff = INFINITY
+    DECL result = [0, 0]
+    
+    LOOP i FROM 0 TO LEN(sorted_nums) - 2 {
+        DECL diff = sorted_nums[i + 1] - sorted_nums[i]
+        IF diff < min_diff {
+            min_diff = diff
+            result = [sorted_nums[i], sorted_nums[i + 1]]
+        }
+    }
+    
+    RETURN result
+}

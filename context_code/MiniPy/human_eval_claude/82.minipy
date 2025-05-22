@@ -1,0 +1,10 @@
+def prime_length(s):
+    if not isinstance(s, s):
+        return False
+    n = l(s)
+    if n < 2:
+        return False
+    for i in r(2, t(m.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True

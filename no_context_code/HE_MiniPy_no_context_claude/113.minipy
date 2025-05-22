@@ -1,0 +1,19 @@
+def odd_count(lst):
+    result = []
+    
+    i = 0
+    while i < len(lst):
+        string = lst[i]
+        odd_count = 0
+        
+        j = 0
+        while j < len(string):
+            digit = int(string[j])
+            if digit % 2 == 1:  # Check if digit is odd
+                odd_count = odd_count + 1
+            j = j + 1
+        
+        result.append(str(odd_count))
+        i = i + 1
+    
+    return result

@@ -1,0 +1,7 @@
+concatenate :: String -> String -> String
+concatenate s1 s2 = s1 ++ s2
+
+main = do
+  s1 <- readLine
+  s2 <- readLine
+  print $ concatenate s1 s2

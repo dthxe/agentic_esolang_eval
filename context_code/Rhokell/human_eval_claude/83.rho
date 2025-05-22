@@ -1,0 +1,28 @@
+# HumanEval/83: Check if string starts with vowel
+(starts_with_vowel str) = 
+  (if (eq str (nil))
+      (f)
+      (is_vowel (head str)));
+
+(is_vowel x) = 
+  (or (byte_eq x (byte (6) (1)))  # 'a'
+  (or (byte_eq x (byte (6) (5)))  # 'e'
+  (or (byte_eq x (byte (6) (9)))  # 'i'
+  (or (byte_eq x (byte (6) (F)))  # 'o'
+  (or (byte_eq x (byte (7) (5)))  # 'u'
+  (or (byte_eq x (byte (4) (1)))  # 'A'
+  (or (byte_eq x (byte (4) (5)))  # 'E'
+  (or (byte_eq x (byte (4) (9)))  # 'I'
+  (or (byte_eq x (byte (4) (F)))  # 'O'
+      (byte_eq x (byte (5) (5))))))))))); # 'U'
+
+(head (cons x _)) = x;
+
+# Test case: 'apple' -> true
+(main) = (starts_with_vowel 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (7) (0))  # 'p'
+          (cons (byte (7) (0))  # 'p'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (5))  # 'e'
+          (nil)))))));

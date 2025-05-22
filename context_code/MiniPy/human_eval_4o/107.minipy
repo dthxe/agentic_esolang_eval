@@ -1,0 +1,14 @@
+# Minipy solution for HumanEval/107
+# Return a tuple with the number of even and odd integer palindromes within the range(1, n).
+
+def even_odd_palindrome(n):
+    def is_palindrome(x):
+        return s(x) == s(x)[::-1]
+    evens, odds = 0, 0
+    for i in r(1, n + 1):
+        if is_palindrome(i):
+            if i % 2 == 0:
+                evens += 1
+            else:
+                odds += 1
+    return (evens, odds)

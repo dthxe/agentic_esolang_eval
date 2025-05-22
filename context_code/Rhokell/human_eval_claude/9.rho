@@ -1,0 +1,29 @@
+# HumanEval/9: Rolling maximum
+(def rolling_max [numbers]
+  (if (empty? numbers)
+    []
+    (if (empty? (rest numbers))
+      numbers
+      (let [rest_max (rolling_max (rest numbers))]
+        (cons (max (first numbers) (first rest_max))
+              (cons_max (first numbers) rest_max))))))
+
+(def cons_max [x xs]
+  (if (empty? xs)
+    []
+    (cons (max x (first xs)) (cons_max x (rest xs)))))
+
+(def max [x y]
+  (if (< x y) y x))
+
+; Test case: [1, 2, 3, 2, 3, 4, 2]
+(def main
+  (rolling_max
+    (cons 1
+      (cons 2
+        (cons 3
+          (cons 2
+            (cons 3
+              (cons 4
+                (cons 2
+                  ()))))))))

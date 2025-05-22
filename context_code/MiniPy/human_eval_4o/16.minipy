@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/16
+# Count distinct characters in a string.
+
+def count_distinct_characters(string):
+    return l(set(string.lower()))

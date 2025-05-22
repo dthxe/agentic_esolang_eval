@@ -1,0 +1,2 @@
+def filter_by_substring(s, t):
+    return [x for x in s if t in x]

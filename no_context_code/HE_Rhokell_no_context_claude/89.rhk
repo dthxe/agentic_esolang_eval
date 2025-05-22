@@ -1,0 +1,31 @@
+/* HumanEval/89 */
+
+FUNC encrypt(s) {
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        DECL char = s[i]
+        DECL code = ORD(char)
+        
+        /* Shift by 2*2 = 4 positions */
+        DECL shifted_code = code + 4
+        
+        /* Handle wrapping for lowercase letters */
+        IF code >= ORD("a") && code <= ORD("z") {
+            IF shifted_code > ORD("z") {
+                shifted_code = ORD("a") + (shifted_code - ORD("z") - 1)
+            }
+        }
+        
+        /* Handle wrapping for uppercase letters */
+        IF code >= ORD("A") && code <= ORD("Z") {
+            IF shifted_code > ORD("Z") {
+                shifted_code = ORD("A") + (shifted_code - ORD("Z") - 1)
+            }
+        }
+        
+        result = result + CHR(shifted_code)
+    }
+    
+    RETURN result
+}

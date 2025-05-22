@@ -1,0 +1,24 @@
+/* HumanEval/55 */
+
+FUNC fib(n) {
+    IF n <= 0 {
+        RETURN 0
+    }
+    
+    IF n == 1 {
+        RETURN 1
+    }
+    
+    DECL a = 0
+    DECL b = 1
+    DECL i = 2
+    
+    WHILE i <= n {
+        DECL temp = a + b
+        a = b
+        b = temp
+        i = i + 1
+    }
+    
+    RETURN b
+}

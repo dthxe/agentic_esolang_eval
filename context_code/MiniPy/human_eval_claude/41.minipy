@@ -1,0 +1,10 @@
+def car_race_collision(n):
+    p = ls()
+    for i in r(l(n)):
+        if n[i] > 0:
+            for j in r(i+1, l(n)):
+                if n[j] < 0:
+                    d = j - i
+                    t = d / (ab(n[i]) + ab(n[j]))
+                    p.append(t)
+    return l(set(p))

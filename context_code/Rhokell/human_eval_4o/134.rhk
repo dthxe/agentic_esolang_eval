@@ -1,0 +1,5 @@
+# Rhokell implementation for map_filter_odd
+# Filter odd numbers in each sublist in a list of lists.
+
+(map_filter_odd (lst)) = 
+    (map (\sublist -> (filter_odd sublist)) lst)

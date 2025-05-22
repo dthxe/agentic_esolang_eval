@@ -1,0 +1,5 @@
+# Rhokell implementation for map_lcm
+# Apply LCM function to each pair in a list of pairs.
+
+(map_lcm (lst)) = 
+    (map (\pair -> (lcm (fst pair) (snd pair))) lst)

@@ -1,0 +1,2 @@
+def encrypt(s):
+    return ''.join(chr(((ord(ch) - ord('a') + 4) % 26) + ord('a')) for ch in s)

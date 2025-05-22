@@ -1,0 +1,5 @@
+# Rhokell implementation for compare
+# Return an array of differences between scores and guesses.
+
+(compare (game) (guess)) = 
+    (map (\(g s) -> (abs (- g s))) (zip game guess))

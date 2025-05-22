@@ -1,0 +1,11 @@
+def double_the_difference(lst):
+    result = 0
+    
+    i = 0
+    while i < len(lst):
+        # Check if the number is a positive integer and odd
+        if isinstance(lst[i], int) and lst[i] > 0 and lst[i] % 2 == 1:
+            result = result + lst[i] * lst[i]
+        i = i + 1
+    
+    return result

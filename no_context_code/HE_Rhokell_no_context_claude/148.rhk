@@ -1,0 +1,39 @@
+/* HumanEval/148 */
+
+FUNC bf(planet1, planet2) {
+    /* Define the planets in order of proximity to the Sun */
+    DECL planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    /* Find the indices of the input planets */
+    DECL index1 = -1
+    DECL index2 = -1
+    
+    LOOP i FROM 0 TO LEN(planets) - 1 {
+        IF planets[i] == planet1 {
+            index1 = i
+        }
+        IF planets[i] == planet2 {
+            index2 = i
+        }
+    }
+    
+    /* Check if both planets are valid */
+    IF index1 == -1 || index2 == -1 {
+        RETURN []
+    }
+    
+    /* Ensure index1 < index2 */
+    IF index1 > index2 {
+        DECL temp = index1
+        index1 = index2
+        index2 = temp
+    }
+    
+    /* Get the planets between index1 and index2 */
+    DECL result = []
+    LOOP i FROM index1 + 1 TO index2 - 1 {
+        APPEND(result, planets[i])
+    }
+    
+    RETURN result
+}

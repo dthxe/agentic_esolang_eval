@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/98
+# Task: Count uppercase vowels at even indices
+
+# Define a function to count uppercase vowels
+func count_upper(s) {
+    count = 0
+    
+    # Count uppercase vowels at even indices
+    for i in 0 to len(s) step 2 {
+        if is_upper(s[i]) and is_vowel(s[i]) {
+            count += 1
+        }
+    }
+    return count
+}

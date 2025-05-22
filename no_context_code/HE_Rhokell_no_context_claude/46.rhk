@@ -1,0 +1,22 @@
+/* HumanEval/46 */
+
+FUNC fib4(n) {
+    IF n == 0 || n == 1 || n == 3 {
+        RETURN 0
+    }
+    
+    IF n == 2 {
+        RETURN 2
+    }
+    
+    /* Initialize the first four values */
+    DECL fib = [0, 0, 2, 0]
+    
+    /* Calculate the rest iteratively */
+    LOOP i FROM 4 TO n {
+        DECL next_val = fib[i-1] + fib[i-2] + fib[i-3] + fib[i-4]
+        APPEND(fib, next_val)
+    }
+    
+    RETURN fib[n]
+}

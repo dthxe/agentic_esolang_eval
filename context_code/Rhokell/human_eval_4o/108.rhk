@@ -1,0 +1,5 @@
+# Rhokell implementation for map_exp2
+# Apply base-2 exponential function to each element in a list.
+
+(map_exp2 (lst)) = 
+    (map (\x -> (exp2 x)) lst)

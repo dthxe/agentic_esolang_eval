@@ -1,0 +1,16 @@
+# HumanEval/130: Calculate triangular number
+(tri n) = 
+  (div (mul n (add n (s (z))))
+       (s (s (z))));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: 3 -> 6 (1 + 2 + 3)
+(main) = (tri 
+          (s (s (s (z)))));

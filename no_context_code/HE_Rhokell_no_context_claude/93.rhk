@@ -1,0 +1,39 @@
+/* HumanEval/93 */
+
+FUNC encode(message) {
+    DECL vowels = "aeiouAEIOU"
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(message) - 1 {
+        DECL char = message[i]
+        
+        /* Swap case */
+        IF IS_UPPER(char) {
+            char = TO_LOWER(char)
+        } ELIF IS_LOWER(char) {
+            char = TO_UPPER(char)
+        }
+        
+        /* Replace vowels with letter 2 places ahead */
+        IF CONTAINS(vowels, message[i]) {
+            DECL code = ORD(char)
+            DECL new_code = code + 2
+            
+            /* Handle wrapping for lowercase vowels */
+            IF message[i] IN "aeiou" && new_code > ORD("z") {
+                new_code = ORD("a") + (new_code - ORD("z") - 1)
+            }
+            
+            /* Handle wrapping for uppercase vowels */
+            IF message[i] IN "AEIOU" && new_code > ORD("Z") {
+                new_code = ORD("A") + (new_code - ORD("Z") - 1)
+            }
+            
+            char = CHR(new_code)
+        }
+        
+        result = result + char
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,5 @@
+/* HumanEval/23 */
+
+FUNC strlen(string) {
+    RETURN LEN(string)
+}

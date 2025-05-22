@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/36
+# Task: Count digit 7 in numbers divisible by 11 or 13
+
+# Define a function to count digit 7
+func fizz_buzz(n) {
+    count = 0
+    
+    # Iterate over each number
+    for i in 0 to n {
+        if i % 11 == 0 or i % 13 == 0 {
+            count += str(i).count('7')
+        }
+    }
+    return count
+}

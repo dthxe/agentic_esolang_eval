@@ -1,0 +1,9 @@
+def minSubArraySum(nums):
+    if not nums:
+        return 0
+    m = nums[0]
+    c = nums[0]
+    for i in r(1, l(nums)):
+        c = min(nums[i], c + nums[i])
+        m = min(m, c)
+    return m

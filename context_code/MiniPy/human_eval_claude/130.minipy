@@ -1,0 +1,8 @@
+def tri(n):
+    if not isinstance(n, t) or n < 0:
+        return None
+    r = ls()
+    for i in r(n + 1):
+        if i % 3 == 0 or i % 4 == 0:
+            r.append(i)
+    return r

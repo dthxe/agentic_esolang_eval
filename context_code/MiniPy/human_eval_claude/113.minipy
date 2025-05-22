@@ -1,0 +1,15 @@
+def odd_count(lst):
+    if not lst:
+        return d()
+    r = d()
+    for x in lst:
+        if not isinstance(x, t):
+            continue
+        if x % 2 == 1:
+            s = s(x)
+            for d in s:
+                if d in r:
+                    r[d] += 1
+                else:
+                    r[d] = 1
+    return r

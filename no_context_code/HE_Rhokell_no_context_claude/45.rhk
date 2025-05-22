@@ -1,0 +1,5 @@
+/* HumanEval/45 */
+
+FUNC triangle_area(a, h) {
+    RETURN (a * h) / 2
+}

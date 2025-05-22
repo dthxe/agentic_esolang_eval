@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/115
+# Output the number of times you need to lower the buckets to empty the wells.
+
+def max_fill(grid, capacity):
+    return sm(sm(row) for row in grid) // capacity

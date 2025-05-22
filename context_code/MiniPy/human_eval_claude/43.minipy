@@ -1,0 +1,8 @@
+def pairs_sum_to_zero(l):
+    s = set(l)
+    for x in l:
+        if -x in s and x != 0:
+            return True
+    if l.count(0) > 1:
+        return True
+    return False

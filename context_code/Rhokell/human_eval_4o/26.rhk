@@ -1,0 +1,6 @@
+# Rhokell implementation for remove_duplicates
+# From a list of integers, remove all elements that occur more than once.
+
+(remove_duplicates (numbers)) = 
+    (let ((counts (map (\x -> (cons x (count (\y -> (= x y)) numbers))) numbers)))
+    (map (\x -> (fst x)) (filter (\x -> (= (snd x) 1)) counts)))

@@ -1,0 +1,48 @@
+/* HumanEval/141 */
+
+FUNC file_name_check(file_name) {
+    /* Check if the file name contains exactly one dot */
+    DECL dot_count = 0
+    DECL dot_position = -1
+    
+    LOOP i FROM 0 TO LEN(file_name) - 1 {
+        IF file_name[i] == "." {
+            dot_count = dot_count + 1
+            dot_position = i
+        }
+    }
+    
+    IF dot_count != 1 {
+        RETURN "No"
+    }
+    
+    /* Check if the substring before the dot is not empty and starts with a letter */
+    IF dot_position == 0 {
+        RETURN "No"  /* Empty substring before dot */
+    }
+    
+    DECL first_char = file_name[0]
+    IF !IS_ALPHA(first_char) {
+        RETURN "No"  /* First character is not a letter */
+    }
+    
+    /* Check if the extension is one of the allowed types */
+    DECL extension = SUBSTRING(file_name, dot_position + 1, LEN(file_name))
+    IF extension != "txt" && extension != "exe" && extension != "dll" {
+        RETURN "No"
+    }
+    
+    /* Count the number of digits in the file name */
+    DECL digit_count = 0
+    LOOP i FROM 0 TO LEN(file_name) - 1 {
+        IF IS_DIGIT(file_name[i]) {
+            digit_count = digit_count + 1
+        }
+    }
+    
+    IF digit_count > 3 {
+        RETURN "No"
+    }
+    
+    RETURN "Yes"
+}

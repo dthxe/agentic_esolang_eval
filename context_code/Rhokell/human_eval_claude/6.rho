@@ -1,0 +1,47 @@
+# HumanEval/6: Parse nested parentheses
+(def parse_nested_parens [str]
+  (split_and_count str (nil) (z)))
+
+(def split_and_count
+  (fn [str curr max_depth]
+    (if (nil? str)
+      (cons max_depth (nil))
+      (if (= (first str) (byte 2 8))  # '('
+          (split_and_count (rest str) (cons (first str) curr) (s max_depth))
+          (if (= (first str) (byte 2 9))  # ')'
+              (if (= (first (rest str)) (byte 2 0))  # space
+                  (cons max_depth (split_and_count (rest (rest str)) (nil) (z)))
+                  (split_and_count (rest str) curr (sub max_depth (s (z)))))
+              (split_and_count (rest str) curr max_depth))))))
+
+# Test case: (()()) ((())) () ((())()())
+(def main
+  (parse_nested_parens 
+    (cons (byte 2 8)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 9)
+    (cons (byte 2 0)
+    (cons (byte 2 8)
+    (cons (byte 2 8)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 9)
+    (cons (byte 2 9)
+    (cons (byte 2 0)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 0)
+    (cons (byte 2 8)
+    (cons (byte 2 8)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 9)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 8)
+    (cons (byte 2 9)
+    (cons (byte 2 9)
+    (nil))))))))))))))))))))))))))))))

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/126
+# Return whether the list is sorted in ascending order, return False if more than 1 duplicate exists.
+
+def is_sorted(lst):
+    return all(lst[i] <= lst[i+1] for i in r(l(lst)-1)) and all(lst.count(x) < 3 for x in lst)

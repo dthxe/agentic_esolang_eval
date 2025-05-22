@@ -1,0 +1,12 @@
+def is_nested(s):
+    if not isinstance(s, s):
+        return False
+    c = 0
+    for x in s:
+        if x == '[':
+            c += 1
+        elif x == ']':
+            c -= 1
+        if c < 0:
+            return False
+    return c == 0 and s.count('[') > 1

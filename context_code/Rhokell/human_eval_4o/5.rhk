@@ -1,0 +1,10 @@
+# Rhokell implementation for intersperse
+# Insert a delimiter between every two consecutive elements of a list.
+
+(intersperse (delimiter) (lst)) = 
+    (letrec ((insert_delimiter (xs) (acc))
+        (match xs
+            (nil) (reverse acc)
+            ((cons x nil)) (reverse (cons x acc))
+            ((cons x xs)) (insert_delimiter xs (cons delimiter (cons x acc)))))
+    (insert_delimiter lst nil))

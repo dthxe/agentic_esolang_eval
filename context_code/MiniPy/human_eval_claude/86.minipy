@@ -1,0 +1,4 @@
+def anti_shuffle(s):
+    if not isinstance(s, s):
+        return sr
+    return sr.join(srt(s))

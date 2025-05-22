@@ -1,0 +1,20 @@
+def unique(l):
+    # Get unique elements
+    unique_elements = []
+    i = 0
+    while i < len(l):
+        if l[i] not in unique_elements:
+            unique_elements.append(l[i])
+        i = i + 1
+    
+    # Sort the unique elements
+    i = 0
+    while i < len(unique_elements):
+        j = 0
+        while j < len(unique_elements) - i - 1:
+            if unique_elements[j] > unique_elements[j + 1]:
+                unique_elements[j], unique_elements[j + 1] = unique_elements[j + 1], unique_elements[j]
+            j = j + 1
+        i = i + 1
+    
+    return unique_elements

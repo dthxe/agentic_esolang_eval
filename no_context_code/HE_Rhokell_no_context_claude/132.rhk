@@ -1,0 +1,24 @@
+/* HumanEval/132 */
+
+FUNC is_nested(string) {
+    /* Check if there's a valid subsequence with at least one nested bracket */
+    DECL max_depth = 0
+    DECL depth = 0
+    
+    LOOP i FROM 0 TO LEN(string) - 1 {
+        IF string[i] == "[" {
+            depth = depth + 1
+            max_depth = MAX(max_depth, depth)
+        } ELIF string[i] == "]" {
+            depth = depth - 1
+        }
+        
+        /* Invalid sequence */
+        IF depth < 0 {
+            depth = 0
+        }
+    }
+    
+    /* A bracket is nested if the maximum depth is at least 2 */
+    RETURN max_depth >= 2
+}

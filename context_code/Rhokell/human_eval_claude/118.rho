@@ -1,0 +1,30 @@
+# HumanEval/118: Check if three sides form right angle triangle
+(right_angle_triangle a b c) = 
+  (let [sides (sort (cons a (cons b (cons c (nil)))))]
+    (eq (add (mul (head sides) (head sides))
+             (mul (head (tail sides)) (head (tail sides))))
+        (mul (last sides) (last sides))));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+(last (cons x (nil))) = x;
+(last (cons _ xs)) = (last xs);
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 3, 4, 5 -> true (3^2 + 4^2 = 5^2)
+(main) = (right_angle_triangle 
+          (s (s (s (z))))  # 3
+          (s (s (s (s (z)))))  # 4
+          (s (s (s (s (s (z)))))));

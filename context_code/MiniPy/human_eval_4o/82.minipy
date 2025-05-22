@@ -1,0 +1,12 @@
+# Minipy solution for HumanEval/82
+# Return True if the string length is a prime number.
+
+def prime_length(string):
+    def is_prime(n):
+        if n <= 1:
+            return False
+        for i in r(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    return is_prime(l(string))

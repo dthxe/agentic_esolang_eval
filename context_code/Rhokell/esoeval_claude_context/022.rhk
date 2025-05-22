@@ -1,0 +1,54 @@
+# Check if a number is a perfect square
+# Helper functions for Church numerals and arithmetic
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+(mul (z) y) = (z);
+(mul (s x) y) = (add y (mul x y));
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T;
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # \n
+                           (nil)))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F;
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # \n
+                            (nil))))))));
+
+# Check if perfect square by finding integer square root
+(is_square n) = (check_square n (z));
+(check_square n i) = (check_square_helper (sub n (mul i i)) n i);
+(check_square_helper (z) n i) = (print_true);  # Found perfect square;
+(check_square_helper (s x) n i) = (check_next (sub n (mul (s i) (s i))) n (s i));
+(check_next (s x) n i) = (print_false);  # Too large, not a perfect square;
+(check_next (z) n i) = (print_true);  # Found perfect square;
+(check_next x n i) = (check_square n (s i));  # Try next number;
+
+# Main function
+(main) = (is_square (digit_to_church (input_byte) (input_byte)));
+
+# Helper functions for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

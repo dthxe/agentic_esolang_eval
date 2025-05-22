@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/131
+# Task: Product of odd digits
+
+# Define a function to calculate product of odd digits
+func digits(n) {
+    product = 1
+    has_odd = false
+    
+    # Calculate product
+    for digit in str(n) {
+        if int(digit) % 2 != 0 {
+            product *= int(digit)
+            has_odd = true
+        }
+    }
+    return product if has_odd else 0
+}

@@ -1,0 +1,65 @@
+# HumanEval/86: Anti-shuffle string (sort each character group)
+(anti_shuffle str) = 
+  (join_strings 
+   (map sort_string 
+        (split_by_type str)));
+
+(split_by_type str) = 
+  (let [uppers (filter is_upper str)
+        lowers (filter is_lower str)
+        digits (filter is_digit str)
+        others (filter (lambda (x) 
+                        (and (not (is_upper x))
+                        (and (not (is_lower x))
+                             (not (is_digit x))))) str)]
+    (cons uppers (cons lowers (cons digits (cons others (nil))))));
+
+(sort_string str) = (sort str);
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(join_strings (nil)) = (nil);
+(join_strings (cons x xs)) = 
+  (append x (join_strings xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(is_upper x) = 
+  (and (ge x (byte (4) (1)))  # 'A'
+       (le x (byte (5) (A)))); # 'Z'
+
+(is_lower x) = 
+  (and (ge x (byte (6) (1)))  # 'a'
+       (le x (byte (7) (A)))); # 'z'
+
+(is_digit x) = 
+  (and (ge x (byte (3) (0)))  # '0'
+       (le x (byte (3) (9)))); # '9'
+
+(ge x y) = (not (lt x y));
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: 'Hi123' -> 'Hi123' (already sorted)
+(main) = (anti_shuffle 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (9))  # 'i'
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (2))  # '2'
+          (cons (byte (3) (3))  # '3'
+          (nil)))))));

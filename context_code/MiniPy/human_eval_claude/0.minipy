@@ -1,0 +1,7 @@
+def has_close_elements(n, t):
+    ln = l(n)
+    for i in r(ln):
+        for j in r(i+1, ln):
+            if ab(n[i] - n[j]) < t:
+                return True
+    return False

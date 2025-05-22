@@ -1,0 +1,7 @@
+add :: Int -> Int -> Int
+add a b = a + b
+
+main = do
+  a <- readInt
+  b <- readInt
+  print $ add a b

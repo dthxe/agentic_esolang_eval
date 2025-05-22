@@ -1,0 +1,7 @@
+def derivative(xs):
+    if l(xs) <= 1:
+        return ls()
+    r = ls()
+    for i in r(l(xs)-1):
+        r.append(xs[i] * (l(xs)-i-1))
+    return r

@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/68
+# Pluck the node with the smallest even value.
+
+def pluck(arr):
+    evens = [(val, i) for i, val in enumerate(arr) if val % 2 == 0]
+    return min(evens, default=[]) if evens else []

@@ -1,0 +1,5 @@
+# Rhokell implementation for greatest_common_divisor
+# Return the greatest common divisor of two integers.
+
+(greatest_common_divisor (a) (b)) = 
+    (if (= b 0) a (greatest_common_divisor b (mod a b)))

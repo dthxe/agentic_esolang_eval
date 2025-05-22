@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/67
+# Return the number of mango fruits in the basket.
+
+def fruit_distribution(s, n):
+    nums = [t(x) for x in rf(r'\\d+', s)]
+    return n - sm(nums)

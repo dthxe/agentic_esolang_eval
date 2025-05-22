@@ -1,0 +1,5 @@
+# Rhokell implementation for sum_of_squares
+# Return the sum of the squares of the numbers in the list.
+
+(sum_of_squares (lst)) = 
+    (foldl (+) 0 (map (\x -> (* x x)) lst))

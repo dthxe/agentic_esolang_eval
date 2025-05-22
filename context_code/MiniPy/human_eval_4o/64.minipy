@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/64
+# Count the number of vowels in a string.
+
+def vowels_count(s):
+    return l([ch for ch in s if ch.lower() in 'aeiou' or (ch.lower() == 'y' and s[-1] == ch)])

@@ -1,0 +1,5 @@
+# Rhokell implementation for map_round
+# Round each element in a list to the nearest integer.
+
+(map_round (lst)) = 
+    (map (\x -> (round x)) lst)

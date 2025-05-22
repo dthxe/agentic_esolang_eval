@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/84
+# Return the total sum of digits in binary.
+
+def solve(N):
+    return bin(sm(int(d) for d in s(N)))[2:]

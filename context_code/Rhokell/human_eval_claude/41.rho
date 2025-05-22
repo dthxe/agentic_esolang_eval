@@ -1,0 +1,38 @@
+# HumanEval/41: Calculate car fuel
+(car_fuel_required distance) = 
+  (if (le distance (z))
+      (z)
+      (add (s (s (s (s (s (s (s (s (s (s  # 10
+           (s (s (s (s (s (s (s (s (s (s  # 20
+           (s (s (s (s (s (z)))))))))))))))))))))))))
+           (car_fuel_required (sub distance (s (s (s (s (s  # 50
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (s (s (s (s (s
+                                          (z))))))))))))))))))))))))))))))))))))))))))))))))))))))));
+
+(le x y) = (lt y x);
+
+# Test case: 70 -> 45
+(main) = (car_fuel_required 
+          (s (s (s (s (s  # 70 in Church numerals
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (z))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

@@ -1,0 +1,6 @@
+isEven :: Int -> String
+isEven n = if n `mod` 2 == 0 then "Even" else "Odd"
+
+main = do
+  n <- readInt
+  print $ isEven n

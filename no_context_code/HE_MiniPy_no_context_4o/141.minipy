@@ -1,0 +1,7 @@
+def file_name_check(file_name):
+    import re
+    if re.match(r'^[a-zA-Z][^\.]*\.[^.]+$', file_name):
+        name, ext = file_name.rsplit('.', 1)
+        if ext in ['txt', 'exe', 'dll'] and sum(c.isdigit() for c in name) <= 3:
+            return 'Yes'
+    return 'No'

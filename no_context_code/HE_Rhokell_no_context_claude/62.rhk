@@ -1,0 +1,15 @@
+/* HumanEval/62 */
+
+FUNC derivative(xs) {
+    IF LEN(xs) <= 1 {
+        RETURN [0]
+    }
+    
+    DECL result = []
+    
+    LOOP i FROM 1 TO LEN(xs) - 1 {
+        APPEND(result, xs[i] * i)
+    }
+    
+    RETURN result
+}

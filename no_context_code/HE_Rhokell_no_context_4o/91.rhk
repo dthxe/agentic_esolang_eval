@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/91
+# Task: Count the number of boredoms
+
+# Define a function to count boredoms
+func is_bored(S) {
+    sentences = split(S, /[.!?]/)
+    count = 0
+    
+    # Count sentences starting with 'I'
+    for sentence in sentences {
+        trimmed = trim(sentence)
+        if starts_with(trimmed, "I") {
+            count += 1
+        }
+    }
+    return count
+}

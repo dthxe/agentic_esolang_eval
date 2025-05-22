@@ -1,0 +1,5 @@
+# Rhokell implementation for reverse_string
+# Reverse the given string.
+
+(reverse_string (s)) = 
+    (foldl (\acc x -> (cons x acc)) nil s)

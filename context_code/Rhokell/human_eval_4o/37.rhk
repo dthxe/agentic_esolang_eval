@@ -1,0 +1,5 @@
+# Rhokell implementation for decode_shift
+# Takes as input string encoded with encode_shift function. Returns decoded string.
+
+(decode_shift (s)) = 
+    (map (\ch -> (chr (- (ord ch) 5))) s)

@@ -1,0 +1,8 @@
+# Rhokell code for HumanEval/58
+# Task: Return sorted unique common elements for two lists
+
+# Define a function to find common elements
+func common(l1, l2) {
+    common_elements = set(l1) & set(l2)
+    return sort(common_elements)
+}

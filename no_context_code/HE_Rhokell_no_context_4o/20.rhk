@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/20
+# Task: Find two closest numbers in a list
+
+# Define a function to find closest elements
+func find_closest_elements(numbers) {
+    min_diff = inf
+    closest_pair = (0, 0)
+    
+    # Iterate over each pair of numbers
+    for i in 0 to len(numbers) - 1 {
+        for j in i + 1 to len(numbers) {
+            diff = abs(numbers[i] - numbers[j])
+            if diff < min_diff {
+                min_diff = diff
+                closest_pair = (min(numbers[i], numbers[j]), max(numbers[i], numbers[j]))
+            }
+        }
+    }
+    return closest_pair
+}

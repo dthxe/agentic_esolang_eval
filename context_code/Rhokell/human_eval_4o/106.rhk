@@ -1,0 +1,5 @@
+# Rhokell implementation for map_asinh
+# Apply inverse hyperbolic sine function to each element in a list.
+
+(map_asinh (lst)) = 
+    (map (\x -> (asinh x)) lst)

@@ -1,0 +1,46 @@
+# HumanEval/131: Find digits in sequence that add up to n
+(digits n) = 
+  (if (lt n (z))
+      (nil)
+      (digits_helper n (nil)));
+
+(digits_helper n acc) = 
+  (if (eq n (z))
+      (reverse acc)
+      (let [digit (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+        (digits_helper 
+          (div n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # div by 10
+          (cons digit acc))));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 123 -> [1, 2, 3]
+(main) = (digits 
+          (s (s (s (s (s (s (s (s (s (s  # 123 in Church numerals
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

@@ -1,0 +1,14 @@
+# Rhokell implementation for prime_length
+# Return True if the string length is a prime number.
+
+(prime_length (string)) = 
+    (let ((len (length string)))
+    (letrec ((is_prime (n) (i))
+        (if (<= n 1)
+            false
+            (if (= i n)
+                true
+                (if (= (mod n i) 0)
+                    false
+                    (is_prime n (+ i 1))))))
+    (is_prime len 2)))

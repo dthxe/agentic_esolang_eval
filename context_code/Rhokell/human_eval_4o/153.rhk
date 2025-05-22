@@ -1,0 +1,6 @@
+# Rhokell implementation for Strongest_Extension
+# Return the class name with the strongest extension.
+
+(Strongest_Extension (class_name) (extensions)) = 
+    (let ((strongest (foldl (\acc ext -> (if (> (- (count_upper ext) (count_lower ext)) (- (count_upper acc) (count_lower acc))) ext acc)) (head extensions) extensions)))
+        (concat class_name "." strongest))

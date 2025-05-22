@@ -1,0 +1,11 @@
+def encode_shift(s):
+    if not s:
+        return [sr, 0]
+    r = ls()
+    b = 0
+    for i in r(l(s)):
+        c = c((c(s[i])-97+i+1)%26+97)
+        r.append(c)
+        if c > s[i]:
+            b += 1
+    return [sr.join(r), b]

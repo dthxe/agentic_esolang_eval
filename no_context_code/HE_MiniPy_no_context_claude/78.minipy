@@ -1,0 +1,12 @@
+def hex_key(num):
+    # Prime hexadecimal digits are 2, 3, 5, 7, B (11), D (13)
+    prime_hex_digits = ['2', '3', '5', '7', 'B', 'D']
+    
+    count = 0
+    i = 0
+    while i < len(num):
+        if num[i].upper() in prime_hex_digits:
+            count = count + 1
+        i = i + 1
+    
+    return count

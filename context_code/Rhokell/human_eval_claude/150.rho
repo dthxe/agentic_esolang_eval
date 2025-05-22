@@ -1,0 +1,30 @@
+# HumanEval/150: Find X numbers that are divisible by both 2 and 3
+(x_numbers x) = 
+  (take x (filter is_divisible_by_2_and_3 (from (z))));
+
+(is_divisible_by_2_and_3 n) = 
+  (and (eq (mod n (s (s (z)))) (z))  # divisible by 2
+       (eq (mod n (s (s (s (z))))) (z)));  # divisible by 3
+
+(take (z) _) = (nil);
+(take _ (nil)) = (nil);
+(take (s n) (cons x xs)) = 
+  (cons x (take n xs));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(from n) = 
+  (cons n (from (s n)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 3 -> [0, 6, 12] (first 3 numbers divisible by both 2 and 3)
+(main) = (x_numbers 
+          (s (s (s (z)))));  # 3

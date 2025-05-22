@@ -1,0 +1,15 @@
+def minSubArraySum(nums):
+    if not nums:
+        return 0
+    
+    min_sum = nums[0]
+    current_sum = nums[0]
+    
+    i = 1
+    while i < len(nums):
+        # Either start a new subarray or continue the current one
+        current_sum = min(nums[i], current_sum + nums[i])
+        min_sum = min(min_sum, current_sum)
+        i = i + 1
+    
+    return min_sum

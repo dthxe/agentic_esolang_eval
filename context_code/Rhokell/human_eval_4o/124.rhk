@@ -1,0 +1,5 @@
+# Rhokell implementation for map_prime
+# Check if each element in a list is a prime number.
+
+(map_prime (lst)) = 
+    (map (\x -> (is_prime x)) lst)

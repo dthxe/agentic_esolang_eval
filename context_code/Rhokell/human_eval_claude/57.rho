@@ -1,0 +1,29 @@
+# HumanEval/57: Check monotonic ordering
+(monotonic numbers) = 
+  (or (monotonic_increasing numbers)
+      (monotonic_decreasing numbers));
+
+(monotonic_increasing (nil)) = (t);
+(monotonic_increasing (cons x (nil))) = (t);
+(monotonic_increasing (cons x (cons y ys))) = 
+  (and (le x y)
+       (monotonic_increasing (cons y ys)));
+
+(monotonic_decreasing (nil)) = (t);
+(monotonic_decreasing (cons x (nil))) = (t);
+(monotonic_decreasing (cons x (cons y ys))) = 
+  (and (ge x y)
+       (monotonic_decreasing (cons y ys)));
+
+(le x y) = (not (gt x y));
+(ge x y) = (not (lt x y));
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 4, 10] -> true
+(main) = (monotonic 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (s (s (s (s (s  # 10
+          (z)))))))))))
+          (nil))))));

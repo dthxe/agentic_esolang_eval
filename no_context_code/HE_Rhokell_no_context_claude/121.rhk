@@ -1,0 +1,14 @@
+/* HumanEval/121 */
+
+FUNC solution(lst) {
+    DECL sum = 0
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        /* Check if position is even and element is odd */
+        IF i % 2 == 0 && lst[i] % 2 == 1 {
+            sum = sum + lst[i]
+        }
+    }
+    
+    RETURN sum
+}

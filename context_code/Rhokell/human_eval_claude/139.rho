@@ -1,0 +1,18 @@
+# HumanEval/139: Find special elements where element equals index
+(special_factorial lst) = 
+  (filter_with_index eq lst (z));
+
+(filter_with_index _ (nil) _) = (nil);
+(filter_with_index f (cons x xs) idx) = 
+  (if (f x idx)
+      (cons x (filter_with_index f xs (s idx)))
+      (filter_with_index f xs (s idx)));
+
+# Test case: [0, 1, 2, 3, 4] -> [0, 1, 2, 3, 4] (all elements equal their index)
+(main) = (special_factorial 
+          (cons (z)  # 0
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil)))))));

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/72
+# Return True if the object q will fly.
+
+def will_it_fly(q, w):
+    return q == q[::-1] and sm(q) <= w

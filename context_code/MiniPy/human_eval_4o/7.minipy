@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/7
+# Filter strings that contain a given substring.
+
+def filter_by_substring(strings, substring):
+    return f(strings, lambda s: substring in s)

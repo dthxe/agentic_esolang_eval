@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/16
+# Task: Count distinct characters in a string
+
+# Define a function to count distinct characters
+func count_distinct_characters(string) {
+    distinct_chars = set()
+    
+    # Iterate over each character
+    for char in string {
+        distinct_chars.add(lower(char))
+    }
+    return len(distinct_chars)
+}

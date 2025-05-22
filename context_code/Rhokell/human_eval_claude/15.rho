@@ -1,0 +1,33 @@
+# HumanEval/15: Generate string sequence of numbers
+(string_sequence n) = (join_with_spaces (range_list (z) n));
+
+(range_list start end) = 
+  (if (gt end start)
+      (cons start (range_list (s start) end))
+      (cons start (nil)));
+
+(join_with_spaces (nil)) = (nil);
+(join_with_spaces (cons x (nil))) = (num_to_str x);
+(join_with_spaces (cons x xs)) = 
+  (append (num_to_str x)
+          (cons (byte (2) (0))  # space
+          (join_with_spaces xs)));
+
+(num_to_str n) = 
+  (if (eq n (z))
+      (cons (byte (3) (0)) (nil))  # '0'
+      (digits_to_str (num_to_digits n)));
+
+(num_to_digits n) = 
+  (if (eq n (z))
+      (nil)
+      (append (num_to_digits (div n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # div by 10
+             (cons (add (byte (3) (0)) (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+             (nil))));
+
+(digits_to_str (nil)) = (nil);
+(digits_to_str (cons x xs)) = (cons x (digits_to_str xs));
+
+# Test case: 5 -> '0 1 2 3 4 5'
+(main) = (string_sequence 
+          (s (s (s (s (s (z)))))));

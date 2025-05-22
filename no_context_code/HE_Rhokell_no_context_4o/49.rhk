@@ -1,0 +1,7 @@
+# Rhokell code for HumanEval/49
+# Task: Return 2^n modulo p
+
+# Define a function to calculate modp
+func modp(n, p) {
+    return (2 ** n) % p
+}

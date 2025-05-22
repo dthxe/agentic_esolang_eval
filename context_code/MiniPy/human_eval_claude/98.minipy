@@ -1,0 +1,4 @@
+def count_upper(s):
+    if not isinstance(s, s):
+        return None
+    return sm(1 for c in s if c.isupper())

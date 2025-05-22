@@ -1,0 +1,5 @@
+# Rhokell implementation for find_largest
+# Find the largest number in a list.
+
+(find_largest (lst)) = 
+    (foldl max (head lst) (tail lst))

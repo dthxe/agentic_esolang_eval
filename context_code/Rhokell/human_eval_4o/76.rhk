@@ -1,0 +1,5 @@
+# Rhokell implementation for product_list
+# Calculate the product of all elements in a list.
+
+(product_list (lst)) = 
+    (foldl (*) 1 lst)

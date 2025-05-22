@@ -1,0 +1,12 @@
+# HumanEval/55: Generate Fibonacci sequence
+(fib n) = 
+  (if (lt n (s (s (z))))  # n < 2
+      n
+      (add (fib (sub n (s (z))))  # fib(n-1)
+           (fib (sub n (s (s (z)))))));  # fib(n-2)
+
+# Test case: 10 -> 55
+(main) = (fib 
+          (s (s (s (s (s  # 10 in Church numerals
+          (s (s (s (s (s
+          (z)))))))))))); 

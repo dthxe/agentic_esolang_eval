@@ -1,0 +1,36 @@
+# HumanEval/44: Change base of number
+(change_base n base) = 
+  (if (eq n (z))
+      (cons (byte (3) (0)) (nil))  # '0'
+      (digits_to_str (num_to_digits_base n base)));
+
+(num_to_digits_base n base) = 
+  (if (eq n (z))
+      (nil)
+      (append (num_to_digits_base (div n base) base)
+             (cons (add (byte (3) (0)) (mod n base))
+             (nil))));
+
+(digits_to_str (nil)) = (nil);
+(digits_to_str (cons x xs)) = (cons x (digits_to_str xs));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = (cons x (append xs ys));
+
+# Test case: 16, 2 -> '10000'
+(main) = (change_base 
+          (s (s (s (s (s  # 16 in Church numerals
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (z)))))))))))))))))
+          (s (s (z))));

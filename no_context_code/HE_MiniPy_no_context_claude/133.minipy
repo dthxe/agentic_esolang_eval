@@ -1,0 +1,16 @@
+def sum_squares(lst):
+    result = 0
+    
+    i = 0
+    while i < len(lst):
+        # Round up to ceiling
+        ceiling = int(lst[i])
+        if lst[i] > ceiling:
+            ceiling = ceiling + 1
+        
+        # Add the square to the result
+        result = result + ceiling * ceiling
+        
+        i = i + 1
+    
+    return result

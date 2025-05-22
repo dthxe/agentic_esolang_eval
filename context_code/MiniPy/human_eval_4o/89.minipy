@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/89
+# Encrypt a string by shifting letters down by two multiplied to two places.
+
+def encrypt(s):
+    return ''.join(c((ord(ch) - ord('a') + 4) % 26 + ord('a')) for ch in s)

@@ -1,0 +1,19 @@
+# Rhokell code for HumanEval/114
+# Task: Find minimum sum of any non-empty sub-array
+
+# Define a function to find min sub-array sum
+func minSubArraySum(nums) {
+    min_sum = inf
+    
+    # Calculate sub-array sums
+    for start in range(len(nums)) {
+        current_sum = 0
+        for end in range(start, len(nums)) {
+            current_sum += nums[end]
+            if current_sum < min_sum {
+                min_sum = current_sum
+            }
+        }
+    }
+    return min_sum
+}

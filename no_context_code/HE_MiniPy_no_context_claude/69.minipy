@@ -1,0 +1,18 @@
+def search(lst):
+    # Count frequency of each number
+    counts = {}
+    i = 0
+    while i < len(lst):
+        if lst[i] in counts:
+            counts[lst[i]] = counts[lst[i]] + 1
+        else:
+            counts[lst[i]] = 1
+        i = i + 1
+    
+    # Find the greatest integer with frequency >= value
+    max_valid = -1
+    for num, freq in counts.items():
+        if num > 0 and freq >= num and num > max_valid:
+            max_valid = num
+    
+    return max_valid

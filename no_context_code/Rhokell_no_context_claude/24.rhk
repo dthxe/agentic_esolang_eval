@@ -1,0 +1,6 @@
+sumList :: [Int] -> Int
+sumList = sum
+
+main = do
+  nums <- readList
+  print $ sumList nums

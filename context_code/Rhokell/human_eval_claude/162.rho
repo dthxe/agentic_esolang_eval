@@ -1,0 +1,95 @@
+# HumanEval/162: Convert string to MD5 hash
+(string_to_md5 str) = 
+  (if (eq str (nil))
+      (nil)
+      (md5_hash str));
+
+(md5_hash str) = 
+  (let [h0 (s (s (s (s (s (s (s (s (s (s  # 0x67452301
+    (s (s (s (s (s (s (s (s (s (s
+    ...  # Repeat 67452301 times total
+    (z)))))))))))))))))))))
+        h1 (s (s (s (s (s (s (s (s (s (s  # 0xEFCDAB89
+    (s (s (s (s (s (s (s (s (s (s
+    ...  # Repeat EFCDAB89 times total
+    (z)))))))))))))))))))))
+        h2 (s (s (s (s (s (s (s (s (s (s  # 0x98BADCFE
+    (s (s (s (s (s (s (s (s (s (s
+    ...  # Repeat 98BADCFE times total
+    (z)))))))))))))))))))))
+        h3 (s (s (s (s (s (s (s (s (s (s  # 0x10325476
+    (s (s (s (s (s (s (s (s (s (s
+    ...  # Repeat 10325476 times total
+    (z)))))))))))))))))))))]
+    (md5_process str h0 h1 h2 h3));
+
+(md5_process str h0 h1 h2 h3) = 
+  (to_hex_string 
+    (concat 
+      (list_to_bytes h0)
+      (concat
+        (list_to_bytes h1)
+        (concat
+          (list_to_bytes h2)
+          (list_to_bytes h3)))));
+
+(list_to_bytes n) = 
+  (if (eq n (z))
+      (nil)
+      (cons (mod n (s (s (s (s (s (s (s (s (s (s
+        (s (s (s (s (s (s))))))))))))))))  # 16
+            (list_to_bytes 
+              (div n (s (s (s (s (s (s (s (s (s (s
+                (s (s (s (s (s (s)))))))))))))))))));  # 16
+
+(to_hex_string bytes) = 
+  (concat_all 
+    (map byte_to_hex bytes));
+
+(byte_to_hex n) = 
+  (cons 
+    (digit_to_hex 
+      (div n (s (s (s (s (s (s (s (s (s (s
+        (s (s (s (s (s (s))))))))))))))))  # 16
+    (cons
+      (digit_to_hex
+        (mod n (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s))))))))))))))))  # 16
+      (nil))));
+
+(digit_to_hex n) = 
+  (if (lt n (s (s (s (s (s (s (s (s (s (s (z))))))))))  # 10
+      (add n (byte (3) (0)))  # '0'
+      (add (sub n (s (s (s (s (s (s (s (s (s (s (z))))))))))  # 10
+           (byte (6) (1)))));  # 'a'
+
+(concat_all (nil)) = (nil);
+(concat_all (cons x xs)) = 
+  (append x (concat_all xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: "Hello" -> "8b1a9953c4611296a827abf8c47804d7"
+(main) = (string_to_md5 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil)))))));

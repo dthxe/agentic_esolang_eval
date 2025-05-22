@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/110
+# Determine if it is possible to exchange elements between lst1 and lst2 to make all elements of lst1 even.
+
+def exchange(lst1, lst2):
+    return 'YES' if all(any(n % 2 == 0 for n in (lst1 + lst2)) for _ in lst1) else 'NO'

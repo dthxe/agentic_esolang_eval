@@ -1,0 +1,39 @@
+# HumanEval/128: Produce string sequence based on rules
+(prod_signs n) = 
+  (let [nums (range (s (z)) n)]
+    (join_strings (map sign_str nums)));
+
+(sign_str n) = 
+  (if (eq (mod n (s (s (z)))) (z))
+      (if (eq (mod n (s (s (s (z))))) (z))
+          (cons (byte (2) (B)) (nil))  # '+'
+          (cons (byte (2) (D)) (nil)))  # '-'
+      (cons (byte (3) (0)) (nil)));  # '0'
+
+(range start end) = 
+  (if (gt start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(join_strings (nil)) = (nil);
+(join_strings (cons x xs)) = 
+  (append x (join_strings xs));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(gt x y) = (lt y x);
+
+# Test case: 4 -> '0+0-' (1->0, 2->+, 3->0, 4->-)
+(main) = (prod_signs 
+          (s (s (s (s (z))))));

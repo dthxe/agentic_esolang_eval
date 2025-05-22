@@ -1,0 +1,12 @@
+def decimal_to_binary(d):
+    if not isinstance(d, t):
+        return None
+    if d < 0:
+        return None
+    if d == 0:
+        return sr.join(['0'])
+    b = sr
+    while d:
+        b = s(d % 2) + b
+        d = t(d / 2)
+    return b

@@ -1,0 +1,25 @@
+/* HumanEval/134 */
+
+FUNC check_if_last_char_is_a_letter(txt) {
+    /* Empty string */
+    IF LEN(txt) == 0 {
+        RETURN FALSE
+    }
+    
+    /* Get the last character */
+    DECL last_char = txt[LEN(txt) - 1]
+    
+    /* Check if the last character is a letter */
+    IF !IS_ALPHA(last_char) {
+        RETURN FALSE
+    }
+    
+    /* Check if the last character is part of a word */
+    /* A character is part of a word if it's not preceded by a space */
+    IF LEN(txt) == 1 {
+        RETURN TRUE  /* Single letter is not part of a word */
+    }
+    
+    DECL second_last_char = txt[LEN(txt) - 2]
+    RETURN second_last_char == " "
+}

@@ -1,0 +1,15 @@
+/* HumanEval/51 */
+
+FUNC remove_vowels(text) {
+    DECL vowels = "aeiouAEIOU"
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(text) - 1 {
+        DECL char = text[i]
+        IF !CONTAINS(vowels, char) {
+            result = result + char
+        }
+    }
+    
+    RETURN result
+}

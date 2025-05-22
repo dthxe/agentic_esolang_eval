@@ -1,0 +1,24 @@
+def decode_cyclic(s):
+    # Split string into groups of 3 characters
+    groups = []
+    i = 0
+    while i < len(s):
+        if i + 3 <= len(s):
+            groups.append(s[i:i+3])
+        else:
+            groups.append(s[i:])
+        i = i + 3
+    
+    # Decode each group by moving the last character to the beginning
+    decoded_groups = []
+    i = 0
+    while i < len(groups):
+        group = groups[i]
+        if len(group) == 3:
+            decoded_groups.append(group[2] + group[0:2])
+        else:
+            decoded_groups.append(group)
+        i = i + 1
+    
+    # Join the decoded groups
+    return "".join(decoded_groups)

@@ -1,0 +1,25 @@
+# HumanEval/132: Check if list of numbers is sorted
+(is_sorted lst) = 
+  (is_sorted_helper lst (t));
+
+(is_sorted_helper (nil) ascending) = (t);
+(is_sorted_helper (cons _ (nil)) ascending) = (t);
+(is_sorted_helper (cons x (cons y ys)) ascending) = 
+  (if (eq ascending (t))
+      (if (le x y)
+          (is_sorted_helper (cons y ys) ascending)
+          (is_sorted_helper (cons y ys) (f)))
+      (if (ge x y)
+          (is_sorted_helper (cons y ys) ascending)
+          (f)));
+
+(le x y) = (not (gt x y));
+(ge x y) = (not (lt x y));
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3] -> true (ascending)
+(main) = (is_sorted 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

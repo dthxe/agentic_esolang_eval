@@ -1,0 +1,39 @@
+# HumanEval/69: Search for substring in string
+(search str substring) = 
+  (search_from str substring (z));
+
+(search_from (nil) _ _) = (sub (z) (s (z)));  # Return -1
+(search_from str substring pos) = 
+  (if (starts_with str substring)
+      pos
+      (search_from (tail str) substring (s pos)));
+
+(starts_with (nil) _) = (f);
+(starts_with _ (nil)) = (t);
+(starts_with (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (starts_with xs ys)
+      (f));
+
+(tail (cons _ xs)) = xs;
+
+# Test case: 'Hello World', 'World' -> 6
+(main) = (search 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil))))))))))))
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil)))))));

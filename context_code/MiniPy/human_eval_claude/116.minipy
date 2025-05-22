@@ -1,0 +1,11 @@
+def sort_array(arr):
+    if not arr:
+        return ls()
+    e = ls()
+    o = ls()
+    for x in arr:
+        if x % 2 == 0:
+            e.append(x)
+        else:
+            o.append(x)
+    return srt(o) + srt(e)

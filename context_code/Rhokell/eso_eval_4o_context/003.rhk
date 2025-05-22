@@ -1,0 +1,43 @@
+# Check if a number is even or odd
+# Helper functions for Church numerals and arithmetic
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (0)) = (z);
+(digit_to_church (3) (1)) = (s (z));
+(digit_to_church (3) (2)) = (s (s (z)));
+(digit_to_church (3) (3)) = (s (s (s (z))));
+(digit_to_church (3) (4)) = (s (s (s (s (z)))));
+(digit_to_church (3) (5)) = (s (s (s (s (s (z))))));
+(digit_to_church (3) (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church (3) (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church (3) (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church (3) (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Check if n is even or odd
+(is_even (z)) = (print_even);
+(is_even (s (z))) = (print_odd);
+(is_even (s (s n))) = (is_even n);
+
+# Main function
+(main) = (is_even (digit_to_church (input_byte) (input_byte)));
+
+# Print Even or Odd
+(print_even) = (print (cons (byte (4) (5)) # E
+                     (cons (byte (7) (6)) # v
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (6) (E)) # n
+                     (cons (byte (0) (A)) # newline
+                           (nil))))));
+
+(print_odd) = (print (cons (byte (4) (F)) # O
+                      (cons (byte (6) (4)) # d
+                      (cons (byte (6) (4)) # d
+                      (cons (byte (0) (A)) # newline
+                            (nil))))));
+
+# Helper functions for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

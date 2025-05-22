@@ -1,0 +1,12 @@
+def eat(n, time):
+    if not isinstance(n, t) or not isinstance(time, t):
+        return -1
+    if time < 0:
+        return -1
+    if n < 0:
+        return -1
+    if time == 0:
+        return 0
+    if n == 0:
+        return 0
+    return min(n, time * 3)

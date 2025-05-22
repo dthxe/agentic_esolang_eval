@@ -1,0 +1,5 @@
+# Rhokell implementation for min_list
+# Find the minimum element in a list.
+
+(min_list (lst)) = 
+    (foldl min (head lst) (tail lst))

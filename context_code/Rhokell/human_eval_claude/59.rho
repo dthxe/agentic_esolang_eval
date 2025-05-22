@@ -1,0 +1,68 @@
+# HumanEval/59: Find largest prime factor
+(largest_prime_factor n) = 
+  (max_list (prime_factors n));
+
+(prime_factors n) = 
+  (if (lt n (s (s (z))))
+      (nil)
+      (find_factors n (s (s (z)))));
+
+(find_factors n p) = 
+  (if (gt (mul p p) n)
+      (if (gt n (s (z)))
+          (cons n (nil))
+          (nil))
+      (if (eq (mod n p) (z))
+          (cons p (find_factors (div n p) p))
+          (find_factors n (s p))));
+
+(max_list (nil)) = (z);
+(max_list (cons x (nil))) = x;
+(max_list (cons x xs)) = 
+  (max x (max_list xs));
+
+(max x y) = (if (gt x y) x y);
+(gt x y) = (lt y x);
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 13195 -> 29
+(main) = (largest_prime_factor 
+          (s (s (s (s (s  # 13195 in Church numerals
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

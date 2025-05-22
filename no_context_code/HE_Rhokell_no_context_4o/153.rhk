@@ -1,0 +1,21 @@
+# Rhokell code for HumanEval/153
+# Task: Find the strongest extension
+
+# Define a function to find strongest extension
+func Strongest_Extension(class_name, extensions) {
+    strongest = ""
+    max_strength = -inf
+    
+    # Find strongest extension
+    for ext in extensions {
+        cap = sum([1 for ch in ext if is_upper(ch)])
+        sm = sum([1 for ch in ext if is_lower(ch)])
+        strength = cap - sm
+        
+        if strength > max_strength {
+            max_strength = strength
+            strongest = ext
+        }
+    }
+    return class_name + "." + strongest
+}

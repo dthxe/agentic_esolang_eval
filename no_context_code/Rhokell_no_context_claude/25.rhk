@@ -1,0 +1,10 @@
+toBinary :: Int -> String
+toBinary 0 = "0"
+toBinary n = toBinary' n
+  where
+    toBinary' 0 = ""
+    toBinary' n = toBinary' (n `div` 2) ++ show (n `mod` 2)
+
+main = do
+  n <- readInt
+  print $ toBinary n

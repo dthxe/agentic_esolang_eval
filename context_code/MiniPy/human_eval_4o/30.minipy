@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/30
+# Return only positive numbers in the list.
+
+def get_positive(l):
+    return f(l, lambda x: x > 0)

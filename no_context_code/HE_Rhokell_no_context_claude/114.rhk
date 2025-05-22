@@ -1,0 +1,17 @@
+/* HumanEval/114 */
+
+FUNC minSubArraySum(nums) {
+    DECL n = LEN(nums)
+    DECL min_sum = nums[0]
+    DECL current_sum = nums[0]
+    
+    LOOP i FROM 1 TO n - 1 {
+        /* Either start a new subarray or extend the existing one */
+        current_sum = MIN(nums[i], current_sum + nums[i])
+        
+        /* Update the minimum sum found so far */
+        min_sum = MIN(min_sum, current_sum)
+    }
+    
+    RETURN min_sum
+}

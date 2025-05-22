@@ -1,0 +1,39 @@
+# HumanEval/4: Mean Absolute Deviation
+(def mean_absolute_deviation [numbers]
+  (if (nil? numbers) 
+    (z)
+    (div (sum_deviations numbers (mean numbers)) (length numbers))))
+
+(def mean [numbers]
+  (if (nil? numbers) 
+    (z)
+    (div (sum numbers) (length numbers))))
+
+(def sum [numbers]
+  (if (nil? numbers) 
+    (z)
+    (add (first numbers) (sum (rest numbers)))))
+
+(def length [numbers]
+  (if (nil? numbers) 
+    (z)
+    (s (length (rest numbers)))))
+
+(def abs [x]
+  (if (lt x (z)) 
+    (sub (z) x) 
+    x))
+
+(def sum_deviations [numbers mean]
+  (if (nil? numbers) 
+    (z)
+    (add (abs (sub (first numbers) mean)) (sum_deviations (rest numbers) mean))))
+
+; Test case: [1.0, 2.0, 3.0, 4.0]
+(def main 
+  (mean_absolute_deviation 
+    (cons (s (z))
+    (cons (s (s (z)))
+    (cons (s (s (s (z))))
+    (cons (s (s (s (s (z)))))
+    (nil)))))))

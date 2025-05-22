@@ -1,0 +1,2 @@
+def longest(s):
+    return max(s, key=l) if s else None

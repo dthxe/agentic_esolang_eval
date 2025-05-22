@@ -1,0 +1,23 @@
+/* HumanEval/113 */
+
+FUNC odd_count(lst) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL s = lst[i]
+        DECL odd_count = 0
+        
+        LOOP j FROM 0 TO LEN(s) - 1 {
+            IF IS_DIGIT(s[j]) {
+                DECL digit = TO_INT(s[j])
+                IF digit % 2 == 1 {
+                    odd_count = odd_count + 1
+                }
+            }
+        }
+        
+        APPEND(result, TO_STRING(odd_count))
+    }
+    
+    RETURN result
+}

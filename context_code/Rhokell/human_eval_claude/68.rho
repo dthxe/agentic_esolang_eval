@@ -1,0 +1,50 @@
+# HumanEval/68: Pluck values from list of dictionaries
+(pluck lst key) = 
+  (map (lambda (dict) (get dict key)) lst);
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(get dict key) = 
+  (if (eq_lists (first (head dict)) key)
+      (second (head dict))
+      (get (tail dict) key));
+
+(first (cons x _)) = x;
+(second (cons _ (cons y _))) = y;
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+# Test case: [{'name': 'john'}, {'name': 'jane'}], 'name' -> ['john', 'jane']
+(main) = (pluck 
+          (cons (cons (pair (cons (byte (6) (E))  # 'name'
+                                 (cons (byte (6) (1))
+                                 (cons (byte (6) (D))
+                                 (cons (byte (6) (5)) (nil)))))
+                     (cons (byte (6) (A))  # 'john'
+                          (cons (byte (6) (F))
+                          (cons (byte (6) (8))
+                          (cons (byte (6) (E)) (nil))))))
+                (nil))
+          (cons (cons (pair (cons (byte (6) (E))  # 'name'
+                                 (cons (byte (6) (1))
+                                 (cons (byte (6) (D))
+                                 (cons (byte (6) (5)) (nil)))))
+                     (cons (byte (6) (A))  # 'jane'
+                          (cons (byte (6) (1))
+                          (cons (byte (6) (E))
+                          (cons (byte (6) (5)) (nil))))))
+                (nil))
+          (nil))
+          (cons (byte (6) (E))  # 'name'
+                (cons (byte (6) (1))
+                (cons (byte (6) (D))
+                (cons (byte (6) (5)) (nil))))));

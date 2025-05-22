@@ -1,0 +1,17 @@
+# Rhokell implementation for is_multiply_prime
+# Return true if the given number is the multiplication of 3 prime numbers.
+
+(is_multiply_prime (a)) = 
+    (letrec ((prime_factors (n) (factors))
+        (if (= n 1)
+            factors
+            (if (= (mod n 2) 0)
+                (prime_factors (/ n 2) (cons 2 factors))
+                (letrec ((check_factor (i))
+                    (if (> (* i i) n)
+                        (if (> n 1) (cons n factors) factors)
+                        (if (= (mod n i) 0)
+                            (prime_factors (/ n i) (cons i factors))
+                            (check_factor (+ i 1))))))
+                (check_factor 3)))))
+    (= (length (nub (prime_factors a nil))) 3))

@@ -1,0 +1,9 @@
+def is_simple_power(x, n):
+    if x <= 0:
+        return False
+    i = 1
+    while i ** n <= x:
+        if i ** n == x:
+            return True
+        i += 1
+    return False

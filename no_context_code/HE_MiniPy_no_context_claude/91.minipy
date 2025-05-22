@@ -1,0 +1,27 @@
+def is_bored(S):
+    # Split the string into sentences
+    sentences = []
+    current_sentence = ""
+    
+    i = 0
+    while i < len(S):
+        current_sentence = current_sentence + S[i]
+        if S[i] in ['.', '?', '!']:
+            sentences.append(current_sentence.strip())
+            current_sentence = ""
+        i = i + 1
+    
+    # If there's a remaining sentence without punctuation, add it
+    if current_sentence.strip():
+        sentences.append(current_sentence.strip())
+    
+    # Count sentences that start with "I"
+    boredom_count = 0
+    i = 0
+    while i < len(sentences):
+        words = sentences[i].split()
+        if words and words[0] == "I":
+            boredom_count = boredom_count + 1
+        i = i + 1
+    
+    return boredom_count

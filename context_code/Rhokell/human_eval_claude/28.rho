@@ -1,0 +1,27 @@
+# HumanEval/28: Concatenate lists
+(concatenate (nil)) = (nil);
+(concatenate (cons xs xss)) = 
+  (append xs (concatenate xss));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: [[1, 2, 3], [4, 5, 6], [7, 8, 9]] -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+(main) = (concatenate 
+          (cons 
+            (cons (s (z))  # 1
+            (cons (s (s (z)))  # 2
+            (cons (s (s (s (z))))  # 3
+            (nil))))
+          (cons
+            (cons (s (s (s (s (z)))))  # 4
+            (cons (s (s (s (s (s (z))))))  # 5
+            (cons (s (s (s (s (s (s (z)))))))  # 6
+            (nil))))
+          (cons
+            (cons (s (s (s (s (s (s (s (z))))))))  # 7
+            (cons (s (s (s (s (s (s (s (s (z)))))))))  # 8
+            (cons (s (s (s (s (s (s (s (s (s (z))))))))))  # 9
+            (nil))))
+          (nil)));

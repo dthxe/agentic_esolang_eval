@@ -1,0 +1,9 @@
+def encode_cyclic(s):
+    if not s:
+        return sr
+    r = ls(s)
+    for i in r(l(s)):
+        for j in r(i+1):
+            c = c(((c(r[j])-97+1)%26)+97)
+            r[j] = c
+    return sr.join(r)

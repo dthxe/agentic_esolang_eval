@@ -1,0 +1,42 @@
+# HumanEval/160: Evaluate algebraic expressions
+(do_algebra operators operands) = 
+  (eval_expr operators operands);
+
+(eval_expr (nil) (cons x (nil))) = x;
+(eval_expr (cons op ops) (cons x (cons y ys))) = 
+  (eval_expr ops 
+    (cons (apply_op op x y) ys));
+
+(apply_op op x y) = 
+  (if (byte_eq op (byte (2) (B)))  # '+'
+      (add x y)
+      (if (byte_eq op (byte (2) (D)))  # '-'
+          (sub x y)
+          (if (byte_eq op (byte (2) (A)))  # '*'
+              (mul x y)
+              (if (byte_eq op (byte (2) (F)))  # '/'
+                  (div x y)
+                  (pow x y)))));  # '**'
+
+(pow _ (z)) = (s (z));
+(pow x (s n)) = (mul x (pow x n));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: ['+', '*', '-'], [2, 3, 4, 5] -> 9 (2 + 3 * 4 - 5)
+(main) = (do_algebra 
+          (cons (byte (2) (B))  # '+'
+          (cons (byte (2) (A))  # '*'
+          (cons (byte (2) (D))  # '-'
+          (nil))))
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (z))))))  # 5
+          (nil))))));

@@ -1,0 +1,22 @@
+/* HumanEval/74 */
+
+FUNC total_match(lst1, lst2) {
+    /* Calculate total characters in lst1 */
+    DECL count1 = 0
+    LOOP i FROM 0 TO LEN(lst1) - 1 {
+        count1 = count1 + LEN(lst1[i])
+    }
+    
+    /* Calculate total characters in lst2 */
+    DECL count2 = 0
+    LOOP i FROM 0 TO LEN(lst2) - 1 {
+        count2 = count2 + LEN(lst2[i])
+    }
+    
+    /* Return the list with fewer characters */
+    IF count1 <= count2 {
+        RETURN lst1
+    } ELSE {
+        RETURN lst2
+    }
+}

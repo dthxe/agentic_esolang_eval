@@ -1,0 +1,19 @@
+/* HumanEval/156 */
+
+FUNC int_to_mini_roman(number) {
+    /* Define the mapping from integers to Roman numerals */
+    DECL values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    DECL numerals = ["m", "cm", "d", "cd", "c", "xc", "l", "xl", "x", "ix", "v", "iv", "i"]
+    
+    DECL result = ""
+    DECL n = number
+    
+    LOOP i FROM 0 TO LEN(values) - 1 {
+        WHILE n >= values[i] {
+            result = result + numerals[i]
+            n = n - values[i]
+        }
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,10 @@
+isVowel :: Char -> Bool
+isVowel c = c `elem` "aeiouAEIOU"
+
+allVowels :: String -> Bool
+allVowels [] = False
+allVowels s = all isVowel s
+
+main = do
+  s <- readLine
+  print $ allVowels s

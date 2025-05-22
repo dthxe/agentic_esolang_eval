@@ -1,0 +1,34 @@
+# HumanEval/33: Sort strings by length
+(sort_by_length strings) = (sort_by strings length);
+
+(sort_by (nil) _) = (nil);
+(sort_by (cons x xs) f) = 
+  (insert_by x (sort_by xs f) f);
+
+(insert_by x (nil) _) = (cons x (nil));
+(insert_by x (cons y ys) f) = 
+  (if (le (f x) (f y))
+      (cons x (cons y ys))
+      (cons y (insert_by x ys f)));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(le x y) = (lt y x);
+
+# Test case: ['', 'a', 'cat', 'dogs', 'abcd'] -> ['', 'a', 'cat', 'dogs', 'abcd']
+(main) = (sort_by_length 
+          (cons (nil)  # ''
+          (cons (cons (byte (6) (1)) (nil))  # 'a'
+          (cons (cons (byte (6) (3))  # 'cat'
+                (cons (byte (6) (1))
+                (cons (byte (7) (4)) (nil))))
+          (cons (cons (byte (6) (4))  # 'dogs'
+                (cons (byte (6) (F))
+                (cons (byte (6) (7))
+                (cons (byte (7) (3)) (nil)))))
+          (cons (cons (byte (6) (1))  # 'abcd'
+                (cons (byte (6) (2))
+                (cons (byte (6) (3))
+                (cons (byte (6) (4)) (nil)))))
+          (nil)))))));

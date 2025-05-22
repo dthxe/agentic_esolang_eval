@@ -1,0 +1,37 @@
+# HumanEval/79: Convert decimal to binary
+(decimal_to_binary n) = 
+  (if (eq n (z))
+      (cons (byte (3) (0)) (nil))  # '0'
+      (digits_to_str (decimal_to_binary_helper n)));
+
+(decimal_to_binary_helper n) = 
+  (if (eq n (z))
+      (nil)
+      (append (decimal_to_binary_helper (div n (s (s (z)))))
+              (cons (add (byte (3) (0))  # '0'
+                        (mod n (s (s (z)))))
+                   (nil))));
+
+(digits_to_str (nil)) = (nil);
+(digits_to_str (cons x xs)) = 
+  (cons x (digits_to_str xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 10 -> '1010'
+(main) = (decimal_to_binary 
+          (s (s (s (s (s  # 10 in Church numerals
+          (s (s (s (s (s
+          (z))))))))))))));

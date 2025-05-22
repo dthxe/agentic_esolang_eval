@@ -1,0 +1,41 @@
+/* HumanEval/143 */
+
+FUNC words_in_sentence(sentence) {
+    DECL words = SPLIT(sentence, " ")
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(words) - 1 {
+        DECL word = words[i]
+        DECL length = LEN(word)
+        
+        IF is_prime(length) {
+            APPEND(result, word)
+        }
+    }
+    
+    RETURN JOIN(result, " ")
+}
+
+FUNC is_prime(n) {
+    IF n <= 1 {
+        RETURN FALSE
+    }
+    
+    IF n <= 3 {
+        RETURN TRUE
+    }
+    
+    IF n % 2 == 0 || n % 3 == 0 {
+        RETURN FALSE
+    }
+    
+    DECL i = 5
+    WHILE i * i <= n {
+        IF n % i == 0 || n % (i + 2) == 0 {
+            RETURN FALSE
+        }
+        i = i + 6
+    }
+    
+    RETURN TRUE
+}

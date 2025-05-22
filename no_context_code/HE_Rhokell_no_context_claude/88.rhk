@@ -1,0 +1,21 @@
+/* HumanEval/88 */
+
+FUNC sort_array(array) {
+    IF LEN(array) <= 1 {
+        RETURN COPY(array)
+    }
+    
+    DECL result = COPY(array)
+    DECL first_val = array[0]
+    DECL last_val = array[LEN(array) - 1]
+    DECL sum = first_val + last_val
+    
+    /* Sort in ascending order if sum is odd, descending if sum is even */
+    IF sum % 2 == 1 {
+        SORT(result)
+    } ELSE {
+        SORT_DESC(result)
+    }
+    
+    RETURN result
+}

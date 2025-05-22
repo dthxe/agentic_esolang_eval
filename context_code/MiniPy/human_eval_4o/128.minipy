@@ -1,0 +1,9 @@
+# Minipy solution for HumanEval/128
+# Return the sum of magnitudes of integers multiplied by product of all signs of each number in the array.
+
+def prod_signs(arr):
+    if not arr: return None
+    sign_product = 1
+    for x in arr:
+        sign_product *= (1 if x > 0 else -1 if x < 0 else 0)
+    return sm(ab(x) for x in arr) * sign_product

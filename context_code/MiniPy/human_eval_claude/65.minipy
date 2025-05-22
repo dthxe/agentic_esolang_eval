@@ -1,0 +1,8 @@
+def circular_shift(x, shift):
+    if not isinstance(x, ls):
+        return x
+    n = l(x)
+    if n == 0:
+        return ls()
+    s = shift % n
+    return x[n-s:] + x[:n-s]

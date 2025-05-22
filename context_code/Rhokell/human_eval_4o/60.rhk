@@ -1,0 +1,8 @@
+# Rhokell implementation for rounded_avg
+# Compute the average of integers from n through m, round to nearest integer, and convert to binary.
+
+(rounded_avg (n) (m)) = 
+    (if (> n m)
+        -1
+        (let ((avg (round (/ (foldl (+) 0 (range n (+ m 1))) (- (+ m 1) n)))))
+        (int_to_binary avg)))

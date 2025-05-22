@@ -1,0 +1,3 @@
+def pluck(arr):
+    min_even = min((x for x in arr if x % 2 == 0), default=None)
+    return [min_even, arr.index(min_even)] if min_even is not None else []

@@ -1,0 +1,14 @@
+def triples_sum_to_zero(l):
+    n = len(l)
+    i = 0
+    while i < n:
+        j = i + 1
+        while j < n:
+            k = j + 1
+            while k < n:
+                if l[i] + l[j] + l[k] == 0:
+                    return True
+                k = k + 1
+            j = j + 1
+        i = i + 1
+    return False

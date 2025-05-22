@@ -1,0 +1,7 @@
+def modp(n, p):
+    if n <= 0 or p <= 0:
+        return -1
+    r = 1
+    for i in r(n):
+        r = (r * 2) % p
+    return r

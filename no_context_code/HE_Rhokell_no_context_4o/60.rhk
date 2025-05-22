@@ -1,0 +1,7 @@
+# Rhokell code for HumanEval/60
+# Task: Sum numbers from 1 to n
+
+# Define a function to sum to n
+func sum_to_n(n) {
+    return n * (n + 1) / 2
+}

@@ -1,0 +1,20 @@
+/* HumanEval/76 */
+
+FUNC is_simple_power(x, n) {
+    /* Handle edge cases */
+    IF x == 1 {
+        RETURN TRUE  /* 1 is n^0 for any n */
+    }
+    
+    IF n == 1 {
+        RETURN x == 1  /* Only 1 is a power of 1 */
+    }
+    
+    /* Check if x is a power of n */
+    DECL current = n
+    WHILE current < x {
+        current = current * n
+    }
+    
+    RETURN current == x
+}

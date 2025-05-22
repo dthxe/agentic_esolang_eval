@@ -1,0 +1,4 @@
+def right_angle_triangle(a, b, c):
+    """Checks if the sides form a right-angled triangle."""
+    sides = sorted([a, b, c])
+    return sides[0] ** 2 + sides[1] ** 2 == sides[2] ** 2

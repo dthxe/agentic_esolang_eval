@@ -1,0 +1,55 @@
+# HumanEval/143: Find words containing specific characters
+(words_in_sentence str) = 
+  (filter has_required_chars (split_words str));
+
+(has_required_chars word) = 
+  (and (contains word (byte (6) (1)))  # 'a'
+  (and (contains word (byte (6) (2)))  # 'b'
+       (contains word (byte (6) (3)))));  # 'c'
+
+(contains lst x) = 
+  (any (lambda (y) (byte_eq x y)) lst);
+
+(split_words str) = 
+  (split_by_space str (nil));
+
+(split_by_space (nil) curr) = 
+  (if (eq curr (nil))
+      (nil)
+      (cons (reverse curr) (nil)));
+(split_by_space (cons x xs) curr) = 
+  (if (byte_eq x (byte (2) (0)))  # space
+      (if (eq curr (nil))
+          (split_by_space xs (nil))
+          (cons (reverse curr) (split_by_space xs (nil))))
+      (split_by_space xs (cons x curr)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(any _ (nil)) = (f);
+(any f (cons x xs)) = 
+  (if (f x)
+      (t)
+      (any f xs));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+# Test case: 'abc cab' -> ['abc', 'cab']
+(main) = (words_in_sentence 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (nil)))))))));

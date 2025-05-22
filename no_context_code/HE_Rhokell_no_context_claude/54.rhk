@@ -1,0 +1,28 @@
+/* HumanEval/54 */
+
+FUNC same_chars(s0, s1) {
+    /* Create character sets for both strings */
+    DECL chars0 = {}
+    DECL chars1 = {}
+    
+    LOOP i FROM 0 TO LEN(s0) - 1 {
+        chars0[s0[i]] = TRUE
+    }
+    
+    LOOP i FROM 0 TO LEN(s1) - 1 {
+        chars1[s1[i]] = TRUE
+    }
+    
+    /* Check if both sets have the same characters */
+    IF LEN(chars0) != LEN(chars1) {
+        RETURN FALSE
+    }
+    
+    LOOP char IN chars0 {
+        IF !CONTAINS(chars1, char) {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN TRUE
+}

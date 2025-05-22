@@ -1,0 +1,12 @@
+def strange_sort_list(lst):
+    if not lst:
+        return ls()
+    r = ls()
+    while lst:
+        if l(r) % 2:
+            x = max(lst)
+        else:
+            x = min(lst)
+        r.append(x)
+        lst.remove(x)
+    return r

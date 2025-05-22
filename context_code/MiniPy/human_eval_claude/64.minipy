@@ -1,0 +1,7 @@
+def vowels_count(s):
+    v = set('aeiouAEIOU')
+    c = 0
+    for x in s:
+        if x in v:
+            c += 1
+    return c

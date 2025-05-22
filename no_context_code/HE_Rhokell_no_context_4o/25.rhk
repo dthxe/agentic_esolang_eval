@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/25
+# Task: Return prime factors of a number
+
+# Define a function to factorize a number
+func factorize(n) {
+    factors = []
+    divisor = 2
+    
+    # Factorize the number
+    while n > 1 {
+        while n % divisor == 0 {
+            factors.append(divisor)
+            n /= divisor
+        }
+        divisor += 1
+    }
+    return factors
+}

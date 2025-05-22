@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/53
+# Add two numbers x and y.
+
+def add(x, y):
+    return x + y

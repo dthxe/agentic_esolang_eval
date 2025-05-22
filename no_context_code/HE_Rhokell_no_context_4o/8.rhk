@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/8
+# Task: Return a tuple of sum and product of numbers
+
+# Define a function to calculate sum and product
+func sum_product(numbers) {
+    sum_val = 0
+    product_val = 1
+    
+    # Iterate over each number
+    for number in numbers {
+        sum_val += number
+        product_val *= number
+    }
+    return (sum_val, product_val)
+}

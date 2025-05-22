@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/8
+# Return a tuple of sum and product of the list.
+
+def sum_product(numbers):
+    return (sm(numbers), ab(numbers))

@@ -1,0 +1,20 @@
+/* HumanEval/79 */
+
+FUNC decimal_to_binary(decimal) {
+    DECL binary = ""
+    DECL num = decimal
+    
+    /* Handle special case for 0 */
+    IF num == 0 {
+        binary = "0"
+    }
+    
+    /* Convert to binary */
+    WHILE num > 0 {
+        binary = TO_STRING(num % 2) + binary
+        num = num / 2
+    }
+    
+    /* Add the special formatting */
+    RETURN "db" + binary + "db"
+}

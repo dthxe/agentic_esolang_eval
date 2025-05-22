@@ -1,0 +1,23 @@
+# HumanEval/61: Check if number is correct
+(correct_brackets text) = 
+  (eq (check_brackets text (z)) (z));
+
+(check_brackets (nil) count) = count;
+(check_brackets (cons x xs) count) = 
+  (if (byte_eq x (byte (2) (8)))  # '('
+      (check_brackets xs (s count))
+      (if (byte_eq x (byte (2) (9)))  # ')'
+          (if (eq count (z))
+              (s count)  # Return non-zero for invalid
+              (check_brackets xs (sub count (s (z)))))
+          (check_brackets xs count)));
+
+# Test case: '(()())' -> true
+(main) = (correct_brackets 
+          (cons (byte (2) (8))  # '('
+          (cons (byte (2) (8))  # '('
+          (cons (byte (2) (9))  # ')'
+          (cons (byte (2) (8))  # '('
+          (cons (byte (2) (9))  # ')'
+          (cons (byte (2) (9))  # ')'
+          (nil))))))));

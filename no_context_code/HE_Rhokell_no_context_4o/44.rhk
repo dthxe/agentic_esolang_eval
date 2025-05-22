@@ -1,0 +1,14 @@
+# Rhokell code for HumanEval/44
+# Task: Change numerical base of a number
+
+# Define a function to change base
+func change_base(x, base) {
+    result = ""
+    
+    # Convert number to new base
+    while x > 0 {
+        result = str(x % base) + result
+        x /= base
+    }
+    return result
+}

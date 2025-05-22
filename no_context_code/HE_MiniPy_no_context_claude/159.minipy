@@ -1,0 +1,9 @@
+def eat(number, need, remaining):
+    # Calculate how many more carrots the rabbit will eat
+    to_eat = min(need, remaining)
+    
+    # Calculate total eaten and remaining carrots
+    total_eaten = number + to_eat
+    remaining_carrots = remaining - to_eat
+    
+    return [total_eaten, remaining_carrots]

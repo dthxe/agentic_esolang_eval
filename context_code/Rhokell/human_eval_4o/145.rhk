@@ -1,0 +1,5 @@
+# Rhokell implementation for map_center
+# Center each string in a list to a specified width with a given character.
+
+(map_center (lst) (width) (char)) = 
+    (map (\s -> (center s width char)) lst)

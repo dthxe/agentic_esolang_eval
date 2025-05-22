@@ -1,0 +1,38 @@
+# HumanEval/34: Find unique elements
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (eq x y)
+      (t)
+      (member x ys));
+
+# Test case: [5, 3, 5, 2, 3, 3, 9, 0, 123] -> [5, 3, 2, 9, 0, 123]
+(main) = (unique 
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (s (s (s (s (s (z))))))))))  # 9
+          (cons (z)  # 0
+          (cons (s (s (s (s (s (s (s (s (s (s  # 123
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+          (nil)))))))))));

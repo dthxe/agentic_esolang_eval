@@ -1,0 +1,5 @@
+# Rhokell implementation for digitSum
+# Return the sum of the upper characters only' ASCII codes in a string.
+
+(digitSum (s)) = 
+    (foldl (+) 0 (map ord (filter is_upper s)))

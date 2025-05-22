@@ -1,0 +1,9 @@
+def sorted_list_sum(lst):
+    if not lst:
+        return ls()
+    r = ls()
+    c = 0
+    for x in srt(lst):
+        c += x
+        r.append(c)
+    return r

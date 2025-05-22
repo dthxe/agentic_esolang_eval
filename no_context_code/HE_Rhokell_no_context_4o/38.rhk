@@ -1,0 +1,34 @@
+# Rhokell code for HumanEval/38
+# Task: Encode string by cycling groups of three characters
+
+# Define a function to encode cyclic
+func encode_cyclic(s) {
+    groups = []
+    
+    # Split string into groups of three
+    for i in 0 to len(s) step 3 {
+        group = s[i:min(i + 3, len(s))]
+        if len(group) == 3 {
+            groups.append(group[1:] + group[0])
+        } else {
+            groups.append(group)
+        }
+    }
+    return join(groups, "")
+}
+
+# Define a function to decode cyclic
+func decode_cyclic(s) {
+    groups = []
+    
+    # Split string into groups of three
+    for i in 0 to len(s) step 3 {
+        group = s[i:min(i + 3, len(s))]
+        if len(group) == 3 {
+            groups.append(group[-1] + group[:-1])
+        } else {
+            groups.append(group)
+        }
+    }
+    return join(groups, "")
+}

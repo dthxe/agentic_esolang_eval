@@ -1,0 +1,10 @@
+def choose_num(x, y):
+    if not isinstance(x, t) or not isinstance(y, t):
+        return -1
+    if x > y:
+        return -1
+    r = x
+    for i in r(x, y + 1):
+        if i % 2 == 0 and i > r:
+            r = i
+    return r

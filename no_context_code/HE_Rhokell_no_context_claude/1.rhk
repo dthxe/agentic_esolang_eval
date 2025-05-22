@@ -1,0 +1,29 @@
+/* HumanEval/1: Separate parentheses groups */
+
+FUNC separate_paren_groups(paren_string) {
+    DECL result = []
+    DECL current_group = ""
+    DECL depth = 0
+    
+    LOOP i FROM 0 TO LEN(paren_string) - 1 {
+        DECL char = paren_string[i]
+        
+        IF char == "(" {
+            depth = depth + 1
+            current_group = current_group + char
+        } ELIF char == ")" {
+            depth = depth - 1
+            current_group = current_group + char
+            
+            IF depth == 0 {
+                APPEND(result, current_group)
+                current_group = ""
+            }
+        } ELIF char != " " {
+            /* Ignore spaces */
+            current_group = current_group + char
+        }
+    }
+    
+    RETURN result
+}

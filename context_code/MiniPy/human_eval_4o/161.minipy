@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/161
+# Reverse the case of letters in the string, or reverse the string if no letters.
+
+def solve(s):
+    if any(c.isalpha() for c in s):
+        return ''.join(c.lower() if c.isupper() else c.upper() for c in s)
+    return s[::-1]

@@ -1,0 +1,12 @@
+def change_base(x, base):
+    if x == 0:
+        return "0"
+    
+    digits = "0123456789"
+    result = ""
+    
+    while x > 0:
+        result = digits[x % base] + result
+        x = x // base
+    
+    return result

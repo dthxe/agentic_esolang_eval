@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/102
+# Return the biggest even integer number in the range [x, y] inclusive.
+
+def choose_num(x, y):
+    return max((i for i in r(x, y + 1) if i % 2 == 0), default=-1)

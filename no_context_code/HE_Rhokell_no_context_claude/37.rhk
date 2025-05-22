@@ -1,0 +1,27 @@
+/* HumanEval/37 */
+
+FUNC sort_even(l) {
+    /* Extract elements at even indices */
+    DECL even_elements = []
+    LOOP i FROM 0 TO LEN(l) - 1 {
+        IF i % 2 == 0 {
+            APPEND(even_elements, l[i])
+        }
+    }
+    
+    /* Sort these elements */
+    SORT(even_elements)
+    
+    /* Create the result list */
+    DECL result = COPY(l)
+    DECL even_index = 0
+    
+    LOOP i FROM 0 TO LEN(result) - 1 {
+        IF i % 2 == 0 {
+            result[i] = even_elements[even_index]
+            even_index = even_index + 1
+        }
+    }
+    
+    RETURN result
+}

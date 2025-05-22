@@ -1,0 +1,8 @@
+# Rhokell implementation for sort_numbers
+# Sort a space-delimited string of numerals from 'zero' to 'nine'.
+
+(sort_numbers (s)) = 
+    (let ((number_map (cons (cons 'zero' 0) (cons (cons 'one' 1) (cons (cons 'two' 2) (cons (cons 'three' 3) (cons (cons 'four' 4) (cons (cons 'five' 5) (cons (cons 'six' 6) (cons (cons 'seven' 7) (cons (cons 'eight' 8) (cons (cons 'nine' 9) nil))))))))))))
+    (let ((words (split s ' ')))
+    (let ((sorted_words (sort (\a b -> (< (lookup a number_map) (lookup b number_map))) words)))
+    (join sorted_words ' '))))

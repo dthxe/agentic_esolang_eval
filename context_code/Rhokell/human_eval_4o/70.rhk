@@ -1,0 +1,5 @@
+# Rhokell implementation for lcm
+# Calculate the least common multiple of two numbers.
+
+(lcm (a) (b)) = 
+    (/ (* a b) (gcd a b))

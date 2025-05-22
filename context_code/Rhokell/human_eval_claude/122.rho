@@ -1,0 +1,37 @@
+# HumanEval/122: Add elements to array if sum is less than k
+(add_elements arr k) = 
+  (let [sorted_arr (sort arr)]
+    (add_elements_helper sorted_arr k (z)));
+
+(add_elements_helper arr k count) = 
+  (let [sum (sum arr)]
+    (if (ge sum k)
+        count
+        (add_elements_helper 
+          (cons (s (last arr)) arr)
+          k
+          (s count))));
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = (add x (sum xs));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(last (cons x (nil))) = x;
+(last (cons _ xs)) = (last xs);
+
+(ge x y) = (not (lt x y));
+
+# Test case: [1, 2], 4 -> 0 (sum is already >= 4)
+(main) = (add_elements 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (nil)))
+          (s (s (s (s (z))))));

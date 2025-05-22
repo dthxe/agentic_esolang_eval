@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/74
+# Task: Compare total characters in two lists of strings
+
+# Define a function to total match
+func total_match(lst1, lst2) {
+    len1 = sum([len(s) for s in lst1])
+    len2 = sum([len(s) for s in lst2])
+    
+    if len1 < len2 {
+        return lst1
+    } else if len2 < len1 {
+        return lst2
+    } else {
+        return lst1
+    }
+}

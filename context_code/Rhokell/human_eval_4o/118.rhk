@@ -1,0 +1,5 @@
+# Rhokell implementation for map_trunc
+# Apply truncation function to each element in a list.
+
+(map_trunc (lst)) = 
+    (map (\x -> (trunc x)) lst)

@@ -1,0 +1,21 @@
+def specialFilter(nums):
+    count = 0
+    
+    i = 0
+    while i < len(nums):
+        num = nums[i]
+        
+        # Check if number is greater than 10
+        if num > 10:
+            # Convert to string to get first and last digits
+            num_str = str(abs(num))
+            first_digit = int(num_str[0])
+            last_digit = int(num_str[-1])
+            
+            # Check if both first and last digits are odd
+            if first_digit % 2 == 1 and last_digit % 2 == 1:
+                count = count + 1
+        
+        i = i + 1
+    
+    return count

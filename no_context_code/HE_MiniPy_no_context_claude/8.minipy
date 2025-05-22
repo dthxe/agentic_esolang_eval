@@ -1,0 +1,14 @@
+def sum_product(numbers):
+    if len(numbers) == 0:
+        return (0, 1)
+    
+    sum_result = 0
+    product_result = 1
+    
+    i = 0
+    while i < len(numbers):
+        sum_result = sum_result + numbers[i]
+        product_result = product_result * numbers[i]
+        i = i + 1
+    
+    return (sum_result, product_result)

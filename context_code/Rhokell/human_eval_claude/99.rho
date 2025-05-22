@@ -1,0 +1,33 @@
+# HumanEval/99: Find closest integer to decimal number
+(closest_integer num) = 
+  (let [floor_num (floor num)
+        ceil_num (ceil num)]
+    (if (lt (sub num floor_num)
+            (sub ceil_num num))
+        floor_num
+        ceil_num));
+
+(floor num) = 
+  (div num (s (z)));
+
+(ceil num) = 
+  (if (eq (mod num (s (z))) (z))
+      num
+      (s (floor num)));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 3.6 -> 4
+(main) = (closest_integer 
+          (s (s (s  # 3.6 in Church numerals (using integer arithmetic)
+          (add (z)
+               (div (s (s (s (s (s (s (z)))))))  # 6
+                    (s (s (s (s (s (s (s (s (s (s (z)))))))))))))))))));

@@ -1,0 +1,12 @@
+# Rhokell implementation for sort_list
+# Sort the elements of a list in ascending order.
+
+(sort_list (lst)) = 
+    (letrec ((insert (x) (sorted))
+        (match sorted
+            (nil) (cons x nil)
+            ((cons y ys))
+                (if (< x y)
+                    (cons x (cons y ys))
+                    (cons y (insert x ys))))))
+    (foldl (\acc x -> (insert x acc)) nil lst))

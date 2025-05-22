@@ -1,0 +1,16 @@
+/* HumanEval/5: Insert a delimiter between consecutive elements */
+
+FUNC intersperse(numbers, delimiter) {
+    IF LEN(numbers) == 0 {
+        RETURN []
+    }
+    
+    DECL result = [numbers[0]]
+    
+    LOOP i FROM 1 TO LEN(numbers) - 1 {
+        APPEND(result, delimiter)
+        APPEND(result, numbers[i])
+    }
+    
+    RETURN result
+}

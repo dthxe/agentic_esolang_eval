@@ -1,0 +1,24 @@
+# HumanEval/137: Compare string lengths
+(compare_one str1 str2) = 
+  (let [len1 (length str1)
+        len2 (length str2)]
+    (if (lt len1 len2)
+        (cons (byte (3) (C)) (nil))  # '<'
+        (if (gt len1 len2)
+            (cons (byte (3) (E)) (nil))  # '>'
+            (cons (byte (3) (D)) (nil))))); # '='
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(gt x y) = (lt y x);
+
+# Test case: 'abc', 'ab' -> '>'
+(main) = (compare_one 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil))))
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (nil))));

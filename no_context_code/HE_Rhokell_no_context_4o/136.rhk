@@ -1,0 +1,19 @@
+# Rhokell code for HumanEval/136
+# Task: Find largest negative and smallest positive integers
+
+# Define a function to find largest and smallest
+func largest_smallest_integers(lst) {
+    largest_negative = None
+    smallest_positive = None
+    
+    # Find largest negative and smallest positive
+    for num in lst {
+        if num < 0 and (largest_negative == None or num > largest_negative) {
+            largest_negative = num
+        }
+        if num > 0 and (smallest_positive == None or num < smallest_positive) {
+            smallest_positive = num
+        }
+    }
+    return (largest_negative, smallest_positive)
+}

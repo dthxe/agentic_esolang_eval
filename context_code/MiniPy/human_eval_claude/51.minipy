@@ -1,0 +1,3 @@
+def remove_vowels(t):
+    v = set('aeiouAEIOU')
+    return sr.join(x for x in t if x not in v)

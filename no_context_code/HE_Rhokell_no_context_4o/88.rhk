@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/88
+# Task: Sort array based on sum of first and last element
+
+# Define a function to sort array
+func sort_array(array) {
+    if len(array) == 0 {
+        return array
+    }
+    
+    # Determine sort order
+    if (array[0] + array[-1]) % 2 == 0 {
+        return sort(array, reverse=true)
+    } else {
+        return sort(array)
+    }
+}

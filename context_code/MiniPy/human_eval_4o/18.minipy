@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/18
+# Count how many times a substring can be found in a string, including overlapping.
+
+def how_many_times(string, substring):
+    return sum(1 for i in r(l(string)) if string[i:i+l(substring)] == substring)

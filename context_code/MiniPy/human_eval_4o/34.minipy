@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/34
+# Return sorted unique elements in a list.
+
+def unique(l):
+    return srt(set(l))

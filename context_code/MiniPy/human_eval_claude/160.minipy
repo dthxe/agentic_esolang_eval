@@ -1,0 +1,19 @@
+def do_algebra(lst, n):
+    if not lst or not isinstance(n, t):
+        return None
+    r = n
+    for x in lst:
+        if not isinstance(x, s):
+            return None
+        op, v = x[0], t(x[1:])
+        if op == '+':
+            r += v
+        elif op == '-':
+            r -= v
+        elif op == '*':
+            r *= v
+        elif op == '/':
+            if v == 0:
+                return None
+            r //= v
+    return r

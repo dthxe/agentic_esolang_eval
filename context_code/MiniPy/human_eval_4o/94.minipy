@@ -1,0 +1,13 @@
+# Minipy solution for HumanEval/94
+# Find the largest prime value and return the sum of its digits.
+
+def skjkasdkd(lst):
+    def is_prime(n):
+        if n <= 1:
+            return False
+        for i in r(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    largest_prime = max((x for x in lst if is_prime(x)), default=0)
+    return sm(int(d) for d in s(largest_prime))

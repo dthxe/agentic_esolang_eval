@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/80
+# Check if the string is happy.
+
+def is_happy(s):
+    return l(s) >= 3 and all(s[i] != s[i+1] != s[i+2] != s[i] for i in r(l(s) - 2))

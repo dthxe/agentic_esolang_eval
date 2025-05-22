@@ -1,0 +1,5 @@
+# Rhokell implementation for map_length
+# Calculate the length of each sublist in a list of lists.
+
+(map_length (lst)) = 
+    (map (\sublist -> (length sublist)) lst)

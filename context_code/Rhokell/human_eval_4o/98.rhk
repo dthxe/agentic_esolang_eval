@@ -1,0 +1,5 @@
+# Rhokell implementation for map_tan
+# Apply tangent function to each element in a list.
+
+(map_tan (lst)) = 
+    (map (\x -> (tan x)) lst)

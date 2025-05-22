@@ -1,0 +1,17 @@
+/* HumanEval/35 */
+
+FUNC max_element(l) {
+    IF LEN(l) == 0 {
+        RETURN NULL
+    }
+    
+    DECL max_val = l[0]
+    
+    LOOP i FROM 1 TO LEN(l) - 1 {
+        IF l[i] > max_val {
+            max_val = l[i]
+        }
+    }
+    
+    RETURN max_val
+}

@@ -1,0 +1,5 @@
+# Rhokell implementation for map_cos
+# Apply cosine function to each element in a list.
+
+(map_cos (lst)) = 
+    (map (\x -> (cos x)) lst)

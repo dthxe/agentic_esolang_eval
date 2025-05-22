@@ -1,0 +1,20 @@
+def total_match(lst1, lst2):
+    # Count total characters in lst1
+    count1 = 0
+    i = 0
+    while i < len(lst1):
+        count1 = count1 + len(lst1[i])
+        i = i + 1
+    
+    # Count total characters in lst2
+    count2 = 0
+    i = 0
+    while i < len(lst2):
+        count2 = count2 + len(lst2[i])
+        i = i + 1
+    
+    # Return the list with fewer characters
+    if count2 < count1:
+        return lst2
+    else:
+        return lst1

@@ -1,0 +1,6 @@
+def select_words(s, n):
+    if not isinstance(s, s):
+        return ls()
+    def c(w):
+        return sm(1 for x in w if x.lower() in 'aeiou')
+    return [w for w in s.split() if c(w) == n]

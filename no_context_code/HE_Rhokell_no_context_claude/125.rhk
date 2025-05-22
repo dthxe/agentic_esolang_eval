@@ -1,0 +1,48 @@
+/* HumanEval/125 */
+
+FUNC split_words(txt) {
+    /* Check if the text contains whitespace */
+    IF CONTAINS(txt, " ") {
+        /* Split on whitespace */
+        DECL words = SPLIT(txt, " ")
+        DECL result = []
+        
+        LOOP i FROM 0 TO LEN(words) - 1 {
+            IF LEN(words[i]) > 0 {
+                APPEND(result, words[i])
+            }
+        }
+        
+        RETURN result
+    }
+    
+    /* Check if the text contains commas */
+    IF CONTAINS(txt, ",") {
+        /* Split on commas */
+        DECL words = SPLIT(txt, ",")
+        DECL result = []
+        
+        LOOP i FROM 0 TO LEN(words) - 1 {
+            IF LEN(words[i]) > 0 {
+                APPEND(result, words[i])
+            }
+        }
+        
+        RETURN result
+    }
+    
+    /* Count lowercase letters with odd order in the alphabet */
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(txt) - 1 {
+        DECL char = txt[i]
+        IF IS_LOWER(char) {
+            DECL order = ORD(char) - ORD("a")
+            IF order % 2 == 1 {
+                count = count + 1
+            }
+        }
+    }
+    
+    RETURN count
+}

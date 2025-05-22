@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/145
+# Task: Sort list by sum of digits
+
+# Define a function to order by points
+func order_by_points(nums) {
+    # Sort by sum of digits
+    return sort(nums, key=lambda x: (sum_of_digits(x), nums.index(x)))
+}
+
+# Helper function to calculate sum of digits
+func sum_of_digits(num) {
+    return sum([int(digit) for digit in str(num)])
+}

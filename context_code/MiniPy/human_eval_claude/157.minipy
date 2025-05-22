@@ -1,0 +1,7 @@
+def right_angle_triangle(a, b, c):
+    if not isinstance(a, t) or not isinstance(b, t) or not isinstance(c, t):
+        return False
+    if a <= 0 or b <= 0 or c <= 0:
+        return False
+    x = srt([a, b, c])
+    return x[0] * x[0] + x[1] * x[1] == x[2] * x[2]

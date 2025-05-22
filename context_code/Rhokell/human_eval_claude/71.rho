@@ -1,0 +1,31 @@
+# HumanEval/71: Calculate triangle area using Heron's formula
+(triangle_area a b c) = 
+  (let [s (div (add a (add b c)) (s (s (z))))]  # s = (a + b + c) / 2
+    (sqrt (mul s 
+               (mul (sub s a)
+                    (mul (sub s b)
+                         (sub s c))))));
+
+(sqrt n) = 
+  (sqrt_helper n (s (z)));
+
+(sqrt_helper n guess) = 
+  (let [quotient (div n guess)
+        next (div (add guess quotient) (s (s (z))))]
+    (if (eq guess next)
+        guess
+        (sqrt_helper n next)));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 3, 4, 5 -> 6
+(main) = (triangle_area 
+          (s (s (s (z))))  # 3
+          (s (s (s (s (z)))))  # 4
+          (s (s (s (s (s (z)))))));

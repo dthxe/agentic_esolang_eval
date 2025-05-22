@@ -1,0 +1,7 @@
+# Rhokell implementation for encode_cyclic
+# Returns encoded string by cycling groups of three characters.
+
+(encode_cyclic (s)) = 
+    (let ((groups (group_by 3 s)))
+    (let ((cycled_groups (map (\g -> (if (= (length g) 3) (append (tail g) (cons (head g) nil)) g)) groups)))
+    (join cycled_groups '')))

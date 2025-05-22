@@ -1,0 +1,16 @@
+def closest_integer(value):
+    # Convert string to float
+    num = float(value)
+    
+    # Get the fractional part
+    frac_part = abs(num) - int(abs(num))
+    
+    # Round away from zero if equidistant
+    if frac_part == 0.5:
+        if num > 0:
+            return int(num) + 1
+        else:
+            return int(num) - 1
+    
+    # Otherwise round to nearest integer
+    return round(num)

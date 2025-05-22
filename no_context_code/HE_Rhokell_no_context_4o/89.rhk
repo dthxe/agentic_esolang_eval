@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/89
+# Task: Encrypt string by rotating alphabet
+
+# Define a function to encrypt
+func encrypt(s) {
+    encrypted = ""
+    
+    # Encrypt by rotating
+    for ch in s {
+        if is_alpha(ch) {
+            new_ch = chr(((ord(ch) - ord('a') + 4) % 26) + ord('a'))
+            encrypted += new_ch
+        } else {
+            encrypted += ch
+        }
+    }
+    return encrypted
+}

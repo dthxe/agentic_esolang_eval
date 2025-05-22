@@ -1,0 +1,2 @@
+def make_a_pile(n):
+    return [n + i for i in range(0, n)]

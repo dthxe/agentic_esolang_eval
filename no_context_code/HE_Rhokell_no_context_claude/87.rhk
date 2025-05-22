@@ -1,0 +1,31 @@
+/* HumanEval/87 */
+
+FUNC get_row(lst, x) {
+    DECL result = []
+    
+    /* Find all occurrences of x in the matrix */
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL row = lst[i]
+        
+        /* Find all occurrences in this row */
+        DECL row_coords = []
+        LOOP j FROM 0 TO LEN(row) - 1 {
+            IF row[j] == x {
+                APPEND(row_coords, [i, j])
+            }
+        }
+        
+        /* Sort coordinates of this row by column in descending order */
+        SORT_DESC(row_coords, 1)
+        
+        /* Add to result */
+        LOOP k FROM 0 TO LEN(row_coords) - 1 {
+            APPEND(result, row_coords[k])
+        }
+    }
+    
+    /* Sort all coordinates by row in ascending order */
+    SORT(result, 0)
+    
+    RETURN result
+}

@@ -1,0 +1,36 @@
+# HumanEval/82: Check if string length is prime
+(prime_length str) = 
+  (is_prime (length str));
+
+(is_prime n) = 
+  (and (gt n (s (z)))
+       (no_factors n (s (s (z)))));
+
+(no_factors n curr) = 
+  (if (gt (mul curr curr) n)
+      (t)
+      (if (eq (mod n curr) (z))
+          (f)
+          (no_factors n (s curr))));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(gt x y) = (lt y x);
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 'Hello' -> true (length 5 is prime)
+(main) = (prime_length 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil)))))));

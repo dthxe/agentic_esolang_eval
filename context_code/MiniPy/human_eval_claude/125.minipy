@@ -1,0 +1,15 @@
+def split_words(txt):
+    if not isinstance(txt, s):
+        return ls()
+    w = ls()
+    c = sr
+    for x in txt:
+        if x.isalnum():
+            c += x
+        else:
+            if c:
+                w.append(c)
+            c = sr
+    if c:
+        w.append(c)
+    return w

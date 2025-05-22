@@ -1,0 +1,5 @@
+# Rhokell implementation for map_sort
+# Sort each sublist in a list of lists.
+
+(map_sort (lst)) = 
+    (map (\sublist -> (sort_list sublist)) lst)

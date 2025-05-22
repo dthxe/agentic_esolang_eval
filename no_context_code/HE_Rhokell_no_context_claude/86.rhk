@@ -1,0 +1,28 @@
+/* HumanEval/86 */
+
+FUNC anti_shuffle(s) {
+    /* Split the string into words */
+    DECL words = SPLIT(s, " ")
+    DECL result = []
+    
+    /* Sort characters in each word */
+    LOOP i FROM 0 TO LEN(words) - 1 {
+        DECL word = words[i]
+        DECL chars = []
+        
+        /* Convert word to character array */
+        LOOP j FROM 0 TO LEN(word) - 1 {
+            APPEND(chars, word[j])
+        }
+        
+        /* Sort characters */
+        SORT(chars)
+        
+        /* Join characters back into a word */
+        DECL sorted_word = JOIN(chars, "")
+        APPEND(result, sorted_word)
+    }
+    
+    /* Join words back into a string */
+    RETURN JOIN(result, " ")
+}

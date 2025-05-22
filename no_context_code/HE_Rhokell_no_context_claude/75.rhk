@@ -1,0 +1,49 @@
+/* HumanEval/75 */
+
+FUNC is_multiply_prime(a) {
+    /* Get all prime factors with their counts */
+    DECL factors = {}
+    DECL n = a
+    
+    /* Check for factor 2 */
+    WHILE n % 2 == 0 {
+        IF CONTAINS(factors, 2) {
+            factors[2] = factors[2] + 1
+        } ELSE {
+            factors[2] = 1
+        }
+        n = n / 2
+    }
+    
+    /* Check for odd factors */
+    DECL i = 3
+    WHILE i * i <= n {
+        WHILE n % i == 0 {
+            IF CONTAINS(factors, i) {
+                factors[i] = factors[i] + 1
+            } ELSE {
+                factors[i] = 1
+            }
+            n = n / i
+        }
+        i = i + 2
+    }
+    
+    /* If n is a prime number greater than 2 */
+    IF n > 2 {
+        IF CONTAINS(factors, n) {
+            factors[n] = factors[n] + 1
+        } ELSE {
+            factors[n] = 1
+        }
+    }
+    
+    /* Count total prime factors (with multiplicity) */
+    DECL total_factors = 0
+    LOOP factor IN factors {
+        total_factors = total_factors + factors[factor]
+    }
+    
+    /* Check if the number is the product of exactly 3 prime numbers */
+    RETURN total_factors == 3
+}

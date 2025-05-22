@@ -1,0 +1,8 @@
+def sum_squares(lst):
+    if not lst:
+        return 0
+    r = 0
+    for i in r(l(lst)):
+        if i % 3 == 0 or i % 4 == 0:
+            r += lst[i] * lst[i]
+    return r

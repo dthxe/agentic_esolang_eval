@@ -1,0 +1,12 @@
+/* HumanEval/0: Check if in given list of numbers, any two numbers are closer to each other than given threshold */
+
+FUNC has_close_elements(numbers, threshold) {
+    LOOP i FROM 0 TO LEN(numbers) - 1 {
+        LOOP j FROM i + 1 TO LEN(numbers) - 1 {
+            IF ABS(numbers[i] - numbers[j]) < threshold {
+                RETURN TRUE
+            }
+        }
+    }
+    RETURN FALSE
+}

@@ -1,0 +1,28 @@
+/* HumanEval/137 */
+
+FUNC compare_one(a, b) {
+    /* Convert strings to numbers if needed */
+    DECL num_a = a
+    DECL num_b = b
+    
+    IF IS_STRING(a) {
+        /* Replace comma with dot if present */
+        DECL a_fixed = REPLACE(a, ",", ".")
+        num_a = TO_FLOAT(a_fixed)
+    }
+    
+    IF IS_STRING(b) {
+        /* Replace comma with dot if present */
+        DECL b_fixed = REPLACE(b, ",", ".")
+        num_b = TO_FLOAT(b_fixed)
+    }
+    
+    /* Compare the numbers */
+    IF num_a > num_b {
+        RETURN a
+    } ELIF num_b > num_a {
+        RETURN b
+    } ELSE {
+        RETURN NULL
+    }
+}

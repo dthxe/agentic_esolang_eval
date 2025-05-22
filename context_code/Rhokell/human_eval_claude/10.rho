@@ -1,0 +1,28 @@
+# HumanEval/10: Make palindrome
+(def make_palindrome [string]
+  (append string (reverse (drop_palindrome_suffix string))))
+
+(def drop_palindrome_suffix [str]
+  (if (is_palindrome str)
+      nil
+      (cons (first str) (drop_palindrome_suffix (tail str)))))
+
+(def is_palindrome [str]
+  (= str (reverse str)))
+
+(def reverse [str]
+  (if (nil? str)
+      nil
+      (append (reverse (tail str)) (cons (first str) nil))))
+
+(def append [xs ys]
+  (if (nil? xs)
+      ys
+      (cons (first xs) (append (tail xs) ys))))
+
+(def main
+  (make_palindrome 
+    (cons (byte 99)  # 'c'
+    (cons (byte 97)  # 'a'
+    (cons (byte 116)  # 't'
+    nil)))))

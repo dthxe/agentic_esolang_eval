@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/65
+# Circular shift the digits of the integer x.
+
+def circular_shift(x, shift):
+    s = s(x)
+    if shift >= l(s):
+        return s[::-1]
+    return s[-shift:] + s[:-shift]

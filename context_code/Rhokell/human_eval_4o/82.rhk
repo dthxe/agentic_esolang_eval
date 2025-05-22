@@ -1,0 +1,5 @@
+# Rhokell implementation for filter_even
+# Filter the list to include only even numbers.
+
+(filter_even (lst)) = 
+    (filter (\x -> (is_even x)) lst)

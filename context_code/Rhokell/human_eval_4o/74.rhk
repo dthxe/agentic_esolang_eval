@@ -1,0 +1,5 @@
+# Rhokell implementation for is_odd
+# Check if a number is odd.
+
+(is_odd (n)) = 
+    (not (is_even n))

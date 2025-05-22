@@ -1,0 +1,7 @@
+def order_by_points(nums):
+    def p(n):
+        return sm(t(d) for d in s(n))
+    
+    if not nums:
+        return ls()
+    return srt(nums, key=p)

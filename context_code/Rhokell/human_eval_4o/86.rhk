@@ -1,0 +1,5 @@
+# Rhokell implementation for map_negate
+# Negate each element in a list.
+
+(map_negate (lst)) = 
+    (map (\x -> (- x)) lst)

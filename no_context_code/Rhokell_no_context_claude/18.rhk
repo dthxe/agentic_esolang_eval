@@ -1,0 +1,6 @@
+maximum :: [Int] -> Int
+maximum = foldl1 max
+
+main = do
+  nums <- readList
+  print $ maximum nums

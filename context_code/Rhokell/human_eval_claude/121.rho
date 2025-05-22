@@ -1,0 +1,39 @@
+# HumanEval/121: Find solutions to quadratic equation ax^2 + bx + c = 0
+(solution a b c) = 
+  (let [discriminant (sub (mul b b)
+                         (mul (mul (s (s (s (s (z))))) (mul a c)))]
+    (if (lt discriminant (z))
+        (nil)
+        (if (eq discriminant (z))
+            (cons (div (neg b) (mul (s (s (z))) a))
+                  (nil))
+            (cons (div (add (neg b) (sqrt discriminant))
+                      (mul (s (s (z))) a))
+                  (cons (div (sub (neg b) (sqrt discriminant))
+                            (mul (s (s (z))) a))
+                        (nil))))));
+
+(sqrt n) = 
+  (sqrt_helper n (s (z)));
+
+(sqrt_helper n guess) = 
+  (let [next (div (add guess (div n guess)) (s (s (z))))]
+    (if (eq next guess)
+        guess
+        (sqrt_helper n next)));
+
+(neg x) = (sub (z) x);
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 1, -5, 6 -> [2, 3] (x^2 - 5x + 6 = 0)
+(main) = (solution 
+          (s (z))  # 1
+          (sub (z) (s (s (s (s (s (z)))))))  # -5
+          (s (s (s (s (s (s (z))))))));

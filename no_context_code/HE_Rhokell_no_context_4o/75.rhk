@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/75
+# Task: Check if a number is a product of 3 primes
+
+# Define a function to check multiply prime
+func is_multiply_prime(a) {
+    primes = []
+    
+    # Factorize the number
+    for i in 2 to a {
+        while a % i == 0 {
+            primes.append(i)
+            a /= i
+        }
+    }
+    return len(primes) == 3 and len(set(primes)) == 3
+}

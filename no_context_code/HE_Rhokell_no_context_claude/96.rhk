@@ -1,0 +1,41 @@
+/* HumanEval/96 */
+
+FUNC count_up_to(n) {
+    IF n <= 1 {
+        RETURN []
+    }
+    
+    DECL primes = []
+    
+    LOOP i FROM 2 TO n - 1 {
+        IF is_prime(i) {
+            APPEND(primes, i)
+        }
+    }
+    
+    RETURN primes
+}
+
+FUNC is_prime(n) {
+    IF n <= 1 {
+        RETURN FALSE
+    }
+    
+    IF n <= 3 {
+        RETURN TRUE
+    }
+    
+    IF n % 2 == 0 || n % 3 == 0 {
+        RETURN FALSE
+    }
+    
+    DECL i = 5
+    WHILE i * i <= n {
+        IF n % i == 0 || n % (i + 2) == 0 {
+            RETURN FALSE
+        }
+        i = i + 6
+    }
+    
+    RETURN TRUE
+}

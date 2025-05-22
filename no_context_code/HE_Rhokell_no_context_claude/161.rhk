@@ -1,0 +1,33 @@
+/* HumanEval/161 */
+
+FUNC solve(s) {
+    DECL result = ""
+    DECL has_letters = FALSE
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        DECL char = s[i]
+        
+        IF IS_ALPHA(char) {
+            has_letters = TRUE
+            
+            IF IS_UPPER(char) {
+                result = result + TO_LOWER(char)
+            } ELSE {
+                result = result + TO_UPPER(char)
+            }
+        } ELSE {
+            result = result + char
+        }
+    }
+    
+    /* If no letters, reverse the string */
+    IF !has_letters {
+        DECL reversed = ""
+        LOOP i FROM LEN(s) - 1 TO 0 {
+            reversed = reversed + s[i]
+        }
+        RETURN reversed
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,12 @@
+def max_element(l):
+    if not l:
+        return None
+    
+    max_val = l[0]
+    i = 1
+    while i < len(l):
+        if l[i] > max_val:
+            max_val = l[i]
+        i = i + 1
+    
+    return max_val

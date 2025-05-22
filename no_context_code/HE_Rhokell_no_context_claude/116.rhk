@@ -1,0 +1,61 @@
+/* HumanEval/116 */
+
+FUNC sort_array(arr) {
+    /* Create pairs of [number, count of ones in binary] */
+    DECL pairs = []
+    
+    LOOP i FROM 0 TO LEN(arr) - 1 {
+        DECL num = arr[i]
+        DECL ones_count = count_ones(num)
+        APPEND(pairs, [num, ones_count])
+    }
+    
+    /* Sort by count of ones, then by decimal value */
+    DECL sorted_pairs = sort_by_criteria(pairs)
+    
+    /* Extract the sorted numbers */
+    DECL result = []
+    LOOP i FROM 0 TO LEN(sorted_pairs) - 1 {
+        APPEND(result, sorted_pairs[i][0])
+    }
+    
+    RETURN result
+}
+
+FUNC count_ones(n) {
+    DECL count = 0
+    DECL num = n
+    
+    WHILE num > 0 {
+        IF num % 2 == 1 {
+            count = count + 1
+        }
+        num = num / 2
+    }
+    
+    RETURN count
+}
+
+FUNC sort_by_criteria(pairs) {
+    /* Sort by count of ones (first key) and then by decimal value (second key) */
+    DECL n = LEN(pairs)
+    
+    LOOP i FROM 0 TO n - 2 {
+        LOOP j FROM 0 TO n - i - 2 {
+            /* Compare by ones count first */
+            IF pairs[j][1] > pairs[j+1][1] {
+                DECL temp = pairs[j]
+                pairs[j] = pairs[j+1]
+                pairs[j+1] = temp
+            } 
+            /* If ones count is equal, compare by decimal value */
+            ELIF pairs[j][1] == pairs[j+1][1] && pairs[j][0] > pairs[j+1][0] {
+                DECL temp = pairs[j]
+                pairs[j] = pairs[j+1]
+                pairs[j+1] = temp
+            }
+        }
+    }
+    
+    RETURN pairs
+}

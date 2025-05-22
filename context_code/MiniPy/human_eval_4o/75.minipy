@@ -1,0 +1,11 @@
+# Minipy solution for HumanEval/75
+# Return True if the number is the multiplication of 3 prime numbers.
+
+def is_multiply_prime(a):
+    primes = [2, 3, 5, 7]
+    factors = []
+    for p in primes:
+        while a % p == 0:
+            a //= p
+            factors.append(p)
+    return l(factors) == 3

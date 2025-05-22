@@ -1,0 +1,45 @@
+/* HumanEval/95 */
+
+FUNC check_dict_case(dict) {
+    /* Return False if dictionary is empty */
+    IF LEN(dict) == 0 {
+        RETURN FALSE
+    }
+    
+    DECL all_upper = TRUE
+    DECL all_lower = TRUE
+    
+    LOOP key IN dict {
+        /* Check if key is a string */
+        IF !IS_STRING(key) {
+            RETURN FALSE
+        }
+        
+        /* Check if all characters in the key are uppercase */
+        IF all_upper {
+            LOOP i FROM 0 TO LEN(key) - 1 {
+                IF !IS_UPPER(key[i]) {
+                    all_upper = FALSE
+                    BREAK
+                }
+            }
+        }
+        
+        /* Check if all characters in the key are lowercase */
+        IF all_lower {
+            LOOP i FROM 0 TO LEN(key) - 1 {
+                IF !IS_LOWER(key[i]) {
+                    all_lower = FALSE
+                    BREAK
+                }
+            }
+        }
+        
+        /* If neither all uppercase nor all lowercase, return False */
+        IF !all_upper && !all_lower {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN TRUE
+}

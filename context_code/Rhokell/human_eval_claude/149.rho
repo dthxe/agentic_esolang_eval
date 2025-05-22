@@ -1,0 +1,64 @@
+# HumanEval/149: Sort numbers by sum of digits
+(sorted_list lst) = 
+  (sort_by_key lst sum_digits);
+
+(sum_digits n) = 
+  (sum (digits_of n));
+
+(digits_of n) = 
+  (if (eq n (z))
+      (cons (z) (nil))
+      (digits_of_helper n (nil)));
+
+(digits_of_helper n acc) = 
+  (if (eq n (z))
+      acc
+      (digits_of_helper 
+        (div n (s (s (s (s (s (s (s (s (s (s (z))))))))))))  # div by 10
+        (cons (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+              acc)));
+
+(sort_by_key arr key_fn) = 
+  (map second 
+       (sort_by_first 
+        (map (lambda (x) (pair (key_fn x) x)) arr)));
+
+(sort_by_first (nil)) = (nil);
+(sort_by_first (cons x xs)) = 
+  (insert_by_first x (sort_by_first xs));
+
+(insert_by_first x (nil)) = (cons x (nil));
+(insert_by_first x (cons y ys)) = 
+  (if (lt (first x) (first y))
+      (cons x (cons y ys))
+      (cons y (insert_by_first x ys)));
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = (add x (sum xs));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(first (pair x _)) = x;
+(second (pair _ y)) = y;
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: [23, 12, 3] -> [12, 3, 23] (sorted by sum of digits)
+(main) = (sorted_list 
+          (cons (s (s (s (s (s (s (s (s (s (s  # 23
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (z)))))))))))))))))))))))
+          (cons (s (s (s (s (s (s (s (s (s (s  # 12
+          (s (s (z))))))))))))) 
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

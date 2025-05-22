@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/14
+# Return all prefixes of the input string.
+
+def all_prefixes(string):
+    return [string[:i] for i in r(l(string)+1)]

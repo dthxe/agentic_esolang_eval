@@ -1,0 +1,36 @@
+# HumanEval/114: Find minimum even number in list
+(minSubArraySum lst) = 
+  (let [evens (filter is_even lst)]
+    (if (eq evens (nil))
+        (z)
+        (min_list evens)));
+
+(is_even n) = 
+  (eq (mod n (s (s (z)))) (z));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(min_list (nil)) = (z);
+(min_list (cons x (nil))) = x;
+(min_list (cons x xs)) = 
+  (min x (min_list xs));
+
+(min x y) = (if (lt x y) x y);
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: [1, 2, 3, 4, 5] -> 2 (smallest even number)
+(main) = (minSubArraySum 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (z))))))  # 5
+          (nil)))))));

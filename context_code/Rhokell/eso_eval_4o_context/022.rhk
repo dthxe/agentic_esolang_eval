@@ -1,0 +1,78 @@
+# Find the median of a list of numbers
+# Helper functions for Church numerals and arithmetic
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+
+# Read list input
+(read_list) = (read_number (input_byte));
+(read_number (0)) = (nil);  # Null terminator
+(read_number x) = (cons (digit_to_church x) (read_list));
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Find median
+(median (l)) = (nth (sort l) (div (length l) (s (s (z)))));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = (if (lt x y) (cons x (cons y ys)) (cons y (insert x ys)));
+
+(nth (cons x xs) (z)) = x;
+(nth (cons x xs) (s n)) = (nth xs n);
+
+(length (nil)) = (z);
+(length (cons x xs)) = (s (length xs));
+
+# Calculate division
+(div a b) = (div_helper a b (z));
+(div_helper a b acc) = (if (lt a b) acc (div_helper (sub a b) b (s acc)));
+
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+(lt (z) (s x)) = (s (z));
+(lt (s x) (s y)) = (lt x y);
+(lt x y) = (z);
+
+# Main function
+(main) = (print 
+          (append 
+            (church_to_digit (median (read_list)))
+            (cons (byte (0) (A)) (nil))  # Add newline
+          ));
+
+# Convert Church numeral to decimal string
+(church_to_digit (z)) = (cons (byte (3) (0)) (nil));  # ASCII '0' = 0x30
+(church_to_digit (s x)) = (add_digit (church_to_digit x));
+(add_digit (cons (byte x y) z)) = (cons (byte (inc_digit x y)) z);
+
+(inc_digit (3) (0)) = (cons (byte (3) (1)) (nil));
+(inc_digit (3) (1)) = (cons (byte (3) (2)) (nil));
+(inc_digit (3) (2)) = (cons (byte (3) (3)) (nil));
+(inc_digit (3) (3)) = (cons (byte (3) (4)) (nil));
+(inc_digit (3) (4)) = (cons (byte (3) (5)) (nil));
+(inc_digit (3) (5)) = (cons (byte (3) (6)) (nil));
+(inc_digit (3) (6)) = (cons (byte (3) (7)) (nil));
+(inc_digit (3) (7)) = (cons (byte (3) (8)) (nil));
+(inc_digit (3) (8)) = (cons (byte (3) (9)) (nil));
+(inc_digit (3) (9)) = (cons (byte (3) (1)) (cons (byte (3) (0)) (nil)));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

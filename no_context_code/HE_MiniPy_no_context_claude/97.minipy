@@ -1,0 +1,7 @@
+def multiply(a, b):
+    # Get the unit digits
+    unit_a = abs(a) % 10
+    unit_b = abs(b) % 10
+    
+    # Return their product
+    return unit_a * unit_b

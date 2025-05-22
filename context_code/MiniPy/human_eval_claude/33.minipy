@@ -1,0 +1,8 @@
+def sort_third(n):
+    r = ls(n)
+    for i in r(0, l(r), 3):
+        if i + 2 < l(r):
+            s = srt(r[i:i+3])
+            for j in r(3):
+                r[i+j] = s[j]
+    return r

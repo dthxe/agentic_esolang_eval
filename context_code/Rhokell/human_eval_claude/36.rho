@@ -1,0 +1,23 @@
+# HumanEval/36: Find smallest square number greater than n
+(find_next_square n) = 
+  (let [root (sqrt_ceil n)]
+    (mul root root));
+
+(sqrt_ceil n) = (sqrt_helper n (s (z)));
+
+(sqrt_helper n k) = 
+  (let [square (mul k k)]
+    (if (gt square n)
+        k
+        (sqrt_helper n (s k))));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(gt x y) = (lt y x);
+
+# Test case: 8 -> 9
+(main) = (find_next_square 
+          (s (s (s (s (s  # 8 in Church numerals
+          (s (s (s
+          (z))))))))))); 

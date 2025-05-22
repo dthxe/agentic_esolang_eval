@@ -1,0 +1,12 @@
+/* HumanEval/32 */
+
+FUNC poly(xs, x) {
+    DECL result = 0
+    
+    LOOP i FROM 0 TO LEN(xs) - 1 {
+        DECL term = xs[i] * POW(x, i)
+        result = result + term
+    }
+    
+    RETURN result
+}

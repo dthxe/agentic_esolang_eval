@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/108
+# Task: Count numbers with sum of digits > 0
+
+# Define a function to count numbers
+func count_nums(arr) {
+    count = 0
+    
+    # Count numbers with sum of digits > 0
+    for num in arr {
+        sum_digits = sum([int(digit) for digit in str(abs(num))])
+        if sum_digits > 0 {
+            count += 1
+        }
+    }
+    return count
+}

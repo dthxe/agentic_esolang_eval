@@ -1,0 +1,12 @@
+def simplify(x, n):
+    if not isinstance(x, s) or not isinstance(n, t):
+        return sr
+    if n <= 0:
+        return x
+    r = ls()
+    for c in x:
+        if c.isupper():
+            r.append(c.lower())
+        else:
+            r.append(c)
+    return sr.join(r)

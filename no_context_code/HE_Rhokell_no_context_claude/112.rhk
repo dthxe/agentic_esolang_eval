@@ -1,0 +1,35 @@
+/* HumanEval/112 */
+
+FUNC reverse_delete(s, c) {
+    /* Delete all characters in s that are equal to any character in c */
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        DECL char = s[i]
+        DECL should_keep = TRUE
+        
+        LOOP j FROM 0 TO LEN(c) - 1 {
+            IF char == c[j] {
+                should_keep = FALSE
+                BREAK
+            }
+        }
+        
+        IF should_keep {
+            result = result + char
+        }
+    }
+    
+    /* Check if the result is a palindrome */
+    DECL is_palindrome = TRUE
+    DECL length = LEN(result)
+    
+    LOOP i FROM 0 TO length / 2 - 1 {
+        IF result[i] != result[length - 1 - i] {
+            is_palindrome = FALSE
+            BREAK
+        }
+    }
+    
+    RETURN [result, is_palindrome]
+}

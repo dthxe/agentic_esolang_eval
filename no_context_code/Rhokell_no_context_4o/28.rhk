@@ -1,0 +1,1 @@
+def all_even(lst): return all(x % 2 == 0 for x in lst)

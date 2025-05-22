@@ -1,0 +1,38 @@
+# HumanEval/85: Add subarray to array
+(add_subarray arr idx subarray) = 
+  (let [before (take idx arr)
+        after (drop idx arr)]
+    (append before 
+            (append subarray after)));
+
+(take n lst) = 
+  (if (eq n (z))
+      (nil)
+      (if (eq lst (nil))
+          (nil)
+          (cons (head lst)
+                (take (sub n (s (z))) (tail lst)))));
+
+(drop n lst) = 
+  (if (eq n (z))
+      lst
+      (if (eq lst (nil))
+          (nil)
+          (drop (sub n (s (z))) (tail lst))));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+# Test case: [1, 2], 1, [3, 4] -> [1, 3, 4, 2]
+(main) = (add_subarray 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (nil)))
+          (s (z))  # idx = 1
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil))));

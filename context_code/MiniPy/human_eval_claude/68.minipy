@@ -1,0 +1,6 @@
+def pluck(arr):
+    if not arr:
+        return []
+    m = min(arr)
+    i = arr.index(m)
+    return [i, m]

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/10
+# Find the shortest palindrome that begins with a supplied string.
+
+def make_palindrome(string):
+    return string + _string[:l(string) - l(string.rstrip(string[::-1]))] if string else sr

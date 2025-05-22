@@ -1,0 +1,6 @@
+stringLength :: String -> Int
+stringLength = length
+
+main = do
+  s <- readLine
+  print $ stringLength s

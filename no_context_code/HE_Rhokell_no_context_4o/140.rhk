@@ -1,0 +1,12 @@
+# Rhokell code for HumanEval/140
+# Task: Replace spaces with underscores and consecutive spaces with '-'
+
+# Define a function to fix spaces
+func fix_spaces(text) {
+    # Replace spaces with underscores
+    text = replace(text, " ", "_")
+    
+    # Replace consecutive spaces with '-'
+    text = replace(text, "__", "-")
+    return text
+}

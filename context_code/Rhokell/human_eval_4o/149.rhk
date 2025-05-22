@@ -1,0 +1,5 @@
+# Rhokell implementation for map_capitalize
+# Capitalize the first character of each string in a list.
+
+(map_capitalize (lst)) = 
+    (map (\s -> (capitalize s)) lst)

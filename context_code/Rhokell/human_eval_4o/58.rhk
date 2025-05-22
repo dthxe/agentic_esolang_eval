@@ -1,0 +1,5 @@
+# Rhokell implementation for words_string
+# Split a string of words separated by commas or spaces into an array of words.
+
+(words_string (s)) = 
+    (split (\ch -> (or (= ch ',') (= ch ' '))) s)

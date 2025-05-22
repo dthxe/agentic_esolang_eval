@@ -1,0 +1,40 @@
+# HumanEval/90: Find next smallest number with same digit sum
+(next_smallest n) = 
+  (find_next (s n));
+
+(find_next curr) = 
+  (if (eq (digit_sum curr) (digit_sum n))
+      curr
+      (find_next (s curr)));
+
+(digit_sum n) = 
+  (if (eq n (z))
+      (z)
+      (add (mod n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # mod by 10
+           (digit_sum (div n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))))); # div by 10
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: 123 -> 124 (both have digit sum 6)
+(main) = (next_smallest 
+          (s (s (s (s (s (s (s (s (s (s  # 123 in Church numerals
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

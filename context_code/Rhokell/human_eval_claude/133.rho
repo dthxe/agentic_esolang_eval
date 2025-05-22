@@ -1,0 +1,24 @@
+# HumanEval/133: Calculate sum of squares of numbers
+(sum_squares lst) = 
+  (sum (map square lst));
+
+(square n) = 
+  (mul n n);
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = 
+  (add x (sum xs));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: [1, 2, 3] -> 14 (1^2 + 2^2 + 3^2)
+(main) = (sum_squares 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

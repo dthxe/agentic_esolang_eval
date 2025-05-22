@@ -1,0 +1,56 @@
+# Check if string is palindrome
+# Helper functions for Church numerals
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T;
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # \n
+                           (nil)))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F;
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # \n
+                            (nil))))))));
+
+# Read input string into a list
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Stop at null byte;
+(read_char x) = (cons x (read_string));
+
+# Reverse a list
+(reverse xs) = (reverse_helper xs (nil));
+(reverse_helper (cons x xs) acc) = (reverse_helper xs (cons x acc));
+(reverse_helper (nil) acc) = acc;
+
+# Compare two lists for equality
+(equal (nil) (nil)) = (s (z));  # True;
+(equal (cons x xs) (cons y ys)) = (compare_bytes x y xs ys);
+(equal x y) = (z);  # False;
+
+(compare_bytes x y xs ys) = (compare_helper (byte_equal x y) xs ys);
+(compare_helper (s n) xs ys) = (equal xs ys);
+(compare_helper (z) xs ys) = (z);
+
+(byte_equal x y) = (byte_equal_helper (sub x y) (sub y x));
+(byte_equal_helper (z) (z)) = (s (z));
+(byte_equal_helper x y) = (z);
+
+# Check if palindrome
+(is_palindrome xs) = (check_palindrome (equal xs (reverse xs)));
+(check_palindrome (s n)) = (print_true);
+(check_palindrome (z)) = (print_false);
+
+# Main function
+(main) = (is_palindrome (read_string));
+
+# Helper function for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

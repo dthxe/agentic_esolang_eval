@@ -1,0 +1,21 @@
+/* HumanEval/56 */
+
+FUNC correct_bracketing(brackets) {
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(brackets) - 1 {
+        IF brackets[i] == "<" {
+            count = count + 1
+        } ELIF brackets[i] == ">" {
+            count = count - 1
+        }
+        
+        /* If count becomes negative, we have a closing bracket without an opening one */
+        IF count < 0 {
+            RETURN FALSE
+        }
+    }
+    
+    /* If count is not zero at the end, we have unmatched opening brackets */
+    RETURN count == 0
+}

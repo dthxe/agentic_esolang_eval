@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/90
+# Task: Find the 2nd smallest element in a list
+
+# Define a function to find next smallest
+func next_smallest(lst) {
+    if len(lst) < 2 {
+        return None
+    }
+    
+    # Sort the list and find the second smallest
+    sorted_lst = sort(set(lst))
+    if len(sorted_lst) < 2 {
+        return None
+    }
+    return sorted_lst[1]
+}

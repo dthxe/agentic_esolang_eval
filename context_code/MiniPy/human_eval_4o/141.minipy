@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/141
+# Return 'Yes' if the file's name is valid, and 'No' otherwise.
+
+def file_name_check(file_name):
+    import re
+    match = re.match(r'^[a-zA-Z][^\d]*\d{0,3}[^\d]*\.(txt|exe|dll)$', file_name)
+    return 'Yes' if match else 'No'

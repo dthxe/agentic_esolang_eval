@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/99
+# Return the closest integer to a string value, rounding away from zero.
+
+def closest_integer(value):
+    return int(fl(value) + 0.5 * (1 if fl(value) > 0 else -1))

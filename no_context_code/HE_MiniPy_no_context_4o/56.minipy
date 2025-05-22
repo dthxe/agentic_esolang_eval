@@ -1,0 +1,10 @@
+def correct_bracketing(brackets):
+    balance = 0
+    for br in brackets:
+        if br == '<':
+            balance += 1
+        elif br == '>':
+            balance -= 1
+        if balance < 0:
+            return False
+    return balance == 0

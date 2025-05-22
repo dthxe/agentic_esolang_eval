@@ -1,0 +1,19 @@
+/* HumanEval/9: Generate a list of rolling maximum elements */
+
+FUNC rolling_max(numbers) {
+    IF LEN(numbers) == 0 {
+        RETURN []
+    }
+    
+    DECL result = [numbers[0]]
+    DECL current_max = numbers[0]
+    
+    LOOP i FROM 1 TO LEN(numbers) - 1 {
+        IF numbers[i] > current_max {
+            current_max = numbers[i]
+        }
+        APPEND(result, current_max)
+    }
+    
+    RETURN result
+}

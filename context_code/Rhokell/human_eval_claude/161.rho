@@ -1,0 +1,56 @@
+# HumanEval/161: Reverse case of letters in string
+(solve str) = 
+  (if (has_letters str)
+      (map_string reverse_case str)
+      (reverse str));
+
+(has_letters str) = 
+  (any is_letter str);
+
+(is_letter x) = 
+  (or (is_upper x) (is_lower x));
+
+(is_upper x) = 
+  (and (ge x (byte (4) (1)))  # 'A'
+       (le x (byte (5) (A))));  # 'Z'
+
+(is_lower x) = 
+  (and (ge x (byte (6) (1)))  # 'a'
+       (le x (byte (7) (A))));  # 'z'
+
+(map_string f (nil)) = (nil);
+(map_string f (cons x xs)) = 
+  (cons (f x) (map_string f xs));
+
+(reverse_case x) = 
+  (if (is_upper x)
+      (add x (sub (byte (6) (1)) (byte (4) (1))))  # Convert to lowercase
+      (if (is_lower x)
+          (sub x (sub (byte (6) (1)) (byte (4) (1))))  # Convert to uppercase
+          x));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(any _ (nil)) = (f);
+(any f (cons x xs)) = 
+  (if (f x)
+      (t)
+      (any f xs));
+
+(ge x y) = (not (lt x y));
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: "Hello" -> "hELLO"
+(main) = (solve 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil)))))));

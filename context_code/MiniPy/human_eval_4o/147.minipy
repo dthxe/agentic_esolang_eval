@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/147
+# Return the number of triples (a[i], a[j], a[k]) where i < j < k, and a[i] + a[j] + a[k] is a multiple of 3.
+
+def get_max_triples(n):
+    a = [i * i - i + 1 for i in r(1, n + 1)]
+    return sm(1 for i in r(n) for j in r(i + 1, n) for k in r(j + 1, n) if (a[i] + a[j] + a[k]) % 3 == 0)

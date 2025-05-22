@@ -1,0 +1,9 @@
+# Rhokell implementation for all_prefixes
+# Return a list of all prefixes of a string from shortest to longest.
+
+(all_prefixes (s)) = 
+    (letrec ((prefixes (str) (acc))
+        (match str
+            (nil) (reverse acc)
+            ((cons x xs)) (prefixes xs (cons (cons x (head acc)) acc))))
+    (prefixes s (cons nil nil)))

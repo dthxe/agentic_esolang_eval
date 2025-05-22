@@ -1,0 +1,10 @@
+# Minipy solution for HumanEval/139
+# Return the special factorial of the given integer.
+
+def special_factorial(n):
+    def factorial(x):
+        return 1 if x == 0 else x * factorial(x - 1)
+    result = 1
+    for i in r(1, n + 1):
+        result *= factorial(i)
+    return result

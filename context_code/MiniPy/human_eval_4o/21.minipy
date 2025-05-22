@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/21
+# Apply a linear transform to a list such that the smallest number becomes 0 and the largest becomes 1.
+
+def rescale_to_unit(numbers):
+    min_val, max_val = min(numbers), max(numbers)
+    return [(x - min_val) / (max_val - min_val) for x in numbers]

@@ -1,0 +1,25 @@
+# Rhokell code for HumanEval/37
+# Task: Sort elements at even indices
+
+# Define a function to sort even elements
+func sort_even(l) {
+    even_indices = []
+    
+    # Collect elements at even indices
+    for i in 0 to len(l) {
+        if i % 2 == 0 {
+            even_indices.append(l[i])
+        }
+    }
+    
+    # Sort the collected elements
+    sorted_even_indices = sort(even_indices)
+    
+    # Replace original elements with sorted ones
+    for i in 0 to len(l) {
+        if i % 2 == 0 {
+            l[i] = sorted_even_indices.pop(0)
+        }
+    }
+    return l
+}

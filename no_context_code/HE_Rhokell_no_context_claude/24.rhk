@@ -1,0 +1,13 @@
+/* HumanEval/24 */
+
+FUNC largest_divisor(n) {
+    DECL largest = 1
+    
+    LOOP i FROM 2 TO n / 2 {
+        IF n % i == 0 {
+            largest = i
+        }
+    }
+    
+    RETURN largest
+}

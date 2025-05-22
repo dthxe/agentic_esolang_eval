@@ -1,0 +1,14 @@
+/* HumanEval/73 */
+
+FUNC smallest_change(arr) {
+    DECL n = LEN(arr)
+    DECL changes = 0
+    
+    LOOP i FROM 0 TO n / 2 - 1 {
+        IF arr[i] != arr[n - 1 - i] {
+            changes = changes + 1
+        }
+    }
+    
+    RETURN changes
+}

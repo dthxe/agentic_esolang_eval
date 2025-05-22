@@ -1,0 +1,53 @@
+# HumanEval/67: Compress string by counting repeated chars
+(compress str) = 
+  (compress_helper str (s (z)));
+
+(compress_helper (nil) _) = (nil);
+(compress_helper (cons x (nil)) count) = 
+  (append (num_to_str count)
+          (cons x (nil)));
+(compress_helper (cons x (cons y ys)) count) = 
+  (if (byte_eq x y)
+      (compress_helper (cons y ys) (s count))
+      (append (num_to_str count)
+              (cons x (compress_helper (cons y ys) (s (z))))));
+
+(num_to_str n) = 
+  (if (eq n (z))
+      (cons (byte (3) (0)) (nil))  # '0'
+      (digits_to_str (num_to_digits n)));
+
+(num_to_digits n) = 
+  (if (eq n (z))
+      (nil)
+      (append (num_to_digits (div n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # div by 10
+             (cons (add (byte (3) (0)) (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+             (nil))));
+
+(digits_to_str (nil)) = (nil);
+(digits_to_str (cons x xs)) = (cons x (digits_to_str xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = (cons x (append xs ys));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 'aabbaabb' -> '2a2b2a2b'
+(main) = (compress 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (2))  # 'b'
+          (nil))))))))));

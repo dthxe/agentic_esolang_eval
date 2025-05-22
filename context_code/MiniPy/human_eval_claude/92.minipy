@@ -1,0 +1,9 @@
+def any_int(x, y, z):
+    def f(a, b):
+        return ab(a - b) < 1e-10
+    
+    if f(x + y, z) or f(y + z, x) or f(x + z, y):
+        return True
+    if f(x * y, z) or f(y * z, x) or f(x * z, y):
+        return True
+    return False

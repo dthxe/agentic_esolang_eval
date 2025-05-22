@@ -1,0 +1,5 @@
+# Rhokell implementation for filter_integers
+# Filter a list to only include integer values.
+
+(filter_integers (lst)) = 
+    (filter (\x -> (is_integer x)) lst)

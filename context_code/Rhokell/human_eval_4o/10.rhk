@@ -1,0 +1,9 @@
+# Rhokell implementation for make_palindrome
+# Find the shortest palindrome that begins with a supplied string.
+
+(make_palindrome (s)) = 
+    (letrec ((is_palindrome (str))
+        (if (= str (reverse str)) true false))
+    (letrec ((build_palindrome (str) (suffix))
+        (if (is_palindrome str) str (build_palindrome (cons (head suffix) str) (tail suffix))))
+    (build_palindrome s (reverse s))))

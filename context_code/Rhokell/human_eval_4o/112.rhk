@@ -1,0 +1,5 @@
+# Rhokell implementation for map_log2
+# Apply base-2 logarithm function to each element in a list.
+
+(map_log2 (lst)) = 
+    (map (\x -> (log2 x)) lst)

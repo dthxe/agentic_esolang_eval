@@ -1,0 +1,14 @@
+def decimal_to_binary(decimal):
+    if decimal == 0:
+        return "db0db"
+    
+    # Convert decimal to binary
+    binary = ""
+    temp = decimal
+    
+    while temp > 0:
+        binary = str(temp % 2) + binary
+        temp = temp // 2
+    
+    # Add 'db' at beginning and end
+    return "db" + binary + "db"

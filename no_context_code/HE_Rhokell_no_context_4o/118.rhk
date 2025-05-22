@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/118
+# Task: Find closest vowel between consonants
+
+# Define a function to get closest vowel
+func get_closest_vowel(word) {
+    vowels = 'aeiouAEIOU'
+    
+    # Search from the right
+    for i in range(len(word) - 2, 0, -1) {
+        if word[i] in vowels and word[i-1] not in vowels and word[i+1] not in vowels {
+            return word[i]
+        }
+    }
+    return ""
+}

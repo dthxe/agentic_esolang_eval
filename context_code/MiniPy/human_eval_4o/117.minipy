@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/117
+# Return a list of all words from string s that contain exactly n consonants.
+
+def select_words(s, n):
+    vowels = set('aeiouAEIOU')
+    return [word for word in s.split() if sm(1 for ch in word if ch not in vowels) == n]

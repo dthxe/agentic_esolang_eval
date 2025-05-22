@@ -1,0 +1,19 @@
+# Rhokell code for HumanEval/142
+# Task: Sum squares and cubes based on index
+
+# Define a function to sum squares and cubes
+func sum_squares_2(lst) {
+    total = 0
+    
+    # Calculate sum
+    for i in range(len(lst)) {
+        if i % 3 == 0 {
+            total += lst[i] ** 2
+        } else if i % 4 == 0 {
+            total += lst[i] ** 3
+        } else {
+            total += lst[i]
+        }
+    }
+    return total
+}

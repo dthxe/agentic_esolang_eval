@@ -1,0 +1,14 @@
+def compare(game, guess):
+    if not isinstance(game, s) or not isinstance(guess, s):
+        return ls()
+    if l(game) != l(guess):
+        return ls()
+    r = ls()
+    for i in r(l(game)):
+        if game[i] == guess[i]:
+            r.append(2)
+        elif game[i] in guess:
+            r.append(1)
+        else:
+            r.append(0)
+    return r

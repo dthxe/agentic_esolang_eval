@@ -1,0 +1,11 @@
+# Rhokell implementation for below_zero
+# Detect if the balance of an account falls below zero.
+
+(below_zero (balance_changes)) = 
+    (letrec ((check_balance (changes) (current_balance))
+        (match changes
+            (nil) false
+            ((cons x xs))
+                (let ((new_balance (+ current_balance x)))
+                    (if (< new_balance 0) true (check_balance xs new_balance)))))
+    (check_balance balance_changes 0))

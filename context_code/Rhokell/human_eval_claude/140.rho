@@ -1,0 +1,54 @@
+# HumanEval/140: Fix spaces in string
+(fix_spaces text) = 
+  (join_strings (fix_spaces_helper (split_words text)));
+
+(fix_spaces_helper (nil)) = (nil);
+(fix_spaces_helper (cons x (nil))) = (cons x (nil));
+(fix_spaces_helper (cons x (cons y ys))) = 
+  (cons x (cons (cons (byte (2) (0)) (nil))  # space
+        (fix_spaces_helper (cons y ys))));
+
+(split_words str) = 
+  (split_by_space str (nil));
+
+(split_by_space (nil) curr) = 
+  (if (eq curr (nil))
+      (nil)
+      (cons (reverse curr) (nil)));
+(split_by_space (cons x xs) curr) = 
+  (if (byte_eq x (byte (2) (0)))  # space
+      (if (eq curr (nil))
+          (split_by_space xs (nil))
+          (cons (reverse curr) (split_by_space xs (nil))))
+      (split_by_space xs (cons x curr)));
+
+(join_strings (nil)) = (nil);
+(join_strings (cons x xs)) = 
+  (append x (join_strings xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+# Test case: 'hello  world' -> 'hello world'
+(main) = (fix_spaces 
+          (cons (byte (6) (8))  # 'h'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (7) (7))  # 'w'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil))))))))))))));

@@ -1,0 +1,9 @@
+# Rhokell implementation for how_many_times
+# Count how many times a substring appears in a string, including overlapping cases.
+
+(how_many_times (substring) (string)) = 
+    (letrec ((count_occurrences (str) (count))
+        (if (starts_with str substring)
+            (count_occurrences (tail str) (+ count 1))
+            (if (null str) count (count_occurrences (tail str) count))))
+    (count_occurrences string 0))

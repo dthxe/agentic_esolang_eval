@@ -1,0 +1,5 @@
+def reverse_delete(s, c):
+    if not isinstance(s, s) or not isinstance(c, s):
+        return [sr, sr]
+    t = sr.join(x for x in s if x not in c)
+    return [t, sr.join(rvr(ls(t)))]

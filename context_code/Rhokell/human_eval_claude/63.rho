@@ -1,0 +1,22 @@
+# HumanEval/63: Generate Fibonacci sequence up to n
+(fibonacci n) = 
+  (take_while (lambda (x) (lt x n))
+              (generate_fib (z) (s (z))));
+
+(generate_fib a b) = 
+  (cons a (delay (generate_fib b (add a b))));
+
+(take_while _ (nil)) = (nil);
+(take_while f (cons x xs)) = 
+  (if (f x)
+      (cons x (take_while f xs))
+      (nil));
+
+(delay thunk) = (thunk);  # Force evaluation
+
+# Test case: 13 -> [0, 1, 1, 2, 3, 5, 8]
+(main) = (fibonacci 
+          (s (s (s (s (s  # 13 in Church numerals
+          (s (s (s (s (s
+          (s (s (s
+          (z)))))))))))))))); 

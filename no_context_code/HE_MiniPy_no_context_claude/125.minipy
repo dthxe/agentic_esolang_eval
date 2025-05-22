@@ -1,0 +1,22 @@
+def split_words(txt):
+    # Check if there are whitespaces
+    if ' ' in txt:
+        return txt.split()
+    
+    # Check if there are commas
+    if ',' in txt:
+        return txt.split(',')
+    
+    # Count lowercase letters with odd order in the alphabet
+    count = 0
+    i = 0
+    while i < len(txt):
+        char = txt[i]
+        if 'a' <= char <= 'z':
+            # Calculate the order in the alphabet (0-based)
+            order = ord(char) - ord('a')
+            if order % 2 == 0:  # Odd order (since we're 0-based, even indices are odd orders)
+                count = count + 1
+        i = i + 1
+    
+    return count

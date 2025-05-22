@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/85
+# Task: Add even elements at odd indices
+
+# Define a function to add elements
+func add(lst) {
+    total = 0
+    
+    # Add even elements at odd indices
+    for i in 1 to len(lst) step 2 {
+        if lst[i] % 2 == 0 {
+            total += lst[i]
+        }
+    }
+    return total
+}

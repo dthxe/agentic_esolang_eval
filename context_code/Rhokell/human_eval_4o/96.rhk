@@ -1,0 +1,5 @@
+# Rhokell implementation for map_sin
+# Apply sine function to each element in a list.
+
+(map_sin (lst)) = 
+    (map (\x -> (sin x)) lst)

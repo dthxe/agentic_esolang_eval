@@ -1,0 +1,15 @@
+/* HumanEval/98 */
+
+FUNC count_upper(s) {
+    DECL vowels = "AEIOU"
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        /* Check if index is even and character is an uppercase vowel */
+        IF i % 2 == 0 && CONTAINS(vowels, s[i]) {
+            count = count + 1
+        }
+    }
+    
+    RETURN count
+}

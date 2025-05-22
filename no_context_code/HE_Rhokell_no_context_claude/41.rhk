@@ -1,0 +1,10 @@
+/* HumanEval/41 */
+
+FUNC car_race_collision(n) {
+    /* 
+    In this scenario, n cars moving left to right will collide with
+    n cars moving right to left. Each car from one set will collide
+    with every car from the other set, resulting in n*n collisions.
+    */
+    RETURN n * n
+}

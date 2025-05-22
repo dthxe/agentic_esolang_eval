@@ -1,0 +1,5 @@
+# Rhokell implementation for map_min
+# Find the minimum element of each sublist in a list of lists.
+
+(map_min (lst)) = 
+    (map (\sublist -> (min_list sublist)) lst)

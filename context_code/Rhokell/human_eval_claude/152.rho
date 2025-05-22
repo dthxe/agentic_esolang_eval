@@ -1,0 +1,32 @@
+# HumanEval/152: Compare game scores with guesses
+(compare game guess) = 
+  (compare_helper game guess (nil));
+
+(compare_helper (nil) (nil) acc) = 
+  (reverse acc);
+(compare_helper (cons g1 gs) (cons g2 gs2) acc) = 
+  (compare_helper gs gs2 
+    (cons (abs (sub g1 g2)) acc));
+
+(abs n) = 
+  (if (lt n (z))
+      (sub (z) n)
+      n);
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+# Test case: [1,2,3], [1,2,4] -> [0,0,1]
+(main) = (compare 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (nil))))
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (s (z)))))  # 4
+          (nil)))));

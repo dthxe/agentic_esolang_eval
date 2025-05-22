@@ -1,0 +1,5 @@
+# Rhokell implementation for count_distinct_characters
+# Count the number of distinct characters in a string, regardless of case.
+
+(count_distinct_characters (s)) = 
+    (length (nub (map to_lower s)))

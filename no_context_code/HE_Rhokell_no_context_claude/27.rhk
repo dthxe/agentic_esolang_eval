@@ -1,0 +1,18 @@
+/* HumanEval/27 */
+
+FUNC flip_case(string) {
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(string) - 1 {
+        DECL char = string[i]
+        IF IS_UPPER(char) {
+            result = result + TO_LOWER(char)
+        } ELIF IS_LOWER(char) {
+            result = result + TO_UPPER(char)
+        } ELSE {
+            result = result + char
+        }
+    }
+    
+    RETURN result
+}

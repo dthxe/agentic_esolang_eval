@@ -1,0 +1,4 @@
+def sum_squares_even(lst):
+    if not lst:
+        return 0
+    return sm(x*x for x in lst if x % 2 == 0)

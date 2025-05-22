@@ -1,0 +1,14 @@
+# Rhokell implementation for parse_nested_parens
+# Find the deepest level of nesting for each group of parentheses.
+
+(parse_nested_parens (paren_string)) = 
+    (letrec ((parse (str) (depth) (max_depth))
+        (match str
+            (nil) max_depth
+            ((cons x xs))
+                (if (= x '(')
+                    (parse xs (+ depth 1) (max max_depth (+ depth 1)))
+                    (if (= x ')')
+                        (parse xs (- depth 1) max_depth)
+                        (parse xs depth max_depth)))))
+    (parse paren_string 0 0))

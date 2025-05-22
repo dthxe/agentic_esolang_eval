@@ -1,0 +1,16 @@
+# HumanEval/53: Add trailing and leading zeros
+(add_zeros lst) = 
+  (append (cons (z) (nil))  # Add leading zero
+          (append lst 
+                  (cons (z) (nil))));  # Add trailing zero
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: [1, 2, 3] -> [0, 1, 2, 3, 0]
+(main) = (add_zeros 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

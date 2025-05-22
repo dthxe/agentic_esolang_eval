@@ -1,0 +1,12 @@
+# Rhokell code for HumanEval/52
+# Task: Check if all numbers are below a threshold
+
+# Define a function to check below threshold
+func below_threshold(l, t) {
+    for number in l {
+        if number >= t {
+            return false
+        }
+    }
+    return true
+}

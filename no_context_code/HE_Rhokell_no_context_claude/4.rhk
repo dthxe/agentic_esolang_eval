@@ -1,0 +1,21 @@
+/* HumanEval/4: Calculate Mean Absolute Deviation */
+
+FUNC mean_absolute_deviation(numbers) {
+    DECL sum = 0
+    DECL n = LEN(numbers)
+    
+    /* Calculate mean */
+    LOOP i FROM 0 TO n - 1 {
+        sum = sum + numbers[i]
+    }
+    DECL mean = sum / n
+    
+    /* Calculate absolute deviations */
+    DECL abs_dev_sum = 0
+    LOOP i FROM 0 TO n - 1 {
+        abs_dev_sum = abs_dev_sum + ABS(numbers[i] - mean)
+    }
+    
+    /* Return mean of absolute deviations */
+    RETURN abs_dev_sum / n
+}

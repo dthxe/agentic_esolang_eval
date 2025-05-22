@@ -1,0 +1,52 @@
+# HumanEval/104: Find unique elements in list
+(unique_digits lst) = 
+  (sort (unique (flatten lst)));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(flatten (nil)) = (nil);
+(flatten (cons x xs)) = 
+  (append (if (is_list x)
+              (flatten x)
+              (cons x (nil)))
+          (flatten xs));
+
+(is_list (nil)) = (t);
+(is_list (cons _ _)) = (t);
+(is_list _) = (f);
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (eq x y)
+      (t)
+      (member x ys));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: [[1, 2], [3, 4, 1], [2]] -> [1, 2, 3, 4]
+(main) = (unique_digits 
+          (cons (cons (s (z))  # 1
+                (cons (s (s (z)))  # 2
+                (nil)))
+          (cons (cons (s (s (s (z))))  # 3
+                (cons (s (s (s (s (z)))))  # 4
+                (cons (s (z))  # 1
+                (nil))))
+          (cons (cons (s (s (z)))  # 2
+                (nil))
+          (nil)))));

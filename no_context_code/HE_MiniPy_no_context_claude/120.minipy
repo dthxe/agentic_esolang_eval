@@ -1,0 +1,17 @@
+def maximum(arr, k):
+    if k == 0:
+        return []
+    
+    # Sort the array
+    sorted_arr = arr.copy()
+    i = 0
+    while i < len(sorted_arr):
+        j = 0
+        while j < len(sorted_arr) - i - 1:
+            if sorted_arr[j] > sorted_arr[j + 1]:
+                sorted_arr[j], sorted_arr[j + 1] = sorted_arr[j + 1], sorted_arr[j]
+            j = j + 1
+        i = i + 1
+    
+    # Return the last k elements (maximum k numbers)
+    return sorted_arr[-k:]

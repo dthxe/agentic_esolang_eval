@@ -1,0 +1,9 @@
+# Rhokell implementation for pluck
+# Return the node with the smallest even value and its index.
+
+(pluck (arr)) = 
+    (let ((even_nodes (filter (\x -> (even (fst x))) (zip arr (range 0 (length arr))))))
+    (if (null even_nodes)
+        nil
+        (let ((smallest (foldl (\acc x -> (if (< (fst x) (fst acc)) x acc)) (head even_nodes) (tail even_nodes))))
+        (cons (fst smallest) (cons (snd smallest) nil)))))

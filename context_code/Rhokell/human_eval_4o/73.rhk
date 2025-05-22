@@ -1,0 +1,5 @@
+# Rhokell implementation for is_even
+# Check if a number is even.
+
+(is_even (n)) = 
+    (= (mod n 2) 0)

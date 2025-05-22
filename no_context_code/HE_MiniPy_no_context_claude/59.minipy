@@ -1,0 +1,22 @@
+def largest_prime_factor(n):
+    # Find the largest prime factor of n
+    largest = 1
+    
+    # Handle even numbers
+    while n % 2 == 0:
+        largest = 2
+        n = n // 2
+    
+    # Check odd factors
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            largest = i
+            n = n // i
+        i = i + 2
+    
+    # If n is a prime number greater than 2
+    if n > 2:
+        largest = n
+    
+    return largest

@@ -1,0 +1,19 @@
+# HumanEval/35: Find maximum element
+(max_element (nil)) = (z);
+(max_element (cons x (nil))) = x;
+(max_element (cons x xs)) = 
+  (let [rest_max (max_element xs)]
+    (if (gt x rest_max)
+        x
+        rest_max));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3, 4, 5] -> 5
+(main) = (max_element 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (z))))))  # 5
+          (nil)))))));

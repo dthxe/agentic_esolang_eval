@@ -1,0 +1,9 @@
+def maximum(arr, k):
+    if not arr or k <= 0:
+        return ls()
+    r = ls()
+    for i in r(0, l(arr), k):
+        e = arr[i:i+k]
+        if l(e) == k:
+            r.append(max(e))
+    return r

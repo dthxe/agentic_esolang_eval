@@ -1,0 +1,62 @@
+# HumanEval/77: Find uncommon words between strings
+(uncommon_words s1 s2) = 
+  (sort (filter (lambda (w) 
+                  (or (and (member w s1) (not (member w s2)))
+                      (and (member w s2) (not (member w s1)))))
+                (unique (append s1 s2))));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (byte_eq x y)
+      (t)
+      (member x ys));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+# Test case: ['the', 'quick'], ['brown', 'fox'] -> ['brown', 'fox', 'quick', 'the']
+(main) = (uncommon_words 
+          (cons (cons (byte (7) (4))  # 't'
+                (cons (byte (6) (8))  # 'h'
+                (cons (byte (6) (5))  # 'e'
+                (nil))))
+          (cons (cons (byte (7) (1))  # 'q'
+                (cons (byte (7) (5))  # 'u'
+                (cons (byte (6) (9))  # 'i'
+                (cons (byte (6) (3))  # 'c'
+                (cons (byte (6) (B))  # 'k'
+                (nil))))))
+          (nil))
+          (cons (cons (byte (6) (2))  # 'b'
+                (cons (byte (7) (2))  # 'r'
+                (cons (byte (6) (F))  # 'o'
+                (cons (byte (7) (7))  # 'w'
+                (cons (byte (6) (E))  # 'n'
+                (nil))))))
+          (cons (cons (byte (6) (6))  # 'f'
+                (cons (byte (6) (F))  # 'o'
+                (cons (byte (7) (8))  # 'x'
+                (nil))))
+          (nil))));

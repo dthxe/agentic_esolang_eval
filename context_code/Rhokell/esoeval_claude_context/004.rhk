@@ -1,0 +1,51 @@
+# Add two numbers
+# Helper functions for Church numerals and arithmetic
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Convert Church numeral to decimal string
+(church_to_digit (z)) = (cons (byte (3) (0)) (nil));  # ASCII '0' = 0x30;
+(church_to_digit (s x)) = (add_digit (church_to_digit x));
+(add_digit (cons (byte x y) z)) = (cons (byte (inc_digit x y)) z);
+(inc_digit (3) (0)) = (3) (1);
+(inc_digit (3) (1)) = (3) (2);
+(inc_digit (3) (2)) = (3) (3);
+(inc_digit (3) (3)) = (3) (4);
+(inc_digit (3) (4)) = (3) (5);
+(inc_digit (3) (5)) = (3) (6);
+(inc_digit (3) (6)) = (3) (7);
+(inc_digit (3) (7)) = (3) (8);
+(inc_digit (3) (8)) = (3) (9);
+(inc_digit (3) (9)) = (3) (1) (3) (0);  # Handle two digits;
+
+# Main function
+(main) = (print;
+          (append 
+            (church_to_digit 
+              (add 
+                (digit_to_church (input_byte) (input_byte))  # First number
+                (digit_to_church (input_byte) (input_byte))  # Second number
+              )
+            )
+            (cons (byte (0) (A)) (nil))  # Add newline
+          )
+        );
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

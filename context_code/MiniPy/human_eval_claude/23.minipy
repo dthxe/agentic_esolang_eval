@@ -1,0 +1,2 @@
+def strlen(s):
+    return l(s)

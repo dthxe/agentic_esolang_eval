@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/73
+# Task: Find minimum changes to make array palindromic
+
+# Define a function to find smallest change
+func smallest_change(arr) {
+    changes = 0
+    
+    # Calculate changes needed
+    for i in 0 to len(arr) / 2 {
+        if arr[i] != arr[-i - 1] {
+            changes += 1
+        }
+    }
+    return changes
+}

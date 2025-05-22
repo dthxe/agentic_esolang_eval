@@ -1,0 +1,32 @@
+# HumanEval/123: Get odd numbers in Collatz sequence
+(get_odd_collatz n) = 
+  (if (eq n (s (z)))
+      (cons (s (z)) (nil))
+      (if (is_odd n)
+          (cons n (get_odd_collatz (next_collatz n)))
+          (get_odd_collatz (next_collatz n))));
+
+(next_collatz n) = 
+  (if (is_odd n)
+      (add (mul (s (s (s (z)))) n) (s (z)))
+      (div n (s (s (z)))));
+
+(is_odd n) = 
+  (eq (mod n (s (s (z)))) (s (z)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 5 -> [5, 16, 8, 4, 2, 1] -> [5, 1] (only odd numbers)
+(main) = (get_odd_collatz 
+          (s (s (s (s (s (z)))))));

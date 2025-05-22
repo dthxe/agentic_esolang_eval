@@ -1,0 +1,5 @@
+# Rhokell implementation for map_odd
+# Check if each element in a list is odd.
+
+(map_odd (lst)) = 
+    (map (\x -> (is_odd x)) lst)

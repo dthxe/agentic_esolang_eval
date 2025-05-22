@@ -1,0 +1,10 @@
+# Minipy solution for HumanEval/3
+# Detect if the balance falls below zero at any point.
+
+def below_zero(operations):
+    balance = 0
+    for op in operations:
+        balance += op
+        if balance < 0:
+            return True
+    return False

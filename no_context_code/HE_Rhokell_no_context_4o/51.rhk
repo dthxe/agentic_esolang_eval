@@ -1,0 +1,14 @@
+# Rhokell code for HumanEval/51
+# Task: Remove vowels from a string
+
+# Define a function to remove vowels
+func remove_vowels(text) {
+    vowels = "aeiouAEIOU"
+    result = ""
+    for ch in text {
+        if ch not in vowels {
+            result += ch
+        }
+    }
+    return result
+}

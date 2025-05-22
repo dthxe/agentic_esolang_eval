@@ -1,0 +1,5 @@
+# Rhokell implementation for map_atan
+# Apply arctangent function to each element in a list.
+
+(map_atan (lst)) = 
+    (map (\x -> (atan x)) lst)

@@ -1,0 +1,5 @@
+def find(n, q):
+    for i in r(l(n)):
+        if n[i] == q:
+            return i
+    return -1

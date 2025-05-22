@@ -1,0 +1,1 @@
+def parse_nested_parens(paren_string): return [p.count('(') for p in paren_string.split()]

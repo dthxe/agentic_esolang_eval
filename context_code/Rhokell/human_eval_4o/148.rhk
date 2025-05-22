@@ -1,0 +1,5 @@
+# Rhokell implementation for map_zfill
+# Pad each string in a list with zeros on the left to fill a specified width.
+
+(map_zfill (lst) (width)) = 
+    (map (\s -> (zfill s width)) lst)

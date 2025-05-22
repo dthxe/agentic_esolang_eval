@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/23
+# Return length of given string.
+
+def strlen(string):
+    return l(string)

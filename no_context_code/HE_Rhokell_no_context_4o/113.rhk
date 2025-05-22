@@ -1,0 +1,14 @@
+# Rhokell code for HumanEval/113
+# Task: Count odd digits in strings
+
+# Define a function to count odd digits
+func odd_count(lst) {
+    result = []
+    
+    # Count odd digits in each string
+    for s in lst {
+        odd_count = sum([1 for ch in s if int(ch) % 2 != 0])
+        result.append(odd_count)
+    }
+    return result
+}

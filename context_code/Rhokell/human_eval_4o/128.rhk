@@ -1,0 +1,5 @@
+# Rhokell implementation for map_product
+# Calculate the product of each sublist in a list of lists.
+
+(map_product (lst)) = 
+    (map (\sublist -> (product_list sublist)) lst)

@@ -1,0 +1,28 @@
+# Rhokell code for HumanEval/161
+# Task: Reverse case of letters or reverse string if no letters
+
+# Define a function to solve the problem
+func solve(s) {
+    has_letter = false
+    result = ""
+    
+    # Check for letters
+    for ch in s {
+        if is_alpha(ch) {
+            has_letter = true
+            if is_lower(ch) {
+                result += to_upper(ch)
+            } else {
+                result += to_lower(ch)
+            }
+        } else {
+            result += ch
+        }
+    }
+    
+    # Reverse string if no letters
+    if not has_letter {
+        return reverse(s)
+    }
+    return result
+}

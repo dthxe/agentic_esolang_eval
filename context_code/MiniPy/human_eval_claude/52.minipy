@@ -1,0 +1,8 @@
+def below_threshold(l, t):
+    c = 0
+    for x in l:
+        if x <= t:
+            c += 1
+        if c > 2:
+            return True
+    return False

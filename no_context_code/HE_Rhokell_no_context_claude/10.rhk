@@ -1,0 +1,14 @@
+/* HumanEval/10: Test if a string is a palindrome */
+
+FUNC is_palindrome(string) {
+    DECL length = LEN(string)
+    DECL half_length = length / 2
+    
+    LOOP i FROM 0 TO half_length - 1 {
+        IF string[i] != string[length - 1 - i] {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN TRUE
+}

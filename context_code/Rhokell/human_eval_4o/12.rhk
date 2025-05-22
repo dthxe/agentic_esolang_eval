@@ -1,0 +1,5 @@
+# Rhokell implementation for longest
+# Return the longest string from a list of strings.
+
+(longest (strings)) = 
+    (foldl (\acc x -> (if (> (length x) (length acc)) x acc)) (head strings) (tail strings))

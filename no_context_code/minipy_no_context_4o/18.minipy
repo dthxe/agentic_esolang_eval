@@ -1,0 +1,1 @@
+def max_number(lst): return max(lst)

@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/27
+# Task: Flip case of characters in a string
+
+# Define a function to flip case
+func flip_case(string) {
+    flipped_string = ""
+    
+    # Iterate over each character
+    for char in string {
+        if is_lower(char) {
+            flipped_string += upper(char)
+        } else if is_upper(char) {
+            flipped_string += lower(char)
+        }
+    }
+    return flipped_string
+}

@@ -1,0 +1,19 @@
+/* HumanEval/13: Find the greatest common divisor of two integers */
+
+FUNC greatest_common_divisor(a, b) {
+    /* Ensure a >= b */
+    IF a < b {
+        DECL temp = a
+        a = b
+        b = temp
+    }
+    
+    /* Euclidean algorithm */
+    WHILE b != 0 {
+        DECL temp = b
+        b = a % b
+        a = temp
+    }
+    
+    RETURN a
+}

@@ -1,0 +1,12 @@
+# Minipy solution for HumanEval/25
+# Return list of prime factors of given integer.
+
+def factorize(n):
+    factors = []
+    d = 2
+    while n > 1:
+        while n % d == 0:
+            factors.append(d)
+            n //= d
+        d += 1
+    return factors

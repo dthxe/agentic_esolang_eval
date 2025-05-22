@@ -1,0 +1,28 @@
+/* HumanEval/82 */
+
+FUNC prime_length(string) {
+    DECL length = LEN(string)
+    
+    /* Check if length is prime */
+    IF length <= 1 {
+        RETURN FALSE
+    }
+    
+    IF length <= 3 {
+        RETURN TRUE
+    }
+    
+    IF length % 2 == 0 || length % 3 == 0 {
+        RETURN FALSE
+    }
+    
+    DECL i = 5
+    WHILE i * i <= length {
+        IF length % i == 0 || length % (i + 2) == 0 {
+            RETURN FALSE
+        }
+        i = i + 6
+    }
+    
+    RETURN TRUE
+}

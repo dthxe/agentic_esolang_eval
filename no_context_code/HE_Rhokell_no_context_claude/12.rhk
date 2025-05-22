@@ -1,0 +1,20 @@
+/* HumanEval/12: Return the longest string from a list */
+
+FUNC longest(strings) {
+    IF LEN(strings) == 0 {
+        RETURN NULL
+    }
+    
+    DECL max_length = 0
+    DECL longest_string = NULL
+    
+    LOOP i FROM 0 TO LEN(strings) - 1 {
+        DECL current_length = LEN(strings[i])
+        IF current_length > max_length {
+            max_length = current_length
+            longest_string = strings[i]
+        }
+    }
+    
+    RETURN longest_string
+}

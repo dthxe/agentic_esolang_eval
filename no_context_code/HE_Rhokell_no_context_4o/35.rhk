@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/35
+# Task: Return maximum element in the list
+
+# Define a function to find max element
+func max_element(l) {
+    max_val = l[0]
+    
+    # Iterate over each element
+    for element in l {
+        if element > max_val {
+            max_val = element
+        }
+    }
+    return max_val
+}

@@ -1,0 +1,13 @@
+/* HumanEval/22 */
+
+FUNC filter_integers(values) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(values) - 1 {
+        IF IS_INTEGER(values[i]) {
+            APPEND(result, values[i])
+        }
+    }
+    
+    RETURN result
+}

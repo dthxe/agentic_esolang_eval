@@ -1,0 +1,5 @@
+# Rhokell implementation for map_log
+# Apply natural logarithm function to each element in a list.
+
+(map_log (lst)) = 
+    (map (\x -> (log x)) lst)

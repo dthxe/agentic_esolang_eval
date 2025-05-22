@@ -1,0 +1,23 @@
+/* HumanEval/90 */
+
+FUNC next_smallest(lst) {
+    IF LEN(lst) < 2 {
+        RETURN NULL
+    }
+    
+    DECL sorted = COPY(lst)
+    SORT(sorted)
+    
+    /* Find the smallest element */
+    DECL smallest = sorted[0]
+    
+    /* Find the next smallest (different from the smallest) */
+    LOOP i FROM 1 TO LEN(sorted) - 1 {
+        IF sorted[i] > smallest {
+            RETURN sorted[i]
+        }
+    }
+    
+    /* If all elements are the same, return NULL */
+    RETURN NULL
+}

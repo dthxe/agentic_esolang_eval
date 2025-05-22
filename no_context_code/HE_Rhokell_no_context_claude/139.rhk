@@ -1,0 +1,17 @@
+/* HumanEval/139 */
+
+FUNC special_factorial(n) {
+    DECL result = 1
+    
+    LOOP i FROM 1 TO n {
+        DECL factorial_i = 1
+        
+        LOOP j FROM 1 TO i {
+            factorial_i = factorial_i * j
+        }
+        
+        result = result * factorial_i
+    }
+    
+    RETURN result
+}

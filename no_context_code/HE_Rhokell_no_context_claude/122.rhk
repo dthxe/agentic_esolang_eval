@@ -1,0 +1,23 @@
+/* HumanEval/122 */
+
+FUNC add_elements(arr, k) {
+    DECL sum = 0
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(arr) - 1 {
+        /* Check if we've processed k elements */
+        IF count >= k {
+            BREAK
+        }
+        
+        /* Check if the element has at most two digits */
+        DECL num_str = TO_STRING(ABS(arr[i]))
+        IF LEN(num_str) <= 2 {
+            sum = sum + arr[i]
+        }
+        
+        count = count + 1
+    }
+    
+    RETURN sum
+}

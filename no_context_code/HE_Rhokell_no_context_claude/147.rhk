@@ -1,0 +1,25 @@
+/* HumanEval/147 */
+
+FUNC get_max_triples(n) {
+    /* Generate the array a */
+    DECL a = []
+    LOOP i FROM 1 TO n {
+        DECL value = i * i - i + 1
+        APPEND(a, value)
+    }
+    
+    /* Count triples (a[i], a[j], a[k]) where i < j < k and sum is divisible by 3 */
+    DECL count = 0
+    
+    LOOP i FROM 0 TO n - 3 {
+        LOOP j FROM i + 1 TO n - 2 {
+            LOOP k FROM j + 1 TO n - 1 {
+                IF (a[i] + a[j] + a[k]) % 3 == 0 {
+                    count = count + 1
+                }
+            }
+        }
+    }
+    
+    RETURN count
+}

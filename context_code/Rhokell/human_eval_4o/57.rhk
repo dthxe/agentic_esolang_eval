@@ -1,0 +1,9 @@
+# Rhokell implementation for make_a_pile
+# Create a pile of n levels of stones.
+
+(make_a_pile (n)) = 
+    (letrec ((build_pile (level) (stones) (acc))
+        (if (= level n)
+            (reverse acc)
+            (build_pile (+ level 1) (+ stones 2) (cons stones acc))))
+    (build_pile 1 n nil))

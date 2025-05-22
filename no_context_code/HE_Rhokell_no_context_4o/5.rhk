@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/5
+# Task: Insert a delimiter between every two consecutive elements
+
+# Define a function to intersperse
+func intersperse(numbers, delimiter) {
+    result = []
+    
+    # Iterate over each number
+    for i in 0 to len(numbers) - 1 {
+        result.append(numbers[i])
+        result.append(delimiter)
+    }
+    result.append(numbers[len(numbers) - 1])
+    return result
+}

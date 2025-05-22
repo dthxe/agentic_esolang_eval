@@ -1,0 +1,7 @@
+def below_zero(o):
+    b = 0
+    for x in o:
+        b += x
+        if b < 0:
+            return True
+    return False

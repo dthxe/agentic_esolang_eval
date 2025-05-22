@@ -1,0 +1,6 @@
+isPalindrome :: String -> Bool
+isPalindrome s = s == reverse s
+
+main = do
+  s <- readLine
+  print $ isPalindrome s

@@ -1,0 +1,14 @@
+/* HumanEval/135 */
+
+FUNC can_arrange(arr) {
+    DECL largest_index = -1
+    
+    LOOP i FROM 1 TO LEN(arr) - 1 {
+        /* Check if current element is less than the previous element */
+        IF arr[i] < arr[i-1] {
+            largest_index = i
+        }
+    }
+    
+    RETURN largest_index
+}

@@ -1,0 +1,5 @@
+# Rhokell implementation for map_halve
+# Halve each element in a list.
+
+(map_halve (lst)) = 
+    (map (\x -> (/ x 2)) lst)

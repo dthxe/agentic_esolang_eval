@@ -1,0 +1,26 @@
+# Rhokell code for HumanEval/1
+# Task: Separate groups of nested parentheses into separate strings
+
+# Define a function to separate parentheses groups
+func separate_paren_groups(paren_string) {
+    groups = []
+    current_group = ""
+    balance = 0
+    
+    # Iterate over each character
+    for char in paren_string {
+        if char == '(' {
+            balance += 1
+        } else if char == ')' {
+            balance -= 1
+        }
+        current_group += char
+        
+        # Check if current group is balanced
+        if balance == 0 and current_group != "" {
+            groups.append(current_group)
+            current_group = ""
+        }
+    }
+    return groups
+}

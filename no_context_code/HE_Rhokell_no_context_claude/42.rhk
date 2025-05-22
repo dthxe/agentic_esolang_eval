@@ -1,0 +1,11 @@
+/* HumanEval/42 */
+
+FUNC incr_list(l) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(l) - 1 {
+        APPEND(result, l[i] + 1)
+    }
+    
+    RETURN result
+}

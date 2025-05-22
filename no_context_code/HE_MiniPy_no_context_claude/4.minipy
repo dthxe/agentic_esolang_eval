@@ -1,0 +1,21 @@
+def mean_absolute_deviation(numbers):
+    n = len(numbers)
+    if n == 0:
+        return 0
+    
+    # Calculate mean
+    total = 0
+    i = 0
+    while i < n:
+        total = total + numbers[i]
+        i = i + 1
+    mean = total / n
+    
+    # Calculate mean absolute deviation
+    total_deviation = 0
+    i = 0
+    while i < n:
+        total_deviation = total_deviation + abs(numbers[i] - mean)
+        i = i + 1
+    
+    return total_deviation / n

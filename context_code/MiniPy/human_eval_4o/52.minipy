@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/52
+# Return True if all numbers in the list are below threshold t.
+
+def below_threshold(l, t):
+    return all(x < t for x in l)

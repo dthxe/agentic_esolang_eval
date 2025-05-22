@@ -1,0 +1,14 @@
+/* HumanEval/66 */
+
+FUNC digitSum(s) {
+    DECL sum = 0
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        DECL char = s[i]
+        IF IS_UPPER(char) {
+            sum = sum + ORD(char)
+        }
+    }
+    
+    RETURN sum
+}

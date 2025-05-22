@@ -1,0 +1,37 @@
+# HumanEval/110: Exchange first and last characters of string
+(exchange lst) = 
+  (if (lt (length lst) (s (s (z))))
+      lst
+      (cons (last lst)
+            (append (middle lst)
+                   (cons (head lst) (nil)))));
+
+(last (cons x (nil))) = x;
+(last (cons _ xs)) = (last xs);
+
+(middle (cons _ (nil))) = (nil);
+(middle (cons _ (nil))) = (nil);
+(middle (cons x xs)) = 
+  (cons x (init xs));
+
+(init (cons x (nil))) = (nil);
+(init (cons x xs)) = 
+  (cons x (init xs));
+
+(head (cons x _)) = x;
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: 'hello' -> 'oellh'
+(main) = (exchange 
+          (cons (byte (6) (8))  # 'h'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil)))))));

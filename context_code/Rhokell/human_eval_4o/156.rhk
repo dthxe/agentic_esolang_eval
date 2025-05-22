@@ -1,0 +1,5 @@
+# Rhokell implementation for int_to_mini_roman
+# Convert an integer to a lowercase Roman numeral.
+
+(int_to_mini_roman (number)) = 
+    (to_lower (roman number))

@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/83
+# Return the count of n-digit numbers that start or end with 1.
+
+def starts_one_ends(n):
+    if n == 1:
+        return 9
+    return 18 * 10 ** (n - 2)

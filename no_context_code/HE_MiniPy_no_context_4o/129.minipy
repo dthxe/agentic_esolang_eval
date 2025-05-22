@@ -1,0 +1,11 @@
+def minPath(grid, k):
+    from itertools import product
+    N = len(grid)
+    paths = []
+    for start_row, start_col in product(range(N), repeat=2):
+        path = [grid[start_row][start_col]]
+        for _ in range(k - 1):
+            row, col = divmod(path[-1] - 1, N)
+            path.append(grid[row][col])
+        paths.append(path)
+    return min(paths)

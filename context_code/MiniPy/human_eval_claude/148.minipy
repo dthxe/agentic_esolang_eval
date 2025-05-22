@@ -1,0 +1,7 @@
+def bf(planet1, planet2):
+    p = {'Mercury': 0.2, 'Venus': 0.7, 'Earth': 1, 
+         'Mars': 0.3, 'Jupiter': 2.5, 'Saturn': 1.4, 
+         'Uranus': 0.7, 'Neptune': 1.1}
+    if planet1 not in p or planet2 not in p:
+        return None
+    return fl(p[planet1] / p[planet2])

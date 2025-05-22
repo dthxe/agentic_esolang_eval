@@ -1,0 +1,5 @@
+# Rhokell implementation for find_smallest
+# Find the smallest number in a list.
+
+(find_smallest (lst)) = 
+    (foldl min (head lst) (tail lst))

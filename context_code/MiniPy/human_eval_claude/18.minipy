@@ -1,0 +1,8 @@
+def how_many_times(s, t):
+    if not t:
+        return 0
+    c = 0
+    for i in r(l(s)-l(t)+1):
+        if s[i:i+l(t)] == t:
+            c += 1
+    return c

@@ -1,0 +1,4 @@
+def closest_integer(v):
+    if not isinstance(v, (t, fl)):
+        return None
+    return t(rnd(v))

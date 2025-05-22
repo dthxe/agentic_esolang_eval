@@ -1,0 +1,18 @@
+# HumanEval/147: Find index of maximum element
+(get_max_triples lst) = 
+  (max_index_helper lst (z) (z));
+
+(max_index_helper (nil) max_val _) = (sub (z) (s (z)));
+(max_index_helper (cons x xs) max_val curr_idx) = 
+  (if (gt x max_val)
+      curr_idx
+      (max_index_helper xs max_val (s curr_idx)));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 3, 2] -> 1 (3 is at index 1)
+(main) = (get_max_triples 
+          (cons (s (z))  # 1
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (z)))  # 2
+          (nil)))));

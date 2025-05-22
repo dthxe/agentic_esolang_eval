@@ -1,0 +1,15 @@
+/* HumanEval/78 */
+
+FUNC hex_key(num) {
+    DECL prime_hex_digits = "2357BD"  /* Hex digits that are prime: 2, 3, 5, 7, 11(B), 13(D) */
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(num) - 1 {
+        DECL digit = num[i]
+        IF CONTAINS(prime_hex_digits, digit) {
+            count = count + 1
+        }
+    }
+    
+    RETURN count
+}

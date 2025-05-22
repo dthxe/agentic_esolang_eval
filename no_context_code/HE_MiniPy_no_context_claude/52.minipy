@@ -1,0 +1,7 @@
+def below_threshold(l, t):
+    i = 0
+    while i < len(l):
+        if l[i] >= t:
+            return False
+        i = i + 1
+    return True

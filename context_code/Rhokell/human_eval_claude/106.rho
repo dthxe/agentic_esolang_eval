@@ -1,0 +1,9 @@
+# HumanEval/106: Calculate f(n) = f(n-1) + n if n > 0, else 0
+(f n) = 
+  (if (eq n (z))
+      (z)
+      (add n (f (sub n (s (z))))));
+
+# Test case: 5 -> 15 (0 + 1 + 2 + 3 + 4 + 5)
+(main) = (f 
+          (s (s (s (s (s (z)))))));

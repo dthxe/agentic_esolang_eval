@@ -1,0 +1,5 @@
+# Rhokell implementation for map_abs
+# Apply absolute value function to each element in a list.
+
+(map_abs (lst)) = 
+    (map (\x -> (if (< x 0) (- x) x)) lst)

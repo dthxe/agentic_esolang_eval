@@ -1,0 +1,19 @@
+# Rhokell code for HumanEval/137
+# Task: Compare two numbers or strings
+
+# Define a function to compare values
+func compare_one(a, b) {
+    # Convert to float if possible
+    try {
+        a = float(a.replace(',', '.'))
+        b = float(b.replace(',', '.'))
+    } catch (Exception) {}
+    
+    # Compare values
+    if a > b {
+        return a
+    } else if b > a {
+        return b
+    }
+    return None
+}

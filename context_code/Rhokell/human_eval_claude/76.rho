@@ -1,0 +1,24 @@
+# HumanEval/76: String expansion by repeating characters
+(string_expansion str) = 
+  (string_expansion_helper str (s (z)));
+
+(string_expansion_helper (nil) _) = (nil);
+(string_expansion_helper (cons x xs) n) = 
+  (append (repeat x n)
+          (string_expansion_helper xs (s n)));
+
+(repeat x n) = 
+  (if (eq n (z))
+      (nil)
+      (cons x (repeat x (sub n (s (z))))));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: 'abc' -> 'abbccc'
+(main) = (string_expansion 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil)))));

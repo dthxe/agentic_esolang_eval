@@ -1,0 +1,10 @@
+def generate_integers(a, b):
+    if not isinstance(a, t) or not isinstance(b, t):
+        return ls()
+    if a > b:
+        return ls()
+    r = ls()
+    for i in r(a, b + 1):
+        if i % 2 == 0 and i % 4 != 0:
+            r.append(i)
+    return r

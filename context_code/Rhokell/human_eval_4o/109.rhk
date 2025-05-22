@@ -1,0 +1,5 @@
+# Rhokell implementation for map_expm1
+# Apply exp(x) - 1 function to each element in a list.
+
+(map_expm1 (lst)) = 
+    (map (\x -> (expm1 x)) lst)

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/41
+# Outputs the number of car collisions.
+
+def car_race_collision(n):
+    return n

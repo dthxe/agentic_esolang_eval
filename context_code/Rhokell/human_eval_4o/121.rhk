@@ -1,0 +1,5 @@
+# Rhokell implementation for map_fib
+# Apply Fibonacci function to each element in a list.
+
+(map_fib (lst)) = 
+    (map (\x -> (fibonacci x)) lst)

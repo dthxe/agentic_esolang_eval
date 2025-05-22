@@ -1,0 +1,17 @@
+/* HumanEval/120 */
+
+FUNC maximum(arr, k) {
+    /* Sort the array */
+    DECL sorted = COPY(arr)
+    SORT(sorted)
+    
+    /* Return the last k elements (maximum k numbers) */
+    DECL result = []
+    DECL start_idx = LEN(sorted) - k
+    
+    LOOP i FROM start_idx TO LEN(sorted) - 1 {
+        APPEND(result, sorted[i])
+    }
+    
+    RETURN result
+}

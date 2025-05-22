@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/111
+# Return a dictionary of the letter with the most repetition and containing the corresponding count.
+
+def histogram(test):
+    from collections import Counter
+    counter = Counter(test.split())
+    max_count = max(counter.values(), default=0)
+    return {k: v for k, v in counter.items() if v == max_count}

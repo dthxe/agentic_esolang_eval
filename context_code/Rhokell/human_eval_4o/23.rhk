@@ -1,0 +1,5 @@
+# Rhokell implementation for strlen
+# Return the length of a given string.
+
+(strlen (s)) = 
+    (length s)

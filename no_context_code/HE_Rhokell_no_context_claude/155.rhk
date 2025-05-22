@@ -1,0 +1,20 @@
+/* HumanEval/155 */
+
+FUNC even_odd_count(num) {
+    DECL even_count = 0
+    DECL odd_count = 0
+    DECL n = ABS(num)
+    DECL num_str = TO_STRING(n)
+    
+    LOOP i FROM 0 TO LEN(num_str) - 1 {
+        DECL digit = TO_INT(num_str[i])
+        
+        IF digit % 2 == 0 {
+            even_count = even_count + 1
+        } ELSE {
+            odd_count = odd_count + 1
+        }
+    }
+    
+    RETURN [even_count, odd_count]
+}

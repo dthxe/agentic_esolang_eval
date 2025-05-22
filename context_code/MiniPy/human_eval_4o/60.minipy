@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/60
+# Sum numbers from 1 to n.
+
+def sum_to_n(n):
+    return n * (n + 1) // 2

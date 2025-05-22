@@ -1,0 +1,11 @@
+# Minipy solution for HumanEval/59
+# Return the largest prime factor of n.
+
+def largest_prime_factor(n):
+    factor = 2
+    while factor * factor <= n:
+        if n % factor:
+            factor += 1
+        else:
+            n //= factor
+    return n

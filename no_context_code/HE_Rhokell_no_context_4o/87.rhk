@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/87
+# Task: Find coordinates of x in a 2D list
+
+# Define a function to get row
+func get_row(lst, x) {
+    coordinates = []
+    
+    # Find coordinates of x
+    for row_index in 0 to len(lst) {
+        for col_index in 0 to len(lst[row_index]) {
+            if lst[row_index][col_index] == x {
+                coordinates.append((row_index, col_index))
+            }
+        }
+    }
+    
+    # Sort coordinates
+    coordinates.sort(key=lambda coord: (coord[0], -coord[1]))
+    return coordinates
+}

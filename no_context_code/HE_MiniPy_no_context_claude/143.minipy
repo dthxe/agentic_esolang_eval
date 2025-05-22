@@ -1,0 +1,28 @@
+def words_in_sentence(sentence):
+    # Helper function to check if a number is prime
+    def is_prime(n):
+        if n <= 1:
+            return False
+        if n <= 3:
+            return True
+        if n % 2 == 0 or n % 3 == 0:
+            return False
+        
+        i = 5
+        while i * i <= n:
+            if n % i == 0 or n % (i + 2) == 0:
+                return False
+            i = i + 6
+        
+        return True
+    
+    words = sentence.split()
+    prime_length_words = []
+    
+    i = 0
+    while i < len(words):
+        if is_prime(len(words[i])):
+            prime_length_words.append(words[i])
+        i = i + 1
+    
+    return " ".join(prime_length_words)

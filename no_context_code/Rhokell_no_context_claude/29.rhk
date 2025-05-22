@@ -1,0 +1,10 @@
+toTitleCase :: String -> String
+toTitleCase "" = ""
+toTitleCase s = unwords $ map capitalize $ words s
+  where
+    capitalize "" = ""
+    capitalize (c:cs) = toUpper c : map toLower cs
+
+main = do
+  s <- readLine
+  print $ toTitleCase s

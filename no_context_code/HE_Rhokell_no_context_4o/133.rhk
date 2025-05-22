@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/133
+# Task: Sum of squares of rounded numbers
+
+# Define a function to sum squares
+func sum_squares(lst) {
+    total = 0
+    
+    # Calculate sum of squares
+    for num in lst {
+        total += ceil(num) ** 2
+    }
+    return total
+}

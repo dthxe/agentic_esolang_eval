@@ -1,0 +1,14 @@
+# Rhokell implementation for find_closest_elements
+# Find two closest numbers in a list and return them in order.
+
+(find_closest_elements (numbers)) = 
+    (letrec ((find_closest (lst) (min_diff) (closest_pair))
+        (match lst
+            (nil) closest_pair
+            ((cons x xs))
+                (let ((pair (cons x (head xs)))
+                      (diff (abs (- x (head xs)))))
+                    (if (< diff min_diff)
+                        (find_closest xs diff pair)
+                        (find_closest xs min_diff closest_pair)))))
+    (find_closest numbers (maxint) nil))

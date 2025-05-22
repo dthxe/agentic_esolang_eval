@@ -1,0 +1,18 @@
+# HumanEval/62: Find derivative of polynomial
+(derivative poly) = 
+  (derivative_helper poly (z));
+
+(derivative_helper (nil) _) = (nil);
+(derivative_helper (cons x xs) power) = 
+  (cons (mul x power)
+        (derivative_helper xs (s power)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: [3, 1, 2] -> [1, 4] (3 + x + 2x^2 -> 1 + 4x)
+(main) = (derivative 
+          (cons (s (s (s (z))))  # 3
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (nil)))));

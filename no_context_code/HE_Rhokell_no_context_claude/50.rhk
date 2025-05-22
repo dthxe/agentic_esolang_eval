@@ -1,0 +1,13 @@
+/* HumanEval/50 */
+
+FUNC decode_shift(s) {
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(s) - 1 {
+        DECL char_code = ORD(s[i])
+        DECL shifted_code = ((char_code - ORD("a") - 5) % 26) + ORD("a")
+        result = result + CHR(shifted_code)
+    }
+    
+    RETURN result
+}

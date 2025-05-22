@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/18
+# Task: Count overlapping occurrences of a substring
+
+# Define a function to count occurrences
+func how_many_times(string, substring) {
+    count = 0
+    start = 0
+    
+    # Iterate over the string
+    while start < len(string) {
+        pos = find(string, substring, start)
+        if pos != -1 {
+            count += 1
+            start = pos + 1
+        } else {
+            break
+        }
+    }
+    return count
+}

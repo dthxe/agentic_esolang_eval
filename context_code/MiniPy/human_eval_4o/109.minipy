@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/109
+# Determine if it is possible to get an array sorted in non-decreasing order by performing right shift operations.
+
+def move_one_ball(arr):
+    return any(arr[i:] + arr[:i] == srt(arr) for i in r(l(arr)))

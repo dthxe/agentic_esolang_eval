@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/56
+# Task: Check correct bracketing
+
+# Define a function to check bracketing
+func correct_bracketing(brackets) {
+    balance = 0
+    for ch in brackets {
+        if ch == "<" {
+            balance += 1
+        } else if ch == ">" {
+            balance -= 1
+            if balance < 0 {
+                return false
+            }
+        }
+    }
+    return balance == 0
+}

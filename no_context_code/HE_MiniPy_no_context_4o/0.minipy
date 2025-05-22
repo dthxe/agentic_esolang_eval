@@ -1,0 +1,1 @@
+def has_close_elements(numbers, threshold): return any(abs(a - b) < threshold for i, a in enumerate(numbers) for b in numbers[i+1:])

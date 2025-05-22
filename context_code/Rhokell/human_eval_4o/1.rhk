@@ -1,0 +1,16 @@
+# Rhokell implementation for separate_paren_groups
+# Separate groups of nested parentheses into separate strings.
+
+(separate_paren_groups (paren_string)) = 
+    (letrec ((separate (str) (acc) (current) (depth))
+        (match str
+            (nil) (reverse (cons (reverse current) acc))
+            ((cons x xs))
+                (if (= x '(')
+                    (separate xs acc (cons x current) (+ depth 1))
+                    (if (= x ')')
+                        (if (= depth 1)
+                            (separate xs (cons (reverse (cons x current)) acc) nil 0)
+                            (separate xs acc (cons x current) (- depth 1)))
+                        (separate xs acc current depth)))))
+    (separate paren_string nil nil 0))

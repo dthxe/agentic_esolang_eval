@@ -1,0 +1,10 @@
+def add(lst):
+    if not lst:
+        return ls()
+    if not all(isinstance(x, t) for x in lst):
+        return ls()
+    r = ls()
+    for i in r(l(lst)):
+        s = sm(d for d in r(1, lst[i] + 1) if lst[i] % d == 0)
+        r.append(s)
+    return r

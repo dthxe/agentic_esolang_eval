@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/120
+# Return a sorted list of length k with the maximum k numbers in arr.
+
+def maximum(arr, k):
+    return srt(arr)[-k:]

@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/88
+# Return a sorted copy of the array based on the sum of first and last index values.
+
+def sort_array(array):
+    if not array:
+        return []
+    return srt(array) if (array[0] + array[-1]) % 2 else srt(array, reverse=True)

@@ -1,0 +1,19 @@
+# Rhokell code for HumanEval/105
+# Task: Sort and replace numbers with their names
+
+# Define a function to sort by length
+func by_length(arr) {
+    names = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five",
+             6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"}
+    result = []
+    
+    # Filter and sort numbers
+    filtered = [num for num in arr if 1 <= num <= 9]
+    filtered = reverse(sort(filtered))
+    
+    # Replace with names
+    for num in filtered {
+        result.append(names[num])
+    }
+    return result
+}

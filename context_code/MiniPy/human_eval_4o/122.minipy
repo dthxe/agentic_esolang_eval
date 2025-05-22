@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/122
+# Return the sum of the elements with at most two digits from the first k elements of arr.
+
+def add_elements(arr, k):
+    return sm(x for x in arr[:k] if ab(x) < 100)

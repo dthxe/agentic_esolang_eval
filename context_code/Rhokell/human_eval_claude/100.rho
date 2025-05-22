@@ -1,0 +1,48 @@
+# HumanEval/100: Make palindrome by adding characters
+(make_palindrome str) = 
+  (if (is_palindrome str)
+      str
+      (append str (reverse (needed_chars str))));
+
+(is_palindrome str) = 
+  (eq_lists str (reverse str));
+
+(needed_chars str) = 
+  (needed_chars_helper str (reverse str));
+
+(needed_chars_helper (nil) _) = (nil);
+(needed_chars_helper _ (nil)) = (nil);
+(needed_chars_helper (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (needed_chars_helper xs ys)
+      (cons (head str) (needed_chars_helper str (tail (reverse str)))));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+# Test case: 'abcde' -> 'abcdedcba'
+(main) = (make_palindrome 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (6) (5))  # 'e'
+          (nil)))))));

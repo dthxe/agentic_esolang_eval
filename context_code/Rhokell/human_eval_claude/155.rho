@@ -1,0 +1,51 @@
+# HumanEval/155: Count even and odd digits
+(even_odd_count n) = 
+  (count_digits (abs n));
+
+(count_digits n) = 
+  (count_digits_helper (digits_of n) (z) (z));
+
+(count_digits_helper (nil) evens odds) = 
+  (pair evens odds);
+
+(count_digits_helper (cons x xs) evens odds) = 
+  (if (is_even x)
+      (count_digits_helper xs (s evens) odds)
+      (count_digits_helper xs evens (s odds)));
+
+(digits_of n) = 
+  (if (eq n (z))
+      (cons (z) (nil))
+      (digits_of_helper n (nil)));
+
+(digits_of_helper n acc) = 
+  (if (eq n (z))
+      acc
+      (digits_of_helper 
+        (div n (s (s (s (s (s (s (s (s (s (s (z))))))))))))  # div by 10
+        (cons (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+              acc)));
+
+(is_even n) = 
+  (eq (mod n (s (s (z)))) (z));
+
+(abs n) = 
+  (if (lt n (z))
+      (sub (z) n)
+      n);
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 123 -> (1, 2) (one even digit, two odd digits)
+(main) = (even_odd_count 
+          (s (s (s (s (s (s (s (s (s (s  # 123
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (z))))))))))))))))))))))))); 

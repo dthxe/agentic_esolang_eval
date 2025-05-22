@@ -1,0 +1,31 @@
+# HumanEval/117: Select elements at even positions with even values
+(select_words lst) = 
+  (filter_with_index is_even_position_and_value lst (z));
+
+(filter_with_index _ (nil) _) = (nil);
+(filter_with_index f (cons x xs) idx) = 
+  (if (f x idx)
+      (cons x (filter_with_index f xs (s idx)))
+      (filter_with_index f xs (s idx)));
+
+(is_even_position_and_value x idx) = 
+  (and (is_even idx)
+       (is_even x));
+
+(is_even n) = 
+  (eq (mod n (s (s (z)))) (z));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: [1, 2, 3, 4, 5, 6] -> [2, 4, 6] (even positions and values)
+(main) = (select_words 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (z)))))))  # 6
+          (nil))))))));

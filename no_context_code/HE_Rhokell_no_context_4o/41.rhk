@@ -1,0 +1,8 @@
+# Rhokell code for HumanEval/41
+# Task: Calculate number of car race collisions
+
+# Define a function to calculate collisions
+func car_race_collision(n) {
+    # Each car from one side collides with each car from the other side
+    return n * n
+}

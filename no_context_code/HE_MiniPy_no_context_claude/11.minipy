@@ -1,0 +1,10 @@
+def string_xor(a, b):
+    result = ""
+    i = 0
+    while i < len(a):
+        if a[i] == b[i]:
+            result = result + "0"
+        else:
+            result = result + "1"
+        i = i + 1
+    return result

@@ -1,0 +1,12 @@
+def parse_nested_parens(s):
+    r = []
+    for g in s.split():
+        d = c = 0
+        for x in g:
+            if x == '(':
+                c += 1
+                d = max(d, c)
+            else:
+                c -= 1
+        r.append(d)
+    return r

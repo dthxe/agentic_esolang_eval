@@ -1,0 +1,25 @@
+def anti_shuffle(s):
+    words = s.split()
+    result = []
+    
+    i = 0
+    while i < len(words):
+        word = words[i]
+        # Sort characters in the word
+        chars = list(word)
+        
+        # Bubble sort for characters
+        j = 0
+        while j < len(chars):
+            k = 0
+            while k < len(chars) - j - 1:
+                if chars[k] > chars[k + 1]:
+                    chars[k], chars[k + 1] = chars[k + 1], chars[k]
+                k = k + 1
+            j = j + 1
+        
+        sorted_word = "".join(chars)
+        result.append(sorted_word)
+        i = i + 1
+    
+    return " ".join(result)

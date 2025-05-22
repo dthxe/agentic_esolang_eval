@@ -1,0 +1,18 @@
+def prime_length(string):
+    length = len(string)
+    
+    # Check if length is prime
+    if length <= 1:
+        return False
+    if length <= 3:
+        return True
+    if length % 2 == 0 or length % 3 == 0:
+        return False
+    
+    i = 5
+    while i * i <= length:
+        if length % i == 0 or length % (i + 2) == 0:
+            return False
+        i = i + 6
+    
+    return True

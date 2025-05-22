@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/65
+# Task: Circular shift the digits of an integer
+
+# Define a function to perform circular shift
+func circular_shift(x, shift) {
+    digits = str(x)
+    length = len(digits)
+    
+    # Check if shift is greater than number of digits
+    if shift >= length {
+        return reverse(digits)
+    }
+    
+    # Perform circular shift
+    shift = shift % length
+    return digits[-shift:] + digits[:-shift]
+}

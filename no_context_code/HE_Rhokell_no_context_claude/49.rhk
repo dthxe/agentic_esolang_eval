@@ -1,0 +1,22 @@
+/* HumanEval/49 */
+
+FUNC modp(n, p) {
+    /* Calculate 2^n modulo p using binary exponentiation */
+    DECL result = 1
+    DECL base = 2
+    
+    WHILE n > 0 {
+        /* If n is odd, multiply result with base */
+        IF n % 2 == 1 {
+            result = (result * base) % p
+        }
+        
+        /* Square the base */
+        base = (base * base) % p
+        
+        /* Divide n by 2 */
+        n = n / 2
+    }
+    
+    RETURN result
+}

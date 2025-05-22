@@ -1,0 +1,5 @@
+def check_dict_case(dict):
+    if not dict:
+        return False
+    keys = list(dict.keys())
+    return all(k.islower() for k in keys) or all(k.isupper() for k in keys)

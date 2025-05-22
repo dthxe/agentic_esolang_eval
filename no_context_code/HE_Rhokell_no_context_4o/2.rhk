@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/2
+# Task: Return the decimal part of a number
+
+# Define a function to truncate number
+func truncate_number(number) {
+    integer_part = floor(number)
+    decimal_part = number - integer_part
+    return decimal_part
+}

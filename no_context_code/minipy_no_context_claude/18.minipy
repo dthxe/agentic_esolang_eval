@@ -1,0 +1,2 @@
+nums = input()
+print max(nums)

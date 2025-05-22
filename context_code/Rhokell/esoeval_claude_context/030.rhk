@@ -1,0 +1,57 @@
+# Check if one number is divisible by another
+# Helper functions for Church numerals and arithmetic
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T;
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # \n
+                           (nil)))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F;
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # \n
+                            (nil))))))));
+
+# Check if a is divisible by b
+(is_divisible a b) = (check_divisible (mod a b));
+(check_divisible (z)) = (print_true);  # No remainder;
+(check_divisible (s x)) = (print_false);  # Has remainder;
+
+# Calculate remainder using repeated subtraction
+(mod a b) = (mod_helper a b);
+(mod_helper a b) = (mod_next (sub a b) a b);
+(mod_next (z) a b) = (z);  # b divides a;
+(mod_next (s x) a b) = (mod_step (sub a b) a b);
+(mod_step (z) a b) = (z);  # b divides a;
+(mod_step (s x) a b) = (s (mod_helper (sub a b) b));
+
+# Main function
+(main) = (is_divisible;
+          (digit_to_church (input_byte) (input_byte))  # First number
+          (digit_to_church (input_byte) (input_byte))  # Second number
+        );
+
+# Helper functions for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

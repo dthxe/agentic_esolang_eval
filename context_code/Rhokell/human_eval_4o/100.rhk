@@ -1,0 +1,5 @@
+# Rhokell implementation for map_acos
+# Apply arccosine function to each element in a list.
+
+(map_acos (lst)) = 
+    (map (\x -> (acos x)) lst)

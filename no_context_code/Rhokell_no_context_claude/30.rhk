@@ -1,0 +1,7 @@
+isDivisible :: Int -> Int -> Bool
+isDivisible a b = a `mod` b == 0
+
+main = do
+  a <- readInt
+  b <- readInt
+  print $ isDivisible a b

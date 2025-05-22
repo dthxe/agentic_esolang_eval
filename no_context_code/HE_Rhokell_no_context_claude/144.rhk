@@ -1,0 +1,33 @@
+/* HumanEval/144 */
+
+FUNC simplify(x, n) {
+    /* Parse the fractions */
+    DECL x_parts = SPLIT(x, "/")
+    DECL n_parts = SPLIT(n, "/")
+    
+    DECL x_num = TO_INT(x_parts[0])
+    DECL x_den = TO_INT(x_parts[1])
+    DECL n_num = TO_INT(n_parts[0])
+    DECL n_den = TO_INT(n_parts[1])
+    
+    /* Calculate the product */
+    DECL product_num = x_num * n_num
+    DECL product_den = x_den * n_den
+    
+    /* Simplify the fraction */
+    DECL gcd_val = gcd(product_num, product_den)
+    DECL simplified_num = product_num / gcd_val
+    DECL simplified_den = product_den / gcd_val
+    
+    /* Check if the simplified fraction is a whole number */
+    RETURN simplified_den == 1
+}
+
+FUNC gcd(a, b) {
+    WHILE b != 0 {
+        DECL temp = b
+        b = a % b
+        a = temp
+    }
+    RETURN a
+}

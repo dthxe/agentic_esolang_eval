@@ -1,0 +1,14 @@
+# Concatenate two strings
+# Read string input
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Null terminator
+(read_char x) = (cons x (read_string));
+
+# Main function
+(main) = (print (append (read_string) (read_string)));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

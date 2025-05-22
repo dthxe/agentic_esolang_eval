@@ -1,0 +1,5 @@
+# Rhokell implementation for map_decrement
+# Decrement each element in a list by 1.
+
+(map_decrement (lst)) = 
+    (map (\x -> (- x 1)) lst)

@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/78
+# Count the number of prime hexadecimal digits.
+
+def hex_key(num):
+    primes = {'2', '3', '5', '7', 'B', 'D'}
+    return sm(1 for ch in num if ch in primes)

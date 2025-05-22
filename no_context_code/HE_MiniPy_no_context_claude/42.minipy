@@ -1,0 +1,7 @@
+def incr_list(l):
+    result = []
+    i = 0
+    while i < len(l):
+        result.append(l[i] + 1)
+        i = i + 1
+    return result

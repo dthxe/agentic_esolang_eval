@@ -1,0 +1,26 @@
+def monotonic(l):
+    if len(l) <= 1:
+        return True
+    
+    # Check if the list is increasing
+    increasing = True
+    i = 1
+    while i < len(l):
+        if l[i] < l[i-1]:
+            increasing = False
+            break
+        i = i + 1
+    
+    if increasing:
+        return True
+    
+    # Check if the list is decreasing
+    decreasing = True
+    i = 1
+    while i < len(l):
+        if l[i] > l[i-1]:
+            decreasing = False
+            break
+        i = i + 1
+    
+    return decreasing

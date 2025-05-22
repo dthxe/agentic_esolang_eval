@@ -1,0 +1,14 @@
+# Rhokell code for HumanEval/154
+# Task: Check if b or its rotations are a substring of a
+
+# Define a function to check cyclical pattern
+func cycpattern_check(a, b) {
+    # Check all rotations
+    for i in range(len(b)) {
+        rotated_b = b[i:] + b[:i]
+        if rotated_b in a {
+            return true
+        }
+    }
+    return false
+}

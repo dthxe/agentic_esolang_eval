@@ -1,0 +1,9 @@
+# Rhokell implementation for prime_fib
+# Returns n-th number that is a Fibonacci number and it's also prime.
+
+(prime_fib (n)) = 
+    (letrec ((fib (a) (b) (count))
+        (if (= count n)
+            (if (is_prime a) a (fib b (+ a b) count))
+            (if (is_prime a) (fib b (+ a b) (+ count 1)) (fib b (+ a b) count))))
+    (fib 1 1 0))

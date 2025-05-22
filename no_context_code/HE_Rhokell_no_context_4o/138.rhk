@@ -1,0 +1,10 @@
+# Rhokell code for HumanEval/138
+# Task: Check if number can be sum of four even numbers
+
+# Define a function to check sum of evens
+func is_equal_to_sum_even(n) {
+    if n < 8 {
+        return false
+    }
+    return n % 2 == 0
+}

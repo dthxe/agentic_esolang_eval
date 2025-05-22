@@ -1,0 +1,13 @@
+def flip_case(string):
+    result = ""
+    i = 0
+    while i < len(string):
+        char = string[i]
+        if char.islower():
+            result = result + char.upper()
+        elif char.isupper():
+            result = result + char.lower()
+        else:
+            result = result + char
+        i = i + 1
+    return result

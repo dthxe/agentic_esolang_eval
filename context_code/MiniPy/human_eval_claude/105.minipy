@@ -1,0 +1,4 @@
+def by_length(arr):
+    if not arr:
+        return ls()
+    return srt(arr, key=lambda x: [l(x), x])

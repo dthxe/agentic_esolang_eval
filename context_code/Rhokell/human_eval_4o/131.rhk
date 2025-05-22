@@ -1,0 +1,5 @@
+# Rhokell implementation for map_reverse
+# Reverse each sublist in a list of lists.
+
+(map_reverse (lst)) = 
+    (map (\sublist -> (reverse_list sublist)) lst)

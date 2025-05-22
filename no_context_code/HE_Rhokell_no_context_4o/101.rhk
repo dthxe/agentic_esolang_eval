@@ -1,0 +1,8 @@
+# Rhokell code for HumanEval/101
+# Task: Split a string into words
+
+# Define a function to split words
+func words_string(s) {
+    words = split(s, /[ ,]+/)
+    return words
+}

@@ -1,0 +1,22 @@
+/* HumanEval/83 */
+
+FUNC starts_one_ends(n) {
+    /* 
+    For n-digit numbers:
+    - Numbers starting with 1: 1 * 10^(n-1)
+    - Numbers ending with 1: 9 * 10^(n-2) * 1
+    - Numbers both starting and ending with 1: 1 * 10^(n-2) * 1
+    
+    Total = (starting with 1) + (ending with 1) - (both)
+    */
+    
+    IF n == 1 {
+        RETURN 1  /* Only the number 1 itself */
+    }
+    
+    DECL starts_with_1 = POW(10, n-1)
+    DECL ends_with_1 = 9 * POW(10, n-2)
+    DECL both = POW(10, n-2)
+    
+    RETURN starts_with_1 + ends_with_1 - both
+}

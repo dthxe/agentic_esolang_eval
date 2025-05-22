@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/72
+# Task: Determine if an object will fly
+
+# Define a function to check if it will fly
+func will_it_fly(q, w) {
+    is_palindrome = (q == reverse(q))
+    sum_elements = sum(q)
+    return is_palindrome and sum_elements <= w
+}

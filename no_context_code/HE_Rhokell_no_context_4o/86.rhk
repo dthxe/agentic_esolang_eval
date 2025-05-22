@@ -1,0 +1,14 @@
+# Rhokell code for HumanEval/86
+# Task: Order characters in each word
+
+# Define a function to anti-shuffle
+func anti_shuffle(s) {
+    words = s.split(" ")
+    ordered_words = []
+    
+    # Order characters in each word
+    for word in words {
+        ordered_words.append(''.join(sort(word)))
+    }
+    return ' '.join(ordered_words)
+}

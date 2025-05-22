@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/70
+# Task: Strange sort list
+
+# Define a function for strange sorting
+func strange_sort_list(lst) {
+    sorted_lst = sort(lst)
+    result = []
+    
+    # Perform strange sort
+    while len(sorted_lst) > 0 {
+        result.append(sorted_lst.pop(0))
+        if len(sorted_lst) > 0 {
+            result.append(sorted_lst.pop(-1))
+        }
+    }
+    return result
+}

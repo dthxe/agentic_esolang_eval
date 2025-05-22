@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/127
+# Determine if the length of intersection of two intervals is a prime number.
+
+def intersection(interval1, interval2):
+    start = max(interval1[0], interval2[0])
+    end = min(interval1[1], interval2[1])
+    length = end - start + 1
+    return 'YES' if length > 1 and all(length % i != 0 for i in r(2, int(length**0.5) + 1)) else 'NO'

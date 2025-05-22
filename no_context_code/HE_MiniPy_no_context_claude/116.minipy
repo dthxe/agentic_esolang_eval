@@ -1,0 +1,34 @@
+def sort_array(arr):
+    # Helper function to count number of ones in binary representation
+    def count_ones(n):
+        count = 0
+        while n > 0:
+            count = count + (n & 1)
+            n = n >> 1
+        return count
+    
+    # Create a list of tuples (number, ones_count)
+    pairs = []
+    i = 0
+    while i < len(arr):
+        pairs.append((arr[i], count_ones(arr[i])))
+        i = i + 1
+    
+    # Sort the pairs by ones_count, then by decimal value
+    i = 0
+    while i < len(pairs):
+        j = 0
+        while j < len(pairs) - i - 1:
+            if pairs[j][1] > pairs[j+1][1] or (pairs[j][1] == pairs[j+1][1] and pairs[j][0] > pairs[j+1][0]):
+                pairs[j], pairs[j+1] = pairs[j+1], pairs[j]
+            j = j + 1
+        i = i + 1
+    
+    # Extract the sorted numbers
+    result = []
+    i = 0
+    while i < len(pairs):
+        result.append(pairs[i][0])
+        i = i + 1
+    
+    return result

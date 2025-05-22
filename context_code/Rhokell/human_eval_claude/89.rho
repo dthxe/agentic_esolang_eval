@@ -1,0 +1,37 @@
+# HumanEval/89: Find unique characters in string
+(unique_chars str) = 
+  (sort (filter (lambda (x) 
+                  (eq (count (lambda (y) (byte_eq x y)) str)
+                      (s (z))))
+                str));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(count _ (nil)) = (z);
+(count f (cons x xs)) = 
+  (if (f x)
+      (s (count f xs))
+      (count f xs));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+# Test case: 'abcabc' -> 'abc'
+(main) = (unique_chars 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil))))))));

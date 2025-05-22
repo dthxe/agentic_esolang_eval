@@ -1,0 +1,58 @@
+# HumanEval/141: Check if file name is valid
+(file_name_check str) = 
+  (and (valid_chars str)
+       (has_extension str));
+
+(valid_chars str) = 
+  (all (lambda (x) (or (is_letter x)
+                       (is_digit x)
+                       (is_special x)))
+       str);
+
+(is_letter x) = 
+  (or (and (ge x (byte (4) (1)))  # 'A'
+           (le x (byte (5) (A))))  # 'Z'
+      (and (ge x (byte (6) (1)))  # 'a'
+           (le x (byte (7) (A)))));  # 'z'
+
+(is_digit x) = 
+  (and (ge x (byte (3) (0)))  # '0'
+       (le x (byte (3) (9))));  # '9'
+
+(is_special x) = 
+  (or (byte_eq x (byte (2) (D)))  # '-'
+      (byte_eq x (byte (2) (E))));  # '.'
+
+(has_extension str) = 
+  (any (lambda (x) (byte_eq x (byte (2) (E)))) str);  # '.'
+
+(all _ (nil)) = (t);
+(all f (cons x xs)) = 
+  (if (f x)
+      (all f xs)
+      (f));
+
+(any _ (nil)) = (f);
+(any f (cons x xs)) = 
+  (if (f x)
+      (t)
+      (any f xs));
+
+(ge x y) = (not (lt x y));
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: 'example.txt' -> true
+(main) = (file_name_check 
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (7) (8))  # 'x'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (D))  # 'm'
+          (cons (byte (7) (0))  # 'p'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (2) (E))  # '.'
+          (cons (byte (7) (4))  # 't'
+          (cons (byte (7) (8))  # 'x'
+          (cons (byte (7) (4))  # 't'
+          (nil))))))))))));

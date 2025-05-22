@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/134
+# Return True if the last character of a given string is an alphabetical character and is not a part of a word.
+
+def check_if_last_char_is_a_letter(txt):
+    txt = txt.strip()
+    return txt[-1].isalpha() and (l(txt) == 1 or txt[-2] == ' ') if txt else False

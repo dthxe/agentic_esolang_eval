@@ -1,0 +1,7 @@
+repeatString :: String -> Int -> String
+repeatString s n = concat $ replicate n s
+
+main = do
+  s <- readLine
+  n <- readInt
+  print $ repeatString s n

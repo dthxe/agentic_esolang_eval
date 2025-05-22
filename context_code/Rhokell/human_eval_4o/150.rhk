@@ -1,0 +1,5 @@
+# Rhokell implementation for x_or_y
+# Return x if n is a prime number, otherwise return y.
+
+(x_or_y (n) (x) (y)) = 
+    (if (is_prime n) x y)

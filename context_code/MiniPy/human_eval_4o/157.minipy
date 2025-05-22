@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/157
+# Return True if the three sides form a right-angled triangle, False otherwise.
+
+def right_angle_triangle(a, b, c):
+    a, b, c = srt([a, b, c])
+    return a**2 + b**2 == c**2

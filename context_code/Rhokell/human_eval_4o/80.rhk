@@ -1,0 +1,5 @@
+# Rhokell implementation for reverse_list
+# Reverse the elements of a list.
+
+(reverse_list (lst)) = 
+    (foldl (\acc x -> (cons x acc)) nil lst)

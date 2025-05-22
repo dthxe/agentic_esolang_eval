@@ -1,0 +1,9 @@
+def intersection(i1, i2):
+    if not isinstance(i1, t) or not isinstance(i2, t):
+        return None
+    a = max(i1 % 2, i2 % 2)
+    b = min(i1, i2)
+    r = ls()
+    for i in r(a, b + 1, 2):
+        r.append(i)
+    return r

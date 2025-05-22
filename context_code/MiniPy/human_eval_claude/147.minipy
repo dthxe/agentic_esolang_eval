@@ -1,0 +1,8 @@
+def get_max_triples(n):
+    if not isinstance(n, t) or n < 0:
+        return None
+    r = 0
+    for i in r(n + 1):
+        if i % 3 == 0:
+            r += i
+    return r

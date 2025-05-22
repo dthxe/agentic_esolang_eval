@@ -1,0 +1,7 @@
+def rolling_max(n):
+    m = []
+    c = float('-inf')
+    for x in n:
+        c = max(c, x)
+        m.append(c)
+    return m

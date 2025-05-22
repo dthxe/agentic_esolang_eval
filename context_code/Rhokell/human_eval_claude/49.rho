@@ -1,0 +1,28 @@
+# HumanEval/49: Calculate modular exponentiation
+(modp base exp m) = 
+  (if (eq exp (z))
+      (s (z))  # 1
+      (if (eq (mod exp (s (s (z)))) (z))  # exp % 2 == 0
+          (mod (square (modp base (div exp (s (s (z)))) m)) m)
+          (mod (mul base (modp base (sub exp (s (z))) m)) m)));
+
+(square x) = (mul x x);
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: 2, 3, 5 -> 3 (2^3 mod 5)
+(main) = (modp 
+          (s (s (z)))  # 2
+          (s (s (s (z))))  # 3
+          (s (s (s (s (s (z)))))));

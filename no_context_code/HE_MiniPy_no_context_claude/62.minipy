@@ -1,0 +1,7 @@
+def derivative(xs):
+    result = []
+    i = 1
+    while i < len(xs):
+        result.append(i * xs[i])
+        i = i + 1
+    return result

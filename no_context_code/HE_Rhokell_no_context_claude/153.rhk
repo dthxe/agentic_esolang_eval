@@ -1,0 +1,33 @@
+/* HumanEval/153 */
+
+FUNC Strongest_Extension(class_name, extensions) {
+    DECL strongest_ext = ""
+    DECL strongest_strength = -INFINITY
+    
+    LOOP i FROM 0 TO LEN(extensions) - 1 {
+        DECL ext = extensions[i]
+        DECL uppercase_count = 0
+        DECL lowercase_count = 0
+        
+        /* Count uppercase and lowercase letters */
+        LOOP j FROM 0 TO LEN(ext) - 1 {
+            DECL char = ext[j]
+            IF IS_UPPER(char) {
+                uppercase_count = uppercase_count + 1
+            } ELIF IS_LOWER(char) {
+                lowercase_count = lowercase_count + 1
+            }
+        }
+        
+        /* Calculate strength */
+        DECL strength = uppercase_count - lowercase_count
+        
+        /* Update strongest extension if current one is stronger */
+        IF strongest_ext == "" || strength > strongest_strength {
+            strongest_ext = ext
+            strongest_strength = strength
+        }
+    }
+    
+    RETURN class_name + "." + strongest_ext
+}

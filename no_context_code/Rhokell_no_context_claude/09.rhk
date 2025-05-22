@@ -1,0 +1,6 @@
+isPositive :: Int -> Bool
+isPositive n = n > 0
+
+main = do
+  n <- readInt
+  print $ isPositive n

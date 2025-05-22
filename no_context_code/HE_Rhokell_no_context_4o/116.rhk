@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/116
+# Task: Sort array by number of ones in binary
+
+# Define a function to sort array
+func sort_array(arr) {
+    # Sort by number of ones and then by value
+    sorted_arr = sort(arr, key=lambda x: (bin(x).count('1'), x))
+    return sorted_arr
+}

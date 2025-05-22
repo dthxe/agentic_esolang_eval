@@ -1,0 +1,19 @@
+/* HumanEval/71 */
+
+FUNC triangle_area(a, b, c) {
+    /* Check if the three sides form a valid triangle */
+    IF a + b <= c || a + c <= b || b + c <= a {
+        RETURN -1
+    }
+    
+    /* Calculate semi-perimeter */
+    DECL s = (a + b + c) / 2
+    
+    /* Calculate area using Heron's formula */
+    DECL area = SQRT(s * (s - a) * (s - b) * (s - c))
+    
+    /* Round to 2 decimal places */
+    DECL rounded_area = ROUND(area * 100) / 100
+    
+    RETURN rounded_area
+}

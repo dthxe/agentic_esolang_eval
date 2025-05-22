@@ -1,0 +1,36 @@
+def order_by_points(nums):
+    # Helper function to calculate the sum of digits
+    def digit_sum(n):
+        total = 0
+        n_str = str(abs(n))
+        i = 0
+        while i < len(n_str):
+            total = total + int(n_str[i])
+            i = i + 1
+        return total
+    
+    # Create a list of (number, digit_sum, index) tuples
+    indexed_nums = []
+    i = 0
+    while i < len(nums):
+        indexed_nums.append((nums[i], digit_sum(nums[i]), i))
+        i = i + 1
+    
+    # Sort by digit sum, then by original index for stability
+    i = 0
+    while i < len(indexed_nums):
+        j = 0
+        while j < len(indexed_nums) - i - 1:
+            if indexed_nums[j][1] > indexed_nums[j+1][1] or (indexed_nums[j][1] == indexed_nums[j+1][1] and indexed_nums[j][2] > indexed_nums[j+1][2]):
+                indexed_nums[j], indexed_nums[j+1] = indexed_nums[j+1], indexed_nums[j]
+            j = j + 1
+        i = i + 1
+    
+    # Extract the sorted numbers
+    result = []
+    i = 0
+    while i < len(indexed_nums):
+        result.append(indexed_nums[i][0])
+        i = i + 1
+    
+    return result

@@ -1,0 +1,17 @@
+def make_a_pile(n):
+    result = [n]  # First level has n stones
+    
+    i = 1
+    while i < n:
+        last_level = result[i-1]
+        
+        # Next level depends on whether n is odd or even
+        if last_level % 2 == 0:  # Even
+            next_level = last_level + 2
+        else:  # Odd
+            next_level = last_level + 1
+        
+        result.append(next_level)
+        i = i + 1
+    
+    return result

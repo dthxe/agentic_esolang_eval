@@ -1,0 +1,25 @@
+# HumanEval/48: Check if string is palindrome
+(is_palindrome str) = 
+  (eq_lists str (reverse str));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+(reverse (nil)) = (nil);
+(reverse (cons x xs)) = 
+  (append (reverse xs) (cons x (nil)));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+# Test case: 'aba' -> true
+(main) = (is_palindrome 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (1))  # 'a'
+          (nil)))));

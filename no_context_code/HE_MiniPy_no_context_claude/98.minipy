@@ -1,0 +1,11 @@
+def count_upper(s):
+    upper_vowels = "AEIOU"
+    count = 0
+    
+    i = 0
+    while i < len(s):
+        if i % 2 == 0 and s[i] in upper_vowels:
+            count = count + 1
+        i = i + 1
+    
+    return count

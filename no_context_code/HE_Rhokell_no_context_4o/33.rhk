@@ -1,0 +1,25 @@
+# Rhokell code for HumanEval/33
+# Task: Sort elements at indices divisible by three
+
+# Define a function to sort third elements
+func sort_third(l) {
+    third_indices = []
+    
+    # Collect elements at indices divisible by three
+    for i in 0 to len(l) {
+        if i % 3 == 0 {
+            third_indices.append(l[i])
+        }
+    }
+    
+    # Sort the collected elements
+    sorted_third_indices = sort(third_indices)
+    
+    # Replace original elements with sorted ones
+    for i in 0 to len(l) {
+        if i % 3 == 0 {
+            l[i] = sorted_third_indices.pop(0)
+        }
+    }
+    return l
+}

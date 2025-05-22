@@ -1,0 +1,7 @@
+# Rhokell implementation for sum_product
+# Return a tuple of the sum and product of a list of integers.
+
+(sum_product (numbers)) = 
+    (let ((sum (foldl (+) 0 numbers))
+          (product (foldl (*) 1 numbers)))
+    (cons sum (cons product nil)))

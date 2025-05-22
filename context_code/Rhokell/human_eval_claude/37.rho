@@ -1,0 +1,49 @@
+# HumanEval/37: Sort even numbers in ascending order
+(sort_even numbers) = 
+  (let [evens (filter is_even numbers)]
+    (replace_even numbers (sort evens)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(is_even n) = (eq (mod n (s (s (z)))) (z));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(replace_even (nil) _) = (nil);
+(replace_even _ (nil)) = (nil);
+(replace_even (cons x xs) sorted_evens) = 
+  (if (is_even x)
+      (cons (head sorted_evens) 
+            (replace_even xs (tail sorted_evens)))
+      (cons x (replace_even xs sorted_evens)));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+# Test case: [1, 2, 3, 4, 5, 6, 7, 8] -> [1, 2, 3, 4, 5, 6, 7, 8]
+(main) = (sort_even 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (z)))))))  # 6
+          (cons (s (s (s (s (s (s (s (z))))))))  # 7
+          (cons (s (s (s (s (s (s (s (s (z)))))))))  # 8
+          (nil)))))))));

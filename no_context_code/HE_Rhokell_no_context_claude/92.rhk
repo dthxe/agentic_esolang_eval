@@ -1,0 +1,15 @@
+/* HumanEval/92 */
+
+FUNC any_int(x, y, z) {
+    /* Check if all numbers are integers */
+    IF !IS_INTEGER(x) || !IS_INTEGER(y) || !IS_INTEGER(z) {
+        RETURN FALSE
+    }
+    
+    /* Check if any number equals the sum of the other two */
+    IF x == y + z || y == x + z || z == x + y {
+        RETURN TRUE
+    }
+    
+    RETURN FALSE
+}

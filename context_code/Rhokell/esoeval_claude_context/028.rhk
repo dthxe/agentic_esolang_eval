@@ -1,0 +1,66 @@
+# Check if all numbers in a list are even
+# Helper functions for Church numerals and arithmetic
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+(mod2 n) = (mod2_helper n (z));
+(mod2_helper (z) r) = r;
+(mod2_helper (s n) r) = (mod2_helper n (flip r));
+(flip (z)) = (s (z));
+(flip (s x)) = (z);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T;
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # \n
+                           (nil)))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F;
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # \n
+                            (nil))))))));
+
+# Parse list input [x,y,z]
+(read_list) = (read_list_helper (input_byte));
+(read_list_helper (5) (B)) = (read_numbers);  # '[';
+(read_numbers) = (read_number (input_byte) (input_byte));
+(read_number x y) = (read_next (digit_to_church x y));
+(read_next n) = (read_separator n (input_byte));
+(read_separator n (2) (C)) = (cons n (read_numbers));  # ',';
+(read_separator n (5) (D)) = (cons n (nil));  # ']';
+
+# Check if number is even
+(is_even n) = (is_even_helper (mod2 n));
+(is_even_helper (z)) = (s (z));  # True;
+(is_even_helper (s x)) = (z);  # False;
+
+# Check if all numbers in list are even
+(all_even (nil)) = (print_true);  # Empty list is all even;
+(all_even (cons x xs)) = (check_even (is_even x) xs);
+(check_even (z) xs) = (print_false);  # Found odd number;
+(check_even (s n) xs) = (all_even xs);  # Current number is even, continue;
+
+# Main function
+(main) = (all_even (read_list));
+
+# Helper functions for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

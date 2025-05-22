@@ -1,0 +1,12 @@
+# Minipy solution for HumanEval/96
+# Return an array of the first n integers that are prime numbers and less than n.
+
+def count_up_to(n):
+    def is_prime(x):
+        if x <= 1:
+            return False
+        for i in r(2, int(x ** 0.5) + 1):
+            if x % i == 0:
+                return False
+        return True
+    return [x for x in r(n) if is_prime(x)]

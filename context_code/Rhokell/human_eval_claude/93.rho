@@ -1,0 +1,39 @@
+# HumanEval/93: Encode string by shifting vowels
+(encode str) = 
+  (map encode_char str);
+
+(encode_char x) = 
+  (if (is_vowel x)
+      (next_vowel x)
+      x);
+
+(is_vowel x) = 
+  (or (byte_eq x (byte (6) (1)))  # 'a'
+  (or (byte_eq x (byte (6) (5)))  # 'e'
+  (or (byte_eq x (byte (6) (9)))  # 'i'
+  (or (byte_eq x (byte (6) (F)))  # 'o'
+      (byte_eq x (byte (7) (5)))))); # 'u'
+
+(next_vowel x) = 
+  (if (byte_eq x (byte (6) (1)))  # 'a'
+      (byte (6) (5))  # 'e'
+      (if (byte_eq x (byte (6) (5)))  # 'e'
+          (byte (6) (9))  # 'i'
+          (if (byte_eq x (byte (6) (9)))  # 'i'
+              (byte (6) (F))  # 'o'
+              (if (byte_eq x (byte (6) (F)))  # 'o'
+                  (byte (7) (5))  # 'u'
+                  (byte (6) (1))))));  # 'a'
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+# Test case: 'hello' -> 'hillo' ('e' -> 'i')
+(main) = (encode 
+          (cons (byte (6) (8))  # 'h'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil)))))));

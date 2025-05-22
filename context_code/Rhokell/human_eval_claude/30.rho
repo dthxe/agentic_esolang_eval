@@ -1,0 +1,21 @@
+# HumanEval/30: Find GCD of list of numbers
+(find_gcd (nil)) = (z);
+(find_gcd (cons x (nil))) = x;
+(find_gcd (cons x xs)) = 
+  (gcd x (find_gcd xs));
+
+(gcd a (z)) = a;
+(gcd a b) = (gcd b (mod a b));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: [2, 4, 6, 8] -> 2
+(main) = (find_gcd 
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (s (z)))))))  # 6
+          (cons (s (s (s (s (s (s (s (s (z)))))))))  # 8
+          (nil)))));

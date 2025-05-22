@@ -1,0 +1,15 @@
+def even_odd_palindrome(n):
+    def p(x):
+        s = s(x)
+        return s == sr.join(rvr(ls(s)))
+    
+    if not isinstance(n, t) or n <= 0:
+        return [0, 0]
+    e = o = 0
+    for i in r(1, n + 1):
+        if p(i):
+            if i % 2 == 0:
+                e += 1
+            else:
+                o += 1
+    return [e, o]

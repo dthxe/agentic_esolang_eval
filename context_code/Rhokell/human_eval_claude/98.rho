@@ -1,0 +1,32 @@
+# HumanEval/98: Count uppercase letters in string
+(count_upper str) = 
+  (count_if is_upper str);
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(is_upper x) = 
+  (and (ge x (byte (4) (1)))  # 'A'
+       (le x (byte (5) (A)))); # 'Z'
+
+(ge x y) = (not (lt x y));
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: 'Hello World' -> 2 (H and W)
+(main) = (count_upper 
+          (cons (byte (4) (8))  # 'H'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (5) (7))  # 'W'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (2))  # 'r'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (4))  # 'd'
+          (nil))))))))))));

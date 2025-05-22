@@ -1,0 +1,32 @@
+# HumanEval/1: Separate parentheses groups
+(is_paren (byte (2) (8))) = (t); # '('
+(is_paren (byte (2) (9))) = (t); # ')'
+(is_paren _) = (f);
+
+(count_parens (nil)) = (z);
+(count_parens (cons x xs)) = 
+  (if (is_paren x)
+      (s (count_parens xs))
+      (count_parens xs));
+
+(extract_group (nil) acc depth) = (nil);
+(extract_group (cons x xs) acc depth) = 
+  (if (byte_eq x (byte (2) (8)))  # '('
+      (extract_group xs (cons x acc) (s depth))
+      (if (byte_eq x (byte (2) (9)))  # ')'
+          (if (eq depth (s (z)))
+              (cons (reverse (cons x acc)) (extract_group xs (nil) (z)))
+              (extract_group xs (cons x acc) (sub depth (s (z)))))
+          (extract_group xs acc depth)));
+
+(separate_paren_groups str) = (extract_group str (nil) (z));
+
+(main) = (separate_paren_groups 
+          (cons (byte (2) (8)) 
+          (cons (byte (2) (9)) 
+          (cons (byte (2) (0)) 
+          (cons (byte (2) (8)) 
+          (cons (byte (2) (8)) 
+          (cons (byte (2) (9)) 
+          (cons (byte (2) (9)) 
+          (nil)))))))));

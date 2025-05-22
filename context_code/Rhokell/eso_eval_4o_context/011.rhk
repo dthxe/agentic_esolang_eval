@@ -1,0 +1,45 @@
+# Check if a string is a palindrome
+# Read string input
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Null terminator
+(read_char x) = (cons x (read_string));
+
+# Reverse the string
+(reverse (nil)) = (nil);
+(reverse (cons x xs)) = (append (reverse xs) (cons x (nil)));
+
+# Check if the string is a palindrome
+(is_palindrome (s)) = (if (equal s (reverse s)) (print_true) (print_false));
+
+# Check if two strings are equal
+(equal (nil) (nil)) = (s (z));
+(equal (cons x xs) (cons y ys)) = (if (eq x y) (equal xs ys) (z));
+(equal x y) = (z);
+
+(eq x x) = (s (z));
+(eq x y) = (z);
+
+# Main function
+(main) = (is_palindrome (read_string));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # newline
+                           (nil))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # newline
+                            (nil))))));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

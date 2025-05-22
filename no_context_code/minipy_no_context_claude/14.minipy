@@ -1,0 +1,7 @@
+s = input()
+vowels = "aeiouAEIOU"
+for c in s:
+    if c not in vowels:
+        print False
+        exit()
+print True if s else False

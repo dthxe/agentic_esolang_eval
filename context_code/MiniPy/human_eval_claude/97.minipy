@@ -1,0 +1,7 @@
+def multiply(a, b):
+    if not isinstance(a, t) or not isinstance(b, t):
+        return None
+    r = 0
+    for i in r(ab(b)):
+        r += a
+    return r if b >= 0 else -r

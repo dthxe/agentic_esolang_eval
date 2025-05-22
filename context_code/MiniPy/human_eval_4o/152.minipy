@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/152
+# Return an array denoting how far off each guess was from the actual score.
+
+def compare(game, guess):
+    return [ab(g - s) for g, s in z(game, guess)]

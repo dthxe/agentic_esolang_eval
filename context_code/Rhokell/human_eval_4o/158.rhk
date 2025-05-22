@@ -1,0 +1,5 @@
+# Rhokell implementation for find_max
+# Return the word with the maximum number of unique characters.
+
+(find_max (words)) = 
+    (foldl (\acc word -> (if (> (count_unique_chars word) (count_unique_chars acc)) word acc)) (head words) words)

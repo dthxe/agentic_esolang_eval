@@ -1,0 +1,5 @@
+# Rhokell implementation for map_ceil
+# Apply ceiling function to each element in a list.
+
+(map_ceil (lst)) = 
+    (map (\x -> (ceil x)) lst)

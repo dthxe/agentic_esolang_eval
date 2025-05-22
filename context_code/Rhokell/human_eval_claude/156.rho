@@ -1,0 +1,68 @@
+# HumanEval/156: Convert integer to mini Roman numerals
+(int_to_mini_roman n) = 
+  (concat_all (int_to_roman_helper n));
+
+(int_to_roman_helper n) = 
+  (if (ge n (s (s (s (s (s (s (s (s (s (s  # 1000
+    (s (s (s (s (s (s (s (s (s (s
+    ...  # Repeat 100 times total
+    (z)))))))))))))))))))))
+    (cons (roman_m) (int_to_roman_helper (sub n (s (s (s (s (s (s (s (s (s (s  # 1000
+      (s (s (s (s (s (s (s (s (s (s
+      ...  # Repeat 100 times total
+      (z)))))))))))))))))))))
+    (if (ge n (s (s (s (s (s (s (s (s (s (s  # 500
+      (s (s (s (s (s (s (s (s (s (s
+      ...  # Repeat 50 times total
+      (z)))))))))))))))))))))
+      (cons (roman_d) (int_to_roman_helper (sub n (s (s (s (s (s (s (s (s (s (s  # 500
+        (s (s (s (s (s (s (s (s (s (s
+        ...  # Repeat 50 times total
+        (z)))))))))))))))))))))
+      (if (ge n (s (s (s (s (s (s (s (s (s (s  # 100
+        (s (s (s (s (s (s (s (s (s (s
+        ...  # Repeat 10 times total
+        (z)))))))))))))))))))))
+        (cons (roman_c) (int_to_roman_helper (sub n (s (s (s (s (s (s (s (s (s (s  # 100
+          (s (s (s (s (s (s (s (s (s (s
+          ...  # Repeat 10 times total
+          (z)))))))))))))))))))))
+        (if (ge n (s (s (s (s (s (s (s (s (s (s  # 50
+          (s (s (s (s (s (s (s (s (s (s
+          ...  # Repeat 5 times total
+          (z)))))))))))))))))))))
+          (cons (roman_l) (int_to_roman_helper (sub n (s (s (s (s (s (s (s (s (s (s  # 50
+            (s (s (s (s (s (s (s (s (s (s
+            ...  # Repeat 5 times total
+            (z)))))))))))))))))))))
+          (if (ge n (s (s (s (s (s (s (s (s (s (s))))))))))) # 10
+            (cons (roman_x) (int_to_roman_helper (sub n (s (s (s (s (s (s (s (s (s (s)))))))))))) # 10
+            (if (ge n (s (s (s (s (s)))))) # 5
+              (cons (roman_v) (int_to_roman_helper (sub n (s (s (s (s (s))))))) # 5
+              (if (ge n (s)) # 1
+                (cons (roman_i) (int_to_roman_helper (sub n (s))))
+                (nil)))))))));
+
+(roman_m) = (cons (byte (6) (D)) (nil));  # 'm'
+(roman_d) = (cons (byte (6) (4)) (nil));  # 'd'
+(roman_c) = (cons (byte (6) (3)) (nil));  # 'c'
+(roman_l) = (cons (byte (6) (C)) (nil));  # 'l'
+(roman_x) = (cons (byte (7) (8)) (nil));  # 'x'
+(roman_v) = (cons (byte (7) (6)) (nil));  # 'v'
+(roman_i) = (cons (byte (6) (9)) (nil));  # 'i'
+
+(concat_all (nil)) = (nil);
+(concat_all (cons x xs)) = 
+  (append x (concat_all xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(ge x y) = (not (lt x y));
+
+# Test case: 19 -> "xix"
+(main) = (int_to_mini_roman 
+          (s (s (s (s (s (s (s (s (s (s  # 19
+          (s (s (s (s (s (s (s (s (s
+          (z)))))))))))))))))))));

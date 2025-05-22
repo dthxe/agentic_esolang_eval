@@ -1,0 +1,6 @@
+def max_element(l):
+    m = l[0]
+    for i in r(1, l(l)):
+        if l[i] > m:
+            m = l[i]
+    return m

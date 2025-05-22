@@ -1,0 +1,6 @@
+def sort_array(arr):
+    if not arr:
+        return ls()
+    if not all(isinstance(x, t) for x in arr):
+        return ls()
+    return srt(arr, key=lambda x: [x%2==0, x%2==1, x])

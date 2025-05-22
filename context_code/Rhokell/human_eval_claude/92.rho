@@ -1,0 +1,35 @@
+# HumanEval/92: Find strings that start with any prefix
+(any_start_with str prefixes) = 
+  (any (lambda (prefix) (starts_with str prefix)) prefixes);
+
+(any _ (nil)) = (f);
+(any f (cons x xs)) = 
+  (if (f x)
+      (t)
+      (any f xs));
+
+(starts_with str prefix) = 
+  (starts_with_helper str prefix);
+
+(starts_with_helper (nil) _) = (f);
+(starts_with_helper _ (nil)) = (t);
+(starts_with_helper (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (starts_with_helper xs ys)
+      (f));
+
+# Test case: 'hello', ['he', 'hi'] -> true
+(main) = (any_start_with 
+          (cons (byte (6) (8))  # 'h'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil))))))
+          (cons (cons (byte (6) (8))  # 'h'
+                (cons (byte (6) (5))  # 'e'
+                (nil)))
+          (cons (cons (byte (6) (8))  # 'h'
+                (cons (byte (6) (9))  # 'i'
+                (nil)))
+          (nil))));

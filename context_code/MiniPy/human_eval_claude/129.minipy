@@ -1,0 +1,22 @@
+def minPath(grid, k):
+    if not grid or not grid[0]:
+        return ls()
+    m = l(grid)
+    n = l(grid[0])
+    r = ls()
+    i = j = 0
+    while k > 0:
+        r.append(grid[i][j])
+        if i + 1 < m and j + 1 < n:
+            if grid[i+1][j] < grid[i][j+1]:
+                i += 1
+            else:
+                j += 1
+        elif i + 1 < m:
+            i += 1
+        elif j + 1 < n:
+            j += 1
+        else:
+            break
+        k -= 1
+    return r

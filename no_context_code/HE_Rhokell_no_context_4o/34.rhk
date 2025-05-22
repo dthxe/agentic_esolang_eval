@@ -1,0 +1,8 @@
+# Rhokell code for HumanEval/34
+# Task: Return sorted unique elements in a list
+
+# Define a function to get unique elements
+func unique(l) {
+    unique_elements = set(l)
+    return sort(unique_elements)
+}

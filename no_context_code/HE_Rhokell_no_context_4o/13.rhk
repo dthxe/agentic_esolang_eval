@@ -1,0 +1,12 @@
+# Rhokell code for HumanEval/13
+# Task: Return the greatest common divisor of two integers
+
+# Define a function to calculate GCD
+func greatest_common_divisor(a, b) {
+    while b != 0 {
+        temp = b
+        b = a % b
+        a = temp
+    }
+    return a
+}

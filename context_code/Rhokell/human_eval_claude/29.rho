@@ -1,0 +1,39 @@
+# HumanEval/29: Filter strings by prefix
+(filter_by_prefix (nil) _) = (nil);
+(filter_by_prefix strings prefix) = 
+  (filter (lambda (s) (starts_with s prefix)) strings);
+
+(starts_with (nil) _) = (f);
+(starts_with _ (nil)) = (t);
+(starts_with (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (starts_with xs ys)
+      (f));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+# Test case: ['cat', 'dog', 'crab'], 'c' -> ['cat', 'crab']
+(main) = (filter_by_prefix 
+          (cons 
+            (cons (byte (6) (3))  # 'c'
+            (cons (byte (6) (1))  # 'a'
+            (cons (byte (7) (4))  # 't'
+            (nil))))
+          (cons
+            (cons (byte (6) (4))  # 'd'
+            (cons (byte (6) (F))  # 'o'
+            (cons (byte (6) (7))  # 'g'
+            (nil))))
+          (cons
+            (cons (byte (6) (3))  # 'c'
+            (cons (byte (7) (2))  # 'r'
+            (cons (byte (6) (1))  # 'a'
+            (cons (byte (6) (2))  # 'b'
+            (nil)))))
+          (nil))
+          (cons (byte (6) (3))  # 'c'
+          (nil)));

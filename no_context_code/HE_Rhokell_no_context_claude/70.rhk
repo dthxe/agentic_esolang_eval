@@ -1,0 +1,28 @@
+/* HumanEval/70 */
+
+FUNC strange_sort_list(lst) {
+    IF LEN(lst) == 0 {
+        RETURN []
+    }
+    
+    DECL sorted = COPY(lst)
+    SORT(sorted)
+    
+    DECL result = []
+    DECL left = 0
+    DECL right = LEN(sorted) - 1
+    
+    WHILE left <= right {
+        APPEND(result, sorted[left])
+        
+        /* If there are more elements, add the maximum */
+        IF left < right {
+            APPEND(result, sorted[right])
+        }
+        
+        left = left + 1
+        right = right - 1
+    }
+    
+    RETURN result
+}

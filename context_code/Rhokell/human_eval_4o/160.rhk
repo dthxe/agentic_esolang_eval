@@ -1,0 +1,5 @@
+# Rhokell implementation for largest_smallest_integers
+# Return a tuple with the largest negative and smallest positive integers.
+
+(largest_smallest_integers (lst)) = 
+    (pair (largest_negative lst) (smallest_positive lst))

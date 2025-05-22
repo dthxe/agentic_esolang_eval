@@ -1,0 +1,35 @@
+# HumanEval/31: Check if a string is prime
+(is_prime str) = 
+  (let [n (string_to_num str)]
+    (if (lt n (s (s (z))))  # n < 2
+        (f)
+        (is_prime_helper n (s (s (z))))));  # Start checking from 2
+
+(is_prime_helper n k) = 
+  (if (gt (mul k k) n)  # k*k > n
+      (t)
+      (if (eq (mod n k) (z))  # n % k == 0
+          (f)
+          (is_prime_helper n (s k))));
+
+(string_to_num (nil)) = (z);
+(string_to_num (cons x xs)) = 
+  (add (mul (string_to_num xs) (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # mul by 10
+       (sub x (byte (3) (0))));  # Convert ASCII to number
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(gt x y) = (lt y x);
+
+# Test case: '127' -> true
+(main) = (is_prime 
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (2))  # '2'
+          (cons (byte (3) (7))  # '7'
+          (nil)))));

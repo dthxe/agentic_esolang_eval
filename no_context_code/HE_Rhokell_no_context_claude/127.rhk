@@ -1,0 +1,51 @@
+/* HumanEval/127 */
+
+FUNC intersection(interval1, interval2) {
+    /* Find the intersection of the two intervals */
+    DECL start1 = interval1[0]
+    DECL end1 = interval1[1]
+    DECL start2 = interval2[0]
+    DECL end2 = interval2[1]
+    
+    DECL intersection_start = MAX(start1, start2)
+    DECL intersection_end = MIN(end1, end2)
+    
+    /* Check if the intervals intersect */
+    IF intersection_start > intersection_end {
+        RETURN "NO"
+    }
+    
+    /* Calculate the length of the intersection */
+    DECL length = intersection_end - intersection_start
+    
+    /* Check if the length is a prime number */
+    IF is_prime(length) {
+        RETURN "YES"
+    } ELSE {
+        RETURN "NO"
+    }
+}
+
+FUNC is_prime(n) {
+    IF n <= 1 {
+        RETURN FALSE
+    }
+    
+    IF n <= 3 {
+        RETURN TRUE
+    }
+    
+    IF n % 2 == 0 || n % 3 == 0 {
+        RETURN FALSE
+    }
+    
+    DECL i = 5
+    WHILE i * i <= n {
+        IF n % i == 0 || n % (i + 2) == 0 {
+            RETURN FALSE
+        }
+        i = i + 6
+    }
+    
+    RETURN TRUE
+}

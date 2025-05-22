@@ -1,0 +1,30 @@
+def words_string(s):
+    # Replace commas with spaces
+    s_with_spaces = ""
+    i = 0
+    while i < len(s):
+        if s[i] == ',':
+            s_with_spaces = s_with_spaces + ' '
+        else:
+            s_with_spaces = s_with_spaces + s[i]
+        i = i + 1
+    
+    # Split by spaces
+    words = []
+    current_word = ""
+    
+    i = 0
+    while i < len(s_with_spaces):
+        if s_with_spaces[i] == ' ':
+            if current_word:
+                words.append(current_word)
+                current_word = ""
+        else:
+            current_word = current_word + s_with_spaces[i]
+        i = i + 1
+    
+    # Add the last word if there is one
+    if current_word:
+        words.append(current_word)
+    
+    return words

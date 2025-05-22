@@ -1,0 +1,50 @@
+# HumanEval/88: Sort array by element frequency
+(sort_array arr) = 
+  (sort_by_freq arr);
+
+(sort_by_freq arr) = 
+  (sort_by_key arr 
+               (lambda (x) (pair (count (lambda (y) (eq x y)) arr)
+                                x)));
+
+(sort_by_key arr key_fn) = 
+  (map second 
+       (sort_by_first 
+        (map (lambda (x) (key_fn x)) arr)));
+
+(sort_by_first (nil)) = (nil);
+(sort_by_first (cons x xs)) = 
+  (insert_by_first x (sort_by_first xs));
+
+(insert_by_first x (nil)) = (cons x (nil));
+(insert_by_first x (cons y ys)) = 
+  (if (lt (first x) (first y))
+      (cons x (cons y ys))
+      (if (eq (first x) (first y))
+          (if (lt (second x) (second y))
+              (cons x (cons y ys))
+              (cons y (insert_by_first x ys)))
+          (cons y (insert_by_first x ys))));
+
+(count _ (nil)) = (z);
+(count f (cons x xs)) = 
+  (if (f x)
+      (s (count f xs))
+      (count f xs));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(first (pair x _)) = x;
+(second (pair _ y)) = y;
+
+# Test case: [1, 2, 2, 3, 3, 3] -> [3, 3, 3, 2, 2, 1]
+(main) = (sort_array 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (z))))  # 3
+          (nil))))))));

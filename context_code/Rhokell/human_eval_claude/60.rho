@@ -1,0 +1,32 @@
+# HumanEval/60: Sum up digits in number
+(sum_to_n n) = 
+  (if (eq n (z))
+      (z)
+      (add (mod n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))) # mod by 10
+           (sum_to_n (div n (s (s (s (s (s (s (s (s (s (s (z)))))))))))))))); # div by 10
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+# Test case: 123 -> 6
+(main) = (sum_to_n 
+          (s (s (s (s (s (s (s (s (s (s  # 123 in Church numerals
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

@@ -1,0 +1,37 @@
+# HumanEval/112: Reverse ascending subsequences
+(reverse_ascending lst) = 
+  (reverse_ascending_helper lst (nil) (nil));
+
+(reverse_ascending_helper (nil) curr acc) = 
+  (append acc (reverse curr));
+(reverse_ascending_helper (cons x xs) curr acc) = 
+  (if (eq curr (nil))
+      (reverse_ascending_helper xs (cons x (nil)) acc)
+      (if (gt x (head curr))
+          (reverse_ascending_helper xs (cons x curr) acc)
+          (reverse_ascending_helper xs (cons x (nil)) 
+                                  (append acc (reverse curr)))));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(head (cons x _)) = x;
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3, 2, 1] -> [3, 2, 1, 2, 1]
+(main) = (reverse_ascending 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (z)))  # 2
+          (cons (s (z))  # 1
+          (nil)))))));

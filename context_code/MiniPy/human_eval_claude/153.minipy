@@ -1,0 +1,11 @@
+def Strongest_Extension(c, ext):
+    if not isinstance(c, s) or not ext:
+        return sr
+    m = -1
+    r = sr
+    for e in ext:
+        s = sm(c(x) for x in e if x.isupper())
+        if s > m:
+            m = s
+            r = e
+    return c + '.' + r

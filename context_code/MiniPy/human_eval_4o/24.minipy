@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/24
+# Find the largest number that divides n evenly, smaller than n.
+
+def largest_divisor(n):
+    return max([i for i in r(1, n) if n % i == 0])

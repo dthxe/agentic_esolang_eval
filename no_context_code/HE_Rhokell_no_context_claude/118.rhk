@@ -1,0 +1,26 @@
+/* HumanEval/118 */
+
+FUNC get_closest_vowel(word) {
+    DECL vowels = "aeiouAEIOU"
+    DECL n = LEN(word)
+    
+    /* Start from the right side of the word */
+    LOOP i FROM n - 2 TO 1 {
+        DECL char = word[i]
+        
+        /* Check if current character is a vowel */
+        IF CONTAINS(vowels, char) {
+            /* Check if it's between two consonants */
+            DECL prev_char = word[i-1]
+            DECL next_char = word[i+1]
+            
+            IF IS_ALPHA(prev_char) && !CONTAINS(vowels, prev_char) &&
+               IS_ALPHA(next_char) && !CONTAINS(vowels, next_char) {
+                RETURN char
+            }
+        }
+    }
+    
+    /* No vowel found between two consonants */
+    RETURN ""
+}

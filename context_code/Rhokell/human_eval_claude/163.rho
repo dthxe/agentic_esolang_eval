@@ -1,0 +1,60 @@
+# HumanEval/163: Generate even integers in range
+(generate_integers a b) = 
+  (sort (filter is_even (range (min a b) (s (max a b)))));
+
+(is_even n) = 
+  (eq (mod n (s (s (z)))) (z));
+
+(range start end) = 
+  (if (ge start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(sort lst) = 
+  (sort_by_first 
+    (map (lambda (x) (pair x x)) lst));
+
+(sort_by_first (nil)) = (nil);
+(sort_by_first (cons x xs)) = 
+  (insert_by_first x (sort_by_first xs));
+
+(insert_by_first x (nil)) = (cons x (nil));
+(insert_by_first x (cons y ys)) = 
+  (if (lt (first x) (first y))
+      (cons x (cons y ys))
+      (cons y (insert_by_first x ys)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(min a b) = 
+  (if (lt a b)
+      a
+      b);
+
+(max a b) = 
+  (if (gt a b)
+      a
+      b);
+
+(first (pair x _)) = x;
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(ge x y) = (not (lt x y));
+(gt x y) = (lt y x);
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+# Test case: 2, 8 -> [2, 4, 6, 8]
+(main) = (generate_integers 
+          (s (s (z)))  # 2
+          (s (s (s (s (s (s (s (s (z)))))))));  # 8

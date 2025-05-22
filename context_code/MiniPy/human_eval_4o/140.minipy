@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/140
+# Replace all spaces in the text with underscores, and if more than 2 consecutive spaces, replace with '-'.
+
+def fix_spaces(text):
+    return text.replace('   ', '-').replace(' ', '_')

@@ -1,0 +1,5 @@
+# Rhokell implementation for filter_odd
+# Filter the list to include only odd numbers.
+
+(filter_odd (lst)) = 
+    (filter (\x -> (is_odd x)) lst)

@@ -1,0 +1,77 @@
+/* HumanEval/129 */
+
+FUNC minPath(grid, k) {
+    DECL n = LEN(grid)
+    DECL min_path = NULL
+    
+    /* Try starting from each cell */
+    LOOP i FROM 0 TO n - 1 {
+        LOOP j FROM 0 TO n - 1 {
+            /* Find all possible paths of length k starting from cell (i, j) */
+            DECL paths = find_paths(grid, i, j, k)
+            
+            /* Update min_path if a smaller path is found */
+            LOOP p FROM 0 TO LEN(paths) - 1 {
+                IF min_path == NULL || is_lexicographically_smaller(paths[p], min_path) {
+                    min_path = paths[p]
+                }
+            }
+        }
+    }
+    
+    RETURN min_path
+}
+
+FUNC find_paths(grid, i, j, k) {
+    DECL n = LEN(grid)
+    DECL paths = []
+    
+    /* Base case: path of length 1 */
+    IF k == 1 {
+        RETURN [[grid[i][j]]]
+    }
+    
+    /* Recursive case: explore neighbors */
+    DECL neighbors = [
+        [i-1, j],  /* Up */
+        [i+1, j],  /* Down */
+        [i, j-1],  /* Left */
+        [i, j+1]   /* Right */
+    ]
+    
+    LOOP n FROM 0 TO LEN(neighbors) - 1 {
+        DECL ni = neighbors[n][0]
+        DECL nj = neighbors[n][1]
+        
+        /* Check if neighbor is valid */
+        IF ni >= 0 && ni < n && nj >= 0 && nj < n {
+            /* Find paths of length k-1 starting from neighbor */
+            DECL sub_paths = find_paths(grid, ni, nj, k-1)
+            
+            /* Add current cell to the beginning of each sub-path */
+            LOOP p FROM 0 TO LEN(sub_paths) - 1 {
+                DECL new_path = [grid[i][j]]
+                LOOP q FROM 0 TO LEN(sub_paths[p]) - 1 {
+                    APPEND(new_path, sub_paths[p][q])
+                }
+                APPEND(paths, new_path)
+            }
+        }
+    }
+    
+    RETURN paths
+}
+
+FUNC is_lexicographically_smaller(path1, path2) {
+    DECL len = MIN(LEN(path1), LEN(path2))
+    
+    LOOP i FROM 0 TO len - 1 {
+        IF path1[i] < path2[i] {
+            RETURN TRUE
+        } ELIF path1[i] > path2[i] {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN LEN(path1) < LEN(path2)
+}

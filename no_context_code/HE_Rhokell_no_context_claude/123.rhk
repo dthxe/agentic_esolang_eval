@@ -1,0 +1,36 @@
+/* HumanEval/123 */
+
+FUNC get_odd_collatz(n) {
+    /* Special case for n = 1 */
+    IF n == 1 {
+        RETURN [1]
+    }
+    
+    /* Generate the Collatz sequence */
+    DECL sequence = [n]
+    DECL current = n
+    
+    WHILE current != 1 {
+        IF current % 2 == 0 {
+            /* If even, divide by 2 */
+            current = current / 2
+        } ELSE {
+            /* If odd, multiply by 3 and add 1 */
+            current = 3 * current + 1
+        }
+        APPEND(sequence, current)
+    }
+    
+    /* Filter out the odd numbers */
+    DECL odd_numbers = []
+    LOOP i FROM 0 TO LEN(sequence) - 1 {
+        IF sequence[i] % 2 == 1 {
+            APPEND(odd_numbers, sequence[i])
+        }
+    }
+    
+    /* Sort the odd numbers */
+    SORT(odd_numbers)
+    
+    RETURN odd_numbers
+}

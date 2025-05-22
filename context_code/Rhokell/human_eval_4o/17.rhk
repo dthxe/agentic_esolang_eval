@@ -1,0 +1,5 @@
+# Rhokell implementation for parse_music
+# Parse a string representing musical notes and return the duration of each note.
+
+(parse_music (notes)) = 
+    (map (\note -> (duration note)) notes)

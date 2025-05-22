@@ -1,0 +1,5 @@
+# Rhokell implementation for car_race_collision
+# Outputs the number of collisions in a car race scenario.
+
+(car_race_collision (n)) = 
+    n  # As all cars collide once, the number of collisions is n.

@@ -1,0 +1,8 @@
+def specialFilter(nums):
+    if not nums:
+        return 0
+    c = 0
+    for x in nums:
+        if x > 10 and all(t(d) % 2 == 0 for d in s(x)):
+            c += 1
+    return c

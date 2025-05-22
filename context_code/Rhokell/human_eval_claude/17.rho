@@ -1,0 +1,52 @@
+# HumanEval/17: Parse musical notes
+(parse_music str) = (parse_notes str);
+
+(parse_notes (nil)) = (nil);
+(parse_notes (cons x xs)) = 
+  (if (byte_eq x (byte (6) (F)))  # 'o'
+      (if (is_bar_next xs)
+          (cons (s (s (z))) (parse_notes (tail xs)))  # half note = 2
+          (cons (s (s (s (s (z))))) (parse_notes xs)))  # whole note = 4
+      (if (byte_eq x (byte (2) (E)))  # '.'
+          (if (is_bar_next xs)
+              (cons (s (z)) (parse_notes (tail xs)))  # quarter note = 1
+              (parse_notes xs))
+          (if (byte_eq x (byte (2) (0)))  # space
+              (parse_notes xs)
+              (parse_notes xs))));
+
+(is_bar_next (nil)) = (f);
+(is_bar_next (cons x _)) = (byte_eq x (byte (7) (C)));  # '|'
+
+# Test case: 'o o| .| o| o| .| .| .| .| o o'
+(main) = (parse_music 
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (2) (E))  # '.'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (2) (E))  # '.'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (2) (E))  # '.'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (2) (E))  # '.'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (2) (E))  # '.'
+          (cons (byte (7) (C))  # '|'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (2) (0))  # ' '
+          (cons (byte (6) (F))  # 'o'
+          (nil))))))))))))))))))))))))))))))));

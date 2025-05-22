@@ -1,0 +1,5 @@
+# Rhokell implementation for add
+# Add two numbers x and y.
+
+(add (x) (y)) = 
+    (+ x y)

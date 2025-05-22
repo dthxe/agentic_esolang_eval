@@ -1,0 +1,9 @@
+# Minipy solution for HumanEval/130
+# Return a list of the first n + 1 numbers of the Tribonacci sequence.
+
+def tri(n):
+    if n == 0: return [3]
+    seq = [3]
+    for i in r(1, n+1):
+        seq.append(1 + i // 2 if i % 2 == 0 else seq[-1] + seq[-2] + (1 + (i+1) // 2))
+    return seq

@@ -1,0 +1,18 @@
+/* HumanEval/101 */
+
+FUNC words_string(s) {
+    /* Replace commas with spaces */
+    DECL s_with_spaces = REPLACE(s, ",", " ")
+    
+    /* Split by spaces and filter out empty strings */
+    DECL words = SPLIT(s_with_spaces, " ")
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(words) - 1 {
+        IF LEN(words[i]) > 0 {
+            APPEND(result, words[i])
+        }
+    }
+    
+    RETURN result
+}

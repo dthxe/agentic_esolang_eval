@@ -1,0 +1,5 @@
+# Rhokell implementation for average_list
+# Calculate the average of all elements in a list.
+
+(average_list (lst)) = 
+    (/ (sum_list lst) (length lst))

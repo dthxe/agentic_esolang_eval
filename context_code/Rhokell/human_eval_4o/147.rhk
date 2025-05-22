@@ -1,0 +1,5 @@
+# Rhokell implementation for map_rstrip
+# Right strip whitespace from each string in a list.
+
+(map_rstrip (lst)) = 
+    (map (\s -> (rstrip s)) lst)

@@ -1,0 +1,5 @@
+# Rhokell implementation for map_upper
+# Convert each string in a list to uppercase.
+
+(map_upper (lst)) = 
+    (map (\s -> (to_upper s)) lst)

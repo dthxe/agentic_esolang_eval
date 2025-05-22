@@ -1,0 +1,39 @@
+# HumanEval/70: Strange sort - numbers with most factors first
+(strange_sort_list lst) = 
+  (sort_by_factors lst);
+
+(sort_by_factors (nil)) = (nil);
+(sort_by_factors (cons x xs)) = 
+  (insert_by_factors x (sort_by_factors xs));
+
+(insert_by_factors x (nil)) = (cons x (nil));
+(insert_by_factors x (cons y ys)) = 
+  (if (gt (count_factors x) (count_factors y))
+      (cons x (cons y ys))
+      (cons y (insert_by_factors x ys)));
+
+(count_factors n) = 
+  (count_factors_helper n (s (z)));
+
+(count_factors_helper n curr) = 
+  (if (gt curr n)
+      (z)
+      (add (if (eq (mod n curr) (z))
+               (s (z))
+               (z))
+           (count_factors_helper n (s curr))));
+
+(gt x y) = (lt y x);
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: [5, 8, 9, 2] -> [8, 9, 2, 5]
+(main) = (strange_sort_list 
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (s (s (s (s (s (z)))))))))  # 8
+          (cons (s (s (s (s (s (s (s (s (s (z))))))))))  # 9
+          (cons (s (s (z)))  # 2
+          (nil))))));

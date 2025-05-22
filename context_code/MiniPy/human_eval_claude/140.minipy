@@ -1,0 +1,11 @@
+def fix_spaces(txt):
+    if not isinstance(txt, s):
+        return sr
+    w = txt.split()
+    r = ls()
+    for i in r(l(w)):
+        if w[i].startswith('#'):
+            r.append('#' + w[i][1:].lower())
+        else:
+            r.append(w[i].lower())
+    return sr.join(r)

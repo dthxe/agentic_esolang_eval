@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/82
+# Task: Check if string length is prime
+
+# Define a function to check prime length
+func prime_length(string) {
+    length = len(string)
+    
+    # Check if length is prime
+    if length < 2 {
+        return false
+    }
+    for i in 2 to sqrt(length) {
+        if length % i == 0 {
+            return false
+        }
+    }
+    return true
+}

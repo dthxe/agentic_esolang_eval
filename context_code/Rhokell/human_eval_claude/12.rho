@@ -1,0 +1,27 @@
+# HumanEval/12: Find longest string
+(def longest [strings]
+  (if (empty? strings)
+    nil
+    (if (empty? (rest strings))
+      (first strings)
+      (let [rest_longest (longest (rest strings))]
+        (if (gt (length (first strings)) (length rest_longest))
+          (first strings)
+          rest_longest)))))
+
+(def length
+  (fn [xs]
+    (if (empty? xs)
+      0
+      (succ (length (rest xs))))))
+
+(def gt
+  (fn [x y]
+    (lt y x)))
+
+(def main
+  (longest 
+    (cons (cons 97 (nil))  # 'a'
+    (cons (cons 98 (cons 98 (nil)))  # 'bb'
+    (cons (cons 99 (cons 99 (cons 99 (nil))))  # 'ccc'
+    (nil))))))

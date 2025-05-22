@@ -1,0 +1,8 @@
+def get_positive(l):
+    result = []
+    i = 0
+    while i < len(l):
+        if l[i] > 0:
+            result.append(l[i])
+        i = i + 1
+    return result

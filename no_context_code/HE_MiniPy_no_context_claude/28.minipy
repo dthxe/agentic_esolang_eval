@@ -1,0 +1,7 @@
+def concatenate(strings):
+    result = ""
+    i = 0
+    while i < len(strings):
+        result = result + strings[i]
+        i = i + 1
+    return result

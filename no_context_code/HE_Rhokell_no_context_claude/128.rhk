@@ -1,0 +1,29 @@
+/* HumanEval/128 */
+
+FUNC prod_signs(arr) {
+    /* Return None for empty array */
+    IF LEN(arr) == 0 {
+        RETURN NULL
+    }
+    
+    DECL sum_magnitudes = 0
+    DECL product_signs = 1
+    
+    LOOP i FROM 0 TO LEN(arr) - 1 {
+        DECL num = arr[i]
+        
+        /* Add magnitude to sum */
+        sum_magnitudes = sum_magnitudes + ABS(num)
+        
+        /* Multiply sign to product */
+        IF num > 0 {
+            product_signs = product_signs * 1
+        } ELIF num < 0 {
+            product_signs = product_signs * -1
+        } ELSE {  /* num == 0 */
+            product_signs = product_signs * 0
+        }
+    }
+    
+    RETURN sum_magnitudes * product_signs
+}

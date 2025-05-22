@@ -1,0 +1,16 @@
+/* HumanEval/151 */
+
+FUNC double_the_difference(lst) {
+    DECL sum = 0
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL num = lst[i]
+        
+        /* Check if the number is a positive integer and odd */
+        IF IS_INTEGER(num) && num > 0 && num % 2 == 1 {
+            sum = sum + num * num
+        }
+    }
+    
+    RETURN sum
+}

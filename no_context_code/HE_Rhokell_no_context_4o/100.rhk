@@ -1,0 +1,19 @@
+# Rhokell code for HumanEval/100
+# Task: Make a pile of stones
+
+# Define a function to make a pile
+func make_a_pile(n) {
+    pile = [n]
+    next_stones = n
+    
+    # Create the pile
+    for i in 1 to n-1 {
+        if next_stones % 2 == 0 {
+            next_stones += 2
+        } else {
+            next_stones += 1
+        }
+        pile.append(next_stones)
+    }
+    return pile
+}

@@ -1,0 +1,8 @@
+# Rhokell code for HumanEval/48
+# Task: Check if a string is a palindrome
+
+# Define a function to check palindrome
+func is_palindrome(text) {
+    reversed_text = reverse(text)
+    return text == reversed_text
+}

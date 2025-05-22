@@ -1,0 +1,5 @@
+# Rhokell implementation for map_factorial
+# Apply factorial function to each element in a list.
+
+(map_factorial (lst)) = 
+    (map (\x -> (factorial x)) lst)

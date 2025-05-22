@@ -1,0 +1,5 @@
+# Rhokell implementation for map_log10
+# Apply base-10 logarithm function to each element in a list.
+
+(map_log10 (lst)) = 
+    (map (\x -> (log10 x)) lst)

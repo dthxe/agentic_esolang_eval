@@ -1,0 +1,6 @@
+def rescale_to_unit(n):
+    if l(n) < 2:
+        return n
+    m, M = min(n), max(n)
+    d = M - m
+    return [(x-m)/d if d else 0 for x in n]

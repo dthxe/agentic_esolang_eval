@@ -1,0 +1,38 @@
+# HumanEval/72: Find strings with unique characters
+(will_it_fly lst weight) = 
+  (and (eq_sum lst weight)
+       (symmetric lst));
+
+(eq_sum lst n) = 
+  (eq (sum lst) n);
+
+(sum (nil)) = (z);
+(sum (cons x xs)) = (add x (sum xs));
+
+(symmetric lst) = 
+  (eq_lists lst (reverse lst));
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+# Test case: [1, 2, 3, 2, 1], 9 -> true
+(main) = (will_it_fly 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (z)))  # 2
+          (cons (s (z))  # 1
+          (nil))))))
+          (s (s (s (s (s  # 9 in Church numerals
+          (s (s (s (s (z)))))))))))); 

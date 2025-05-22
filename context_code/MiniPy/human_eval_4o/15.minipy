@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/15
+# Return a space-delimited string of numbers from 0 to n.
+
+def string_sequence(n):
+    return ' '.join(s(i) for i in r(n+1))

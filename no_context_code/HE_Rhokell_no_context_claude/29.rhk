@@ -1,0 +1,14 @@
+/* HumanEval/29 */
+
+FUNC filter_by_prefix(strings, prefix) {
+    DECL result = []
+    DECL prefix_len = LEN(prefix)
+    
+    LOOP i FROM 0 TO LEN(strings) - 1 {
+        IF LEN(strings[i]) >= prefix_len && SUBSTRING(strings[i], 0, prefix_len) == prefix {
+            APPEND(result, strings[i])
+        }
+    }
+    
+    RETURN result
+}

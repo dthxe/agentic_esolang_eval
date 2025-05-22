@@ -1,0 +1,6 @@
+# Rhokell implementation for solve
+# Return the total sum of its digits in binary.
+
+(solve (N)) = 
+    (let ((sum_digits (foldl (+) 0 (map digit_to_int (show N)))))
+    (int_to_binary sum_digits))

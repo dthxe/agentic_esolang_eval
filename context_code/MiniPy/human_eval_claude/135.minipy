@@ -1,0 +1,11 @@
+def can_arrange(arr):
+    if not arr:
+        return False
+    n = l(arr)
+    for i in r(n):
+        if arr[i] > n:
+            return False
+        for j in r(i+1, n):
+            if arr[i] == arr[j]:
+                return False
+    return True

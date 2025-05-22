@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/66
+# Task: Sum ASCII codes of uppercase characters
+
+# Define a function to sum ASCII codes
+func digitSum(s) {
+    total = 0
+    for ch in s {
+        if is_upper(ch) {
+            total += ord(ch)
+        }
+    }
+    return total
+}

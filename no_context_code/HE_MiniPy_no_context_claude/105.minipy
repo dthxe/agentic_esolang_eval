@@ -1,0 +1,35 @@
+def by_length(arr):
+    # Filter integers between 1 and 9
+    filtered = []
+    i = 0
+    while i < len(arr):
+        if type(arr[i]) == int and 1 <= arr[i] <= 9:
+            filtered.append(arr[i])
+        i = i + 1
+    
+    # Sort the filtered array
+    i = 0
+    while i < len(filtered):
+        j = 0
+        while j < len(filtered) - i - 1:
+            if filtered[j] > filtered[j + 1]:
+                filtered[j], filtered[j + 1] = filtered[j + 1], filtered[j]
+            j = j + 1
+        i = i + 1
+    
+    # Reverse the array
+    filtered = filtered[::-1]
+    
+    # Replace each digit with its name
+    number_names = {
+        1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five",
+        6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+    }
+    
+    result = []
+    i = 0
+    while i < len(filtered):
+        result.append(number_names[filtered[i]])
+        i = i + 1
+    
+    return result

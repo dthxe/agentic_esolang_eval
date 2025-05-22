@@ -1,0 +1,9 @@
+# Rhokell code for HumanEval/67
+# Task: Calculate number of mango fruits
+
+# Define a function to calculate mango fruits
+func fruit_distribution(s, n) {
+    apples = int(s.split(" ")[0])
+    oranges = int(s.split(" ")[3])
+    return n - apples - oranges
+}

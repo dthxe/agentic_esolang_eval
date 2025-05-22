@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/154
+# Return True if the second word or any of its rotations is a substring in the first word.
+
+def cycpattern_check(a, b):
+    return any(b[i:] + b[:i] in a for i in r(l(b)))

@@ -1,0 +1,12 @@
+# Rhokell implementation for triples_sum_to_zero
+# Returns True if there are three distinct elements in the list that sum to zero.
+
+(triples_sum_to_zero (lst)) = 
+    (letrec ((find_triples (xs))
+        (match xs
+            (nil) false
+            ((cons x xs))
+                (if (exists (\(y z) -> (= (+ x y z) 0)) (combinations 2 xs))
+                    true
+                    (find_triples xs))))
+    (find_triples lst))

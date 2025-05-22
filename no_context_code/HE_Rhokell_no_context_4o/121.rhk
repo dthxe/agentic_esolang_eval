@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/121
+# Task: Sum of odd elements at even positions
+
+# Define a function to calculate solution
+func solution(lst) {
+    total = 0
+    
+    # Sum odd elements at even positions
+    for i in range(0, len(lst), 2) {
+        if lst[i] % 2 != 0 {
+            total += lst[i]
+        }
+    }
+    return total
+}

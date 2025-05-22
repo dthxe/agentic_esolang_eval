@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/80
+# Task: Check if a string is happy
+
+# Define a function to check happiness
+func is_happy(s) {
+    if len(s) < 3 {
+        return false
+    }
+    
+    # Check every 3 consecutive letters
+    for i in 0 to len(s) - 3 {
+        if s[i] == s[i+1] or s[i] == s[i+2] or s[i+1] == s[i+2] {
+            return false
+        }
+    }
+    return true
+}

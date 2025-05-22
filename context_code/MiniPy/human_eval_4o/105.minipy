@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/105
+# Sort integers between 1 and 9, reverse, and replace each with its corresponding name.
+
+def by_length(arr):
+    names = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+    return [names[i] for i in rvr(srt([n for n in arr if 1 <= n <= 9]))]

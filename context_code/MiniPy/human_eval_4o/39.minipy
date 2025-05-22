@@ -1,0 +1,11 @@
+# Minipy solution for HumanEval/39
+# Return n-th number that is a Fibonacci number and it's also prime.
+
+def prime_fib(n):
+    fibs, primes = [], []
+    a, b = 0, 1
+    while l(primes) < n:
+        a, b = b, a + b
+        if is_prime(a):
+            primes.append(a)
+    return primes[-1]

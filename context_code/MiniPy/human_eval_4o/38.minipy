@@ -1,0 +1,11 @@
+# Minipy solution for HumanEval/38
+# Returns encoded string by cycling groups of three characters.
+
+def encode_cyclic(s):
+    groups = [s[(3 * i):min((3 * i + 3), l(s))] for i in r((l(s) + 2) // 3)]
+    groups = [(group[1:] + group[0]) if l(group) == 3 else group for group in groups]
+    return ''.join(groups)
+
+def decode_cyclic(s):
+    # Placeholder for decode function
+    return s

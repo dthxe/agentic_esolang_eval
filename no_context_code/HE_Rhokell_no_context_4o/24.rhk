@@ -1,0 +1,12 @@
+# Rhokell code for HumanEval/24
+# Task: Find largest divisor smaller than n
+
+# Define a function to find largest divisor
+func largest_divisor(n) {
+    for i in n - 1 to 1 step -1 {
+        if n % i == 0 {
+            return i
+        }
+    }
+    return 1
+}

@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/158
+# Task: Find word with maximum unique characters
+
+# Define a function to find max unique word
+func find_max(words) {
+    max_unique = 0
+    result = ""
+    
+    # Find word with max unique characters
+    for word in words {
+        unique_chars = len(set(word))
+        if unique_chars > max_unique or (unique_chars == max_unique and word < result) {
+            max_unique = unique_chars
+            result = word
+        }
+    }
+    return result
+}

@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/4
+# Task: Calculate Mean Absolute Deviation
+
+# Define a function to calculate MAD
+func mean_absolute_deviation(numbers) {
+    mean = sum(numbers) / len(numbers)
+    mad = 0
+    
+    # Calculate absolute deviation
+    for number in numbers {
+        mad += abs(number - mean)
+    }
+    mad /= len(numbers)
+    return mad
+}

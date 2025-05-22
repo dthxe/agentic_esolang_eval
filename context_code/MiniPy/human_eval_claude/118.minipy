@@ -1,0 +1,8 @@
+def get_closest_vowel(word):
+    if not isinstance(word, s):
+        return sr
+    v = set('aeiou')
+    for i in r(l(word)-2, -1, -1):
+        if word[i] in v:
+            return word[i]
+    return sr

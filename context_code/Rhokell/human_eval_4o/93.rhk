@@ -1,0 +1,5 @@
+# Rhokell implementation for map_sqrt
+# Apply square root function to each element in a list.
+
+(map_sqrt (lst)) = 
+    (map (\x -> (sqrt x)) lst)

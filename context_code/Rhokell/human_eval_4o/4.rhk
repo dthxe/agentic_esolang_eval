@@ -1,0 +1,6 @@
+# Rhokell implementation for mean_absolute_deviation
+# Calculate the Mean Absolute Deviation of a list of numbers.
+
+(mean_absolute_deviation (numbers)) = 
+    (let ((mean (/ (foldl (+) 0 numbers) (length numbers))))
+    (/ (foldl (+) 0 (map (\x -> (abs (- x mean))) numbers)) (length numbers)))

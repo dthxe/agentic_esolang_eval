@@ -1,0 +1,5 @@
+# Rhokell implementation for filter_by_substring
+# Filter a list of strings to only those containing a given substring.
+
+(filter_by_substring (substring) (strings)) = 
+    (filter (\s -> (contains s substring)) strings)

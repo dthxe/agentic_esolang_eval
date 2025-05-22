@@ -1,0 +1,7 @@
+multiply :: Int -> Int -> Int
+multiply a b = a * b
+
+main = do
+  a <- readInt
+  b <- readInt
+  print $ multiply a b

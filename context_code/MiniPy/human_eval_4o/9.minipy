@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/9
+# Generate a list of rolling maximum elements.
+
+def rolling_max(numbers):
+    max_so_far = -float('inf')
+    return [max_so_far := max(max_so_far, x) for x in numbers]

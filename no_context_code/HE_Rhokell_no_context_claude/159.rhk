@@ -1,0 +1,13 @@
+/* HumanEval/159 */
+
+FUNC eat(number, need, remaining) {
+    DECL total_eaten = number
+    DECL carrots_left = remaining
+    
+    /* Eat as many carrots as needed or as many as available */
+    DECL can_eat = MIN(need, carrots_left)
+    total_eaten = total_eaten + can_eat
+    carrots_left = carrots_left - can_eat
+    
+    RETURN [total_eaten, carrots_left]
+}

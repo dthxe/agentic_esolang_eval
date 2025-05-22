@@ -1,0 +1,5 @@
+# Rhokell implementation for will_it_fly
+# Check if the object q will fly based on balance and weight.
+
+(will_it_fly (q) (w)) = 
+    (and (is_palindrome q) (<= (sum q) w))

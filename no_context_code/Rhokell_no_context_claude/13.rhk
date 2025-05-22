@@ -1,0 +1,7 @@
+minimum :: Int -> Int -> Int
+minimum a b = if a < b then a else b
+
+main = do
+  a <- readInt
+  b <- readInt
+  print $ minimum a b

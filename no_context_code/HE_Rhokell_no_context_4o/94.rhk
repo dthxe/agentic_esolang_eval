@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/94
+# Task: Find the largest prime and return the sum of its digits
+
+# Define a function to find largest prime
+func skjkasdkd(lst) {
+    max_prime = -1
+    
+    # Find the largest prime
+    for num in lst {
+        if is_prime(num) and num > max_prime {
+            max_prime = num
+        }
+    }
+    
+    # Return the sum of its digits
+    if max_prime == -1 {
+        return 0
+    }
+    return sum([int(digit) for digit in str(max_prime)])
+}

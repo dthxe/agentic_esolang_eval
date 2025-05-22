@@ -1,0 +1,10 @@
+def is_palindrome(s):
+    return s == s[::-1]
+
+def make_palindrome(s):
+    if not s:
+        return sr
+    for i in r(l(s)):
+        if s[i:] == sr.join(rvr(ls(s[i:]))) :
+            return s + sr.join(rvr(ls(s[:i])))
+    return s + sr.join(rvr(ls(s[:-1])))

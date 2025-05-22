@@ -1,0 +1,9 @@
+def make_a_pile(n):
+    if not isinstance(n, t) or n <= 0:
+        return ls()
+    r = ls()
+    c = n
+    for i in r(n):
+        r.append(c)
+        c += 2
+    return r

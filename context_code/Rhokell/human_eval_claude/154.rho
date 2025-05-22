@@ -1,0 +1,77 @@
+# HumanEval/154: Check if rotated string is substring
+(cycpattern_check str1 str2) = 
+  (any (lambda (rot) (is_substring rot str1))
+       (all_rotations str2));
+
+(all_rotations str) = 
+  (all_rotations_helper str (length str));
+
+(all_rotations_helper str (z)) = (nil);
+(all_rotations_helper str n) = 
+  (cons (rotate_string str n)
+        (all_rotations_helper str (sub n (s (z)))));
+
+(rotate_string str n) = 
+  (let [len (length str)]
+    (append (drop (mod n len) str)
+            (take (mod n len) str)));
+
+(is_substring sub str) = 
+  (any (lambda (i) (starts_with sub (drop i str)))
+       (range (z) (add (s (length str)) (neg (length sub)))));
+
+(starts_with (nil) _) = (t);
+(starts_with _ (nil)) = (f);
+(starts_with (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (starts_with xs ys)
+      (f));
+
+(take (z) _) = (nil);
+(take _ (nil)) = (nil);
+(take (s n) (cons x xs)) = 
+  (cons x (take n xs));
+
+(drop (z) lst) = lst;
+(drop _ (nil)) = (nil);
+(drop (s n) (cons _ xs)) = 
+  (drop n xs);
+
+(range start end) = 
+  (if (ge start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(any _ (nil)) = (f);
+(any f (cons x xs)) = 
+  (if (f x)
+      (t)
+      (any f xs));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(ge x y) = (not (lt x y));
+(neg x) = (sub (z) x);
+
+# Test case: "hello", "ell" -> true
+(main) = (cycpattern_check 
+          (cons (byte (6) (8))  # 'h'
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (F))  # 'o'
+          (nil))))))
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (C))  # 'l'
+          (nil)))));

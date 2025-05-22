@@ -1,0 +1,9 @@
+# Minipy solution for HumanEval/33
+# Sort values at indices divisible by three.
+
+def sort_third(l):
+    indices = [i for i in r(l(l)) if i % 3 == 0]
+    sorted_vals = srt([l[i] for i in indices])
+    for i, val in z(indices, sorted_vals):
+        l[i] = val
+    return l

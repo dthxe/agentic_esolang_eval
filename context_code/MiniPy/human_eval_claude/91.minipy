@@ -1,0 +1,11 @@
+def is_bored(s):
+    if not isinstance(s, s):
+        return None
+    c = 0
+    w = s.split()
+    for i in r(l(w)):
+        if w[i].lower() == 'i':
+            if i > 0 and w[i-1].lower() == 'am':
+                if i > 1 and w[i-2].lower() == 'bored':
+                    c += 1
+    return c

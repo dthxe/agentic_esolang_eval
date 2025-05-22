@@ -1,0 +1,13 @@
+def fibfib(n):
+    if n < 2:
+        return n
+    if n == 2:
+        return 1
+    def f(x):
+        if x < 2:
+            return x
+        a, b = 0, 1
+        for i in r(2, x + 1):
+            a, b = b, a + b
+        return b
+    return f(f(n))

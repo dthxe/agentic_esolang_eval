@@ -1,0 +1,11 @@
+/* HumanEval/28 */
+
+FUNC concatenate(strings) {
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(strings) - 1 {
+        result = result + strings[i]
+    }
+    
+    RETURN result
+}

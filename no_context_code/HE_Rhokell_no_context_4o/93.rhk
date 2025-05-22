@@ -1,0 +1,21 @@
+# Rhokell code for HumanEval/93
+# Task: Encode message by swapping case and replacing vowels
+
+# Define a function to encode message
+func encode(message) {
+    encoded = ""
+    vowels = {'a': 'c', 'e': 'g', 'i': 'k', 'o': 'q', 'u': 'w',
+              'A': 'C', 'E': 'G', 'I': 'K', 'O': 'Q', 'U': 'W'}
+    
+    # Encode the message
+    for ch in message {
+        if is_vowel(ch) {
+            encoded += vowels[ch]
+        } else if is_alpha(ch) {
+            encoded += swap_case(ch)
+        } else {
+            encoded += ch
+        }
+    }
+    return encoded
+}

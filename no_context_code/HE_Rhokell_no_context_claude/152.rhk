@@ -1,0 +1,13 @@
+/* HumanEval/152 */
+
+FUNC compare(game, guess) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(game) - 1 {
+        /* Calculate the absolute difference between game and guess */
+        DECL diff = ABS(game[i] - guess[i])
+        APPEND(result, diff)
+    }
+    
+    RETURN result
+}

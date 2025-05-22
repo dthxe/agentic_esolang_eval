@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/125
+# Return a list of words split on whitespace, or on commas if no whitespace exists, or the count of lower-case letters with odd order.
+
+def split_words(txt):
+    if ' ' in txt: return txt.split()
+    if ',' in txt: return txt.split(',')
+    return sm(1 for ch in txt if ord(ch) % 2 != 0)

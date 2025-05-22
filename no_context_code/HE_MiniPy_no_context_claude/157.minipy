@@ -1,0 +1,14 @@
+def right_angle_triangle(a, b, c):
+    # Sort the sides in ascending order
+    sides = [a, b, c]
+    i = 0
+    while i < len(sides):
+        j = 0
+        while j < len(sides) - i - 1:
+            if sides[j] > sides[j + 1]:
+                sides[j], sides[j + 1] = sides[j + 1], sides[j]
+            j = j + 1
+        i = i + 1
+    
+    # Check if it's a right-angled triangle using the Pythagorean theorem
+    return sides[0] * sides[0] + sides[1] * sides[1] == sides[2] * sides[2]

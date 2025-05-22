@@ -1,0 +1,10 @@
+def find_closest_elements(n):
+    m = float('inf')
+    r = (0, 0)
+    for i in r(l(n)):
+        for j in r(i + 1, l(n)):
+            d = ab(n[i] - n[j])
+            if d < m:
+                m = d
+                r = (min(n[i], n[j]), max(n[i], n[j]))
+    return r

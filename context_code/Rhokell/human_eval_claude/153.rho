@@ -1,0 +1,71 @@
+# HumanEval/153: Find strongest extension based on case
+(strongest_extension class_name extensions) = 
+  (append_with_dot class_name 
+    (strongest_ext extensions));
+
+(strongest_ext (nil)) = (nil);
+(strongest_ext (cons x xs)) = 
+  (strongest_ext_helper xs x (extension_strength x));
+
+(strongest_ext_helper (nil) best_ext _) = best_ext;
+(strongest_ext_helper (cons x xs) best_ext best_strength) = 
+  (let [curr_strength (extension_strength x)]
+    (if (gt curr_strength best_strength)
+        (strongest_ext_helper xs x curr_strength)
+        (strongest_ext_helper xs best_ext best_strength)));
+
+(extension_strength str) = 
+  (sub (count_upper str) (count_lower str));
+
+(count_upper str) = 
+  (count_if is_upper str);
+
+(count_lower str) = 
+  (count_if is_lower str);
+
+(is_upper x) = 
+  (and (ge x (byte (4) (1)))  # 'A'
+       (le x (byte (5) (A))));  # 'Z'
+
+(is_lower x) = 
+  (and (ge x (byte (6) (1)))  # 'a'
+       (le x (byte (7) (A))));  # 'z'
+
+(count_if _ (nil)) = (z);
+(count_if f (cons x xs)) = 
+  (if (f x)
+      (s (count_if f xs))
+      (count_if f xs));
+
+(append_with_dot str1 str2) = 
+  (append str1 
+    (cons (byte (2) (E))  # '.'
+          str2));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(ge x y) = (not (lt x y));
+(le x y) = (not (gt x y));
+(gt x y) = (lt y x);
+
+# Test case: "Class" ["AAA", "bbb"] -> "Class.AAA"
+(main) = (strongest_extension 
+          (cons (byte (4) (3))  # 'C'
+          (cons (byte (6) (C))  # 'l'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (7) (3))  # 's'
+          (cons (byte (7) (3))  # 's'
+          (nil))))))
+          (cons 
+            (cons (byte (4) (1))  # 'A'
+            (cons (byte (4) (1))  # 'A'
+            (cons (byte (4) (1))  # 'A'
+            (nil))))
+            (cons
+              (cons (byte (6) (2))  # 'b'
+              (cons (byte (6) (2))  # 'b'
+              (cons (byte (6) (2))  # 'b'
+              (nil))))
+              (nil))));

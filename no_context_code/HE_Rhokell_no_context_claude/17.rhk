@@ -1,0 +1,29 @@
+/* HumanEval/17: Parse musical notes in ASCII format */
+
+FUNC parse_music(music_string) {
+    DECL result = []
+    DECL i = 0
+    
+    WHILE i < LEN(music_string) {
+        IF music_string[i] == "o" {
+            IF i + 1 < LEN(music_string) && music_string[i + 1] == "|" {
+                /* Half note: 2 beats */
+                APPEND(result, 2)
+                i = i + 2
+            } ELSE {
+                /* Whole note: 4 beats */
+                APPEND(result, 4)
+                i = i + 1
+            }
+        } ELIF music_string[i] == "." && i + 1 < LEN(music_string) && music_string[i + 1] == "|" {
+            /* Quarter note: 1 beat */
+            APPEND(result, 1)
+            i = i + 2
+        } ELSE {
+            /* Skip any other characters */
+            i = i + 1
+        }
+    }
+    
+    RETURN result
+}

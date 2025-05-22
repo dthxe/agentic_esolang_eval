@@ -1,0 +1,11 @@
+def max_fill(grid, capacity):
+    if not grid or not grid[0]:
+        return 0
+    r = 0
+    for i in r(l(grid)):
+        for j in r(l(grid[0])):
+            if grid[i][j] > capacity:
+                r += capacity
+            else:
+                r += grid[i][j]
+    return r

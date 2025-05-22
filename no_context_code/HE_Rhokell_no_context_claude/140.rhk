@@ -1,0 +1,33 @@
+/* HumanEval/140 */
+
+FUNC fix_spaces(text) {
+    DECL result = ""
+    DECL consecutive_spaces = 0
+    
+    LOOP i FROM 0 TO LEN(text) - 1 {
+        IF text[i] == " " {
+            consecutive_spaces = consecutive_spaces + 1
+            
+            IF consecutive_spaces > 2 {
+                /* Do nothing, we'll add a single hyphen for 3+ consecutive spaces */
+            } ELIF consecutive_spaces == 1 {
+                result = result + "_"
+            }
+        } ELSE {
+            IF consecutive_spaces > 2 {
+                /* Replace 3+ consecutive spaces with a hyphen */
+                result = result + "-"
+            }
+            
+            result = result + text[i]
+            consecutive_spaces = 0
+        }
+    }
+    
+    /* Handle trailing spaces */
+    IF consecutive_spaces > 2 {
+        result = result + "-"
+    }
+    
+    RETURN result
+}

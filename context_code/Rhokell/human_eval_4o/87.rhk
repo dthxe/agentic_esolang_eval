@@ -1,0 +1,5 @@
+# Rhokell implementation for map_increment
+# Increment each element in a list by 1.
+
+(map_increment (lst)) = 
+    (map (\x -> (+ x 1)) lst)

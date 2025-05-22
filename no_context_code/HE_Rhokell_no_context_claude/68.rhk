@@ -1,0 +1,19 @@
+/* HumanEval/68 */
+
+FUNC pluck(arr) {
+    DECL smallest_even = -1
+    DECL smallest_index = -1
+    
+    LOOP i FROM 0 TO LEN(arr) - 1 {
+        IF arr[i] % 2 == 0 && (smallest_even == -1 || arr[i] < smallest_even) {
+            smallest_even = arr[i]
+            smallest_index = i
+        }
+    }
+    
+    IF smallest_even == -1 {
+        RETURN []
+    } ELSE {
+        RETURN [smallest_even, smallest_index]
+    }
+}

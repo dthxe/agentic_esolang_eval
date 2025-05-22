@@ -1,0 +1,29 @@
+# HumanEval/32: Find edit distance between strings
+(find_min x y z) = 
+  (if (lt x y)
+      (if (lt x z) x z)
+      (if (lt y z) y z));
+
+(edit_distance (nil) (nil)) = (z);
+(edit_distance (nil) ys) = (length ys);
+(edit_distance xs (nil)) = (length xs);
+(edit_distance (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (edit_distance xs ys)
+      (s (find_min (edit_distance xs (cons y ys))  # deletion
+                   (edit_distance (cons x xs) ys)   # insertion
+                   (edit_distance xs ys))));        # substitution
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+# Test case: 'cat', 'dog' -> 3
+(main) = (edit_distance 
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (7) (4))  # 't'
+          (nil))))
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (6) (F))  # 'o'
+          (cons (byte (6) (7))  # 'g'
+          (nil)))));

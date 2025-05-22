@@ -1,0 +1,28 @@
+/* HumanEval/38 */
+
+FUNC decode_cyclic(s) {
+    /* Split string into groups of 3 */
+    DECL groups = []
+    LOOP i FROM 0 TO (LEN(s) + 2) / 3 - 1 {
+        DECL start = 3 * i
+        DECL end = MIN(3 * i + 3, LEN(s))
+        APPEND(groups, SUBSTRING(s, start, end))
+    }
+    
+    /* Reverse the cycling for each group of length 3 */
+    DECL decoded_groups = []
+    LOOP i FROM 0 TO LEN(groups) - 1 {
+        DECL group = groups[i]
+        IF LEN(group) == 3 {
+            /* Reverse the cycling: move last character to front */
+            DECL decoded = group[2] + SUBSTRING(group, 0, 2)
+            APPEND(decoded_groups, decoded)
+        } ELSE {
+            /* Groups with fewer than 3 characters were not cycled */
+            APPEND(decoded_groups, group)
+        }
+    }
+    
+    /* Join the decoded groups */
+    RETURN JOIN(decoded_groups, "")
+}

@@ -1,0 +1,59 @@
+# HumanEval/144: Check if number is palindrome
+(simplify n) = 
+  (is_palindrome (digits_of n));
+
+(is_palindrome lst) = 
+  (eq_lists lst (reverse lst));
+
+(digits_of n) = 
+  (if (eq n (z))
+      (cons (z) (nil))
+      (digits_of_helper n (nil)));
+
+(digits_of_helper n acc) = 
+  (if (eq n (z))
+      acc
+      (digits_of_helper 
+        (div n (s (s (s (s (s (s (s (s (s (s (z))))))))))))  # div by 10
+        (cons (mod n (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # mod by 10
+              acc)));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+(reverse lst) = 
+  (reverse_helper lst (nil));
+
+(reverse_helper (nil) acc) = acc;
+(reverse_helper (cons x xs) acc) = 
+  (reverse_helper xs (cons x acc));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 121 -> true (121 reads the same forwards and backwards)
+(main) = (simplify 
+          (s (s (s (s (s (s (s (s (s (s  # 121 in Church numerals
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (s (s (s (s (s (s (s (s (s
+          (s (z)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

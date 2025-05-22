@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/31
+# Task: Check if a number is prime
+
+# Define a function to check primality
+func is_prime(n) {
+    if n <= 1 {
+        return false
+    }
+    for i in 2 to sqrt(n) {
+        if n % i == 0 {
+            return false
+        }
+    }
+    return true
+}

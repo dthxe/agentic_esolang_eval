@@ -1,0 +1,5 @@
+# Rhokell implementation for map_gcd
+# Apply GCD function to each pair in a list of pairs.
+
+(map_gcd (lst)) = 
+    (map (\pair -> (gcd (fst pair) (snd pair))) lst)

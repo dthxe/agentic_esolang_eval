@@ -1,0 +1,5 @@
+def incr_list(l):
+    if not l:
+        return ls()
+    m = max(l) + 1
+    return [x + 1 if x < m else x for x in l]

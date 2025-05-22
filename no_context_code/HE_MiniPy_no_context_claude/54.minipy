@@ -1,0 +1,34 @@
+def same_chars(s0, s1):
+    # Check if both strings have the same set of characters
+    set0 = []
+    set1 = []
+    
+    # Get unique characters in s0
+    i = 0
+    while i < len(s0):
+        if s0[i] not in set0:
+            set0.append(s0[i])
+        i = i + 1
+    
+    # Get unique characters in s1
+    i = 0
+    while i < len(s1):
+        if s1[i] not in set1:
+            set1.append(s1[i])
+        i = i + 1
+    
+    # Sort both sets for comparison
+    set0.sort()
+    set1.sort()
+    
+    # Check if both sets are the same
+    if len(set0) != len(set1):
+        return False
+    
+    i = 0
+    while i < len(set0):
+        if set0[i] != set1[i]:
+            return False
+        i = i + 1
+    
+    return True

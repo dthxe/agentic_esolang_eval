@@ -1,0 +1,8 @@
+def compare_one(a, b):
+    if not isinstance(a, (t, s)) or not isinstance(b, (t, s)):
+        return None
+    if isinstance(a, t) and isinstance(b, t):
+        return a > b
+    if isinstance(a, s) and isinstance(b, s):
+        return l(a) > l(b)
+    return None

@@ -1,0 +1,32 @@
+# HumanEval/91: Calculate sum of main diagonal in matrix
+(main_diagonal_sum matrix) = 
+  (diagonal_sum_helper matrix (z));
+
+(diagonal_sum_helper (nil) _) = (z);
+(diagonal_sum_helper (cons row rest) idx) = 
+  (add (get_element row idx)
+       (diagonal_sum_helper rest (s idx)));
+
+(get_element lst idx) = 
+  (if (eq idx (z))
+      (head lst)
+      (get_element (tail lst) (sub idx (s (z)))));
+
+(head (cons x _)) = x;
+(tail (cons _ xs)) = xs;
+
+# Test case: [[1, 2, 3], [4, 5, 6], [7, 8, 9]] -> 15 (1 + 5 + 9)
+(main) = (main_diagonal_sum 
+          (cons (cons (s (z))  # 1
+                (cons (s (s (z)))  # 2
+                (cons (s (s (s (z))))  # 3
+                (nil))))
+          (cons (cons (s (s (s (s (z)))))  # 4
+                (cons (s (s (s (s (s (z))))))  # 5
+                (cons (s (s (s (s (s (s (z)))))))  # 6
+                (nil))))
+          (cons (cons (s (s (s (s (s (s (s (z))))))))  # 7
+                (cons (s (s (s (s (s (s (s (s (z)))))))))  # 8
+                (cons (s (s (s (s (s (s (s (s (s (z))))))))))  # 9
+                (nil))))
+          (nil)));

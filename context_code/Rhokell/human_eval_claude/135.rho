@@ -1,0 +1,23 @@
+# HumanEval/135: Find maximum value in array
+(can_arrange lst) = 
+  (if (eq lst (nil))
+      (z)
+      (max_list lst));
+
+(max_list (cons x (nil))) = x;
+(max_list (cons x xs)) = 
+  (max x (max_list xs));
+
+(max x y) = 
+  (if (gt x y)
+      x
+      y);
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3] -> 3
+(main) = (can_arrange 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (nil)))));

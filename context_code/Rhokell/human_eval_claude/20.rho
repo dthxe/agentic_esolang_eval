@@ -1,0 +1,30 @@
+# HumanEval/20: Find closest elements
+(find_closest_elements (nil)) = (nil);
+(find_closest_elements (cons x (nil))) = (nil);
+(find_closest_elements numbers) = 
+  (find_closest_pair numbers (head numbers) (head (tail numbers)) (abs (sub (head numbers) (head (tail numbers)))));
+
+(find_closest_pair (nil) min1 min2 _) = (pair min1 min2);
+(find_closest_pair (cons x (nil)) min1 min2 min_diff) = (pair min1 min2);
+(find_closest_pair (cons x xs) min1 min2 min_diff) = 
+  (find_closest_pairs_with x xs min1 min2 min_diff);
+
+(find_closest_pairs_with _ (nil) min1 min2 min_diff) = (pair min1 min2);
+(find_closest_pairs_with x (cons y ys) min1 min2 min_diff) = 
+  (let [diff (abs (sub x y))]
+    (if (lt diff min_diff)
+        (find_closest_pairs_with x ys x y diff)
+        (find_closest_pairs_with x ys min1 min2 min_diff)));
+
+(pair x y) = (cons x (cons y (nil)));
+(abs x) = (if (lt x (z)) (sub (z) x) x);
+
+# Test case: [1.0, 2.0, 3.0, 4.0, 5.0, 2.2] -> (2.0, 2.2)
+(main) = (find_closest_elements 
+          (cons (s (z))  # 1.0
+          (cons (s (s (z)))  # 2.0
+          (cons (s (s (s (z))))  # 3.0
+          (cons (s (s (s (s (z)))))  # 4.0
+          (cons (s (s (s (s (s (z))))))  # 5.0
+          (cons (s (s (s (s (s (s (s (s (s (s (s (z))))))))))))) # 2.2
+          (nil))))))));

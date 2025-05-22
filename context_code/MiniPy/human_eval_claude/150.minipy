@@ -1,0 +1,10 @@
+def x_or_y(n, x, y):
+    if not isinstance(n, t) or not isinstance(x, t) or not isinstance(y, t):
+        return ls()
+    r = ls()
+    for i in r(n):
+        if i % 2 == 0:
+            r.append(x)
+        else:
+            r.append(y)
+    return r

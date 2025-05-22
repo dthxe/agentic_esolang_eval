@@ -1,0 +1,8 @@
+def filter_by_prefix(strings, prefix):
+    result = []
+    i = 0
+    while i < len(strings):
+        if strings[i].startswith(prefix):
+            result.append(strings[i])
+        i = i + 1
+    return result

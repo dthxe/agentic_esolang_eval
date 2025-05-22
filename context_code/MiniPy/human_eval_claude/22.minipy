@@ -1,0 +1,2 @@
+def filter_integers(v):
+    return [x for x in v if isinstance(x, int)]

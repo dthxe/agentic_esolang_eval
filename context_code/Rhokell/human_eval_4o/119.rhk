@@ -1,0 +1,5 @@
+# Rhokell implementation for map_sign
+# Apply sign function to each element in a list.
+
+(map_sign (lst)) = 
+    (map (\x -> (if (< x 0) -1 (if (> x 0) 1 0))) lst)

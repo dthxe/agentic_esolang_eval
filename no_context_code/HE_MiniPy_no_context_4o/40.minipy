@@ -1,0 +1,2 @@
+def triples_sum_to_zero(l):
+    return any(a + b + c == 0 for i, a in enumerate(l) for j, b in enumerate(l) if i != j for k, c in enumerate(l) if k != i and k != j)

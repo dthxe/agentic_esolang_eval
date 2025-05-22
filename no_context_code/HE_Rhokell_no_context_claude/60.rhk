@@ -1,0 +1,5 @@
+/* HumanEval/60 */
+
+FUNC sum_to_n(n) {
+    RETURN (n * (n + 1)) / 2
+}

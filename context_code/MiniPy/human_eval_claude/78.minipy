@@ -1,0 +1,10 @@
+def hex_key(n):
+    h = sr
+    while n:
+        d = n % 16
+        if d < 10:
+            h = s(d) + h
+        else:
+            h = c(d + 87) + h
+        n = t(n / 16)
+    return h if h else '0'

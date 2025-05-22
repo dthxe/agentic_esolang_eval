@@ -1,0 +1,30 @@
+def sort_third(l):
+    # Extract elements at indices divisible by 3
+    thirds = []
+    i = 0
+    while i < len(l):
+        if i % 3 == 0:
+            thirds.append(l[i])
+        i = i + 1
+    
+    # Sort these elements
+    i = 0
+    while i < len(thirds):
+        j = 0
+        while j < len(thirds) - i - 1:
+            if thirds[j] > thirds[j + 1]:
+                thirds[j], thirds[j + 1] = thirds[j + 1], thirds[j]
+            j = j + 1
+        i = i + 1
+    
+    # Put sorted elements back in the original list
+    result = l.copy()
+    third_index = 0
+    i = 0
+    while i < len(result):
+        if i % 3 == 0:
+            result[i] = thirds[third_index]
+            third_index = third_index + 1
+        i = i + 1
+    
+    return result

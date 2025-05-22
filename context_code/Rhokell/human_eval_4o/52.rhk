@@ -1,0 +1,11 @@
+# Rhokell implementation for is_happy
+# Check if the string is happy (length is at least 3 and every 3 consecutive letters are distinct).
+
+(is_happy (s)) = 
+    (letrec ((check_happy (str))
+        (if (< (length str) 3)
+            false
+            (if (distinct (take 3 str))
+                (check_happy (tail str))
+                false)))
+    (check_happy s))

@@ -1,0 +1,7 @@
+# Rhokell implementation for rescale_to_unit
+# Rescale a list of numbers such that the smallest becomes 0 and the largest becomes 1.
+
+(rescale_to_unit (numbers)) = 
+    (let ((min_val (foldl min (head numbers) (tail numbers)))
+          (max_val (foldl max (head numbers) (tail numbers))))
+    (map (\x -> (/ (- x min_val) (- max_val min_val))) numbers))

@@ -1,0 +1,42 @@
+/* HumanEval/81 */
+
+FUNC numerical_letter_grade(grades) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(grades) - 1 {
+        DECL gpa = grades[i]
+        DECL letter_grade = ""
+        
+        IF gpa == 4.0 {
+            letter_grade = "A+"
+        } ELIF gpa > 3.7 {
+            letter_grade = "A"
+        } ELIF gpa > 3.3 {
+            letter_grade = "A-"
+        } ELIF gpa > 3.0 {
+            letter_grade = "B+"
+        } ELIF gpa > 2.7 {
+            letter_grade = "B"
+        } ELIF gpa > 2.3 {
+            letter_grade = "B-"
+        } ELIF gpa > 2.0 {
+            letter_grade = "C+"
+        } ELIF gpa > 1.7 {
+            letter_grade = "C"
+        } ELIF gpa > 1.3 {
+            letter_grade = "C-"
+        } ELIF gpa > 1.0 {
+            letter_grade = "D+"
+        } ELIF gpa > 0.7 {
+            letter_grade = "D"
+        } ELIF gpa > 0.0 {
+            letter_grade = "D-"
+        } ELSE {
+            letter_grade = "E"
+        }
+        
+        APPEND(result, letter_grade)
+    }
+    
+    RETURN result
+}

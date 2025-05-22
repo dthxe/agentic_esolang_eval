@@ -1,0 +1,24 @@
+# HumanEval/14: Get all prefixes of a string
+(all_prefixes str) = (prefixes_acc str (nil));
+
+(prefixes_acc (nil) acc) = (reverse acc);
+(prefixes_acc (cons x xs) acc) = 
+  (prefixes_acc xs 
+    (cons (cons x (take (length acc) str)) acc));
+
+(take (z) _) = (nil);
+(take n (nil)) = (nil);
+(take n (cons x xs)) = (cons x (take (sub n (s (z))) xs));
+
+(reverse (nil)) = (nil);
+(reverse (cons x xs)) = (append (reverse xs) (cons x (nil)));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = (cons x (append xs ys));
+
+# Test case: 'abc' -> ['a', 'ab', 'abc']
+(main) = (all_prefixes 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (nil)))));

@@ -1,0 +1,15 @@
+/* HumanEval/133 */
+
+FUNC sum_squares(lst) {
+    DECL sum = 0
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        /* Round up to the nearest integer */
+        DECL rounded = CEIL(lst[i])
+        
+        /* Square the rounded value and add to sum */
+        sum = sum + rounded * rounded
+    }
+    
+    RETURN sum
+}

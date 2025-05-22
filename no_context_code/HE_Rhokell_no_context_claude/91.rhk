@@ -1,0 +1,33 @@
+/* HumanEval/91 */
+
+FUNC is_bored(S) {
+    /* Split the string into sentences */
+    DECL sentences = SPLIT(S, ".")
+    DECL more_sentences = []
+    
+    /* Further split by other sentence delimiters */
+    LOOP i FROM 0 TO LEN(sentences) - 1 {
+        DECL parts1 = SPLIT(sentences[i], "?")
+        LOOP j FROM 0 TO LEN(parts1) - 1 {
+            DECL parts2 = SPLIT(parts1[j], "!")
+            LOOP k FROM 0 TO LEN(parts2) - 1 {
+                IF LEN(TRIM(parts2[k])) > 0 {
+                    APPEND(more_sentences, TRIM(parts2[k]))
+                }
+            }
+        }
+    }
+    
+    /* Count sentences starting with "I" */
+    DECL boredom_count = 0
+    LOOP i FROM 0 TO LEN(more_sentences) - 1 {
+        DECL sentence = more_sentences[i]
+        DECL words = SPLIT(sentence, " ")
+        
+        IF LEN(words) > 0 && words[0] == "I" {
+            boredom_count = boredom_count + 1
+        }
+    }
+    
+    RETURN boredom_count
+}

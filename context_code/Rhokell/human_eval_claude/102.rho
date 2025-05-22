@@ -1,0 +1,44 @@
+# HumanEval/102: Check if string is stretched (each char appears n times in a row)
+(is_stretched str) = 
+  (let [first_group_len (count_consecutive (head str) str)]
+    (all (lambda (x) (eq (count_consecutive x str) first_group_len))
+         (unique str)));
+
+(count_consecutive x str) = 
+  (count_consecutive_helper x str (z));
+
+(count_consecutive_helper x (nil) count) = count;
+(count_consecutive_helper x (cons y ys) count) = 
+  (if (byte_eq x y)
+      (count_consecutive_helper x ys (s count))
+      count);
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (byte_eq x y)
+      (t)
+      (member x ys));
+
+(all _ (nil)) = (t);
+(all f (cons x xs)) = 
+  (if (f x)
+      (all f xs)
+      (f));
+
+(head (cons x _)) = x;
+
+# Test case: 'aabbcc' -> true (each char appears twice)
+(main) = (is_stretched 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (3))  # 'c'
+          (nil))))))));

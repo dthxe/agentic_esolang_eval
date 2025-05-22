@@ -1,0 +1,23 @@
+/* HumanEval/100 */
+
+FUNC make_a_pile(n) {
+    DECL result = [n]
+    
+    LOOP i FROM 1 TO n - 1 {
+        DECL prev = result[i-1]
+        DECL next
+        
+        /* If n is odd, next level is the next odd number */
+        IF n % 2 == 1 {
+            next = prev + 2
+        } 
+        /* If n is even, next level is the next even number */
+        ELSE {
+            next = prev + 2
+        }
+        
+        APPEND(result, next)
+    }
+    
+    RETURN result
+}

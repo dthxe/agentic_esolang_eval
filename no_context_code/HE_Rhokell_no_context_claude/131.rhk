@@ -1,0 +1,24 @@
+/* HumanEval/131 */
+
+FUNC digits(n) {
+    DECL product = 1
+    DECL has_odd_digit = FALSE
+    DECL num_str = TO_STRING(n)
+    
+    LOOP i FROM 0 TO LEN(num_str) - 1 {
+        DECL digit = TO_INT(num_str[i])
+        
+        /* Check if digit is odd */
+        IF digit % 2 == 1 {
+            product = product * digit
+            has_odd_digit = TRUE
+        }
+    }
+    
+    /* Return 0 if all digits are even */
+    IF !has_odd_digit {
+        RETURN 0
+    }
+    
+    RETURN product
+}

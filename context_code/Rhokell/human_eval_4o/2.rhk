@@ -1,0 +1,5 @@
+# Rhokell implementation for truncate_number
+# Return the decimal part of a positive floating point number.
+
+(truncate_number (number)) = 
+    (- number (floor number))

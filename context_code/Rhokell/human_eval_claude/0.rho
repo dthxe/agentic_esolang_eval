@@ -1,0 +1,20 @@
+# HumanEval/0: Check if any two numbers are closer than threshold
+(lt (sub x y) t) = (t);
+(lt _ _) = (f);
+
+(abs (sub x y)) = (if (lt x y) (sub y x) (sub x y));
+
+(has_close_elements (nil) _) = (f);
+(has_close_elements (cons x (nil)) _) = (f);
+(has_close_elements (cons x xs) t) = 
+  (if (check_rest x xs t)
+      (t)
+      (has_close_elements xs t));
+
+(check_rest _ (nil) _) = (f);
+(check_rest x (cons y ys) t) = 
+  (if (lt (abs (sub x y)) t)
+      (t)
+      (check_rest x ys t));
+
+(main) = (has_close_elements (cons (s (z)) (cons (s (s (z))) (cons (s (s (s (z)))) (nil)))) (s (z)));

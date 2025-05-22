@@ -1,0 +1,5 @@
+# Rhokell implementation for map_cube
+# Apply cube function to each element in a list.
+
+(map_cube (lst)) = 
+    (map (\x -> (* x x x)) lst)

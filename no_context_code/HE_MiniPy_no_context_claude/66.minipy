@@ -1,0 +1,8 @@
+def digitSum(s):
+    result = 0
+    i = 0
+    while i < len(s):
+        if s[i].isupper():
+            result = result + ord(s[i])
+        i = i + 1
+    return result

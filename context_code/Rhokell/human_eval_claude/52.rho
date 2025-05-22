@@ -1,0 +1,20 @@
+# HumanEval/52: Calculate sum when balance goes below zero
+(below_zero operations) = 
+  (below_zero_helper operations (z));
+
+(below_zero_helper (nil) _) = (f);
+(below_zero_helper (cons x xs) balance) = 
+  (let [new_balance (add balance x)]
+    (if (lt new_balance (z))
+        (t)
+        (below_zero_helper xs new_balance)));
+
+# Test case: [1, 2, -4, 5, 3, -2] -> true
+(main) = (below_zero 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (sub (z) (s (s (s (s (z))))))  # -4
+          (cons (s (s (s (s (s (z))))))  # 5
+          (cons (s (s (s (z))))  # 3
+          (cons (sub (z) (s (s (z))))  # -2
+          (nil))))))));

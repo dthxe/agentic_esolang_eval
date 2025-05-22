@@ -1,0 +1,14 @@
+def fib(n):
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    
+    a, b = 0, 1
+    i = 2
+    while i <= n:
+        c = a + b
+        a, b = b, c
+        i = i + 1
+    
+    return b

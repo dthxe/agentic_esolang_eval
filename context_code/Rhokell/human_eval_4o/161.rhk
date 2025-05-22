@@ -1,0 +1,5 @@
+# Rhokell implementation for compare_one
+# Return the larger variable in its given type or None if equal.
+
+(compare_one (a) (b)) = 
+    (if (> (to_number a) (to_number b)) a (if (< (to_number a) (to_number b)) b None))

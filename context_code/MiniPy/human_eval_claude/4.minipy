@@ -1,0 +1,3 @@
+def mean_absolute_deviation(n):
+    m = sum(n)/l(n)
+    return sum(ab(x-m) for x in n)/l(n)

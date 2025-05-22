@@ -1,0 +1,5 @@
+# Rhokell implementation for map_join
+# Join each sublist in a list of lists into a single string with a delimiter.
+
+(map_join (lst) (delimiter)) = 
+    (map (\sublist -> (join delimiter sublist)) lst)

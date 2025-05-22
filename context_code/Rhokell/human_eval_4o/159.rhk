@@ -1,0 +1,6 @@
+# Rhokell implementation for eat
+# Return an array with total eaten carrots and remaining carrots.
+
+(eat (number) (need) (remaining)) = 
+    (let ((total (+ number (min need remaining))) (left (max 0 (- remaining need))))
+        [total left])

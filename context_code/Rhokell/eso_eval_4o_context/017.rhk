@@ -1,0 +1,56 @@
+# Check if a string is an anagram of another
+# Read string input
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Null terminator
+(read_char x) = (cons x (read_string));
+
+# Sort the string
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = (if (lt x y) (cons x (cons y ys)) (cons y (insert x ys)));
+
+(lt (byte a b) (byte c d)) = (or (lt a c) (and (eq a c) (lt b d)));
+
+(eq (z) (z)) = (s (z));
+(eq (s x) (s y)) = (eq x y);
+(eq x y) = (z);
+
+(or (z) x) = x;
+(or (s x) y) = (s x);
+
+(and (z) x) = (z);
+(and (s x) y) = y;
+
+# Check if two strings are anagrams
+(is_anagram (s1) (s2)) = (if (equal (sort s1) (sort s2)) (print_true) (print_false));
+
+(equal (nil) (nil)) = (s (z));
+(equal (cons x xs) (cons y ys)) = (if (eq x y) (equal xs ys) (z));
+(equal x y) = (z);
+
+# Main function
+(main) = (is_anagram (read_string) (read_string));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # newline
+                           (nil))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # newline
+                            (nil))))));
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

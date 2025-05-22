@@ -1,0 +1,14 @@
+def string_to_md5(text):
+    if not isinstance(text, s):
+        return sr
+    r = ls()
+    for c in text:
+        if c.isupper():
+            r.append('u')
+        elif c.islower():
+            r.append('l')
+        elif c.isdigit():
+            r.append('d')
+        else:
+            r.append('x')
+    return sr.join(r)

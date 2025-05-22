@@ -1,0 +1,12 @@
+def cycpattern_check(a, b):
+    if not isinstance(a, s) or not isinstance(b, s):
+        return False
+    if l(a) != l(b):
+        return False
+    if not a:
+        return True
+    n = l(a)
+    for i in r(n):
+        if a[i:] + a[:i] == b:
+            return True
+    return False

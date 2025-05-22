@@ -1,0 +1,10 @@
+# Minipy solution for HumanEval/137
+# Return the larger variable in its given variable type, or None if the values are equal.
+
+def compare_one(a, b):
+    try:
+        a_val = float(a.replace(',', '.')) if isinstance(a, str) else a
+        b_val = float(b.replace(',', '.')) if isinstance(b, str) else b
+        return a if a_val > b_val else b if b_val > a_val else None
+    except:
+        return None

@@ -1,0 +1,25 @@
+def iscube(a):
+    # Check if a is a perfect cube
+    if a == 0:
+        return True
+    
+    # Handle negative numbers
+    if a < 0:
+        a = -a
+    
+    # Find cube root using binary search
+    low = 1
+    high = a
+    
+    while low <= high:
+        mid = (low + high) // 2
+        cube = mid * mid * mid
+        
+        if cube == a:
+            return True
+        elif cube < a:
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return False

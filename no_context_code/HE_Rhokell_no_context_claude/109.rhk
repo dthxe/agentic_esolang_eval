@@ -1,0 +1,33 @@
+/* HumanEval/109 */
+
+FUNC move_one_ball(arr) {
+    /* Empty array is considered sorted */
+    IF LEN(arr) <= 1 {
+        RETURN TRUE
+    }
+    
+    /* Find the index where the array would be sorted after rotation */
+    DECL n = LEN(arr)
+    DECL min_idx = 0
+    
+    LOOP i FROM 1 TO n - 1 {
+        IF arr[i] < arr[min_idx] {
+            min_idx = i
+        }
+    }
+    
+    /* Check if the array would be sorted after rotating to min_idx */
+    DECL is_sorted = TRUE
+    
+    LOOP i FROM 0 TO n - 2 {
+        DECL curr_idx = (min_idx + i) % n
+        DECL next_idx = (min_idx + i + 1) % n
+        
+        IF arr[curr_idx] > arr[next_idx] {
+            is_sorted = FALSE
+            BREAK
+        }
+    }
+    
+    RETURN is_sorted
+}

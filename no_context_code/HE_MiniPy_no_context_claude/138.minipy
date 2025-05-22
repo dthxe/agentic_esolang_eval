@@ -1,0 +1,13 @@
+def is_equal_to_sum_even(n):
+    # A number can be written as the sum of 4 positive even numbers
+    # if and only if it's even and greater than or equal to 8
+    
+    # Check if n is even
+    if n % 2 != 0:
+        return False
+    
+    # Check if n is at least 8 (smallest sum of 4 positive even numbers: 2+2+2+2=8)
+    if n < 8:
+        return False
+    
+    return True

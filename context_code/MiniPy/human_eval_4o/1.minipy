@@ -1,0 +1,16 @@
+# Minipy solution for HumanEval/1
+# Separate groups of nested parentheses into separate strings.
+
+def separate_paren_groups(paren_string):
+    groups = []
+    current = sr
+    depth = 0
+    for char in paren_string:
+        if char == '(': depth += 1
+        elif char == ')': depth -= 1
+        if depth == 0 and current:
+            groups.append(current)
+            current = sr
+        else:
+            current += char
+    return groups

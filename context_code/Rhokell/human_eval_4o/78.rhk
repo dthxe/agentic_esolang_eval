@@ -1,0 +1,5 @@
+# Rhokell implementation for max_list
+# Find the maximum element in a list.
+
+(max_list (lst)) = 
+    (foldl max (head lst) (tail lst))

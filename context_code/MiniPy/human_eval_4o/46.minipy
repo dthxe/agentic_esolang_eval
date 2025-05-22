@@ -1,0 +1,8 @@
+# Minipy solution for HumanEval/46
+# Compute the n-th element of the fib4 number sequence.
+
+def fib4(n):
+    seq = [0, 0, 2, 0]
+    for i in r(4, n+1):
+        seq.append(seq[-1] + seq[-2] + seq[-3] + seq[-4])
+    return seq[n]

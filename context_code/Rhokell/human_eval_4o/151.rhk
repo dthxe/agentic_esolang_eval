@@ -1,0 +1,5 @@
+# Rhokell implementation for double_the_difference
+# Return the sum of squares of odd numbers in a list.
+
+(double_the_difference (lst)) = 
+    (sum (map (\x -> (if (and (is_odd x) (>= x 0)) (* x x) 0)) lst))

@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/0
+# Task: Check if any two numbers in a list are closer than a given threshold
+
+# Define a function to check close elements
+func has_close_elements(numbers, threshold) {
+    # Iterate over each number
+    for i in 0 to len(numbers) - 1 {
+        for j in i + 1 to len(numbers) {
+            # Calculate the difference
+            diff = abs(numbers[i] - numbers[j])
+            # Check if difference is less than threshold
+            if diff < threshold {
+                return true
+            }
+        }
+    }
+    return false
+}

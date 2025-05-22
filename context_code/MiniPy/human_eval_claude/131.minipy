@@ -1,0 +1,9 @@
+def digits(n):
+    if not isinstance(n, t):
+        return None
+    s = s(ab(n))
+    r = ls()
+    for i in r(l(s)):
+        if t(s[i]) % 2 == 0:
+            r.append(i)
+    return r

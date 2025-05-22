@@ -1,0 +1,2 @@
+def get_positive(l):
+    return [x for x in l if isinstance(x, (int, float)) and x > 0]

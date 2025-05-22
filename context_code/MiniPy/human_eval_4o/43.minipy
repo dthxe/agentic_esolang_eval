@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/43
+# Return True if there are two distinct elements in the list that sum to zero.
+
+def pairs_sum_to_zero(l):
+    return any(l[i] + l[j] == 0 for i in r(l(l)) for j in r(i+1, l(l)))

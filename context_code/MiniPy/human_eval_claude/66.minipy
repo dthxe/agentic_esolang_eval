@@ -1,0 +1,8 @@
+def digitSum(s):
+    if not isinstance(s, s):
+        return None
+    r = 0
+    for x in s:
+        if x.isdigit():
+            r += t(x)
+    return r

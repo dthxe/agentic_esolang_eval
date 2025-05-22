@@ -1,0 +1,14 @@
+def rolling_max(numbers):
+    result = []
+    if len(numbers) == 0:
+        return result
+    
+    current_max = numbers[0]
+    i = 0
+    while i < len(numbers):
+        if numbers[i] > current_max:
+            current_max = numbers[i]
+        result.append(current_max)
+        i = i + 1
+    
+    return result

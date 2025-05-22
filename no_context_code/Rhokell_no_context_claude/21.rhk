@@ -1,0 +1,6 @@
+sortList :: [Int] -> [Int]
+sortList = sort
+
+main = do
+  nums <- readList
+  print $ sortList nums

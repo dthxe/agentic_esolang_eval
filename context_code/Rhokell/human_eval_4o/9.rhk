@@ -1,0 +1,11 @@
+# Rhokell implementation for rolling_max
+# Generate a list of rolling maximum elements from a list of integers.
+
+(rolling_max (numbers)) = 
+    (letrec ((max_list (lst) (current_max) (acc))
+        (match lst
+            (nil) (reverse acc)
+            ((cons x xs))
+                (let ((new_max (max current_max x)))
+                    (max_list xs new_max (cons new_max acc)))))
+    (max_list numbers (head numbers) nil))

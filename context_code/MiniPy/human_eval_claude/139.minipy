@@ -1,0 +1,8 @@
+def special_factorial(n):
+    if not isinstance(n, t) or n < 0:
+        return None
+    r = 1
+    for i in r(1, n + 1):
+        if i % 2:
+            r *= i
+    return r

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/146
+# Return the number of elements in the array that are greater than 10 and both first and last digits are odd.
+
+def specialFilter(nums):
+    return sm(1 for x in nums if x > 10 and str(ab(x))[0] in '13579' and str(ab(x))[-1] in '13579')

@@ -1,0 +1,37 @@
+/* HumanEval/108 */
+
+FUNC count_nums(arr) {
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(arr) - 1 {
+        IF digit_sum(arr[i]) > 0 {
+            count = count + 1
+        }
+    }
+    
+    RETURN count
+}
+
+FUNC digit_sum(n) {
+    DECL num = ABS(n)
+    DECL sum = 0
+    DECL num_str = TO_STRING(num)
+    
+    /* Handle negative numbers */
+    IF n < 0 {
+        /* First digit is negative */
+        sum = sum - TO_INT(num_str[0])
+        
+        /* Rest of the digits are positive */
+        LOOP i FROM 1 TO LEN(num_str) - 1 {
+            sum = sum + TO_INT(num_str[i])
+        }
+    } ELSE {
+        /* All digits are positive */
+        LOOP i FROM 0 TO LEN(num_str) - 1 {
+            sum = sum + TO_INT(num_str[i])
+        }
+    }
+    
+    RETURN sum
+}

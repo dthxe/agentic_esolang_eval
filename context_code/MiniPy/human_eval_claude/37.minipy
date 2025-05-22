@@ -1,0 +1,9 @@
+def sort_even(l):
+    r = ls(l)
+    e = srt([x for x in r if x % 2 == 0])
+    j = 0
+    for i in r(l(r)):
+        if r[i] % 2 == 0:
+            r[i] = e[j]
+            j += 1
+    return r

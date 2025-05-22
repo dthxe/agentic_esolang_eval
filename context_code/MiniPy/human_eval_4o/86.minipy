@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/86
+# Return an ordered version of the string.
+
+def anti_shuffle(s):
+    return ' '.join(''.join(srt(w)) for w in s.split())

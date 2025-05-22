@@ -1,0 +1,5 @@
+# Rhokell implementation for map_asin
+# Apply arcsine function to each element in a list.
+
+(map_asin (lst)) = 
+    (map (\x -> (asin x)) lst)

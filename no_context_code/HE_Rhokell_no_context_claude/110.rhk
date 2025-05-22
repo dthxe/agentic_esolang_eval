@@ -1,0 +1,26 @@
+/* HumanEval/110 */
+
+FUNC exchange(lst1, lst2) {
+    /* Count odd numbers in lst1 and even numbers in lst2 */
+    DECL odd_count_lst1 = 0
+    DECL even_count_lst2 = 0
+    
+    LOOP i FROM 0 TO LEN(lst1) - 1 {
+        IF lst1[i] % 2 == 1 {
+            odd_count_lst1 = odd_count_lst1 + 1
+        }
+    }
+    
+    LOOP i FROM 0 TO LEN(lst2) - 1 {
+        IF lst2[i] % 2 == 0 {
+            even_count_lst2 = even_count_lst2 + 1
+        }
+    }
+    
+    /* Check if we can exchange enough elements */
+    IF even_count_lst2 >= odd_count_lst1 {
+        RETURN "YES"
+    } ELSE {
+        RETURN "NO"
+    }
+}

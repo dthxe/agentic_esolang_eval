@@ -1,0 +1,4 @@
+def specialFilter(nums):
+    def is_odd_digit(d):
+        return d in '13579'
+    return sum(1 for num in nums if num > 10 and is_odd_digit(str(num)[0]) and is_odd_digit(str(num)[-1]))

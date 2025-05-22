@@ -1,0 +1,25 @@
+# Rhokell code for HumanEval/119
+# Task: Check if parentheses can be concatenated to be balanced
+
+# Define a function to match parens
+func match_parens(lst) {
+    open_count = 0
+    close_count = 0
+    
+    # Count open and close parentheses
+    for s in lst {
+        for ch in s {
+            if ch == '(' {
+                open_count += 1
+            } else {
+                close_count += 1
+            }
+        }
+    }
+    
+    # Check if they can be balanced
+    if open_count == close_count {
+        return "Yes"
+    }
+    return "No"
+}

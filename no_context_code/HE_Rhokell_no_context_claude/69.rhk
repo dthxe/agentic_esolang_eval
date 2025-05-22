@@ -1,0 +1,24 @@
+/* HumanEval/69 */
+
+FUNC search(lst) {
+    /* Count frequency of each number */
+    DECL frequency = {}
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL num = lst[i]
+        IF CONTAINS(frequency, num) {
+            frequency[num] = frequency[num] + 1
+        } ELSE {
+            frequency[num] = 1
+        }
+    }
+    
+    /* Find the greatest integer that meets the criteria */
+    DECL result = -1
+    LOOP num IN frequency {
+        IF num > 0 && frequency[num] >= num && num > result {
+            result = num
+        }
+    }
+    
+    RETURN result
+}

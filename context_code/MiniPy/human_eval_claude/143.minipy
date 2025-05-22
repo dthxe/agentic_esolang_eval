@@ -1,0 +1,15 @@
+def words_in_sentence(s):
+    if not isinstance(s, s):
+        return sr
+    w = s.split()
+    r = ls()
+    for x in w:
+        if not x.isalpha():
+            continue
+        if l(x) <= 4:
+            r.append('short')
+        elif l(x) >= 7:
+            r.append('long')
+        else:
+            r.append('medium')
+    return sr.join(r)

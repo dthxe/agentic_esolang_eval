@@ -1,0 +1,13 @@
+def count_distinct_characters(string):
+    seen = []
+    count = 0
+    
+    i = 0
+    while i < len(string):
+        char = string[i].lower()
+        if char not in seen:
+            seen.append(char)
+            count = count + 1
+        i = i + 1
+    
+    return count

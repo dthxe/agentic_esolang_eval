@@ -1,0 +1,15 @@
+# Rhokell code for HumanEval/59
+# Task: Return the largest prime factor of n
+
+# Define a function to find largest prime factor
+func largest_prime_factor(n) {
+    factor = 2
+    while n > 1 {
+        if n % factor == 0 {
+            n /= factor
+        } else {
+            factor += 1
+        }
+    }
+    return factor
+}

@@ -1,0 +1,7 @@
+def iscube(a):
+    if not isinstance(a, t):
+        return False
+    if a < 0:
+        return False
+    i = t(rnd(a ** (1/3)))
+    return i ** 3 == a

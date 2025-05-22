@@ -1,0 +1,5 @@
+# Rhokell implementation for map_floor
+# Apply floor function to each element in a list.
+
+(map_floor (lst)) = 
+    (map (\x -> (floor x)) lst)

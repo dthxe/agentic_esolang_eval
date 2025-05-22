@@ -1,0 +1,20 @@
+# Rhokell code for HumanEval/125
+# Task: Split words based on whitespace or commas
+
+# Define a function to split words
+func split_words(txt) {
+    if contains(txt, " ") {
+        return split(txt, " ")
+    } else if contains(txt, ",") {
+        return split(txt, ",")
+    } else {
+        # Count lowercase letters with odd order
+        count = 0
+        for ch in txt {
+            if is_lower(ch) and (ord(ch) - ord('a')) % 2 != 0 {
+                count += 1
+            }
+        }
+        return count
+    }
+}

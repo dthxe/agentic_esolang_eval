@@ -1,0 +1,23 @@
+# Rhokell code for HumanEval/160
+# Task: Evaluate algebraic expression from operators and operands
+
+# Define a function to evaluate expression
+func do_algebra(operator, operand) {
+    result = operand[0]
+    
+    # Evaluate expression
+    for i in range(len(operator)) {
+        if operator[i] == '+' {
+            result += operand[i+1]
+        } else if operator[i] == '-' {
+            result -= operand[i+1]
+        } else if operator[i] == '*' {
+            result *= operand[i+1]
+        } else if operator[i] == '//' {
+            result //= operand[i+1]
+        } else if operator[i] == '**' {
+            result **= operand[i+1]
+        }
+    }
+    return result
+}

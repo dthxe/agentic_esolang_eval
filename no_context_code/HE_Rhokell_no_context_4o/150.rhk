@@ -1,0 +1,24 @@
+# Rhokell code for HumanEval/150
+# Task: Return x if n is prime, else return y
+
+# Define a function to return x or y
+func x_or_y(n, x, y) {
+    # Check if n is prime
+    if is_prime(n) {
+        return x
+    }
+    return y
+}
+
+# Helper function to check if a number is prime
+func is_prime(num) {
+    if num < 2 {
+        return false
+    }
+    for i in range(2, sqrt(num) + 1) {
+        if num % i == 0 {
+            return false
+        }
+    }
+    return true
+}

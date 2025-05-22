@@ -1,0 +1,28 @@
+/* HumanEval/58 */
+
+FUNC common(l1, l2) {
+    /* Create sets for both lists */
+    DECL set1 = {}
+    DECL set2 = {}
+    
+    LOOP i FROM 0 TO LEN(l1) - 1 {
+        set1[l1[i]] = TRUE
+    }
+    
+    LOOP i FROM 0 TO LEN(l2) - 1 {
+        set2[l2[i]] = TRUE
+    }
+    
+    /* Find common elements */
+    DECL common_elements = []
+    LOOP item IN set1 {
+        IF CONTAINS(set2, item) {
+            APPEND(common_elements, item)
+        }
+    }
+    
+    /* Sort the common elements */
+    SORT(common_elements)
+    
+    RETURN common_elements
+}

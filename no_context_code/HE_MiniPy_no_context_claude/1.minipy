@@ -1,0 +1,22 @@
+def separate_paren_groups(paren_string):
+    result = []
+    current_string = ""
+    depth = 0
+    
+    i = 0
+    while i < len(paren_string):
+        char = paren_string[i]
+        if char == "(":
+            depth = depth + 1
+            current_string = current_string + char
+        elif char == ")":
+            depth = depth - 1
+            current_string = current_string + char
+            if depth == 0:
+                result.append(current_string)
+                current_string = ""
+        elif char != " ":  # Ignore spaces
+            current_string = current_string + char
+        i = i + 1
+    
+    return result

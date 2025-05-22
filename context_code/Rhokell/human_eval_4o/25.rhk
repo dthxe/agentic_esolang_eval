@@ -1,0 +1,11 @@
+# Rhokell implementation for factorize
+# Return a list of prime factors of a given integer.
+
+(factorize (n)) = 
+    (letrec ((find_factors (i) (acc))
+        (if (= n 1)
+            (reverse acc)
+            (if (= (mod n i) 0)
+                (find_factors i (cons i acc))
+                (find_factors (+ i 1) acc))))
+    (find_factors 2 nil))

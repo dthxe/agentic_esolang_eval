@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/11
+# Task: Perform binary XOR on two strings
+
+# Define a function to XOR strings
+func string_xor(a, b) {
+    result = ""
+    
+    # Iterate over each character
+    for i in 0 to len(a) - 1 {
+        if a[i] == b[i] {
+            result += "0"
+        } else {
+            result += "1"
+        }
+    }
+    return result
+}

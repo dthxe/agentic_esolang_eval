@@ -1,0 +1,6 @@
+def unique(l):
+    s = ls()
+    for x in srt(l):
+        if not s or x != s[-1]:
+            s.append(x)
+    return s

@@ -1,0 +1,18 @@
+/* HumanEval/138 */
+
+FUNC is_equal_to_sum_even(n) {
+    /* A number can be written as the sum of 4 positive even numbers
+       if and only if it's greater than or equal to 8 and it's even */
+    
+    /* Check if n is even */
+    IF n % 2 != 0 {
+        RETURN FALSE
+    }
+    
+    /* Check if n is at least 8 (2+2+2+2) */
+    IF n < 8 {
+        RETURN FALSE
+    }
+    
+    RETURN TRUE
+}

@@ -1,0 +1,36 @@
+# HumanEval/105: Find largest gap between sorted numbers
+(by_length lst) = 
+  (if (lt (length lst) (s (s (z))))
+      (z)
+      (max_gap (sort lst)));
+
+(max_gap lst) = 
+  (max_gap_helper lst (z));
+
+(max_gap_helper (cons x (nil)) max_so_far) = max_so_far;
+(max_gap_helper (cons x (cons y ys)) max_so_far) = 
+  (max_gap_helper (cons y ys)
+                  (max max_so_far (sub y x)));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+(max x y) = (if (gt x y) x y);
+(gt x y) = (lt y x);
+
+# Test case: [3, 1, 9, 0] -> 6 (largest gap is between 3 and 9 in sorted list [0, 1, 3, 9])
+(main) = (by_length 
+          (cons (s (s (s (z))))  # 3
+          (cons (s (z))  # 1
+          (cons (s (s (s (s (s (s (s (s (s (z))))))))))  # 9
+          (cons (z)  # 0
+          (nil))))));

@@ -1,0 +1,13 @@
+# Rhokell implementation for is_prime
+# Check if a number is a prime number.
+
+(is_prime (n)) = 
+    (letrec ((check (i))
+        (if (> (* i i) n)
+            true
+            (if (= (mod n i) 0)
+                false
+                (check (+ i 1)))))
+    (if (<= n 1)
+        false
+        (check 2)))

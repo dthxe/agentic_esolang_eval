@@ -1,0 +1,9 @@
+def decode_shift(s):
+    result = ""
+    i = 0
+    while i < len(s):
+        # Shift back by 5 in the alphabet
+        shifted = ((ord(s[i]) - ord('a') - 5) % 26) + ord('a')
+        result = result + chr(shifted)
+        i = i + 1
+    return result

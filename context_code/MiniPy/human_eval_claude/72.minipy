@@ -1,0 +1,11 @@
+def will_it_fly(q, w):
+    if l(q) != l(w):
+        return False
+    if not all(isinstance(x, t) for x in q):
+        return False
+    if sm(q) > sm(w):
+        return False
+    for i in r(l(q)//2):
+        if q[i] != q[l(q)-i-1]:
+            return False
+    return True

@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/121
+# Return the sum of all the odd elements that are in even positions.
+
+def solution(lst):
+    return sm(lst[i] for i in r(l(lst)) if i % 2 == 0 and lst[i] % 2 != 0)

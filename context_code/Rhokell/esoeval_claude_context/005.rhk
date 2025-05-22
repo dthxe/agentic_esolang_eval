@@ -1,0 +1,62 @@
+# Check if a number is prime
+# Helper functions for Church numerals and arithmetic
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+(mul (z) y) = (z);
+(mul (s x) y) = (add y (mul x y));
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+(mod (x) (y)) = (mod_helper (sub x y) x y);
+(mod_helper (z) x y) = x;
+(mod_helper (s n) x y) = (mod (sub x y) y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T;
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # \n
+                           (nil)))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F;
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # \n
+                            (nil))))))));
+
+# Check if number is prime
+(is_prime n) = (is_prime_helper n (s (s (z))));  # Start checking from 2;
+(is_prime_helper n i) = (check_divisor (mod n i) n i);
+(check_divisor (z) n i) = (print_false);  # Found a divisor;
+(check_divisor (s x) n i) = (check_next n i);
+(check_next n i) = (check_size (sub n i) n i);
+(check_size (s (s x)) n i) = (is_prime_helper n (s i));  # Continue checking;
+(check_size x n i) = (print_true);  # No more divisors to check;
+
+# Main function
+(main) = (check_special_cases (digit_to_church (input_byte) (input_byte)));
+
+# Handle special cases (0, 1)
+(check_special_cases (z)) = (print_false);  # 0 is not prime;
+(check_special_cases (s (z))) = (print_false);  # 1 is not prime;
+(check_special_cases n) = (is_prime n);
+
+# Helper function for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

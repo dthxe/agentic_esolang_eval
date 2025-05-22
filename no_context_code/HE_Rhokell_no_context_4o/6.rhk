@@ -1,0 +1,23 @@
+# Rhokell code for HumanEval/6
+# Task: Output the deepest level of nesting of parentheses
+
+# Define a function to parse nested parens
+func parse_nested_parens(paren_string) {
+    depths = []
+    current_depth = 0
+    max_depth = 0
+    
+    # Iterate over each character
+    for char in paren_string {
+        if char == '(' {
+            current_depth += 1
+            if current_depth > max_depth {
+                max_depth = current_depth
+            }
+        } else if char == ')' {
+            current_depth -= 1
+        }
+        depths.append(max_depth)
+    }
+    return depths
+}

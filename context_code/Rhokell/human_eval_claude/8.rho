@@ -1,0 +1,19 @@
+# HumanEval/8: Sum and product of list
+(def sum_product [numbers]
+  (if (empty? numbers)
+    (cons 0 (cons 1 (nil)))
+    (let [pair (sum_product (rest numbers))]
+      (cons (+ (first numbers) (first pair))
+            (cons (* (first numbers) (second pair)) (nil))))))
+
+(def pair [x y] (cons x (cons y (nil))))
+(def first [xs] (if (empty? xs) nil (first xs)))
+(def second [xs] (if (empty? (rest xs)) nil (first (rest xs))))
+
+; Test case: [1, 2, 3, 4]
+(def main (sum_product 
+          (cons 1
+          (cons 2
+          (cons 3
+          (cons 4
+          (nil)))))))

@@ -1,0 +1,18 @@
+/* HumanEval/163 */
+
+FUNC generate_integers(a, b) {
+    /* Ensure a <= b */
+    DECL start = MIN(a, b)
+    DECL end = MAX(a, b)
+    
+    DECL result = []
+    
+    /* Collect all even digits between start and end */
+    LOOP i FROM start TO end {
+        IF i % 2 == 0 && i <= 9 {  /* Only single digits */
+            APPEND(result, i)
+        }
+    }
+    
+    RETURN result
+}

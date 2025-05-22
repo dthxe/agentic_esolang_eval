@@ -1,0 +1,14 @@
+# Rhokell code for HumanEval/43
+# Task: Check if there are two distinct elements that sum to zero
+
+# Define a function to check pairs sum to zero
+func pairs_sum_to_zero(l) {
+    for i in 0 to len(l) - 1 {
+        for j in i + 1 to len(l) {
+            if l[i] + l[j] == 0 {
+                return true
+            }
+        }
+    }
+    return false
+}

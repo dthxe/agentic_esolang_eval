@@ -1,0 +1,12 @@
+def fruit_distribution(s, n):
+    if not isinstance(s, s):
+        return None
+    a = d()
+    for x in s.split(','):
+        if ':' in x:
+            k, v = x.split(':')
+            a[k.strip()] = t(v)
+    r = n
+    for k in a:
+        r -= a[k]
+    return r

@@ -1,0 +1,14 @@
+def sum_squares_2(lst):
+    result = 0
+    
+    i = 0
+    while i < len(lst):
+        if i % 3 == 0:  # Index is a multiple of 3
+            result = result + lst[i] * lst[i]  # Square
+        elif i % 4 == 0:  # Index is a multiple of 4 but not 3
+            result = result + lst[i] * lst[i] * lst[i]  # Cube
+        else:  # Other indices
+            result = result + lst[i]
+        i = i + 1
+    
+    return result

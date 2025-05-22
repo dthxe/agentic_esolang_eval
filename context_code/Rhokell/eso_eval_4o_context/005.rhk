@@ -1,0 +1,64 @@
+# Check if a number is prime
+# Helper functions for Church numerals and arithmetic
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (0)) = (z);
+(digit_to_church (3) (1)) = (s (z));
+(digit_to_church (3) (2)) = (s (s (z)));
+(digit_to_church (3) (3)) = (s (s (s (z))));
+(digit_to_church (3) (4)) = (s (s (s (s (z)))));
+(digit_to_church (3) (5)) = (s (s (s (s (s (z))))));
+(digit_to_church (3) (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church (3) (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church (3) (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church (3) (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Check if n is prime
+(is_prime (s (s (z)))) = (print_true);  # 2 is prime
+(is_prime n) = (is_prime_helper n (s (s (z))));
+
+(is_prime_helper n d) = (if (lt d n) 
+                          (if (is_divisible n d) (print_false) (is_prime_helper n (s d)))
+                          (print_true));
+
+(is_divisible a b) = (check_divisible (mod a b));
+(check_divisible (z)) = (s (z));  # No remainder
+(check_divisible (s x)) = (z);  # Has remainder
+
+# Calculate remainder using repeated subtraction
+(mod a b) = (mod_helper a b);
+(mod_helper a b) = (mod_next (sub a b) a b);
+(mod_next (z) a b) = (z);  # b divides a
+(mod_next (s x) a b) = (mod_step (sub a b) a b);
+(mod_step (z) a b) = (z);  # b divides a
+(mod_step (s x) a b) = (s (mod_helper (sub a b) b));
+
+(lt (z) (s x)) = (s (z));
+(lt (s x) (s y)) = (lt x y);
+(lt x y) = (z);
+
+# Main function
+(main) = (is_prime (digit_to_church (input_byte) (input_byte)));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # newline
+                           (nil))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # newline
+                            (nil))))));
+
+# Helper functions for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

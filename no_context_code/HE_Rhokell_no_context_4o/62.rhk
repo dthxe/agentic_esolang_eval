@@ -1,0 +1,11 @@
+# Rhokell code for HumanEval/62
+# Task: Return derivative of a polynomial
+
+# Define a function to calculate derivative
+func derivative(xs) {
+    derivative_coeffs = []
+    for i in 1 to len(xs) {
+        derivative_coeffs.append(xs[i] * i)
+    }
+    return derivative_coeffs
+}

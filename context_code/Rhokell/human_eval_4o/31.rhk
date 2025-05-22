@@ -1,0 +1,7 @@
+# Rhokell implementation for decode_cyclic
+# Takes as input string encoded with encode_cyclic function. Returns decoded string.
+
+(decode_cyclic (s)) = 
+    (let ((groups (group_by 3 s)))
+    (let ((decoded_groups (map (\g -> (if (= (length g) 3) (cons (last g) (init g)) g)) groups)))
+    (join decoded_groups '')))

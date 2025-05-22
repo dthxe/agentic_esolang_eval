@@ -1,0 +1,5 @@
+# Rhokell implementation for map_cosh
+# Apply hyperbolic cosine function to each element in a list.
+
+(map_cosh (lst)) = 
+    (map (\x -> (cosh x)) lst)

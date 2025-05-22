@@ -1,0 +1,42 @@
+# Check if all characters are vowels
+# Read input string into a list
+(read_string) = (read_char (input_byte));
+(read_char (0)) = (nil);  # Stop at null byte;
+(read_char x) = (cons x (read_string));
+
+# Print True or False
+(print_true) = (print (cons (byte (5) (4)) # T;
+                     (cons (byte (7) (2)) # r
+                     (cons (byte (7) (5)) # u
+                     (cons (byte (6) (5)) # e
+                     (cons (byte (0) (A)) # \n
+                           (nil)))))));
+
+(print_false) = (print (cons (byte (4) (6)) # F;
+                      (cons (byte (6) (1)) # a
+                      (cons (byte (6) (C)) # l
+                      (cons (byte (7) (3)) # s
+                      (cons (byte (6) (5)) # e
+                      (cons (byte (0) (A)) # \n
+                            (nil))))))));
+
+# Check if character is vowel
+(is_vowel (6) (1)) = (s (z));  # 'a';
+(is_vowel (6) (5)) = (s (z));  # 'e';
+(is_vowel (6) (9)) = (s (z));  # 'i';
+(is_vowel (6) (F)) = (s (z));  # 'o';
+(is_vowel (7) (5)) = (s (z));  # 'u';
+(is_vowel x y) = (z);  # Not a vowel;
+
+# Check if all characters are vowels
+(all_vowels (nil)) = (print_true);  # Empty string is all vowels;
+(all_vowels (cons (byte x y) xs)) = (check_vowel (is_vowel x y) xs);
+(check_vowel (z) xs) = (print_false);  # Found non-vowel;
+(check_vowel (s n) xs) = (all_vowels xs);  # Found vowel, continue checking;
+
+# Main function
+(main) = (all_vowels (read_string));
+
+# Helper function for printing
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;

@@ -1,0 +1,16 @@
+# Rhokell code for HumanEval/78
+# Task: Count prime hexadecimal digits
+
+# Define a function to count hex primes
+func hex_key(num) {
+    prime_digits = {'2', '3', '5', '7', 'B', 'D'}
+    count = 0
+    
+    # Count prime digits
+    for ch in num {
+        if ch in prime_digits {
+            count += 1
+        }
+    }
+    return count
+}

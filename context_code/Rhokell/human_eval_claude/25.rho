@@ -1,0 +1,35 @@
+# HumanEval/25: Factorize number into prime factors
+(factorize n) = 
+  (if (lt n (s (s (z))))  # n < 2
+      (nil)
+      (factorize_with_prime n (s (s (z)))));  # Start with 2
+
+(factorize_with_prime n p) = 
+  (if (gt (mul p p) n)  # p*p > n
+      (if (gt n (s (z)))
+          (cons n (nil))
+          (nil))
+      (if (eq (mod n p) (z))  # n % p == 0
+          (cons p (factorize_with_prime (div n p) p))
+          (factorize_with_prime n (s p))));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(gt x y) = (lt y x);
+
+# Test case: 8 -> [2, 2, 2]
+(main) = (factorize 
+          (s (s (s (s (s  # 8 in Church numerals
+          (s (s (s
+          (z))))))))))); 

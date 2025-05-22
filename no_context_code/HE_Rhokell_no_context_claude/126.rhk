@@ -1,0 +1,44 @@
+/* HumanEval/126 */
+
+FUNC is_sorted(lst) {
+    /* Check if the list is empty or has only one element */
+    IF LEN(lst) <= 1 {
+        RETURN TRUE
+    }
+    
+    /* Check if the list is sorted and has at most one duplicate of each number */
+    DECL counts = {}
+    
+    LOOP i FROM 0 TO LEN(lst) - 2 {
+        /* Count occurrences of each number */
+        IF CONTAINS(counts, lst[i]) {
+            counts[lst[i]] = counts[lst[i]] + 1
+        } ELSE {
+            counts[lst[i]] = 1
+        }
+        
+        /* Check if any number appears more than twice */
+        IF counts[lst[i]] > 2 {
+            RETURN FALSE
+        }
+        
+        /* Check if the list is sorted */
+        IF lst[i] > lst[i+1] {
+            RETURN FALSE
+        }
+    }
+    
+    /* Count the last element */
+    IF CONTAINS(counts, lst[LEN(lst) - 1]) {
+        counts[lst[LEN(lst) - 1]] = counts[lst[LEN(lst) - 1]] + 1
+    } ELSE {
+        counts[lst[LEN(lst) - 1]] = 1
+    }
+    
+    /* Check if the last number appears more than twice */
+    IF counts[lst[LEN(lst) - 1]] > 2 {
+        RETURN FALSE
+    }
+    
+    RETURN TRUE
+}

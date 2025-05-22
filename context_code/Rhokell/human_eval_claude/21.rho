@@ -1,0 +1,33 @@
+# HumanEval/21: Rescale numbers to unit interval [0,1]
+(rescale_to_unit numbers) = 
+  (let [min_max (find_min_max numbers)]
+    (rescale_list numbers 
+                  (first min_max) 
+                  (second min_max)));
+
+(find_min_max (cons x (nil))) = (pair x x);
+(find_min_max (cons x xs)) = 
+  (let [rest_min_max (find_min_max xs)]
+    (pair (min x (first rest_min_max))
+          (max x (second rest_min_max))));
+
+(rescale_list (nil) _ _) = (nil);
+(rescale_list (cons x xs) min_val max_val) = 
+  (cons (div (sub x min_val) (sub max_val min_val))
+        (rescale_list xs min_val max_val));
+
+(min x y) = (if (lt x y) x y);
+(max x y) = (if (lt x y) y x);
+
+(pair x y) = (cons x (cons y (nil)));
+(first (cons x _)) = x;
+(second (cons _ (cons y _))) = y;
+
+# Test case: [1.0, 2.0, 3.0, 4.0, 5.0] -> [0.0, 0.25, 0.5, 0.75, 1.0]
+(main) = (rescale_to_unit 
+          (cons (s (z))  # 1.0
+          (cons (s (s (z)))  # 2.0
+          (cons (s (s (s (z))))  # 3.0
+          (cons (s (s (s (s (z)))))  # 4.0
+          (cons (s (s (s (s (s (z))))))  # 5.0
+          (nil)))))));

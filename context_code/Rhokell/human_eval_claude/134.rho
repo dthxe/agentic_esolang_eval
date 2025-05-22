@@ -1,0 +1,32 @@
+# HumanEval/134: Check if all numbers in list are distinct
+(check_if_last_char_is_a_letter str) = 
+  (all_distinct (to_numbers str));
+
+(to_numbers str) = 
+  (map (lambda (x) (sub x (byte (3) (0)))) str);
+
+(all_distinct lst) = 
+  (all_distinct_helper lst (nil));
+
+(all_distinct_helper (nil) _) = (t);
+(all_distinct_helper (cons x xs) seen) = 
+  (if (member x seen)
+      (f)
+      (all_distinct_helper xs (cons x seen)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (eq x y)
+      (t)
+      (member x ys));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+# Test case: '123' -> true (all digits are different)
+(main) = (check_if_last_char_is_a_letter 
+          (cons (byte (3) (1))  # '1'
+          (cons (byte (3) (2))  # '2'
+          (cons (byte (3) (3))  # '3'
+          (nil)))));

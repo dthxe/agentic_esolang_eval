@@ -1,0 +1,33 @@
+# HumanEval/97: Find numbers that are multiples of both a and b
+(multiply(a b) = 
+  (filter (lambda (x) 
+            (and (eq (mod x a) (z))
+                 (eq (mod x b) (z))))
+          (range (s (z)) 
+                (mul a b)));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(range start end) = 
+  (if (gt start end)
+      (nil)
+      (cons start (range (s start) end)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(gt x y) = (lt y x);
+
+# Test case: 3, 5 -> [15]
+(main) = (multiply 
+          (s (s (s (z))))  # 3
+          (s (s (s (s (s (z)))))));

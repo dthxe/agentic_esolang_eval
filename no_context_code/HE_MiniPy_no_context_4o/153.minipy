@@ -1,0 +1,8 @@
+def Strongest_Extension(class_name, extensions):
+    """Finds the strongest extension by CAP - SM."""
+    def strength(ext):
+        cap = sum(1 for c in ext if c.isupper())
+        sm = sum(1 for c in ext if c.islower())
+        return cap - sm
+    strongest = max(extensions, key=strength)
+    return f"{class_name}.{strongest}"

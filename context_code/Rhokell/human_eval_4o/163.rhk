@@ -1,0 +1,5 @@
+# Rhokell implementation for special_factorial
+# Calculate the Brazilian factorial of n.
+
+(special_factorial (n)) = 
+    (foldl (\acc x -> (* acc (factorial x))) 1 (range 1 n))

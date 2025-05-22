@@ -1,0 +1,25 @@
+/* HumanEval/106 */
+
+FUNC f(n) {
+    DECL result = []
+    
+    LOOP i FROM 1 TO n {
+        IF i % 2 == 0 {
+            /* For even indices, calculate factorial */
+            DECL factorial = 1
+            LOOP j FROM 1 TO i {
+                factorial = factorial * j
+            }
+            APPEND(result, factorial)
+        } ELSE {
+            /* For odd indices, calculate sum from 1 to i */
+            DECL sum = 0
+            LOOP j FROM 1 TO i {
+                sum = sum + j
+            }
+            APPEND(result, sum)
+        }
+    }
+    
+    RETURN result
+}

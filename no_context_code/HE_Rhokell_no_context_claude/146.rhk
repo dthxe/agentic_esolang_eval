@@ -1,0 +1,24 @@
+/* HumanEval/146 */
+
+FUNC specialFilter(nums) {
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(nums) - 1 {
+        DECL num = nums[i]
+        
+        /* Check if number is greater than 10 */
+        IF num > 10 {
+            /* Get the first and last digits */
+            DECL num_str = TO_STRING(ABS(num))
+            DECL first_digit = TO_INT(num_str[0])
+            DECL last_digit = TO_INT(num_str[LEN(num_str) - 1])
+            
+            /* Check if both first and last digits are odd */
+            IF first_digit % 2 == 1 && last_digit % 2 == 1 {
+                count = count + 1
+            }
+        }
+    }
+    
+    RETURN count
+}

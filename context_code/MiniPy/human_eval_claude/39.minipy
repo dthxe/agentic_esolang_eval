@@ -1,0 +1,16 @@
+def prime_fib(n):
+    def p(x):
+        if x < 2:
+            return False
+        for i in r(2, t(m.sqrt(x)) + 1):
+            if x % i == 0:
+                return False
+        return True
+    
+    a, b = 1, 1
+    c = 0
+    while c < n:
+        if p(a):
+            c += 1
+        a, b = b, a + b
+    return a

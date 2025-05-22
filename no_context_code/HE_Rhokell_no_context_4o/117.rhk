@@ -1,0 +1,18 @@
+# Rhokell code for HumanEval/117
+# Task: Select words with exactly n consonants
+
+# Define a function to select words
+func select_words(s, n) {
+    vowels = 'aeiouAEIOU'
+    words = split(s, ' ')
+    result = []
+    
+    # Select words with n consonants
+    for word in words {
+        consonant_count = sum([1 for ch in word if ch not in vowels])
+        if consonant_count == n {
+            result.append(word)
+        }
+    }
+    return result
+}

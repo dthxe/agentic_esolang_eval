@@ -1,0 +1,7 @@
+isAnagram :: String -> String -> Bool
+isAnagram s1 s2 = sort s1 == sort s2
+
+main = do
+  s1 <- readLine
+  s2 <- readLine
+  print $ isAnagram s1 s2

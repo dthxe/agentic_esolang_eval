@@ -1,0 +1,5 @@
+# Rhokell implementation for map_atanh
+# Apply inverse hyperbolic tangent function to each element in a list.
+
+(map_atanh (lst)) = 
+    (map (\x -> (atanh x)) lst)

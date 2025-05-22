@@ -1,0 +1,27 @@
+/* HumanEval/117 */
+
+FUNC select_words(s, n) {
+    DECL vowels = "aeiouAEIOU"
+    DECL words = SPLIT(s, " ")
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(words) - 1 {
+        DECL word = words[i]
+        DECL consonant_count = 0
+        
+        /* Count consonants in the word */
+        LOOP j FROM 0 TO LEN(word) - 1 {
+            DECL char = word[j]
+            IF IS_ALPHA(char) && !CONTAINS(vowels, char) {
+                consonant_count = consonant_count + 1
+            }
+        }
+        
+        /* Add word to result if it has exactly n consonants */
+        IF consonant_count == n {
+            APPEND(result, word)
+        }
+    }
+    
+    RETURN result
+}

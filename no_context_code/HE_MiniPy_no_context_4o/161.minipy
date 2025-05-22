@@ -1,0 +1,5 @@
+def solve(s):
+    """Reverses case of letters in s, or reverses string if no letters."""
+    if any(c.isalpha() for c in s):
+        return ''.join(c.swapcase() if c.isalpha() else c for c in s)
+    return s[::-1]

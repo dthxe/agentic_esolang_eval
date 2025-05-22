@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/91
+# Count the number of boredoms in a string.
+
+def is_bored(S):
+    return sm(1 for sentence in S.split('.') if sentence.strip().startswith('I'))

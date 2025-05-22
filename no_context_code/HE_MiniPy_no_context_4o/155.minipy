@@ -1,0 +1,6 @@
+def even_odd_count(num):
+    """Returns a tuple with counts of even and odd digits."""
+    num_str = str(abs(num))
+    evens = sum(1 for digit in num_str if int(digit) % 2 == 0)
+    odds = len(num_str) - evens
+    return evens, odds

@@ -1,0 +1,19 @@
+/* HumanEval/44 */
+
+FUNC change_base(x, base) {
+    IF x == 0 {
+        RETURN "0"
+    }
+    
+    DECL digits = "0123456789"
+    DECL result = ""
+    DECL num = x
+    
+    WHILE num > 0 {
+        DECL remainder = num % base
+        result = digits[remainder] + result
+        num = num / base
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,10 @@
+# Rhokell code for HumanEval/115
+# Task: Calculate number of bucket operations
+
+# Define a function to calculate max fill
+func max_fill(grid, capacity) {
+    total_units = sum([sum(row) for row in grid])
+    
+    # Calculate bucket operations
+    return ceil(total_units / capacity)
+}

@@ -1,0 +1,32 @@
+/* HumanEval/107 */
+
+FUNC even_odd_palindrome(n) {
+    DECL even_count = 0
+    DECL odd_count = 0
+    
+    LOOP i FROM 1 TO n {
+        IF is_palindrome(i) {
+            IF i % 2 == 0 {
+                even_count = even_count + 1
+            } ELSE {
+                odd_count = odd_count + 1
+            }
+        }
+    }
+    
+    RETURN [even_count, odd_count]
+}
+
+FUNC is_palindrome(num) {
+    DECL num_str = TO_STRING(num)
+    DECL length = LEN(num_str)
+    DECL half_length = length / 2
+    
+    LOOP i FROM 0 TO half_length - 1 {
+        IF num_str[i] != num_str[length - 1 - i] {
+            RETURN FALSE
+        }
+    }
+    
+    RETURN TRUE
+}

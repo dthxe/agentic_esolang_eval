@@ -1,0 +1,5 @@
+/* HumanEval/53 */
+
+FUNC add(x, y) {
+    RETURN x + y
+}

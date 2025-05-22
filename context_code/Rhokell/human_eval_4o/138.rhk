@@ -1,0 +1,5 @@
+# Rhokell implementation for map_lower
+# Convert each string in a list to lowercase.
+
+(map_lower (lst)) = 
+    (map (\s -> (to_lower s)) lst)

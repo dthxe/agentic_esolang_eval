@@ -1,0 +1,22 @@
+def find_closest_elements(numbers):
+    if len(numbers) < 2:
+        return None
+    
+    min_diff = float('inf')
+    closest_pair = (0, 0)
+    
+    i = 0
+    while i < len(numbers):
+        j = i + 1
+        while j < len(numbers):
+            diff = abs(numbers[i] - numbers[j])
+            if diff < min_diff:
+                min_diff = diff
+                if numbers[i] <= numbers[j]:
+                    closest_pair = (numbers[i], numbers[j])
+                else:
+                    closest_pair = (numbers[j], numbers[i])
+            j = j + 1
+        i = i + 1
+    
+    return closest_pair

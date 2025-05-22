@@ -1,0 +1,10 @@
+def parse_music(s):
+    r = []
+    for n in s.split():
+        if n == 'o':
+            r.append(4)
+        elif n == 'o|':
+            r.append(2)
+        else:
+            r.append(1)
+    return r

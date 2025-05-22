@@ -1,0 +1,6 @@
+# Rhokell implementation for right_angle_triangle
+# Check if the sides form a right-angled triangle.
+
+(right_angle_triangle (a) (b) (c)) = 
+    (let ((sides (sort [a b c])))
+        (== (+ (* (nth sides 0) (nth sides 0)) (* (nth sides 1) (nth sides 1))) (* (nth sides 2) (nth sides 2))))

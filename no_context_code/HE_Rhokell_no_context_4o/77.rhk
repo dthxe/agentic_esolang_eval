@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/77
+# Task: Check if a number is a cube
+
+# Define a function to check cube
+func iscube(a) {
+    if a < 0 {
+        a = -a
+    }
+    
+    # Check if a is a perfect cube
+    cube_root = round(a ** (1/3))
+    return cube_root ** 3 == a
+}

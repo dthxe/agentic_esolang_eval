@@ -1,0 +1,17 @@
+def match_parens(lst):
+    if not lst:
+        return ls()
+    r = ls()
+    for s in lst:
+        c = 0
+        v = True
+        for x in s:
+            if x == '(':
+                c += 1
+            elif x == ')':
+                c -= 1
+            if c < 0:
+                v = False
+                break
+        r.append(v and c == 0)
+    return r

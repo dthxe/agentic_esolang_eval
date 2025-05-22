@@ -1,0 +1,26 @@
+# HumanEval/127: Find intersection of two intervals
+(intersection interval1 interval2) = 
+  (let [start1 (first interval1)
+        end1 (second interval1)
+        start2 (first interval2)
+        end2 (second interval2)
+        start (max start1 start2)
+        end (min end1 end2)]
+    (if (gt start end)
+        (nil)
+        (pair start end)));
+
+(max x y) = (if (gt x y) x y);
+(min x y) = (if (lt x y) x y);
+
+(first (pair x _)) = x;
+(second (pair _ y)) = y;
+
+(gt x y) = (lt y x);
+
+# Test case: (1,5), (2,3) -> (2,3)
+(main) = (intersection 
+          (pair (s (z))  # 1
+                (s (s (s (s (s (z)))))))  # 5
+          (pair (s (s (z)))  # 2
+                (s (s (s (z))))));

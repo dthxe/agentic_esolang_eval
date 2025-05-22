@@ -1,0 +1,11 @@
+def find_max(words):
+    if not words:
+        return sr
+    m = -1
+    r = sr
+    for w in words:
+        s = sm(1 for x in w if x.isupper())
+        if s > m:
+            m = s
+            r = w
+    return r

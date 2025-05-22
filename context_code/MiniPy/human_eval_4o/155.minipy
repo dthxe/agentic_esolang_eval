@@ -1,0 +1,7 @@
+# Minipy solution for HumanEval/155
+# Return a tuple that has the number of even and odd digits respectively.
+
+def even_odd_count(num):
+    evens = sm(1 for d in str(ab(num)) if int(d) % 2 == 0)
+    odds = sm(1 for d in str(ab(num)) if int(d) % 2 != 0)
+    return (evens, odds)

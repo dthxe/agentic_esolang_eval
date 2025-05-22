@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/162
+# Task: Convert string to MD5 hash
+
+# Define a function to convert to MD5
+func string_to_md5(text) {
+    if len(text) == 0 {
+        return None
+    }
+    
+    # Use MD5 library to hash
+    import md5
+    return md5(text).hexdigest()
+}

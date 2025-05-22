@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/145
+# Sort the given list of integers in ascending order according to the sum of their digits.
+
+def order_by_points(nums):
+    return srt(nums, key=lambda x: (sm(ab(int(d)) for d in str(ab(x))), nums.index(x)))

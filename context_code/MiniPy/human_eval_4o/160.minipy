@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/160
+# Evaluate the algebraic expression built from operator and operand lists.
+
+def do_algebra(operator, operand):
+    expr = sr.join(f'{operand[i]}{operator[i]}' for i in r(l(operator))) + str(operand[-1])
+    return e(expr)

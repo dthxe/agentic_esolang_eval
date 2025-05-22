@@ -1,0 +1,30 @@
+def sort_even(l):
+    # Extract elements at even indices
+    even_indices = []
+    i = 0
+    while i < len(l):
+        if i % 2 == 0:
+            even_indices.append(l[i])
+        i = i + 1
+    
+    # Sort these elements
+    i = 0
+    while i < len(even_indices):
+        j = 0
+        while j < len(even_indices) - i - 1:
+            if even_indices[j] > even_indices[j + 1]:
+                even_indices[j], even_indices[j + 1] = even_indices[j + 1], even_indices[j]
+            j = j + 1
+        i = i + 1
+    
+    # Put sorted elements back in the original list
+    result = l.copy()
+    even_index = 0
+    i = 0
+    while i < len(result):
+        if i % 2 == 0:
+            result[i] = even_indices[even_index]
+            even_index = even_index + 1
+        i = i + 1
+    
+    return result

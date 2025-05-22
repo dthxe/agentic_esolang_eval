@@ -1,0 +1,14 @@
+/* HumanEval/3: Detect if bank account balance falls below zero */
+
+FUNC below_zero(operations) {
+    DECL balance = 0
+    
+    LOOP i FROM 0 TO LEN(operations) - 1 {
+        balance = balance + operations[i]
+        IF balance < 0 {
+            RETURN TRUE
+        }
+    }
+    
+    RETURN FALSE
+}

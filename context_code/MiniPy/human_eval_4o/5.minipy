@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/5
+# Insert a delimiter between every two consecutive elements.
+
+def intersperse(numbers, delimiter):
+    return [val for pair in z(numbers, numbers[1:]) for val in pair] + [numbers[-1]] if numbers else []

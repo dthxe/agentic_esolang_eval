@@ -1,0 +1,26 @@
+/* HumanEval/136 */
+
+FUNC largest_smallest_integers(lst) {
+    DECL largest_negative = NULL
+    DECL smallest_positive = NULL
+    
+    LOOP i FROM 0 TO LEN(lst) - 1 {
+        DECL num = lst[i]
+        
+        /* Update largest negative integer */
+        IF num < 0 {
+            IF largest_negative == NULL || num > largest_negative {
+                largest_negative = num
+            }
+        }
+        
+        /* Update smallest positive integer */
+        IF num > 0 {
+            IF smallest_positive == NULL || num < smallest_positive {
+                smallest_positive = num
+            }
+        }
+    }
+    
+    RETURN [largest_negative, smallest_positive]
+}

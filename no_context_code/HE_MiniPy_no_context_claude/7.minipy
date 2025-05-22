@@ -1,0 +1,8 @@
+def filter_by_substring(strings, substring):
+    result = []
+    i = 0
+    while i < len(strings):
+        if substring in strings[i]:
+            result.append(strings[i])
+        i = i + 1
+    return result

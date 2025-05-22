@@ -1,0 +1,22 @@
+# HumanEval/7: Filter by substring
+(filter_by_substring (nil) _) = (nil);
+(filter_by_substring (cons x xs) sub) = 
+  (if (contains x sub)
+      (cons x (filter_by_substring xs sub))
+      (filter_by_substring xs sub));
+
+(contains str (nil)) = (t);
+(contains (nil) _) = (f);
+(contains (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (contains xs ys)
+      (contains xs (cons y ys)));
+
+# Test case: ['abc', 'bacd', 'cde', 'array'], 'a'
+(main) = (filter_by_substring 
+          (cons (cons (byte (6) (1)) (cons (byte (6) (2)) (cons (byte (6) (3)) (nil))))  # abc
+          (cons (cons (byte (6) (2)) (cons (byte (6) (1)) (cons (byte (6) (3)) (cons (byte (6) (4)) (nil)))))  # bacd
+          (cons (cons (byte (6) (3)) (cons (byte (6) (4)) (cons (byte (6) (5)) (nil))))  # cde
+          (cons (cons (byte (6) (1)) (cons (byte (7) (2)) (cons (byte (7) (2)) (cons (byte (6) (1)) (cons (byte (7) (9)) (nil))))))  # array
+          (nil))))
+          (cons (byte (6) (1)) (nil)));

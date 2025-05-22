@@ -1,0 +1,16 @@
+/* HumanEval/16: Count distinct characters in a string */
+
+FUNC count_distinct_characters(string) {
+    DECL seen = {}
+    DECL count = 0
+    
+    LOOP i FROM 0 TO LEN(string) - 1 {
+        DECL char = TO_LOWER(string[i])
+        IF !CONTAINS(seen, char) {
+            seen[char] = TRUE
+            count = count + 1
+        }
+    }
+    
+    RETURN count
+}

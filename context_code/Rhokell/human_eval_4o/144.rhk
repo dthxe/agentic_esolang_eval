@@ -1,0 +1,5 @@
+# Rhokell implementation for map_pad
+# Pad each string in a list to a specified length with a given character.
+
+(map_pad (lst) (length) (char)) = 
+    (map (\s -> (pad s length char)) lst)

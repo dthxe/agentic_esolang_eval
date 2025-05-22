@@ -1,0 +1,5 @@
+# Rhokell implementation for same_chars
+# Check if two words have the same characters.
+
+(same_chars (s0) (s1)) = 
+    (= (sort (nub s0)) (sort (nub s1)))

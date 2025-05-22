@@ -1,0 +1,5 @@
+# Rhokell implementation for remove_vowels
+# Remove vowels from a string.
+
+(remove_vowels (text)) = 
+    (filter (\ch -> (not (elem ch (cons 'a' (cons 'e' (cons 'i' (cons 'o' (cons 'u' nil)))))))) text)

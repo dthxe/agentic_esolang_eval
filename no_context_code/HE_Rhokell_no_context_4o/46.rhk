@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/46
+# Task: Compute n-th element of the Fib4 sequence
+
+# Define a function to calculate Fib4
+func fib4(n) {
+    fibs = [0, 0, 2, 0]
+    
+    # Calculate Fib4 sequence
+    for i in 4 to n {
+        fibs.append(fibs[i-1] + fibs[i-2] + fibs[i-3] + fibs[i-4])
+    }
+    return fibs[n]
+}

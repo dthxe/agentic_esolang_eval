@@ -1,0 +1,48 @@
+# HumanEval/94: Find largest prime factor
+(skjkasdkd lst) = 
+  (let [primes (filter is_prime lst)]
+    (if (eq primes (nil))
+        (z)
+        (max_list primes)));
+
+(is_prime n) = 
+  (and (gt n (s (z)))
+       (no_factors n (s (s (z)))));
+
+(no_factors n curr) = 
+  (if (gt (mul curr curr) n)
+      (t)
+      (if (eq (mod n curr) (z))
+          (f)
+          (no_factors n (s curr))));
+
+(filter _ (nil)) = (nil);
+(filter f (cons x xs)) = 
+  (if (f x)
+      (cons x (filter f xs))
+      (filter f xs));
+
+(max_list (nil)) = (z);
+(max_list (cons x (nil))) = x;
+(max_list (cons x xs)) = 
+  (max x (max_list xs));
+
+(max x y) = (if (gt x y) x y);
+(gt x y) = (lt y x);
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: [4, 7, 10, 13] -> 13
+(main) = (skjkasdkd 
+          (cons (s (s (s (s (z)))))  # 4
+          (cons (s (s (s (s (s (s (s (z))))))))  # 7
+          (cons (s (s (s (s (s (s (s (s (s (s (z)))))))))))  # 10
+          (cons (s (s (s (s (s (s (s (s (s (s  # 13
+          (s (s (s (z)))))))))))))
+          (nil))))));

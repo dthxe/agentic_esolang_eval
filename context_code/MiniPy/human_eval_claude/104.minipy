@@ -1,0 +1,5 @@
+def unique_digits(x):
+    if not isinstance(x, t):
+        return None
+    s = s(ab(x))
+    return l(set(s)) == l(s)

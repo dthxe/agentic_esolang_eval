@@ -1,0 +1,12 @@
+def file_name_check(s):
+    if not isinstance(s, s):
+        return False
+    p = s.split('.')
+    if l(p) != 2:
+        return False
+    n, e = p
+    if not n or not e:
+        return False
+    if not n[0].isalpha():
+        return False
+    return all(x.isalnum() or x == '_' for x in n)

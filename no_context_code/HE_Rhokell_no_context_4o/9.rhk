@@ -1,0 +1,17 @@
+# Rhokell code for HumanEval/9
+# Task: Generate a list of rolling maximum
+
+# Define a function to calculate rolling max
+func rolling_max(numbers) {
+    max_vals = []
+    current_max = numbers[0]
+    
+    # Iterate over each number
+    for number in numbers {
+        if number > current_max {
+            current_max = number
+        }
+        max_vals.append(current_max)
+    }
+    return max_vals
+}

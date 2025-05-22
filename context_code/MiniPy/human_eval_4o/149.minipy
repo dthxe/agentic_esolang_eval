@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/149
+# Delete strings that have odd lengths and return the resulted list sorted by length and alphabetically.
+
+def sorted_list_sum(lst):
+    return srt((w for w in lst if l(w) % 2 == 0), key=lambda x: (l(x), x))

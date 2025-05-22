@@ -1,0 +1,3 @@
+n = input()
+sqrt = int(n ** 0.5)
+print sqrt * sqrt == n

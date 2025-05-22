@@ -1,0 +1,4 @@
+def same_chars(s1, s2):
+    if not isinstance(s1, s) or not isinstance(s2, s):
+        return False
+    return set(s1.lower()) == set(s2.lower())

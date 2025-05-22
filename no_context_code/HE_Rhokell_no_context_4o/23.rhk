@@ -1,0 +1,13 @@
+# Rhokell code for HumanEval/23
+# Task: Return length of a string
+
+# Define a function to get string length
+func strlen(string) {
+    length = 0
+    
+    # Iterate over each character
+    for char in string {
+        length += 1
+    }
+    return length
+}

@@ -1,0 +1,77 @@
+# Generate Fibonacci sequence up to nth term
+# Helper functions for Church numerals and arithmetic
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Convert Church numeral to decimal string
+(church_to_digit (z)) = (cons (byte (3) (0)) (nil));  # ASCII '0' = 0x30;
+(church_to_digit (s x)) = (add_digit (church_to_digit x));
+(add_digit (cons (byte x y) z)) = (cons (byte (inc_digit x y)) z);
+(inc_digit (3) (0)) = (3) (1);
+(inc_digit (3) (1)) = (3) (2);
+(inc_digit (3) (2)) = (3) (3);
+(inc_digit (3) (3)) = (3) (4);
+(inc_digit (3) (4)) = (3) (5);
+(inc_digit (3) (5)) = (3) (6);
+(inc_digit (3) (6)) = (3) (7);
+(inc_digit (3) (7)) = (3) (8);
+(inc_digit (3) (8)) = (3) (9);
+(inc_digit (3) (9)) = (3) (1) (3) (0);  # Handle two digits;
+
+# Generate Fibonacci sequence
+(fib (z)) = (cons (z) (nil));  # Base case 0;
+(fib (s (z))) = (cons (z) (cons (s (z)) (nil)));  # Base case [0,1];
+(fib n) = (fib_helper n (z) (s (z)) (s (s (z))));  # Start with n=2;
+
+(fib_helper n prev curr count) = 
+    (fib_next (sub n count) prev curr count);
+
+(fib_next (z) prev curr count) = 
+    (reverse (cons curr (cons prev (fib (sub count (s (s (z))))))))  # Done
+(fib_next (s x) prev curr count) = 
+    (fib_helper n curr (add prev curr) (s count))  # Continue
+
+# Print list with brackets and commas
+(print_list xs) = (print_list_helper (cons (byte (5) (B)) # [;
+                                    (append (print_numbers xs)
+                                           (cons (byte (5) (D)) # ]
+                                           (cons (byte (0) (A)) # \n
+                                                 (nil))))) # newline
+
+(print_numbers (cons x (nil))) = (church_to_digit x);
+(print_numbers (cons x xs)) = (append (church_to_digit x)
+                                    (cons (byte (2) (C)) # comma
+                                    (cons (byte (2) (0)) # space
+                                          (print_numbers xs))));
+
+# Reverse a list (for correct order)
+(reverse xs) = (reverse_helper xs (nil));
+(reverse_helper (cons x xs) acc) = (reverse_helper xs (cons x acc));
+(reverse_helper (nil) acc) = acc;
+
+# Main function
+(main) = (print_list_helper (print_list;
+           (fib (digit_to_church (input_byte) (input_byte)))
+         ));
+
+# Helper functions for printing and list manipulation
+(print_list_helper xs) = (print xs);
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

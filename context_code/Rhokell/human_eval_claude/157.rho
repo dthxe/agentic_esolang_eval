@@ -1,0 +1,17 @@
+# HumanEval/157: Check if three sides form right-angle triangle
+(right_angle_triangle a b c) = 
+  (or (eq (add (square a) (square b)) (square c))
+      (or (eq (add (square b) (square c)) (square a))
+          (eq (add (square c) (square a)) (square b))));
+
+(square n) = 
+  (mul n n);
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+# Test case: 3, 4, 5 -> true
+(main) = (right_angle_triangle 
+          (s (s (s (z))))  # 3
+          (s (s (s (s (z)))))  # 4
+          (s (s (s (s (s (z))))));  # 5

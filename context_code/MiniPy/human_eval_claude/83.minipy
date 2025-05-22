@@ -1,0 +1,7 @@
+def starts_one_ends(n):
+    if not isinstance(n, t):
+        return None
+    if n < 0:
+        return None
+    s = s(n)
+    return s[0] == '1' and s[-1] == '1'

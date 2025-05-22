@@ -1,0 +1,6 @@
+# Minipy solution for HumanEval/90
+# Return the 2nd smallest element of the list.
+
+def next_smallest(lst):
+    unique_sorted = srt(set(lst))
+    return unique_sorted[1] if l(unique_sorted) > 1 else None

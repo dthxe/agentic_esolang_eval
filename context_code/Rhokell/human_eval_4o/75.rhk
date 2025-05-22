@@ -1,0 +1,5 @@
+# Rhokell implementation for sum_list
+# Calculate the sum of all elements in a list.
+
+(sum_list (lst)) = 
+    (foldl (+) 0 lst)

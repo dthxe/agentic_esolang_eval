@@ -1,0 +1,26 @@
+/* HumanEval/26 */
+
+FUNC remove_duplicates(numbers) {
+    DECL count = {}
+    
+    /* Count occurrences of each number */
+    LOOP i FROM 0 TO LEN(numbers) - 1 {
+        DECL num = numbers[i]
+        IF CONTAINS(count, num) {
+            count[num] = count[num] + 1
+        } ELSE {
+            count[num] = 1
+        }
+    }
+    
+    /* Keep only numbers that appear once */
+    DECL result = []
+    LOOP i FROM 0 TO LEN(numbers) - 1 {
+        DECL num = numbers[i]
+        IF count[num] == 1 {
+            APPEND(result, num)
+        }
+    }
+    
+    RETURN result
+}

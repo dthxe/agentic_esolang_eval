@@ -1,0 +1,11 @@
+/* HumanEval/14: Return list of all prefixes from shortest to longest */
+
+FUNC all_prefixes(string) {
+    DECL result = []
+    
+    LOOP i FROM 1 TO LEN(string) {
+        APPEND(result, SUBSTRING(string, 0, i))
+    }
+    
+    RETURN result
+}

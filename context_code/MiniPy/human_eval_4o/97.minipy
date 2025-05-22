@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/97
+# Return the product of the unit digits of two integers.
+
+def multiply(a, b):
+    return (ab(a) % 10) * (ab(b) % 10)

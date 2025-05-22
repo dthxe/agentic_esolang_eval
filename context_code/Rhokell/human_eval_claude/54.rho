@@ -1,0 +1,56 @@
+# HumanEval/54: Find same characters between strings
+(same_chars str1 str2) = 
+  (eq_lists (sort (unique str1))
+            (sort (unique str2)));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (byte_eq x y)
+      (t)
+      (member x ys));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (byte_eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+# Test case: 'eabcdzzzz', 'dddzzzzzz' -> false
+(main) = (same_chars 
+          (cons (byte (6) (5))  # 'e'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (nil))))))))))
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (6) (4))  # 'd'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (cons (byte (7) (A))  # 'z'
+          (nil)))))))))));

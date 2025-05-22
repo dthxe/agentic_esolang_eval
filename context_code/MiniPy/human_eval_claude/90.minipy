@@ -1,0 +1,9 @@
+def next_smallest(lst):
+    if not lst:
+        return None
+    m = min(lst)
+    r = None
+    for x in lst:
+        if x > m and (r is None or x < r):
+            r = x
+    return r

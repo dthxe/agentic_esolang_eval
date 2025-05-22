@@ -1,0 +1,37 @@
+# HumanEval/74: Count total matches in list
+(total_match lst1 lst2) = 
+  (if (not (eq_lists (sort lst1) (sort lst2)))
+      (z)
+      (length lst1));
+
+(sort (nil)) = (nil);
+(sort (cons x xs)) = (insert x (sort xs));
+
+(insert x (nil)) = (cons x (nil));
+(insert x (cons y ys)) = 
+  (if (lt x y)
+      (cons x (cons y ys))
+      (cons y (insert x ys)));
+
+(eq_lists (nil) (nil)) = (t);
+(eq_lists (cons x xs) (cons y ys)) = 
+  (if (eq x y)
+      (eq_lists xs ys)
+      (f));
+(eq_lists _ _) = (f);
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+# Test case: [1, 2, 3, 4], [1, 2, 3, 4] -> 4
+(main) = (total_match 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil)))))
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil))))));

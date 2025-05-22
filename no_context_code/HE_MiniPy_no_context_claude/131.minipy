@@ -1,0 +1,21 @@
+def digits(n):
+    # Convert the number to a string to iterate through its digits
+    n_str = str(n)
+    
+    # Calculate the product of odd digits
+    product = 1
+    has_odd_digit = False
+    
+    i = 0
+    while i < len(n_str):
+        digit = int(n_str[i])
+        if digit % 2 == 1:  # Odd digit
+            product = product * digit
+            has_odd_digit = True
+        i = i + 1
+    
+    # Return 0 if all digits are even
+    if not has_odd_digit:
+        return 0
+    
+    return product

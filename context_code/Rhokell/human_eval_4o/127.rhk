@@ -1,0 +1,5 @@
+# Rhokell implementation for map_sum
+# Calculate the sum of each sublist in a list of lists.
+
+(map_sum (lst)) = 
+    (map (\sublist -> (sum_list sublist)) lst)

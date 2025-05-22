@@ -1,0 +1,22 @@
+# HumanEval/24: Find largest divisor smaller than n
+(largest_divisor n) = 
+  (find_divisor n (sub n (s (z))));
+
+(find_divisor n k) = 
+  (if (eq k (s (z)))
+      (s (z))
+      (if (eq (mod n k) (z))
+          k
+          (find_divisor n (sub k (s (z))))));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: 15 -> 5
+(main) = (largest_divisor 
+          (s (s (s (s (s  # 15 in Church numerals
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (z)))))))))))))))));

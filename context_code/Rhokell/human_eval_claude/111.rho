@@ -1,0 +1,50 @@
+# HumanEval/111: Check if strings are similar (same characters, same count)
+(similar str1 str2) = 
+  (and (eq (length str1) (length str2))
+       (all (lambda (x) (eq (count (lambda (y) (byte_eq x y)) str1)
+                           (count (lambda (y) (byte_eq x y)) str2)))
+            (unique str1)));
+
+(unique (nil)) = (nil);
+(unique (cons x xs)) = 
+  (if (member x xs)
+      (unique xs)
+      (cons x (unique xs)));
+
+(member _ (nil)) = (f);
+(member x (cons y ys)) = 
+  (if (byte_eq x y)
+      (t)
+      (member x ys));
+
+(count _ (nil)) = (z);
+(count f (cons x xs)) = 
+  (if (f x)
+      (s (count f xs))
+      (count f xs));
+
+(all _ (nil)) = (t);
+(all f (cons x xs)) = 
+  (if (f x)
+      (all f xs)
+      (f));
+
+(length (nil)) = (z);
+(length (cons _ xs)) = (s (length xs));
+
+# Test case: 'aabbcc', 'ccbbaa' -> true
+(main) = (similar 
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (3))  # 'c'
+          (nil)))))))
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (3))  # 'c'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (2))  # 'b'
+          (cons (byte (6) (1))  # 'a'
+          (cons (byte (6) (1))  # 'a'
+          (nil))))))));

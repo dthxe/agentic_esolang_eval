@@ -1,0 +1,13 @@
+/* HumanEval/30 */
+
+FUNC get_positive(l) {
+    DECL result = []
+    
+    LOOP i FROM 0 TO LEN(l) - 1 {
+        IF l[i] > 0 {
+            APPEND(result, l[i])
+        }
+    }
+    
+    RETURN result
+}

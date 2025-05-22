@@ -1,0 +1,38 @@
+# HumanEval/65: Circular shift of list
+(circular_shift lst n) = 
+  (if (eq n (z))
+      lst
+      (if (gt n (z))
+          (circular_shift (rotate_right lst) (sub n (s (z))))
+          (circular_shift (rotate_left lst) (add n (s (z))))));
+
+(rotate_right (nil)) = (nil);
+(rotate_right lst) = 
+  (cons (last lst)
+        (init lst));
+
+(rotate_left (nil)) = (nil);
+(rotate_left (cons x xs)) = 
+  (append xs (cons x (nil)));
+
+(last (cons x (nil))) = x;
+(last (cons _ xs)) = (last xs);
+
+(init (cons x (nil))) = (nil);
+(init (cons x xs)) = 
+  (cons x (init xs));
+
+(append (nil) ys) = ys;
+(append (cons x xs) ys) = 
+  (cons x (append xs ys));
+
+(gt x y) = (lt y x);
+
+# Test case: [1, 2, 3, 4], 1 -> [4, 1, 2, 3]
+(main) = (circular_shift 
+          (cons (s (z))  # 1
+          (cons (s (s (z)))  # 2
+          (cons (s (s (s (z))))  # 3
+          (cons (s (s (s (s (z)))))  # 4
+          (nil)))))
+          (s (z)));

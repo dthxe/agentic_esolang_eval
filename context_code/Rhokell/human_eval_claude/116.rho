@@ -1,0 +1,49 @@
+# HumanEval/116: Sort array by number of set bits in binary representation
+(sort_array arr) = 
+  (sort_by_key arr count_bits);
+
+(count_bits n) = 
+  (if (eq n (z))
+      (z)
+      (add (mod n (s (s (z))))
+           (count_bits (div n (s (s (z)))))));
+
+(sort_by_key arr key_fn) = 
+  (map second 
+       (sort_by_first 
+        (map (lambda (x) (pair (key_fn x) x)) arr)));
+
+(sort_by_first (nil)) = (nil);
+(sort_by_first (cons x xs)) = 
+  (insert_by_first x (sort_by_first xs));
+
+(insert_by_first x (nil)) = (cons x (nil));
+(insert_by_first x (cons y ys)) = 
+  (if (lt (first x) (first y))
+      (cons x (cons y ys))
+      (cons y (insert_by_first x ys)));
+
+(map _ (nil)) = (nil);
+(map f (cons x xs)) = 
+  (cons (f x) (map f xs));
+
+(first (pair x _)) = x;
+(second (pair _ y)) = y;
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+# Test case: [1, 2, 3, 4] -> [1, 2, 4, 3] (sorted by number of 1s in binary)
+(main) = (sort_array 
+          (cons (s (z))  # 1 (1 bit)
+          (cons (s (s (z)))  # 2 (1 bit)
+          (cons (s (s (s (z))))  # 3 (2 bits)
+          (cons (s (s (s (s (z)))))  # 4 (1 bit)
+          (nil))))));

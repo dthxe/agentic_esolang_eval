@@ -1,0 +1,6 @@
+allEven :: [Int] -> Bool
+allEven = all even
+
+main = do
+  nums <- readList
+  print $ allEven nums

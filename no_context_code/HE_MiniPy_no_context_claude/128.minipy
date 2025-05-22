@@ -1,0 +1,24 @@
+def prod_signs(arr):
+    if not arr:
+        return None
+    
+    # Calculate the product of all signs
+    sign_product = 1
+    i = 0
+    while i < len(arr):
+        if arr[i] < 0:
+            sign_product = sign_product * (-1)
+        elif arr[i] == 0:
+            sign_product = 0
+            break
+        i = i + 1
+    
+    # Calculate the sum of magnitudes
+    magnitude_sum = 0
+    i = 0
+    while i < len(arr):
+        magnitude_sum = magnitude_sum + abs(arr[i])
+        i = i + 1
+    
+    # Return the result
+    return sign_product * magnitude_sum

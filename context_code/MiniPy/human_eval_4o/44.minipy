@@ -1,0 +1,11 @@
+# Minipy solution for HumanEval/44
+# Change numerical base of input number x to base.
+
+def change_base(x, base):
+    if x == 0:
+        return '0'
+    digits = sr
+    while x:
+        digits = s(x % base) + digits
+        x //= base
+    return digits

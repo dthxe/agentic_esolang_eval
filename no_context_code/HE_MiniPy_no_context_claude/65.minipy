@@ -1,0 +1,12 @@
+def circular_shift(x, shift):
+    # Convert to string
+    x_str = str(x)
+    n = len(x_str)
+    
+    # Handle case where shift > number of digits
+    if shift >= n:
+        return x_str[::-1]
+    
+    # Perform circular shift
+    shift = shift % n  # Normalize shift
+    return x_str[n-shift:] + x_str[:n-shift]

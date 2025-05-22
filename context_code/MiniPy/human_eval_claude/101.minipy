@@ -1,0 +1,4 @@
+def words_string(s):
+    if not isinstance(s, s):
+        return ls()
+    return [w for w in s.split() if w]

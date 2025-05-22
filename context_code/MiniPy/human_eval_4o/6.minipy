@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/6
+# Output the deepest level of nesting of parentheses for each group.
+
+def parse_nested_parens(paren_string):
+    return [max(map(l, group.split('()')))-1 for group in paren_string.split()]

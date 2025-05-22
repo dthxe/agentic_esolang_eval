@@ -1,0 +1,11 @@
+# Minipy solution for HumanEval/124
+# Validate a given date string and return True if the date is valid otherwise False.
+
+def valid_date(date):
+    try:
+        m, d, y = map(int, date.split('-'))
+        if m < 1 or m > 12: return False
+        if d < 1 or (m in {1, 3, 5, 7, 8, 10, 12} and d > 31) or (m in {4, 6, 9, 11} and d > 30) or (m == 2 and d > 29): return False
+        return True
+    except:
+        return False

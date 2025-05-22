@@ -1,0 +1,25 @@
+# Rhokell code for HumanEval/128
+# Task: Calculate sum of magnitudes multiplied by product of signs
+
+# Define a function to calculate prod signs
+func prod_signs(arr) {
+    if len(arr) == 0 {
+        return None
+    }
+    
+    # Calculate product of signs
+    sign_product = 1
+    for num in arr {
+        if num > 0 {
+            sign_product *= 1
+        } else if num < 0 {
+            sign_product *= -1
+        } else {
+            sign_product *= 0
+        }
+    }
+    
+    # Calculate sum of magnitudes
+    magnitude_sum = sum([abs(num) for num in arr])
+    return magnitude_sum * sign_product
+}

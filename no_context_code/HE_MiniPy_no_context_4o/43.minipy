@@ -1,0 +1,2 @@
+def pairs_sum_to_zero(l):
+    return any(a + b == 0 for i, a in enumerate(l) for j, b in enumerate(l) if i != j)

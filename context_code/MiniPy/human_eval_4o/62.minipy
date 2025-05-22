@@ -1,0 +1,5 @@
+# Minipy solution for HumanEval/62
+# Return derivative of a polynomial represented by coefficients.
+
+def derivative(xs):
+    return [i * xs[i] for i in r(1, l(xs))]

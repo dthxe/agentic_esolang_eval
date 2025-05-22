@@ -1,0 +1,27 @@
+/* HumanEval/158 */
+
+FUNC find_max(words) {
+    DECL max_unique = 0
+    DECL result = ""
+    
+    LOOP i FROM 0 TO LEN(words) - 1 {
+        DECL word = words[i]
+        DECL unique_chars = {}
+        
+        /* Count unique characters */
+        LOOP j FROM 0 TO LEN(word) - 1 {
+            unique_chars[word[j]] = TRUE
+        }
+        
+        DECL unique_count = LEN(unique_chars)
+        
+        /* Update result if this word has more unique characters */
+        /* or if it has the same number but comes first lexicographically */
+        IF unique_count > max_unique || (unique_count == max_unique && word < result) {
+            max_unique = unique_count
+            result = word
+        }
+    }
+    
+    RETURN result
+}

@@ -1,0 +1,59 @@
+# Convert decimal number to binary
+# Helper functions for Church numerals and arithmetic
+(add (z) y) = (y);
+(add (s x) y) = (s (add x y));
+(sub (z) y) = (z);
+(sub (s x) (z)) = (s x);
+(sub (s x) (s y)) = (sub x y);
+(div2 n) = (div2_helper n (z) (z));
+(div2_helper (z) q r) = q;
+(div2_helper (s n) q r) = (div2_helper n (s q) (flip r));
+(flip (z)) = (s (z));
+(flip (s x)) = (z);
+(mod2 n) = (mod2_helper n (z));
+(mod2_helper (z) r) = r;
+(mod2_helper (s n) r) = (mod2_helper n (flip r));
+
+# Convert string digit to Church numeral
+(digit_to_church (3) (x)) = (digit_to_church_helper x);
+(digit_to_church_helper (0)) = (z);
+(digit_to_church_helper (1)) = (s (z));
+(digit_to_church_helper (2)) = (s (s (z)));
+(digit_to_church_helper (3)) = (s (s (s (z))));
+(digit_to_church_helper (4)) = (s (s (s (s (z)))));
+(digit_to_church_helper (5)) = (s (s (s (s (s (z))))));
+(digit_to_church_helper (6)) = (s (s (s (s (s (s (z)))))));
+(digit_to_church_helper (7)) = (s (s (s (s (s (s (s (z))))))));
+(digit_to_church_helper (8)) = (s (s (s (s (s (s (s (s (z)))))))));
+(digit_to_church_helper (9)) = (s (s (s (s (s (s (s (s (s (z))))))))));
+
+# Convert number to binary string
+(to_binary (z)) = (cons (byte (3) (0)) (nil));  # Just "0";
+(to_binary n) = (reverse (to_binary_helper n));
+
+(to_binary_helper (z)) = (nil);
+(to_binary_helper n) = (cons;
+                        (binary_digit (mod2 n))
+                        (to_binary_helper (div2 n)));
+
+(binary_digit (z)) = (byte (3) (0));  # ASCII '0';
+(binary_digit (s x)) = (byte (3) (1));  # ASCII '1';
+
+# Reverse a list
+(reverse xs) = (reverse_helper xs (nil));
+(reverse_helper (cons x xs) acc) = (reverse_helper xs (cons x acc));
+(reverse_helper (nil) acc) = acc;
+
+# Main function
+(main) = (print;
+          (append 
+            (to_binary (digit_to_church (input_byte) (input_byte)))
+            (cons (byte (0) (A)) (nil))  # Add newline
+          )
+        );
+
+# Helper functions for printing and list manipulation
+(print (cons x y)) = (then (output x) (print y));
+(then a b) = b;
+(append (cons x xs) ys) = (cons x (append xs ys));
+(append (nil) ys) = ys;

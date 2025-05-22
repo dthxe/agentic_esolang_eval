@@ -1,0 +1,5 @@
+# Rhokell implementation for concatenate
+# Concatenate list of strings into a single string.
+
+(concatenate (strings)) = 
+    (foldl (\acc x -> (append acc x)) '' strings)

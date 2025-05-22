@@ -1,0 +1,5 @@
+# Rhokell implementation for map_log1p
+# Apply log(1 + x) function to each element in a list.
+
+(map_log1p (lst)) = 
+    (map (\x -> (log1p x)) lst)

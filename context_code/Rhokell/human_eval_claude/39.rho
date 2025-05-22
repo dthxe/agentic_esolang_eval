@@ -1,0 +1,53 @@
+# HumanEval/39: Find prime factors
+(prime_fac n) = 
+  (if (lt n (s (s (z))))  # n < 2
+      (nil)
+      (prime_fac_with n (s (s (z)))));  # Start with 2
+
+(prime_fac_with n p) = 
+  (if (gt (mul p p) n)  # p*p > n
+      (if (gt n (s (z)))
+          (cons n (nil))
+          (nil))
+      (if (eq (mod n p) (z))  # n % p == 0
+          (cons p (prime_fac_with (div n p) p))
+          (prime_fac_with n (s p))));
+
+(mod a b) = 
+  (if (lt a b)
+      a
+      (mod (sub a b) b));
+
+(div a b) = 
+  (if (lt a b)
+      (z)
+      (s (div (sub a b) b)));
+
+(mul (z) _) = (z);
+(mul (s n) m) = (add m (mul n m));
+
+(gt x y) = (lt y x);
+
+# Test case: 100 -> [2, 2, 5, 5]
+(main) = (prime_fac 
+          (s (s (s (s (s  # 100 in Church numerals
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (s (s (s (s (s
+          (z))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));

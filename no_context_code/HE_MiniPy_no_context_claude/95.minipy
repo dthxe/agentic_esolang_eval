@@ -1,0 +1,30 @@
+def check_dict_case(dict):
+    if not dict:
+        return False
+    
+    # Check if all keys are strings
+    all_strings = True
+    i = 0
+    keys = list(dict.keys())
+    while i < len(keys):
+        if type(keys[i]) != str:
+            all_strings = False
+            break
+        i = i + 1
+    
+    if not all_strings:
+        return False
+    
+    # Check if all keys are lowercase or all keys are uppercase
+    all_lower = True
+    all_upper = True
+    
+    i = 0
+    while i < len(keys):
+        if not keys[i].islower():
+            all_lower = False
+        if not keys[i].isupper():
+            all_upper = False
+        i = i + 1
+    
+    return all_lower or all_upper
