@@ -1,0 +1,1 @@
+}:start:|~}:n:<:2:x~}:factor:<:0:x~}:largest:}:factorize_loop:<:n:x<:1:x-#:end_factorize:<:n:x<:factor:x/~<:factor:x<:n:x/~*~<:n:x-#:not_divisible:<:factor:x~}:largest:<:n:x<:factor:x/~}:n:^:factorize_loop:}:not_divisible:<:factor:x<:1:x+~}:factor:^:factorize_loop:}:end_factorize:<:largest:x~%}:end:

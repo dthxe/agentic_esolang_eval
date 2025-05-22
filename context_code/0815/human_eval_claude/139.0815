@@ -1,0 +1,1 @@
+}:start:}:input_n:!~}:special_factorial:}:init_vars:<:1:x~}:result:<:n:x~}:current:}:factorial_loop:<:current:x<:1:x<#:end_factorial:}:multiply:<:result:x<:current:x*~}:result:}:decrement:<:current:x<:1:x-~}:current:^:factorial_loop:}:end_factorial:}:check_special:<:n:x<:2:x%<:0:x=#:even:}:even:<:result:x<:2:x*~%^:end:}:odd:<:result:x~%}:end:

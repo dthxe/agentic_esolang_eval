@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:calculate_prod:<:1:x~}:product:}:calc_loop:{~<:0:x#:end_calc:~<:0:x-#:negative:<:0:x-#:zero:<:1:x~}:sign:^:multiply:}:negative:<:1:x~}:neg:<:neg:x~}:sign:^:multiply:}:zero:<:0:x~}:product:^:end_calc:}:multiply:<:product:x<:sign:x*~}:product:^:calc_loop:}:end_calc:<:product:x~%}:end:

@@ -1,0 +1,1 @@
+}:start:|~}:decimal:<:decimal:x<:0:x-#:not_zero:<:30:x~$^:end:}:not_zero:?}:binary:}:convert_loop:<:decimal:x<:0:x#:end_convert:<:decimal:x<:2:x/~}:remainder:<:decimal:x<:2:x/~}:decimal:<:remainder:x~>~^:convert_loop:}:end_convert:}:print_binary:}:print_loop:{~<:0:x#:end_print:<:30:x<:0:x+~$~^:print_loop:}:end_print:}:end:

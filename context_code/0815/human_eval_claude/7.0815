@@ -1,0 +1,16 @@
+}:start: Input the list of strings. End with an empty line.
+}:input_strings:}:input_loop:!~<:0:x#:end_strings:>}:store_string:!~<:0A:x-^:input_loop:}:end_strings:
+}:store_string: Store each character of the string
+<:0:x~}:str_len:}:store_char_loop:!~<:0:x#:end_store_char:>~<:1:x+~}:str_len:^:store_char_loop:
+}:end_store_char:>~^:input_loop:
+}:input_substring: Input the substring to search for
+}:sub_input_loop:!~<:0:x#:end_sub_input:>}:store_sub:!~<:0A:x-^:sub_input_loop:}:end_sub_input:
+}:store_sub: Store each character of the substring
+<:0:x~}:sub_len:}:store_sub_loop:!~<:0:x#:end_store_sub:>~<:1:x+~}:sub_len:^:store_sub_loop:
+}:end_store_sub:>~^:sub_input_loop:
+}:filter_strings: Filter strings containing the substring
+}:filter_loop:{~<:0:x#:end_filter:}:check_string:}:check_loop:{~<:0:x#:end_check:
+}:substring_check:}:sub_check_loop:{~<:0:x#:end_sub_check:}:match_found:^:next_string:
+}:end_sub_check:}:end_check:}:next_string:^:filter_loop:}:end_filter:
+}:match_found: Print the matching string
+}:print_match:{~<:0:x#:end_print:$~^:print_match:}:end_print:<:0A:~$~^:next_string:}:end:

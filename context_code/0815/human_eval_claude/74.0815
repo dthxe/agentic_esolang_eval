@@ -1,0 +1,1 @@
+}:start:}:input_list1:}:input_loop1:|~<:0:x#:end_input1:>~^:input_loop1:}:end_input1:}:input_list2:}:input_loop2:|~<:0:x#:end_input2:>~^:input_loop2:}:end_input2:}:check_match:<:1:x~}:result:}:check_loop:{~<:0:x#:end_check:~}:a:~}:b:<:a:x<:b:x-#:not_equal:<:0:x~}:result:^:end_check:}:not_equal:^:check_loop:}:end_check:<:result:x~%}:end:

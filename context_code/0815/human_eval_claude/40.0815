@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:find_triples:<:0:x~}:count:}:outer_loop:{~<:0:x#:end_outer:~}:a:}:middle_loop:{~<:0:x#:end_middle:~}:b:}:inner_loop:{~<:0:x#:end_inner:~}:c:<:a:x<:b:x+~<:c:x+~<:0:x-#:not_zero:<:count:x<:1:x+~}:count:}:not_zero:^:inner_loop:}:end_inner:^:middle_loop:}:end_middle:^:outer_loop:}:end_outer:<:count:x~%}:end:

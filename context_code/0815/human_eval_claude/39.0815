@@ -1,0 +1,1 @@
+}:start:|~}:n:<:0:x~}:count:<:1:x~}:a:<:1:x~}:b:}:fib_loop:<:count:x<:n:x-^:end:<:a:x~}:temp:<:b:x~}:a:<:temp:x<:b:x+~}:b:}:check_prime:<:a:x<:2:x-#:not_prime:<:2:x~}:i:}:prime_loop:<:i:x<:i:x*~<:a:x-^:not_prime:<:i:x<:1:x+~}:i:<:i:x<:a:x-#:is_prime:^:prime_loop:}:is_prime:<:count:x<:1:x+~}:count:<:a:x~%^:fib_loop:}:not_prime:^:fib_loop:}:end:

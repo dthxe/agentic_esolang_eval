@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:sum_squares:<:0:x~}:sum:}:process_loop:{~<:0:x#:end_process:~<:0:x-#:negative:<:0:x<:0:x-~*~<:sum:x+~}:sum:^:process_loop:}:negative:<:0:x~*~<:sum:x+~}:sum:^:process_loop:}:end_process:<:sum:x~%}:end:

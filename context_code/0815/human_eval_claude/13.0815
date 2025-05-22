@@ -1,0 +1,7 @@
+}:start: Input the first number
+|~}:a:}:input_b:
+|~}:b:
+}:gcd: Calculate GCD using Euclidean algorithm
+}:gcd_loop:<:a:x<:0:x#:a_is_zero:<:b:x<:0:x#:b_is_zero:<:a:x<:b:x-#:a_less_b:}:a_greater_b:
+<:a:x~}:temp:<:b:x~}:a:<:temp:x<:b:x/~}:b:^:gcd_loop:}:a_less_b:<:b:x~}:temp:<:a:x~}:b:
+<:temp:x<:a:x/~}:a:^:gcd_loop:}:a_is_zero:<:b:x~%^:end:}:b_is_zero:<:a:x~%}:end:

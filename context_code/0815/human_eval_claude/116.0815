@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:sort_array:}:sort_loop:{~<:0:x#:end_sort:}:inner_sort:{~<:0:x#:end_inner:{~<:0:x#:next_pair:-^:swap_pair:>~^:next_pair:}:swap_pair:>~{~>~^:next_pair:}:next_pair:^:inner_sort:}:end_inner:^:sort_loop:}:end_sort:}:print_sorted:}:print_loop:{~<:0:x#:end_print:~%^:print_loop:}:end_print:}:end:

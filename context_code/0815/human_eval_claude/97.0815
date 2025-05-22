@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:multiply:<:1:x~}:result:}:multiply_loop:{~<:0:x#:end_multiply:<:result:x*~}:result:^:multiply_loop:}:end_multiply:<:result:x~%}:end:

@@ -1,0 +1,8 @@
+}:start: Input the list numbers, one by one. End with a non-number.
+|~<:0:x#:end_input:>}:input_loop:|~>^:input_loop:}:end_input:
+}:input_delim: Input the delimiter number
+|~}:process:
+}:process: Process the list and insert delimiter
+{~<:0:x#:end_process:~%<:0:x#:first_element:<:delimiter:x~%}:first_element:~%^:process_loop:}:end_process:
+}:process_loop: Continue processing
+{~<:0:x#:end_process_loop:~%^:process_loop:}:end_process_loop:}:end:

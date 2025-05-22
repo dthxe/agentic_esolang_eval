@@ -1,0 +1,9 @@
+}:start: Input numbers, one by one. End with a non-number.
+|~<:0:x#:end_input:>}:input_loop:|~>^:input_loop:}:end_input:
+}:count_and_sum: Count elements and calculate sum
+<:0:x~}:count:<:0:x~}:sum:}:count_loop:{~<:0:x#:end_count:<:1:x+~}:count:~+~}:sum:^:count_loop:}:end_count:
+}:calculate_mean: Calculate the mean
+<:sum:x<:count:x/~}:mean:
+}:calculate_mad: Calculate mean absolute deviation
+<:0:x~}:abs_dev_sum:}:mad_loop:{~<:0:x#:end_mad:~<:mean:x-~ab~+~}:abs_dev_sum:^:mad_loop:}:end_mad:
+<:abs_dev_sum:x<:count:x/~%}:end:

@@ -1,0 +1,1 @@
+}:start:|~}:n:<:n:x<:0:x-#:not_zero:<:0:x~%^:end:}:not_zero:<:n:x<:1:x-#:not_one:<:1:x~%^:end:}:not_one:<:n:x<:2:x-#:not_two:<:2:x~%^:end:}:not_two:<:n:x<:3:x-#:not_three:<:4:x~%^:end:}:not_three:<:n:x<:4:x-~}:n:<:n:x~}:fib_n:<:n:x<:1:x-~}:n:<:n:x~}:fib_n_1:<:n:x<:1:x-~}:n:<:n:x~}:fib_n_2:<:n:x<:1:x-~}:n:<:n:x~}:fib_n_3:<:fib_n:x<:fib_n_1:x+~<:fib_n_2:x+~<:fib_n_3:x+~%}:end:

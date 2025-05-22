@@ -1,0 +1,1 @@
+}:start:}:input_array:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:input_target:|~}:target:}:search_array:<:0:x~}:index:}:search_loop:{~<:0:x#:end_search:~<:target:x-#:not_found:<:index:x~%^:end:}:not_found:<:index:x<:1:x+~}:index:^:search_loop:}:end_search:<:1:x~}:neg:<:neg:x~%}:end:

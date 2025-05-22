@@ -1,0 +1,6 @@
+}:start:!~<:28:x-#:not_open_paren:>}:input_loop:!~<:28:x-^:input_loop:<:29:x-#:not_close_paren:>^:input_loop:}:not_open_paren:}:not_close_paren:
+}:process:<:0:x~}:group_start:<:1:x~}:depth_loop:{~<:0:x#:end_process:<:28:x-#:not_open:<:29:x-#:not_close:
+<:28:x-^:open_paren:<:29:x-^:close_paren:^:next_char:}:open_paren:<:1:x+~<:1:x#:start_group:^:next_char:
+}:start_group:$~^:next_char:}:close_paren:<:1:x-~<:0:x#:end_group:^:next_char:}:end_group:<:0D:~$~<:0:x~
+^:next_char:}:not_open:}:not_close:}:next_char:>~^:depth_loop:}:end_process:
+}:print_groups:{~<:0:x#:end_print:$~^:print_loop:}:end_print:

@@ -1,0 +1,1 @@
+}:start:}:input_a:!~}:input_b:!~}:compare_one:}:check_equal:<:a:x<:b:x=#:equal:}:check_greater:<:a:x<:b:x>#:a_greater:}:check_less:<:a:x<:b:x<#:b_greater:}:equal:<:1:x~%^:end:}:a_greater:<:0:x~%^:end:}:b_greater:<:-1:x~%}:end:

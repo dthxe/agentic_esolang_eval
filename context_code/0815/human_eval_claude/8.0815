@@ -1,0 +1,4 @@
+}:start: Input numbers, one by one. End with a non-number.
+<:0:x~}:sum:<:1:x~}:product:}:input_loop:|~<:0:x#:end_input:~=~+~}:sum:~=~*~}:product:>~^:input_loop:}:end_input:
+}:print_results: Print the sum and product
+<:sum:x~%<:20:~$<:product:x~%}:end:

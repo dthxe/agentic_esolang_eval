@@ -1,0 +1,1 @@
+}:start:}:input_string:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:}:count_upper:<:0:x~}:count:}:check_loop:{~<:0:x#:end_check:~<:41:x-#:not_a:<:5a:x-#:is_upper:^:next_char:}:not_a:^:next_char:}:is_upper:<:count:x<:1:x+~}:count:}:next_char:^:check_loop:}:end_check:<:count:x~%}:end:

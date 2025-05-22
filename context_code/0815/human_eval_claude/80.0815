@@ -1,0 +1,1 @@
+}:start:|~}:n:<:n:x~}:seen:}:happy_loop:<:n:x<:1:x-#:is_happy:<:0:x~}:sum:}:digit_sum:<:n:x<:0:x#:end_sum:<:n:x<:a:x/~}:remainder:<:remainder:x<:remainder:x*~<:sum:x+~}:sum:<:n:x<:a:x/~}:n:^:digit_sum:}:end_sum:<:sum:x~}:n:}:check_seen:}:seen_loop:{~<:0:x#:end_seen:<:n:x-#:found_cycle:<:0:x~%^:end:}:found_cycle:^:seen_loop:}:end_seen:<:n:x~>~^:happy_loop:}:is_happy:<:1:x~%}:end:

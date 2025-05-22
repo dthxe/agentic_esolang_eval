@@ -1,0 +1,1 @@
+}:start:|~}:n:<:n:x<:2:x-#:less_than_two:<:2:x~}:i:}:check_loop:<:i:x<:i:x*~<:n:x-^:not_prime:<:i:x<:1:x+~}:i:<:i:x<:n:x-#:end_check:^:check_loop:}:end_check:<:1:x~%^:end:}:less_than_two:<:0:x~%^:end:}:not_prime:<:0:x~%}:end:

@@ -1,0 +1,5 @@
+}:start: Input numbers, one by one. End with a non-number.
+|~<:0:x#:end_input:>}:input_loop:|~>^:input_loop:}:end_input:
+}:calculate_rolling_max: Calculate the rolling maximum
+<:ffffffffffffffff:x~}:current_max:}:process_loop:{~<:0:x#:end_process:~<:current_max:x-^
+:update_max:~%^:next_element:}:update_max:~}:current_max:~%}:next_element:^:process_loop:}:end_process:}:end:

@@ -1,0 +1,1 @@
+}:start:}:input_array:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:count_changes:<:0:x~}:count:}:check_loop:{~<:0:x#:end_check:~}:a:{~<:0:x#:end_inner:~}:b:<:a:x<:b:x-#:not_equal:^:inner_next:}:not_equal:<:count:x<:1:x+~}:count:}:inner_next:^:check_loop:}:end_check:<:count:x~%}:end_inner:}:end:

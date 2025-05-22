@@ -1,0 +1,9 @@
+}:start:|~<:0:x#:end_input:>}:input_loop:|~>^:input_loop:}:end_input:
+}:threshold:|~}:process:
+}:process:{~<:0:x#:no_elements:~>}:outer_loop:{~<:0:x#:end_outer:~>}:inner_loop:
+{~<:0:x#:end_inner:~-~=^:check_diff:#:next_inner:}:check_diff:
+<:0:x~=~-~=<:0:x#:next_inner:~ab~<:threshold:x-#:found_close:}:next_inner:
+>~^:inner_loop:}:end_inner:>&~^:outer_loop:}:end_outer:
+}:no_elements:<:0:x~%^:end:
+}:found_close:<:1:x~%^:end:
+}:not_found:<:0:x~%}:end:

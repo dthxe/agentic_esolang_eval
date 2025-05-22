@@ -1,0 +1,6 @@
+}:start: Input a string
+}:input_string:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:
+}:generate_prefixes: Generate and print all prefixes
+<:0:x~}:prefix_len:}:prefix_loop:{~<:0:x#:end_prefixes:<:prefix_len:x<:1:x+~}:prefix_len:
+}:print_prefix:{~<:0:x#:end_print:<:prefix_len:x-#:done_prefix:$~^:print_prefix:}:done_prefix:
+<:0A:~$~^:prefix_loop:}:end_print:}:end_prefixes:}:end:

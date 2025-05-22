@@ -1,0 +1,6 @@
+}:start: Input a number
+|~}:n:
+}:find_largest_divisor: Find the largest divisor less than n
+<:n:x<:2:x/~}:start_div:}:divisor_loop:<:start_div:x<:0:x#:end_loop:<:n:x<:start_div:x/~
+<:start_div:x<:n:x/~*~<:n:x-#:not_divisor:<:start_div:x~%^:end:}:not_divisor:<:start_div:x<:1:x-~
+}:start_div:^:divisor_loop:}:end_loop:<:1:x~%}:end:

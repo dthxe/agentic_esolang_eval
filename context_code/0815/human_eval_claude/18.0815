@@ -1,0 +1,10 @@
+}:start: Input the main string
+}:input_string:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:
+}:input_substring: Input the substring to search for
+}:input_sub:}:sub_loop:!~<:0:x#:end_sub_input:>~^:sub_loop:}:end_sub_input:
+}:count_occurrences: Count occurrences of substring in string
+<:0:x~}:count:}:search_loop:{~<:0:x#:end_search:}:check_match:}:match_loop:{~<:0:x#:end_match:
+-#:no_match:^:match_loop:}:no_match:^:next_pos:}:found_match:<:count:x<:1:x+~}:count:}:next_pos:
+^:search_loop:}:end_search:
+}:print_result: Print the count of occurrences
+<:count:x~%}:end:

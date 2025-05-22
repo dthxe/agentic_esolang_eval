@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:input_threshold:|~}:threshold:}:check_below:<:1:x~}:result:}:check_loop:{~<:0:x#:end_check:~<:threshold:x-#:above_threshold:<:0:x~}:result:^:end_check:}:above_threshold:^:check_loop:}:end_check:<:result:x~%}:end:

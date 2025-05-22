@@ -1,0 +1,1 @@
+}:start:|~}:n:<:n:x<:0:x-#:not_zero:<:0:x~%^:end:}:not_zero:<:n:x<:1:x-#:not_one:<:1:x~%^:end:}:not_one:<:1:x~}:a:<:1:x~}:b:<:2:x~}:i:}:fib_loop:<:i:x<:n:x-^:end_fib:<:a:x~}:temp:<:b:x~}:a:<:temp:x<:b:x+~}:b:<:i:x<:1:x+~}:i:^:fib_loop:}:end_fib:<:a:x~%}:end:

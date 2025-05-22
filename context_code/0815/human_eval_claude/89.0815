@@ -1,0 +1,1 @@
+}:start:}:input_string:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:}:encrypt:}:encrypt_loop:{~<:0:x#:end_encrypt:<:0:x#:even_index:<:61:x+~$^:next_char:}:even_index:<:61:x-~$}:next_char:^:encrypt_loop:}:end_encrypt:}:end:

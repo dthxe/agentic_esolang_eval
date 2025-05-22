@@ -1,0 +1,6 @@
+}:start: Input a number n
+|~}:n:
+}:generate_sequence: Generate and print the sequence
+<:0:x~}:i:}:sequence_loop:<:i:x<:n:x-^:end:<:i:x<:0:x#:zero_case:}:print_number:
+<:i:x~%}:space:<:20:~$}:next_number:<:i:x<:1:x+~}:i:^:sequence_loop:}:zero_case:<:0:x~%
+^:space:}:end:

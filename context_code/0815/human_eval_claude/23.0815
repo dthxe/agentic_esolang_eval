@@ -1,0 +1,4 @@
+}:start: Input a string
+<:0:x~}:length:}:input_loop:!~<:0:x#:end_input:<:length:x<:1:x+~}:length:^:input_loop:}:end_input:
+}:print_result: Print the length of the string
+<:length:x~%}:end:

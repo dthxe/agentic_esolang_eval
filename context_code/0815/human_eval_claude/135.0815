@@ -1,0 +1,1 @@
+}:start:}:input_arr:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:}:can_arrange:}:init_vars:<:0:x~}:sum:<:0:x~}:count:<:0:x~}:calc_loop:<:count:x<:0:x#:end_calc:~}:val:}:add_to_sum:<:sum:x<:val:x+~}:sum:<:count:x<:1:x+~}:count:^:calc_loop:}:end_calc:}:check_divisible:<:sum:x<:3:x%<:0:x=#:divisible_by_3:<:0:x~%^:end:}:divisible_by_3:<:1:x~%}:end:

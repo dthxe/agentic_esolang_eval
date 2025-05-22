@@ -1,0 +1,1 @@
+}:start:}:input_n:!~}:get_max_triples:}:init_vars:<:0:x~}:result:<:1:x~}:i:}:process_loop:<:i:x<:n:x<#:end_process:}:check_divisible:<:i:x<:3:x%<:0:x=#:divisible_by_3:}:next_i:<:i:x<:1:x+~}:i:^:process_loop:}:divisible_by_3:}:increment_result:<:result:x<:1:x+~}:result:^:next_i:}:end_process:}:print_result:<:result:x<:1:x-~%}:end:

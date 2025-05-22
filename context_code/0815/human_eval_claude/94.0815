@@ -1,0 +1,1 @@
+}:start:|~}:lst:}:count_elements:<:0:x~}:count:}:count_loop:{~<:0:x#:end_count:<:count:x<:1:x+~}:count:^:count_loop:}:end_count:}:find_largest:<:0:x~}:largest:}:find_loop:{~<:0:x#:end_find:~<:largest:x-#:not_larger:<:largest:x~}:largest:^:find_loop:}:not_larger:^:find_loop:}:end_find:<:largest:x<:count:x*~%}:end:

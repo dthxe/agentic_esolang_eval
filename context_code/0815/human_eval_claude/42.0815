@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:increment:}:incr_loop:{~<:0:x#:end_incr:~<:1:x+~%^:incr_loop:}:end_incr:}:end:

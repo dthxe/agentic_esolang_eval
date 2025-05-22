@@ -1,0 +1,5 @@
+}:start: Input numbers, one by one. End with a non-number.
+|~<:0:x#:end_input:>}:input_loop:|~>^:input_loop:}:end_input:
+}:remove_duplicates: Remove duplicates from the list
+?}:process_loop:{~<:0:x#:end_process:~}:check_duplicate:}:check_loop:{~<:0:x#:not_duplicate:-#:is_duplicate:
+^:check_loop:}:not_duplicate:~%>~^:process_loop:}:is_duplicate:^:process_loop:}:end_process:}:end:

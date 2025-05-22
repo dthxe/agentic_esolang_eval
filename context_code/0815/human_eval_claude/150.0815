@@ -1,0 +1,1 @@
+}:start:}:input_n:!~}:input_m:!~}:x_or_y:}:check_divisible_by_n:<:n:x<:3:x%<:0:x=#:div_by_3:}:check_divisible_by_m:<:n:x<:5:x%<:0:x=#:div_by_5:}:div_by_3:<:m:x~%^:end:}:div_by_5:<:m:x~%^:end:}:not_divisible:<:n:x~%}:end:

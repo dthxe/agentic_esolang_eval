@@ -1,0 +1,1 @@
+}:start:|~}:n:|~}:base:<:0:x~}:result:}:convert:<:n:x<:0:x#:zero:<:n:x<:base:x/~}:quotient:<:n:x<:base:x/~<:base:x*~<:n:x-~}:remainder:<:remainder:x<:a:x-#:digit:<:remainder:x<:30:x+~^:add_digit:}:digit:<:remainder:x<:57:x+~}:add_digit:>~<:quotient:x~}:n:<:n:x<:0:x-^:convert:}:zero:<:30:x~$~^:end:}:print_result:}:print_loop:{~<:0:x#:end_print:$~^:print_loop:}:end_print:}:end:

@@ -1,0 +1,6 @@
+}:start: Input operations, one by one. End with a non-number.
+<:0:x~}:balance:}:input_loop:|~<:0:x#:end_input:~=~+~=~<:0:x#:below_zero:>~^:input_loop:}:end_input:
+}:below_zero: Balance fell below zero
+<:1:x~%^:end:
+}:not_below: Balance never fell below zero
+<:0:x~%}:end:

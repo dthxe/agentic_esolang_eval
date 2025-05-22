@@ -1,0 +1,8 @@
+}:start: Input the first string
+}:input_str1:}:input_loop1:!~<:0:x#:end_input1:>~^:input_loop1:}:end_input1:
+}:input_str2: Input the second string
+}:input_loop2:!~<:0:x#:end_input2:>~^:input_loop2:}:end_input2:
+}:xor_strings: XOR the two strings character by character
+}:xor_loop:{~<:0:x#:end_xor1:{~<:0:x#:end_xor2:}:check_chars:
+<:0:x#:chars_equal:<:1:x#:both_one:$~^:next_char:}:chars_equal:<:0:x~$~^:next_char:
+}:both_one:<:1:x~$~}:next_char:^:xor_loop:}:end_xor1:}:end_xor2:}:end:

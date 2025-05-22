@@ -1,0 +1,1 @@
+}:start:|~}:n:<:n:x<:1:x-#:not_one:?}:odd_sequence:}:collatz_loop:<:n:x<:1:x-#:not_one:<:n:x<:2:x/~<:n:x<:2:x/~*~<:n:x-#:not_even:<:n:x~>~<:n:x<:3:x*~<:1:x+~}:n:^:collatz_loop:}:not_even:<:n:x<:2:x/~}:n:^:collatz_loop:}:not_one:<:1:x~>~^:end:}:end:}:print_sequence:}:print_loop:{~<:0:x#:end_print:~%^:print_loop:}:end_print:}:end:

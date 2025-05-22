@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:check_sorted:<:1:x~}:is_sorted:{~<:0:x#:end_first:~}:prev:^:check_loop:}:end_first:}:check_loop:{~<:0:x#:end_check:~}:current:<:current:x<:prev:x-#:not_sorted:<:0:x~}:is_sorted:^:end_check:}:not_sorted:<:current:x~}:prev:^:check_loop:}:end_check:<:is_sorted:x~%}:end:

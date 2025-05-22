@@ -1,0 +1,11 @@
+}:start: Input a musical string
+}:input_music:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:
+}:count_beats: Count the beats in the music string
+<:0:x~}:total_beats:}:parse_loop:{~<:0:x#:end_parse:<:30:x-#:not_zero:<:31:x-#:not_one:
+<:32:x-#:not_two:<:34:x-#:not_four:<:38:x-#:not_eight:<:31:x-^:add_one:<:32:x-^:add_two:
+<:34:x-^:add_four:<:38:x-^:add_eight:^:next_char:}:add_one:<:total_beats:x<:1:x+~}:total_beats:
+^:next_char:}:add_two:<:total_beats:x<:2:x+~}:total_beats:^:next_char:}:add_four:<:total_beats:x
+<:4:x+~}:total_beats:^:next_char:}:add_eight:<:total_beats:x<:8:x+~}:total_beats:^:next_char:
+}:not_zero:}:not_one:}:not_two:}:not_four:}:not_eight:}:next_char:^:parse_loop:}:end_parse:
+}:print_result: Print the total beats
+<:total_beats:x~%}:end:

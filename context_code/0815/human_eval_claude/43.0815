@@ -1,0 +1,1 @@
+}:start:}:input_loop:|~<:0:x#:end_input:>~^:input_loop:}:end_input:}:find_pairs:<:0:x~}:result:}:outer_loop:{~<:0:x#:end_outer:~}:a:}:inner_loop:{~<:0:x#:end_inner:~}:b:<:a:x<:b:x+~<:0:x-#:not_zero:<:result:x<:1:x+~}:result:}:not_zero:^:inner_loop:}:end_inner:^:outer_loop:}:end_outer:<:result:x<:0:x-#:false:<:1:x~%^:end:}:false:<:0:x~%}:end:

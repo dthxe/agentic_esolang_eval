@@ -1,0 +1,1 @@
+}:start:}:input_string:}:input_loop:!~<:0:x#:end_input:>~^:input_loop:}:end_input:}:calculate_hex_key:<:0:x~}:sum:}:calc_loop:{~<:0:x#:end_calc:<:sum:x+~}:sum:^:calc_loop:}:end_calc:<:sum:x~%}:end:

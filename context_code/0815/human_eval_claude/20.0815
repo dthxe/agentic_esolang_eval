@@ -1,0 +1,8 @@
+}:start: Input numbers, one by one. End with a non-number.
+|~<:0:x#:end_input:>}:input_loop:|~>^:input_loop:}:end_input:
+}:find_closest: Find the closest pair of elements
+<:7fffffffffffffff:x~}:min_diff:}:outer_loop:{~<:0:x#:end_outer:~}:a:}:inner_loop:{~<:0:x#:end_inner:
+~}:b:<:a:x<:b:x-~ab~<:min_diff:x-^:update_min:^:next_inner:}:update_min:~}:min_diff:<:a:x~}:closest_a:
+<:b:x~}:closest_b:}:next_inner:^:inner_loop:}:end_inner:>~^:outer_loop:}:end_outer:
+}:print_result: Print the closest pair
+<:closest_a:x~%<:20:~$<:closest_b:x~%}:end:
