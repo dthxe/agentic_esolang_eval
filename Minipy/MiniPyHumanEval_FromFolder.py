@@ -221,16 +221,20 @@ MINIPY_INTERPRETER_PATH = os.path.join(os.getcwd(), "interpreter.py")  # Path to
 def execute_minipy_code(code: str, input_data: str = "") -> str:
     """
     Executes Minipy code and returns the output, or an error message.
+    Ignores lines that begin with # comments.
     """
     try:
-        # Ensure the Minipy interpreter exists
         if not os.path.isfile(MINIPY_INTERPRETER_PATH):
-            return f"Error: Minipy interpreter not found at '{MINIPY_INTERPRETER_PATH}'."
+            return f"Error: Minipy interpreter not found at {MINIPY_INTERPRETER_PATH}."
+            
+        # Filter out lines that begin with # comments
+        filtered_code_lines = [line for line in code.split('\n') if not line.strip().startswith('#')]
+        filtered_code = '\n'.join(filtered_code_lines)
 
-        # Create a temporary file to hold the Minipy code
+        # Create a temporary file for the Minipy code
         with tempfile.NamedTemporaryFile(mode="w+", suffix=".minipy", delete=False) as temp_minipy:
             temp_minipy_path = temp_minipy.name
-            temp_minipy.write(code)
+            temp_minipy.write(filtered_code)
 
         try:
             # Execute the Minipy code using the interpreter

@@ -24,14 +24,19 @@ PYTH_INTERPRETER_PATH = os.path.join(os.getcwd(), "pyth", "pyth.py")
 def execute_pyth_function(code: str, input_data: Any = "") -> str:
     """
     Executes Pyth code with the given input and returns the output or a concise error message.
+    Ignores lines that begin with # comments.
     """
     try:
         if not os.path.isfile(PYTH_INTERPRETER_PATH):
             return f"Error: Pyth interpreter not found at {PYTH_INTERPRETER_PATH}."
-
+            
+        # Filter out lines that begin with # comments
+        filtered_code_lines = [line for line in code.split('\n') if not line.strip().startswith('#')]
+        filtered_code = '\n'.join(filtered_code_lines)
+        
         temp_pyth_path = "temp.pyth"
         with open(temp_pyth_path, "w") as f:
-            f.write(code)
+            f.write(filtered_code)
 
         # Convert input_data to string, ensuring it's properly formatted for Pyth
         input_str = str(input_data)
