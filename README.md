@@ -1,7 +1,5 @@
 # Agentic Esolang Evaluation
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 This repository contains scripts for evaluating code in esoteric programming languages (esolangs) against benchmarks. The scripts are modified versions of the [esolangs](https://github.com/saraswathyamjith/esolangs) repository that evaluate code from files instead of generating code with an LLM. 
 
 ## Overview
@@ -59,8 +57,6 @@ Each esoteric language requires its own interpreter:
   cargo build --release
   ```
   - Usage: After building, you can run Rhokell code with `./target/release/rhokell path/to/file.rhk`
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
