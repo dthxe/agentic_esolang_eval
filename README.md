@@ -1,4 +1,4 @@
-# Agentic Esolang Evaluation
+# Esolang Evaluation
 
 This repository contains scripts for evaluating code in esoteric programming languages (esolangs) against benchmarks.
 
