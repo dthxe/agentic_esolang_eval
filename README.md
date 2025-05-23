@@ -195,6 +195,12 @@ To ensure reproducibility of results, follow these steps:
 4. Place your code files in the appropriate directories following the naming conventions
 5. Run the evaluation scripts as described in the "How to Use" section
 
+To reproduce our experiments using the same compute resources, follow the steps below:
+This experiment was run on Google Collab on the following:
+Python 3 Runtime
+Hardware Accelerator: NVIDIA T4 GPU
+
+
 ## Documentation & Examples Sources
 0815 examples & documentation:
 Jorente, P. (n.d.). 0815. In Poncho esolang. Retrieved May 21, 2025, from http://paulo-jorente.de/poncho/esolang/0815/
