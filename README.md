@@ -80,12 +80,9 @@ This project provides a framework for evaluating the performance of esoteric pro
   - Organized by language and model
 - `no_context_code/`: Code generated with minimal context about the language
   - Organized by language and model
-- `code_to_evaluate/`: Directory where code files should be placed for evaluation
-  - `0815/HumanEval/`: Place 0815 code files here
-  - `Minipy/HumanEval/`: Place Minipy code files here
-  - `Pyth/HumanEval/`: Place Pyth code files here
-  - `Rhokell/HumanEval/`: Place Rhokell code files here
-  - `Rhokell/EsoEval/`: Place Rhokell code for esoteric language tasks here
+- `code_to_evaluate/`: Directory where code files should be placed for evaluation (examples below: )
+  - `0815/HumanEval/`: Place 0815 code files here for HumanEval
+  - `Rhokell/EsoEval/`: Place Rhokell code files here for EsoEval
 
 ## How to Use
 
