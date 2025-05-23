@@ -7,7 +7,7 @@ This repository contains scripts for evaluating code in esoteric programming lan
 This project provides a framework for evaluating the performance of esoteric programming languages on standard programming benchmarks. Instead of generating code with language models, this repository focuses on evaluating pre-written code files, making it suitable for comparing different code generation approaches or manual implementations.
 
 The repository includes:
-- Evaluation scripts for multiple esoteric languages (0815, Minipy, Pyth)
+- Evaluation scripts for multiple esoteric languages (0815, Minipy, Pyth, Rhokell)
 - Code samples generated with and without context by agentic AI systems
 - Standardized evaluation methodology using the HumanEval benchmark
 
