@@ -4,12 +4,12 @@ This repository contains scripts for evaluating code in esoteric programming lan
 
 ## Overview
 
-This project provides a framework for evaluating the performance of esoteric programming languages on standard programming benchmarks. Instead of generating code with language models, this repository focuses on evaluating pre-written code files, making it suitable for comparing different code generation approaches or manual implementations.
+This project provides a framework for evaluating the performance of esoteric programming languages on standard programming benchmarks. We both generate code with language models and support evaluating pre-written code files from agentic sources, making it suitable for comparing different code generation approaches or manual implementations.
 
 The repository includes:
 - Evaluation scripts for multiple esoteric languages (0815, Minipy, Pyth, Rhokell)
 - Code samples generated with and without context by agentic AI systems and Large Language Models
-- Standardized evaluation methodology using the HumanEval benchmark
+- Standardized evaluation methodology using the HumanEval benchmark and our custom benchmark.
 
 ## Code Generation Methodology
 The standard LLM code samples in this repository were generated using either GPT-4o-mini, GPT-4o, LLAMA-3.3-70B, Deepseek-V3, in February-March 2025.  
@@ -59,10 +59,6 @@ Each esoteric language requires its own interpreter:
   ```
   - Usage: After building, you can run Rhokell code with `./target/release/rhokell path/to/file.rhk`
 
-## Overview
-
-This project provides a framework for evaluating the performance of esoteric programming languages on standard programming benchmarks. Instead of generating code with language models, this repository focuses on evaluating pre-written code files, making it suitable for comparing different code generation approaches or manual implementations.
-
 ## Supported Languages
 
 - **0815**: A queue-based esoteric language with 3 registers
@@ -90,7 +86,7 @@ This project provides a framework for evaluating the performance of esoteric pro
 2. Name your files according to the problem ID (e.g., `HumanEval/0.pyth`, `HumanEval/1.pyth`, etc.)
 3. Run the evaluation script for the language you want to evaluate:
 
-### HumanEval Benchmarks
+### Agentic HumanEval Benchmarks
 These scripts evaluate code against the HumanEval benchmark:
 
 ```bash
@@ -107,7 +103,7 @@ python Minipy/MiniPyHumanEval_FromFolder.py
 python Rhokell/RhokellHumanEval_FromFolder.py
 ```
 
-### EsoEval Benchmarks
+### Agentic EsoEval Benchmarks
 These scripts evaluate code against a custom set of 30 programming tasks embedded directly in the scripts:
 
 ```bash
@@ -123,6 +119,13 @@ python Minipy/MiniPyEsoEval.py
 # For Rhokell EsoEval
 python Rhokell/RhokellEsoEval.py
 ```
+
+### Non-Agentic Scripts
+Our scripts (the remaining scripts not mentioned above) evaluating the performance of large language models (non-agentic) were done in Google Colab. The notebook export is in eaxch corresponding folder.
+To reproduce our experiments using the same compute resources, follow the steps below:
+Copy the script into a Google Collab notebook with the following:
+Python 3 Runtime
+Hardware Accelerator: NVIDIA T4 GPU
 
 ## Dataset
 
@@ -194,12 +197,6 @@ To ensure reproducibility of results, follow these steps:
 3. Install the language interpreters as described
 4. Place your code files in the appropriate directories following the naming conventions
 5. Run the evaluation scripts as described in the "How to Use" section
-
-To reproduce our experiments using the same compute resources, follow the steps below:
-This experiment was run on Google Collab on the following:
-Python 3 Runtime
-Hardware Accelerator: NVIDIA T4 GPU
-
 
 ## Documentation & Examples Sources
 0815 examples & documentation:
