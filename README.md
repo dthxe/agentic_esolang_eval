@@ -1,6 +1,6 @@
 # Agentic Esolang Evaluation
 
-This repository contains scripts for evaluating code in esoteric programming languages (esolangs) against benchmarks. The scripts are modified versions of the [esolangs](https://github.com/saraswathyamjith/esolangs) repository that evaluate code from files instead of generating code with an LLM. 
+This repository contains scripts for evaluating code in esoteric programming languages (esolangs) against benchmarks.
 
 ## Overview
 
