@@ -1,4 +1,4 @@
-# Esolang Evaluation
+# In-Context Learning for Esoteric Programming Languages: Evaluating and Enhancing LLM Reasoning Without Fine-Tuning 
 
 This repository contains scripts for evaluating code in esoteric programming languages (esolangs) against benchmarks.
 
@@ -12,8 +12,9 @@ The repository includes:
 - Standardized evaluation methodology using the HumanEval benchmark
 
 ## Code Generation Methodology
+The standard LLM code samples in this repository were generated using either GPT-4o-mini, GPT-4o, LLAMA-3.3-70B, Deepseek-V3, in February-March 2025.  
 
-The code samples in this repository were generated using Windsurf, an agentic AI system, in March/April 2025. The prompting was done through an agent directly, instead of being fed through a traditional LLM API, allowing for more interactive and context-aware code generation. Two sets of code were generated:
+The agnetic code samples in this repository were generated using Windsurf, an agentic AI system, in March/April 2025. The prompting was done through an agent directly, instead of being fed through a traditional LLM API, allowing for more interactive and context-aware code generation. Two sets of code were generated:
 
 1. **Context Code**: Generated with full contextual information about the esoteric language
 2. **No Context Code**: Generated with minimal information about the language
