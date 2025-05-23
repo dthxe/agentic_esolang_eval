@@ -8,7 +8,7 @@ This project provides a framework for evaluating the performance of esoteric pro
 
 The repository includes:
 - Evaluation scripts for multiple esoteric languages (0815, Minipy, Pyth, Rhokell)
-- Code samples generated with and without context by agentic AI systems
+- Code samples generated with and without context by agentic AI systems and Large Language Models
 - Standardized evaluation methodology using the HumanEval benchmark
 
 ## Code Generation Methodology
