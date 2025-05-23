@@ -123,9 +123,9 @@ python Rhokell/RhokellEsoEval.py
 ### Non-Agentic Scripts
 Our scripts (the remaining scripts not mentioned above) evaluating the performance of large language models (non-agentic) were done in Google Colab. The notebook export is in eaxch corresponding folder.
 To reproduce our experiments using the same compute resources, follow the steps below:
-Copy the script into a Google Collab notebook with the following:
-Python 3 Runtime
-Hardware Accelerator: NVIDIA T4 GPU
+Copy the script into a Google Collab notebook with the following:  
+Python 3 Runtime  
+Hardware Accelerator: NVIDIA T4 GPU  
 
 ## Dataset
 
