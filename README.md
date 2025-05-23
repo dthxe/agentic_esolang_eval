@@ -18,7 +18,7 @@ The code samples in this repository were generated using Windsurf, an agentic AI
 1. **Context Code**: Generated with full contextual information about the esoteric language
 2. **No Context Code**: Generated with minimal information about the language
 
-This allows for comparative analysis of how contextual information affects code generation quality in esoteric languages.
+This allows for comparative analysis of how contextual information affects code generation quality in esoteric languages, across agentic-4o and agentic-claude.
 
 ## Requirements and Dependencies
 
